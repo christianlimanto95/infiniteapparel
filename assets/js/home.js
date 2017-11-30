@@ -1,9 +1,5 @@
 $(function() {
-	if ($(window).scrollTop() > 0) {
-		$(document).on("scroll", checkHeaderScrollDown);
-	} else {
-		$(document).on("scroll", checkHeaderScrollUp);
-	}
+	$(document).on("scroll", checkHeaderScrollDown);
 	$(document).scroll();
 });
 

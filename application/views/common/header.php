@@ -26,7 +26,12 @@
 <body>
 <div class="header">
 	<div class="header-inner">
-		<a href="#" class="logo" style="background-image: url(assets/icons/logo.png);"></a>
+		<a href="#" class="logo" >
+			<div class="logo-inner-container">
+				<div class="logo-image logo-image-white" style="background-image: url(assets/icons/logo.png);"></div>
+				<div class="logo-image logo-image-black" style="background-image: url(assets/icons/logo_invers.png);"></div>
+			</div>
+		</a>
 		<div class="header-menu-container">
 			<a href="#" class="header-menu">HOME</a>
 			<a href="#" class="header-menu">CATALOG</a>
