@@ -1,5 +1,5 @@
 * {
-  font-family: copperplate-bold;
+  font-family: champagne;
   outline: 0;
   margin: 0;
   padding: 0;
@@ -27,12 +27,168 @@ body {
 
 .section {
   width: 100vw;
-  background-color: #F1F1F1;
   overflow: hidden;
   color: #444;
 }
 
-@media all and (max-width: 1279px) {
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100px;
+  z-index: 1000;
+}
+
+.header-inner {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+.logo {
+  display: block;
+  position: absolute;
+  top: 30px;
+  left: 60px;
+  text-decoration: none;
+  width: 140px;
+  height: 75px;
+  background-size: 100%;
+  background-repeat: no-repeat;
+}
+
+.header-menu-container {
+  display: inline-block;
+  margin-left: 50px;
+  position: absolute;
+  top: 30px;
+  left: 200px;
+}
+
+.header-menu {
+  display: inline-block;
+  text-decoration: none;
+  color: white;
+  font-weight: bold;
+  font-size: 20pt;
+  margin-right: 30px;
+}
+
+.header-menu.dark {
+  color: rgb(37, 37, 37);
+}
+
+@-webkit-keyframes header-menu-hover {
+  0% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes header-menu-hover {
+  0% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+.header-menu:hover {
+  -webkit-animation-name: header-menu-hover;
+  -webkit-animation-duration: 0.3s;
+  -webkit-animation-fill-mode: forwards;
+  -moz-animation-name: header-menu-hover;
+  -moz-animation-duration: 0.3s;
+  -moz-animation-fill-mode: forwards;
+  -ms-animation-name: header-menu-hover;
+  -ms-animation-duration: 0.3s;
+  -ms-animation-fill-mode: forwards;
+  -o-animation-name: header-menu-hover;
+  -o-animation-duration: 0.3s;
+  -o-animation-fill-mode: forwards;
+  animation-name: header-menu-hover;
+  animation-duration: 0.3s;
+  animation-fill-mode: forwards;
+}
+
+.bags-container {
+  position: absolute;
+  top: 10px;
+  right: 50px;
+  width: 68px;
+  height: 68px;
+  cursor: pointer;
+}
+
+.bags-container-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.bags-image {
+  width: 55px;
+  height: 55px;
+  background-size: 100%;
+  background-repeat: no-repeat;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+}
+
+.bags-ctr {
+  position: absolute;
+  top: 0;
+  right: 0;
+  border-radius: 100%;
+  background-color: white;
+  color: rgb(37, 37, 37);
+  width: 30px;
+  height: 30px;
+  text-align: center;
+  padding-top: 5px;
+  font-family: pier-bold;
+}
+
+.bags-ctr.hidden {
+  display: none;
+}
+
+.header-login-or-signup {
+  position: absolute;
+  top: 36px;
+  right: 130px;
+  color: white;
+  font-family: pier-bold;
+}
+
+.header-login-or-signup span {
+  display: inline;
+  text-decoration: underline;
+  font-family: pier-bold;
+  font-size: 10pt;
+  cursor: pointer;
+}
+
+.header-login-or-signup.hidden {
+  display: none;
+}
+
+@media all and (max-width: 1024px) {
   .div-mobile {
     display: block;
   }
@@ -42,16 +198,16 @@ body {
   }
 }
 
-@media all and (min-width: 768px) and (max-width: 1279px) {
+@media all and (min-width: 768px) and (max-width: 1024px) {
 
 }
 
-@media all and (min-width: 1280px) {
+@media all and (min-width: 1025px) {
   .div-mobile {
     display: none;
   }
 
   .section {
-    height: 100vh;
+    height: 56.25vw;
   }
 }
