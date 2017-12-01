@@ -21,7 +21,6 @@
                 <div class="product-price">IDR 100,000</div>
             </div>
         <?php } ?>
-            <div class="remaining-space"></div>
         </div>
     </div>
 </div>

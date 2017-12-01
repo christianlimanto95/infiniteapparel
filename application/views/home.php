@@ -1,3 +1,8 @@
+<div class="preloader">
+    <div class="preloader-left"></div>
+    <div class="preloader-right"></div>
+    <div class="preloader-image" style="background-image: url(assets/icons/loading.gif);"></div>
+</div>
 <div class="content">
     <div class="section section-1" style="background-image: url(assets/images/home.jpg);">
         <div class="section-gradient"></div>

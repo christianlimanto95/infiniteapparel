@@ -1,5 +1,11 @@
 $("body").on("allLoaded", function() {
-	$(".section-1").addClass("show");
+	setTimeout(function() {
+		$(".preloader").addClass("hide");
+		setTimeout(function() {
+			$(".preloader").addClass("hidden");
+			$(".section-1").addClass("show");
+		}, 1200);
+	}, 2800);
 });
 
 var section1, section2, section2Threshold, section3, section3Threshold;
