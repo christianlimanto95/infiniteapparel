@@ -160,7 +160,7 @@
 	}
 }
 
-.header.animating .logo-image-white {
+.header.animating .logo-image-white, .header.animating .bags-image-white {
 	-webkit-animation-name: logo-image-anim;
 	-webkit-animation-duration: 0.5s;
 	-webkit-animation-fill-mode: forwards;
@@ -178,7 +178,7 @@
 	animation-fill-mode: forwards;
 }
 
-.header.animating .logo-image-black {
+.header.animating .logo-image-black, .header.animating .bags-image-black {
 	-webkit-animation-name: logo-image-anim-reversed;
 	-webkit-animation-duration: 0.5s;
 	-webkit-animation-fill-mode: forwards;
@@ -196,15 +196,15 @@
 	animation-fill-mode: forwards;
 }
 
-.header.animated .logo-image-white {
+.header.animated .logo-image-white, .header.animated .bags-image-white {
 	opacity: 0;
 }
 
-.header.animated .logo-image-black {
+.header.animated .logo-image-black, .header.animated .bags-image-black {
 	opacity: 1;
 }
 
-.header.animating-close .logo-image-black {
+.header.animating-close .logo-image-black, .header.animating-close .bags-image-black {
 	-webkit-animation-name: logo-image-anim;
 	-webkit-animation-duration: 0.5s;
 	-webkit-animation-fill-mode: forwards;
@@ -222,7 +222,7 @@
 	animation-fill-mode: forwards;
 }
 
-.header.animating-close .logo-image-white {
+.header.animating-close .logo-image-white, .header.animating-close .bags-image-white {
 	-webkit-animation-name: logo-image-anim-reversed;
 	-webkit-animation-duration: 0.5s;
 	-webkit-animation-fill-mode: forwards;
@@ -304,6 +304,75 @@
 	animation-fill-mode: forwards;
 }
 
+@-webkit-keyframes bags-ctr-anim {
+	to {
+		background-color: rgb(37, 37, 37);
+		color: white;
+	}
+}
+
+@keyframes bags-ctr-anim {
+	to {
+		background-color: rgb(37, 37, 37);
+		color: white;
+	}
+}
+
+.header.animating .bags-ctr {
+	-webkit-animation-name: bags-ctr-anim;
+	-webkit-animation-duration: 0.5s;
+	-webkit-animation-fill-mode: forwards;
+	-moz-animation-name: bags-ctr-anim;
+	-moz-animation-duration: 0.5s;
+	-moz-animation-fill-mode: forwards;
+	-ms-animation-name: bags-ctr-anim;
+	-ms-animation-duration: 0.5s;
+	-ms-animation-fill-mode: forwards;
+	-o-animation-name: bags-ctr-anim;
+	-o-animation-duration: 0.5s;
+	-o-animation-fill-mode: forwards;
+	animation-name: bags-ctr-anim;
+	animation-duration: 0.5s;
+	animation-fill-mode: forwards;
+}
+
+.header.animated .bags-ctr {
+	background-color: rgb(37, 37, 37);
+	color: white;
+}
+
+@-webkit-keyframes bags-ctr-anim-reversed {
+	to {
+		color: rgb(37, 37, 37);
+		background-color: white;
+	}
+}
+
+@keyframes bags-ctr-anim-reversed {
+	to {
+		color: rgb(37, 37, 37);
+		background-color: white;
+	}
+}
+
+.header.animating-close .bags-ctr {
+	-webkit-animation-name: bags-ctr-anim-reversed;
+	-webkit-animation-duration: 0.5s;
+	-webkit-animation-fill-mode: forwards;
+	-moz-animation-name: bags-ctr-anim-reversed;
+	-moz-animation-duration: 0.5s;
+	-moz-animation-fill-mode: forwards;
+	-ms-animation-name: bags-ctr-anim-reversed;
+	-ms-animation-duration: 0.5s;
+	-ms-animation-fill-mode: forwards;
+	-o-animation-name: bags-ctr-anim-reversed;
+	-o-animation-duration: 0.5s;
+	-o-animation-fill-mode: forwards;
+	animation-name: bags-ctr-anim-reversed;
+	animation-duration: 0.5s;
+	animation-fill-mode: forwards;
+}
+
 .section-1 {
 	background-size: 100%;
 	background-repeat: no-repeat;
@@ -340,6 +409,7 @@
 	background-size: auto 100%;
 	background-repeat: no-repeat;
 	background-position: center;
+	opacity: 0;
 }
 
 .btn-explore-products {
@@ -351,6 +421,15 @@
 	font-family: pier-regular;
 	margin-top: 20px;
 	transition: all 0.3s;
+	opacity: 0;
+}
+
+.section-1.show .btn-explore-products {
+	-webkit-animation-delay: 0.2s;
+	-moz-animation-delay: 0.2s;
+	-ms-animation-delay: 0.2s;
+	-o-animation-delay: 0.2s;
+	animation-delay: 0.2s;
 }
 
 .explore-products-container:hover .btn-explore-products {
@@ -360,7 +439,11 @@
 
 .section-title {
 	width: 80vw;
-	margin: 0 auto;
+	margin: 0 auto 2vw;
+}
+
+.section-2 .section-title {
+	margin-top: 5vw;
 }
 
 .section-title-line {
@@ -387,10 +470,27 @@
 	width: 22vw;
 	height: 50vw;
 	margin-right: 3vw;
+	opacity: 0;
 }
 
 .product:nth-last-child(1) {
 	margin-right: 0;
+}
+
+.section-2.show .product:nth-child(2) {
+	-webkit-animation-delay: 0.1s;
+	-moz-animation-delay: 0.1s;
+	-ms-animation-delay: 0.1s;
+	-o-animation-delay: 0.1s;
+	animation-delay: 0.1s;
+}
+
+.section-2.show .product:nth-child(3) {
+	-webkit-animation-delay: 0.2s;
+	-moz-animation-delay: 0.2s;
+	-ms-animation-delay: 0.2s;
+	-o-animation-delay: 0.2s;
+	animation-delay: 0.2s;
 }
 
 .product-image-container {
@@ -480,4 +580,43 @@
 .product-price {
 	margin-top: 5px;
 	font-size: 1.8vw;
+}
+
+.recent-customers {
+	width: 80vw;
+	margin: 0 auto;
+	text-align: center;
+	padding-bottom: 2vw;
+	border-bottom: 1px solid #CCC;
+}
+
+.recent-customers-image {
+	display: inline-block;
+	width: 20vw;
+	height: 20vw;
+	background-size: 100%;
+	background-repeat: no-repeat;
+	background-position: center;
+	margin-right: 2vw;
+	opacity: 0;
+}
+
+.recent-customers-image:nth-last-child(1) {
+	margin-right: 0;
+}
+
+.section-3.show .recent-customers-image:nth-child(2) {
+	-webkit-animation-delay: 0.2s;
+	-moz-animation-delay: 0.2s;
+	-ms-animation-delay: 0.2s;
+	-o-animation-delay: 0.2s;
+	animation-delay: 0.2s;
+}
+
+.section-3.show .recent-customers-image:nth-child(3) {
+	-webkit-animation-delay: 0.4s;
+	-moz-animation-delay: 0.4s;
+	-ms-animation-delay: 0.4s;
+	-o-animation-delay: 0.4s;
+	animation-delay: 0.4s;
 }

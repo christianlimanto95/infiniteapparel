@@ -18,10 +18,106 @@ body {
   overflow-x: hidden;
 }
 
+.container {
+  width: 100vw;
+  height: 100vh;
+  overflow-x: hidden;
+  position: relative;
+}
+
 .section {
   width: 100vw;
   overflow: hidden;
   color: #444;
+}
+
+@-webkit-keyframes show-up-anim {
+  0% {
+    opacity: 0;
+    -webkit-transform: translate(0, 15px);
+  }
+
+  100% {
+    opacity: 1;
+    -webkit-transform: translate(0, 0);
+  }
+}
+
+@keyframes show-up-anim {
+  0% {
+    opacity: 0;
+    -moz-transform: translate(0, 15px);
+    -ms-transform: translate(0, 15px);
+    -o-transform: translate(0, 15px);
+    transform: translate(0, 15px);
+  }
+
+  100% {
+    opacity: 1;
+    -moz-transform: translate(0, 0);
+    -ms-transform: translate(0, 0);
+    -o-transform: translate(0, 0);
+    transform: translate(0, 0);
+  }
+}
+
+@-webkit-keyframes show-down-anim {
+  0% {
+    opacity: 0;
+    -webkit-transform: translate(0, -15px);
+  }
+
+  100% {
+    opacity: 1;
+    -webkit-transform: translate(0, 0);
+  }
+}
+
+@keyframes show-down-anim {
+  0% {
+    opacity: 0;
+    -moz-transform: translate(0, -15px);
+    -ms-transform: translate(0, -15px);
+    -o-transform: translate(0, -15px);
+    transform: translate(0, -15px);
+  }
+
+  100% {
+    opacity: 1;
+    -moz-transform: translate(0, 0);
+    -ms-transform: translate(0, 0);
+    -o-transform: translate(0, 0);
+    transform: translate(0, 0);
+  }
+}
+
+.content .section.show [data-anim="show-up"], .content .section.show [data-anim="show-down"] {
+  -webkit-animation-duration: 0.6s;
+  -webkit-animation-fill-mode: forwards;
+  -moz-animation-duration: 0.6s;
+  -moz-animation-fill-mode: forwards;
+  -ms-animation-duration: 0.6s;
+  -ms-animation-fill-mode: forwards;
+  -o-animation-duration: 0.6s;
+  -o-animation-fill-mode: forwards;
+  animation-duration: 0.6s;
+  animation-fill-mode: forwards;
+}
+
+.content .section.show [data-anim="show-up"] {
+  -webkit-animation-name: show-up-anim;
+  -moz-animation-name: show-up-anim;
+  -ms-animation-name: show-up-anim;
+  -o-animation-name: show-up-anim;
+  animation-name: show-up-anim;
+}
+
+.content .section.show [data-anim="show-down"] {
+  -webkit-animation-name: show-down-anim;
+  -moz-animation-name: show-down-anim;
+  -ms-animation-name: show-down-anim;
+  -o-animation-name: show-down-anim;
+  animation-name: show-down-anim;
 }
 
 .header {
@@ -161,6 +257,10 @@ body {
   left: 0;
 }
 
+.bags-image-black {
+  opacity: 0;
+}
+
 .bags-ctr {
   position: absolute;
   top: 0;
@@ -219,6 +319,6 @@ body {
   }
 
   .section {
-    height: 56.25vw;
+    height: 56vw;
   }
 }

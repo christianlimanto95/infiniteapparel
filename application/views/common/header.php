@@ -40,7 +40,8 @@
 	</div>
 	<div class="bags-container">
 		<div class="bags-container-inner">
-			<div class="bags-image" style="background-image: url(assets/icons/bag.png);"></div>
+			<div class="bags-image bags-image-white" style="background-image: url(assets/icons/bag.png);"></div>
+			<div class="bags-image bags-image-black" style="background-image: url(assets/icons/bag_invers.png);"></div>
 			<div class="bags-ctr">1</div>
 		</div>
 	</div>
@@ -48,4 +49,17 @@
 		<span>Login</span> or <span>Sign Up Yours</span>
 	</div>
 </div>
-<div class="container">
+<script>
+var isMobile = false, isTablet = false;
+var vw = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
+var vh = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
+if (vw < 1025) {
+	isMobile = true;
+	if (vw >= 768) {
+		isTablet = true;
+	}
+}
+
+var lastScrollTop = 0;
+</script>
+<div class="container" tabindex="1">
