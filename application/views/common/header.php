@@ -17,24 +17,24 @@
 			src: url(<?php echo base_url("assets/fonts/pier-regular.otf"); ?>);
 		}
 	</style>
-	
+	<link rel="shortcut icon" href="<?php echo base_url("assets/icons/favicon.png"); ?>" />
 	<link rel="stylesheet" href="<?php echo base_url("assets/css/common/default.css"); ?>" />
 	<link rel="stylesheet" href="<?php echo base_url("assets/css/" . $page_name . ".css"); ?>" />
 	
 	<?php echo $additional_files; ?>
 </head>
 <body>
-<div class="header">
+<div class="header<?php echo $header_additional_class; ?>">
 	<div class="header-inner">
-		<a href="#" class="logo" >
+		<a href="<?php echo base_url(); ?>" class="logo" >
 			<div class="logo-inner-container">
 				<div class="logo-image logo-image-white" style="background-image: url(assets/icons/logo.png);"></div>
 				<div class="logo-image logo-image-black" style="background-image: url(assets/icons/logo_invers.png);"></div>
 			</div>
 		</a>
 		<div class="header-menu-container">
-			<a href="#" class="header-menu">HOME</a>
-			<a href="#" class="header-menu">CATALOG</a>
+			<a href="<?php echo base_url(); ?>" class="header-menu">HOME</a>
+			<a href="<?php echo base_url("catalog"); ?>" class="header-menu">CATALOG</a>
 			<a href="#" class="header-menu">CONTACT</a>
 		</div>
 	</div>

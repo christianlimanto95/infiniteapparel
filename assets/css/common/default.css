@@ -299,6 +299,27 @@ body {
   display: none;
 }
 
+.header.invers .logo {
+  
+}
+
+.header.invers .logo-image-black, .header.invers .bags-image-black {
+  opacity: 1;
+}
+
+.header.invers .logo-image-white, .header.invers .bags-image-white {
+  opacity: 1;
+}
+
+.header.invers .header-menu, .header.invers .header-login-or-signup {
+  color: rgb(37, 37, 37);
+}
+
+.header.invers .bags-ctr {
+  color: white;
+  background-color: rgb(37, 37, 37);
+}
+
 @media all and (max-width: 1024px) {
   .div-mobile {
     display: block;
