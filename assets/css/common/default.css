@@ -299,8 +299,15 @@ body {
   display: none;
 }
 
-.header.invers .logo {
-  
+.header.invers {
+  background-color: rgba(255, 255, 255, 0.95);
+}
+
+.header.invers .logo {  
+  top: 18px;
+  left: 47px;
+  width: 112px;
+  height: 60px;
 }
 
 .header.invers .logo-image-black, .header.invers .bags-image-black {

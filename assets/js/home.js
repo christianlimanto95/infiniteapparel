@@ -47,7 +47,9 @@ function checkHeaderScrollUp() {
 	if (container.scrollTop() == 0) {
 		$(".logo").off('webkitAnimationEnd oanimationend oAnimationEnd msAnimationEnd animationend');
 		header.addClass("animated").removeClass("animating").addClass("animating-close");
-		
+		$(".logo").one('webkitAnimationEnd oanimationend oAnimationEnd msAnimationEnd animationend', function(e) {
+			header.removeClass("animated").removeClass("animating-close");
+		});
 		container.on("scroll", checkHeaderScrollDown);
 		container.off("scroll", checkHeaderScrollUp);
 	}
