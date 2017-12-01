@@ -1,5 +1,5 @@
 * {
-  font-family: champagne;
+  font-family: moon-regular;
   outline: 0;
   margin: 0;
   padding: 0;
@@ -271,8 +271,9 @@ body {
   width: 30px;
   height: 30px;
   text-align: center;
-  padding-top: 5px;
-  font-family: pier-bold;
+  padding-top: 6px;
+  font-family: helvetica;
+  font-weight: bold;
 }
 
 .bags-ctr.hidden {
@@ -281,18 +282,21 @@ body {
 
 .header-login-or-signup {
   position: absolute;
-  top: 36px;
+  top: 40px;
   right: 130px;
   color: white;
-  font-family: pier-bold;
+  font-family: helvetica;
+  font-weight: bold;
+  font-size: 10pt;
 }
 
 .header-login-or-signup span {
   display: inline;
   text-decoration: underline;
-  font-family: pier-bold;
+  font-family: helvetica;
   font-size: 10pt;
   cursor: pointer;
+  font-weight: bold;
 }
 
 .header-login-or-signup.hidden {
@@ -325,6 +329,26 @@ body {
 .header.invers .bags-ctr {
   color: white;
   background-color: rgb(37, 37, 37);
+}
+
+.modal {
+  width: 500px;
+  height: 500px;
+  position: fixed;
+  background-color: cyan;
+  z-index: 1002;
+  display: none;
+}
+
+.dark-background {
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 1001;
+  display: none;
 }
 
 @media all and (max-width: 1024px) {

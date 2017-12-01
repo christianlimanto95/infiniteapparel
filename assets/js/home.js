@@ -1,11 +1,16 @@
 $("body").on("allLoaded", function() {
-	setTimeout(function() {
-		$(".preloader").addClass("hide");
+	var preloader = $(".preloader");
+	if (!preloader.hasClass("hidden")) {
 		setTimeout(function() {
-			$(".preloader").addClass("hidden");
-			$(".section-1").addClass("show");
-		}, 1200);
-	}, 2800);
+			preloader.addClass("hide");
+			setTimeout(function() {
+				preloader.addClass("hidden");
+				$(".section-1").addClass("show");
+			}, 1200);
+		}, 2800);
+	} else {
+		$(".section-1").addClass("show");
+	}
 });
 
 var section1, section2, section2Threshold, section3, section3Threshold;

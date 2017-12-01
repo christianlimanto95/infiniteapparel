@@ -15,7 +15,8 @@
 }
 
 .section-title-text {
-	font-family: pier-bold;
+	font-family: helvetica;
+	font-weight: bold;
 	font-size: 20pt;
 	text-align: center;
 	margin: 10px 0;
@@ -78,7 +79,7 @@
 	border: 1px solid white;
 	color: white;
 	font-size: 9pt;
-	font-family: pier-regular;
+	font-family: helvetica;
 	margin: 0 auto;
 	cursor: pointer;
 	
@@ -116,12 +117,14 @@
 }
 
 .product-name {
+	font-family: helvetica;
 	font-weight: bold;
 	font-size: 16pt;
 	margin-top: 10px;
 }
 
 .product-price {
+	font-family: helvetica;
 	margin-top: 5px;
 	font-size: 14pt;
 }

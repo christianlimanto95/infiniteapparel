@@ -581,7 +581,7 @@
 	color: white;
 	padding: 1.5vw 3vw;
 	font-size: 1.5vw;
-	font-family: pier-regular;
+	font-family: helvetica;
 	margin-top: 20px;
 	transition: all 0.3s;
 	opacity: 0;
@@ -624,7 +624,8 @@
 }
 
 .section-title-text {
-	font-family: pier-bold;
+	font-family: helvetica;
+	font-weight: bold;
 	font-size: 2vw;
 	text-align: center;
 	margin: 10px 0;
@@ -705,7 +706,7 @@
 	border: 1px solid white;
 	color: white;
 	font-size: 9pt;
-	font-family: pier-regular;
+	font-family: helvetica;
 	margin: 0 auto;
 	cursor: pointer;
 	
@@ -743,12 +744,14 @@
 }
 
 .product-name {
+	font-family: helvetica;
 	font-weight: bold;
 	font-size: 2vw;
 	margin-top: 20px;
 }
 
 .product-price {
+	font-family: helvetica;
 	margin-top: 5px;
 	font-size: 1.8vw;
 }

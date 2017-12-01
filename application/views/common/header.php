@@ -8,6 +8,16 @@
 		}
 
 		@font-face {
+			font-family: moon-bold;
+			src: url(<?php echo base_url("assets/fonts/moon-bold.otf"); ?>);
+		}
+
+		@font-face {
+			font-family: moon-regular;
+			src: url(<?php echo base_url("assets/fonts/moon-regular.otf"); ?>);
+		}
+
+		@font-face {
 			font-family: pier-bold;
 			src: url(<?php echo base_url("assets/fonts/pier-bold.otf"); ?>);
 		}
@@ -48,6 +58,13 @@
 	<div class="header-login-or-signup">
 		<span>Login</span> or <span>Sign Up Yours</span>
 	</div>
+</div>
+<div class="dark-background"></div>
+<div class="modal modal-login">
+	<div class="modal-header">
+	</div>
+	<div class="modal-body"></div>
+	<div class="modal-footer"></div>
 </div>
 <script>
 var isMobile = false, isTablet = false;
