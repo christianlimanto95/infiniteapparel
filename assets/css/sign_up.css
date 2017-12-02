@@ -1,0 +1,47 @@
+.section-1 {
+    text-align: center;
+}
+
+.center {
+    text-align: left;
+    display: inline-block;
+    margin-top: 30px;
+}
+
+.form-item {
+    margin-bottom: 20px;
+}
+
+.form-label {
+    font-family: champagne;
+    font-weight: bold;
+    font-size: 14pt;
+}
+
+input {
+    font-family: champagne;
+    font-size: 14pt;
+    padding: 5px;
+}
+
+.form-item-email input, .form-item-password input, .form-item-confirm-password input {
+    width: 305px;
+}
+
+.btn-sign-up {
+    background-color: transparent;
+    border: 1px solid rgb(37, 37, 37);
+    padding: 10px 0;
+    width: 150px;
+    font-family: moon-bold;
+    font-size: 14pt;
+    cursor: pointer;
+    transition: all 0.3s;
+    margin-top: 30px;
+    float: right;
+}
+
+.btn-sign-up:hover {
+    background-color: rgb(37, 37, 37);
+    color: white;
+}
