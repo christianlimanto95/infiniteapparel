@@ -290,13 +290,14 @@ body {
   font-size: 10pt;
 }
 
-.header-login-or-signup span {
+.header-login-or-signup span, .header-login-or-signup a {
   display: inline;
   text-decoration: underline;
   font-family: helvetica;
   font-size: 10pt;
   cursor: pointer;
   font-weight: bold;
+  color: white;
 }
 
 .header-login-or-signup.hidden {
@@ -322,7 +323,7 @@ body {
   opacity: 1;
 }
 
-.header.invers .header-menu, .header.invers .header-login-or-signup {
+.header.invers .header-menu, .header.invers .header-login-or-signup, .header.invers .header-login-or-signup span, .header.invers .header-login-or-signup a {
   color: rgb(37, 37, 37);
 }
 
@@ -332,15 +333,6 @@ body {
 }
 
 .modal {
-  width: 500px;
-  height: 500px;
-  position: fixed;
-  background-color: cyan;
-  z-index: 1002;
-  display: none;
-}
-
-.dark-background {
   width: 100vw;
   height: 100vh;
   position: fixed;
@@ -348,7 +340,50 @@ body {
   left: 0;
   background-color: rgba(0, 0, 0, 0.5);
   z-index: 1001;
+  text-align: center;
   display: none;
+}
+
+.modal:before {
+  content: "";
+  display: inline-block;
+  vertical-align: middle;
+  height: 100vh;
+}
+
+.modal-box {
+  width: 400px;
+  height: 400px;
+  display: inline-block;
+  vertical-align: middle;
+  position: relative;
+  background-color: white;
+  z-index: 1002;
+  padding: 20px;
+}
+
+.modal-header {
+  height: 50px;
+}
+
+.modal-close-button {
+  width: 20px;
+  height: 20px;
+  float: right;
+  background-size: 100%;
+  background-repeat: no-repeat;
+  cursor: pointer;
+}
+
+.modal-header-text {
+  text-align: left;
+  font-family: helvetica;
+  font-weight: bold;
+}
+
+.modal-login .modal-box {
+  width: 300px;
+  height: 300px;
 }
 
 @media all and (max-width: 1024px) {

@@ -415,7 +415,7 @@
 	}
 }
 
-.header.animating .header-menu, .header.animating .header-login-or-signup {
+.header.animating .header-menu, .header.animating .header-login-or-signup, .header.animating .header-login-or-signup span, .header.animating .header-login-or-signup a {
 	-webkit-animation-name: header-menu-anim;
 	-webkit-animation-duration: 0.5s;
 	-webkit-animation-fill-mode: forwards;
@@ -433,7 +433,7 @@
 	animation-fill-mode: forwards;
 }
 
-.header.animated .header-menu, .header.animated .header-login-or-signup {
+.header.animated .header-menu, .header.animated .header-login-or-signup, .header.animated .header-login-or-signup span, .header.animated .header-login-or-signup a {
 	color: rgb(37, 37, 37);
 }
 
@@ -449,7 +449,7 @@
 	}
 }
 
-.header.animating-close .header-menu, .header.animating-close .header-login-or-signup {
+.header.animating-close .header-menu, .header.animating-close .header-login-or-signup, .header.animating-close .header-login-or-signup span, .header.animating-close .header-login-or-signup a {
 	-webkit-animation-name: header-menu-anim-reversed;
 	-webkit-animation-duration: 0.5s;
 	-webkit-animation-fill-mode: forwards;
@@ -611,6 +611,10 @@
 .section-title {
 	width: 80vw;
 	margin: 0 auto 2vw;
+}
+
+.section-2 {
+	height: 50vw;
 }
 
 .section-2 .section-title {

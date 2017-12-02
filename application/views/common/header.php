@@ -56,15 +56,19 @@
 		</div>
 	</div>
 	<div class="header-login-or-signup">
-		<span>Login</span> or <span>Sign Up Yours</span>
+		<span>Login</span> or <a href="<?php echo base_url("sign-up"); ?>">Sign Up Yours</a>
 	</div>
 </div>
 <div class="dark-background"></div>
 <div class="modal modal-login">
-	<div class="modal-header">
+	<div class="modal-box">
+		<div class="modal-header">
+			<div class="modal-close-button" style="background-image: url(assets/icons/close.png);"></div>
+			<div class="modal-header-text">Login</div>
+		</div>
+		<div class="modal-body"></div>
+		<div class="modal-footer"></div>
 	</div>
-	<div class="modal-body"></div>
-	<div class="modal-footer"></div>
 </div>
 <script>
 var isMobile = false, isTablet = false;
