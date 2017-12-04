@@ -34,6 +34,10 @@
                         <input type="number" min="1" max="999" value="1" />
                     </div>
                 </div>
+                <div class="section-1-right-btn-container">
+                    <div class="section-1-right-btn btn-buy-now">BUY NOW</div>
+                    <div class="section-1-right-btn btn-add-to-bag">ADD TO CART</div>
+                </div>
             </div>
         </div>
     </div>

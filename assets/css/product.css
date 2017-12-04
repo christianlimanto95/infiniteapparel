@@ -33,6 +33,7 @@
 }
 
 .product-name {
+    margin-top: 20px;
     font-size: 20pt;
     font-weight: bold;
     font-family: helvetica;
@@ -46,6 +47,7 @@
 
 .size-quantity-container {
     margin-top: 30px;
+    overflow: auto;
 }
 
 .size-container, .quantity-container {
@@ -74,4 +76,25 @@
 .quantity-container input {
     text-align: center;
     width: 60px;
+}
+
+.section-1-right-btn-container {
+    clear: both;
+    margin-top: 40px;
+}
+
+.section-1-right-btn {
+    width: 150px;
+    padding: 10px 0;
+    border: 1px solid rgb(37, 37, 37);
+    color: rgb(37, 37, 37);
+    text-align: center;
+    cursor: pointer;
+    margin-bottom: 10px;
+    transition: all 0.3s;
+}
+
+.section-1-right-btn:hover {
+    background-color: rgb(37, 37, 37);
+    color: white;
 }
