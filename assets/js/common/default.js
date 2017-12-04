@@ -9,18 +9,44 @@ $(function() {
     container = $(".container");
 
     $(".header-btn-login").on("click", function() {
-        var modal_login = $(".modal-login");
-        modal_login.addClass("show");
-        $(".modal-box").one('webkitAnimationEnd oanimationend oAnimationEnd msAnimationEnd animationend', function(e) {
-			modal_login.addClass("shown").removeClass("show");
+        var modal = $(".modal-login");
+        modal.addClass("show");
+        modal.find(".modal-box").one('webkitAnimationEnd oanimationend oAnimationEnd msAnimationEnd animationend', function(e) {
+            modal.addClass("shown").removeClass("show");
+            modal.find(".form-input-email").select();
+		});
+    });
+    
+    $(".bags-container").on("click", function() {
+        var modal = $(".modal-bags");
+        modal.addClass("show");
+        modal.find(".modal-box").one('webkitAnimationEnd oanimationend oAnimationEnd msAnimationEnd animationend', function(e) {
+            modal.addClass("shown").removeClass("show");
 		});
     });
 
     $(".modal-close-button").on("click", function() {
-        var modal = $(this).closest(".modal");
-        modal.addClass("hide");
-        modal.one('webkitAnimationEnd oanimationend oAnimationEnd msAnimationEnd animationend', function(e) {
-			modal.removeClass("shown").removeClass("hide");
-		});
+        closeModal();
+    });
+
+    $(document).on("keyup", function(e) {
+        if (e.keyCode == 27) {
+            closeModal();
+        }
     });
 });
+
+function clearModalInputs(modal) {
+    modal.find(".form-input").val("");
+}
+
+function closeModal() {
+    var modal = $(".modal.shown");
+    if (modal.length > 0) {
+        modal.addClass("hide");
+        modal.one('webkitAnimationEnd oanimationend oAnimationEnd msAnimationEnd animationend', function(e) {
+            modal.removeClass("show").removeClass("shown").removeClass("hide");
+            clearModalInputs(modal);
+        });
+    }
+}

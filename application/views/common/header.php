@@ -60,7 +60,6 @@
 		<span class="header-btn-login">Login</span> or <a href="<?php echo base_url("sign-up"); ?>">Sign Up Yours</a>
 	</div>
 </div>
-<div class="dark-background"></div>
 <div class="modal modal-login">
 	<div class="modal-box">
 		<div class="modal-header">
@@ -68,9 +67,9 @@
 			<div class="modal-header-text">Login</div>
 		</div>
 		<div class="modal-body">
-			<div class="form-item">
+			<div class="form-item form-item-email">
 				<div class="form-label">Email</div>
-				<input type="email" class="form-input" />
+				<input type="email" class="form-input form-input-email" />
 			</div>
 			<div class="form-item">
 				<div class="form-label">Password</div>
@@ -78,7 +77,81 @@
 			</div>
 		</div>
 		<div class="modal-footer">
-			<div class="modal-btn-login">Login</div>
+			<div class="modal-btn modal-btn-login">Login</div>
+		</div>
+	</div>
+</div>
+<div class="modal modal-bags">
+	<div class="modal-box">
+		<div class="modal-header">
+			<div class="modal-close-button" style="background-image: url(<?php echo base_url("assets/icons/close.png"); ?>);"></div>
+			<div class="modal-bags-header">
+				<div class="modal-bags-header-left">Bag <span>(0 items)</span></div>
+				<div class="modal-bags-header-right"><span>Total : </span>IDR 0</div>
+			</div>
+		</div>
+		<div class="modal-body">
+			<table class="modal-bags-table">
+				<thead>
+					<tr>
+						<td data-col="name">Name</td>
+						<td data-col="size">Size</td>
+						<td data-col="price">Price</td>
+						<td data-col="qty">Qty</td>
+						<td data-col="subtotal">Subtotal</td>
+						<td data-col="action"></td>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td data-col="name">
+							<div class="bags-td-name-image" style="background-image: url(<?php echo base_url("assets/images/products/INFT0001_1.jpg"); ?>);"></div>
+							<div class="bags-td-name-text">God With Us White</div>
+						</td>
+						<td data-col="size">
+							<select>
+								<option value="xxl">XXL</option>
+								<option value="xl">XL</option>
+								<option value="l">L</option>
+								<option value="m">M</option>
+								<option value="s">S</option>
+								<option value="xs">XS</option>
+							</select>
+						</td>
+						<td data-col="price">IDR 100.000</td>
+						<td data-col="qty">
+							<input type="number" min="1" max="999" value="2" />
+						</td>
+						<td data-col="subtotal">IDR 2.000.000</td>
+						<td data-col="action"></td>
+					</tr>
+					<tr>
+						<td data-col="name">
+							<div class="bags-td-name-image" style="background-image: url(<?php echo base_url("assets/images/products/INFT0001_1.jpg"); ?>);"></div>
+							<div class="bags-td-name-text">God With Us</div>
+						</td>
+						<td data-col="size">
+							<select>
+								<option value="xxl">XXL</option>
+								<option value="xl">XL</option>
+								<option value="l">L</option>
+								<option value="m">M</option>
+								<option value="s">S</option>
+								<option value="xs">XS</option>
+							</select>
+						</td>
+						<td data-col="price">IDR 100.000</td>
+						<td data-col="qty">
+							<input type="number" min="1" max="999" value="2" />
+						</td>
+						<td data-col="subtotal">IDR 200.000</td>
+						<td data-col="action"></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		<div class="modal-footer">
+			<div class="modal-btn modal-btn-checkout">Checkout</div>
 		</div>
 	</div>
 </div>
