@@ -7,7 +7,7 @@
         </div>
         <div class="product-container">
         <?php for ($i = 0; $i < 10; $i++) { ?>
-            <div class="product" data-anim="show-up">
+            <a href="<?php echo base_url("product/1/180-degree"); ?>" class="product" data-anim="show-up">
                 <div class="product-image-container">
                     <div class="product-image" style="background-image: url(assets/images/available-now/1.jpg);"></div>
                     <div class="product-image-wrapper">
@@ -19,7 +19,7 @@
                 </div>
                 <div class="product-name">180 Degree</div>
                 <div class="product-price">IDR 100,000</div>
-            </div>
+            </a>
         <?php } ?>
         </div>
     </div>

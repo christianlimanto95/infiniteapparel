@@ -15,7 +15,9 @@
 	width: 240px;
 	height: 320px;
     margin-right: 20px;
-    margin-bottom: 20px;
+	margin-bottom: 20px;
+	text-decoration: none;
+	color: rgb(37, 37, 37);
     opacity: 0;
 }
 
