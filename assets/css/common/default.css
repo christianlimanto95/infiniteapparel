@@ -562,7 +562,7 @@ body {
 }
 
 .modal-bags .modal-box {
-  width: 750px;
+  width: 770px;
   height: 430px;
 }
 
@@ -588,10 +588,6 @@ body {
   margin-right: 30px;
 }
 
-.modal-bags .modal-body {
-  height: 250px;
-}
-
 table {
   border-collapse: collapse;
 }
@@ -607,6 +603,13 @@ table tbody tr:nth-child(odd) {
 .modal-bags-table thead {
   background-color: rgb(37, 37, 37);
   color: white;
+  display: block;
+}
+
+.modal-bags-table tbody {
+  display: block;
+  height: 220px;
+  overflow-y: auto;
 }
 
 .modal-bags-table td {
@@ -638,7 +641,7 @@ table tbody tr:nth-child(odd) {
 }
 
 .modal-bags-table td[data-col="action"] {
-  width: 60px;
+  width: 80px;
 }
 
 .modal-bags-table tbody td {

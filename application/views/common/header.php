@@ -103,6 +103,7 @@
 					</tr>
 				</thead>
 				<tbody>
+				<?php for ($i = 0; $i < 10; $i++) { ?>
 					<tr>
 						<td data-col="name">
 							<div class="bags-td-name-image" style="background-image: url(<?php echo base_url("assets/images/products/INFT0001_1.jpg"); ?>);"></div>
@@ -125,28 +126,8 @@
 						<td data-col="subtotal">IDR 2.000.000</td>
 						<td data-col="action"></td>
 					</tr>
-					<tr>
-						<td data-col="name">
-							<div class="bags-td-name-image" style="background-image: url(<?php echo base_url("assets/images/products/INFT0001_1.jpg"); ?>);"></div>
-							<div class="bags-td-name-text">God With Us</div>
-						</td>
-						<td data-col="size">
-							<select>
-								<option value="xxl">XXL</option>
-								<option value="xl">XL</option>
-								<option value="l">L</option>
-								<option value="m">M</option>
-								<option value="s">S</option>
-								<option value="xs">XS</option>
-							</select>
-						</td>
-						<td data-col="price">IDR 100.000</td>
-						<td data-col="qty">
-							<input type="number" min="1" max="999" value="2" />
-						</td>
-						<td data-col="subtotal">IDR 200.000</td>
-						<td data-col="action"></td>
-					</tr>
+				<?php } ?>
+					
 				</tbody>
 			</table>
 		</div>
