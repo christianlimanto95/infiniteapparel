@@ -27,6 +27,10 @@ $(function() {
 	container.on("scroll", checkSection2Threshold);
 	container.on("scroll", checkSection3Threshold);
 	container.scroll();
+
+	$(".btn-buy-now, .btn-add-to-bag").on("click", function(e) {
+		e.preventDefault();
+	});
 });
 
 function setVH() {

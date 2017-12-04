@@ -673,6 +673,8 @@
 	width: 22vw;
 	height: 22vw;
 	position: relative;
+	text-decoration: none;
+	display: block;
 }
 
 .product-image {
@@ -760,12 +762,15 @@
 	font-size: 1.8vw;
 }
 
+.section-3 {
+	height: 30vw;
+}
+
 .recent-customers {
 	width: 80vw;
 	margin: 0 auto;
 	text-align: center;
 	padding-bottom: 2vw;
-	border-bottom: 1px solid #CCC;
 }
 
 .recent-customers-image {

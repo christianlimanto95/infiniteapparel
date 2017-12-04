@@ -8,22 +8,6 @@
     margin-top: 30px;
 }
 
-.form-item {
-    margin-bottom: 20px;
-}
-
-.form-label {
-    font-family: champagne;
-    font-weight: bold;
-    font-size: 14pt;
-}
-
-input {
-    font-family: champagne;
-    font-size: 14pt;
-    padding: 5px;
-}
-
 .form-item-email input, .form-item-password input, .form-item-confirm-password input {
     width: 305px;
 }

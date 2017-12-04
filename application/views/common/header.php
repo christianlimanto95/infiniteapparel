@@ -38,36 +38,48 @@
 	<div class="header-inner">
 		<a href="<?php echo base_url(); ?>" class="logo" >
 			<div class="logo-inner-container">
-				<div class="logo-image logo-image-white" style="background-image: url(assets/icons/logo.png);"></div>
-				<div class="logo-image logo-image-black" style="background-image: url(assets/icons/logo_invers.png);"></div>
+				<div class="logo-image logo-image-white" style="background-image: url(<?php echo base_url("assets/icons/logo.png"); ?>);"></div>
+				<div class="logo-image logo-image-black" style="background-image: url(<?php echo base_url("assets/icons/logo_invers.png"); ?>);"></div>
 			</div>
 		</a>
 		<div class="header-menu-container">
 			<a href="<?php echo base_url(); ?>" class="header-menu">HOME</a>
 			<a href="<?php echo base_url("catalog"); ?>" class="header-menu">CATALOG</a>
-			<a href="#" class="header-menu">CONTACT</a>
+			<a href="<?php echo base_url("custom"); ?>" class="header-menu">CUSTOM</a>
+			<a href="<?php echo base_url("contact"); ?>" class="header-menu">CONTACT</a>
 		</div>
 	</div>
 	<div class="bags-container">
 		<div class="bags-container-inner">
-			<div class="bags-image bags-image-white" style="background-image: url(assets/icons/bag.png);"></div>
-			<div class="bags-image bags-image-black" style="background-image: url(assets/icons/bag_invers.png);"></div>
+			<div class="bags-image bags-image-white" style="background-image: url(<?php echo base_url("assets/icons/bag.png"); ?>);"></div>
+			<div class="bags-image bags-image-black" style="background-image: url(<?php echo base_url("assets/icons/bag_invers.png"); ?>);"></div>
 			<div class="bags-ctr">1</div>
 		</div>
 	</div>
 	<div class="header-login-or-signup">
-		<span>Login</span> or <a href="<?php echo base_url("sign-up"); ?>">Sign Up Yours</a>
+		<span class="header-btn-login">Login</span> or <a href="<?php echo base_url("sign-up"); ?>">Sign Up Yours</a>
 	</div>
 </div>
 <div class="dark-background"></div>
 <div class="modal modal-login">
 	<div class="modal-box">
 		<div class="modal-header">
-			<div class="modal-close-button" style="background-image: url(assets/icons/close.png);"></div>
+			<div class="modal-close-button" style="background-image: url(<?php echo base_url("assets/icons/close.png"); ?>);"></div>
 			<div class="modal-header-text">Login</div>
 		</div>
-		<div class="modal-body"></div>
-		<div class="modal-footer"></div>
+		<div class="modal-body">
+			<div class="form-item">
+				<div class="form-label">Email</div>
+				<input type="email" class="form-input" />
+			</div>
+			<div class="form-item">
+				<div class="form-label">Password</div>
+				<input type="password" class="form-input" />
+			</div>
+		</div>
+		<div class="modal-footer">
+			<div class="modal-btn-login">Login</div>
+		</div>
 	</div>
 </div>
 <script>
