@@ -1,0 +1,77 @@
+.section-1-inner {
+    width: 80vw;
+    margin: 0 auto;
+}
+
+.section-1-left, .section-1-right {
+    width: 40vw;
+    float: left;
+    padding: 0 20px;
+}
+
+.product-image-thumbnail-container {
+    float: right;
+}
+
+.product-image-thumbnail {
+    width: 80px;
+    height: 80px;
+    background-size: 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+    margin-bottom: 10px;
+}
+
+.product-image {
+    float: right;
+    margin-left: 20px;
+    width: 400px;
+    height: 400px;
+    background-size: 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.product-name {
+    font-size: 20pt;
+    font-weight: bold;
+    font-family: helvetica;
+}
+
+.product-price {
+    margin-top: 10px;
+    font-size: 16pt;
+    font-family: helvetica;
+}
+
+.size-quantity-container {
+    margin-top: 30px;
+}
+
+.size-container, .quantity-container {
+    float: left;
+}
+
+.quantity-container {
+    margin-left: 50px;
+}
+
+.size-container .label, .quantity-container .label, .size-container select, .size-container option, .quantity-container input {
+    font-family: helvetica;
+}
+
+.size-container .label, .quantity-container .label {
+    font-weight: bold;
+    font-size: 14pt;
+    margin-bottom: 5px;
+}
+
+.size-container select, .quantity-container input {
+    font-size: 10pt;
+    padding: 5px;
+}
+
+.quantity-container input {
+    text-align: center;
+    width: 60px;
+}

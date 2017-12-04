@@ -26,6 +26,10 @@ $(function() {
 	container.on("scroll", checkHeaderScrollDown);
 	container.on("scroll", checkSection2Threshold);
 	container.on("scroll", checkSection3Threshold);
+	var btnExplore = $(".explore-products-container");
+	container.on("scroll", function() {
+		btnExplore.css("transform", "translateY(" + (container.scrollTop() / 3) + "px)");
+	});
 	container.scroll();
 
 	$(".btn-buy-now, .btn-add-to-bag").on("click", function(e) {
