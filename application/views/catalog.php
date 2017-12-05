@@ -22,5 +22,34 @@
             </a>
         <?php } ?>
         </div>
+        <div class="paging-container">
+            <div class="paging">
+                <?php
+                    if ($page == 1) {
+                        echo "<a class='page page-prev disabled'>Prev</a>";
+                    } else {
+                        echo "<a href='" . base_url("catalog?page=" . ($page - 1)) . "' class='page page-prev'>Prev</a>";
+                    }
+
+                    $page_count = $count / 16;
+                    $int  = intval($page_count);
+                    if ($page_count > $int) {
+                        $page_count = $int + 1;
+                    }
+                    
+                    for ($i = 1; $i <= $page_count; $i++) {
+                        $active = ($i == $page) ? " active" : "";
+                        echo "<a href='" . base_url("catalog?page=" . $i) . "' class='page" . $active . "'>" . $i . "</a>";
+                    }
+                    
+                    if ($page == $page_count) {
+                        echo "<a class='page page-next disabled'>Next</a>";
+                    } else {
+                        echo "<a href='" . base_url("catalog?page=" . ($page + 1)) . "' class='page page-next'>Next</a>";
+                    }
+                    
+                ?>
+            </div>
+        </div>
     </div>
 </div>

@@ -1,9 +1,13 @@
+.container {
+	height: auto;
+}
+
 .section-1 {
     height: auto;
     padding-bottom: 50px;
 }
 
-.product-container {
+.product-container, .paging-container {
     width: 80vw;
     height: auto;
 	margin: 0 auto;
@@ -109,4 +113,32 @@
 	font-family: helvetica;
 	margin-top: 5px;
 	font-size: 14pt;
+}
+
+.paging-container {
+	text-align: right;
+}
+
+.paging {
+	display: inline-block;
+	text-align: left;
+	margin-top: 50px;
+}
+
+.page {
+	display: inline-block;
+	text-decoration: none;
+	padding: 5px 10px;
+	border: 1px solid transparent;
+	font-size: 10pt;
+	color: rgb(37, 37, 37);
+}
+
+.page:not(.disabled):hover, .page.active {
+	border: 1px solid rgb(37, 37, 37);
+}
+
+.page.disabled {
+	color: #AAA;
+	cursor: default;
 }

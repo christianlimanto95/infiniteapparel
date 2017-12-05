@@ -12,11 +12,19 @@ class Catalog extends General_controller {
 	
 	public function index()
 	{
-		$catalog = $this->Catalog_model->get_catalog();
+		$page = intval($this->input->get("page"));
+		$view_per_page = 16;
+		$catalog = $this->Catalog_model->get_catalog($page, $view_per_page);
+		$count = intval($this->Catalog_model->get_catalog_count());
+		if ($page == 0) {
+			$page = 1;
+		}
 		$data = array(
 			"title" => "Infinite Apparel | Catalog",
 			"header_additional_class" => " invers",
-			"catalog" => $catalog
+			"catalog" => $catalog,
+			"count" => $count,
+			"page" => $page
 		);
 		
 		parent::view("catalog", $data);

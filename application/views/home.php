@@ -8,7 +8,8 @@
     <div class="preloader-image" style="background-image: url(assets/icons/loading.gif);"></div>
 </div>
 <div class="content">
-    <div class="section section-1" style="background-image: url(assets/images/home.png);">
+    <div class="section section-1">
+        <div class="section-1-image" style="background-image: url(assets/images/home.png);"></div>
         <div class="section-gradient"></div>
         <a href="<?php echo base_url("catalog"); ?>" class="explore-products-container">
             <div class="btn-explore-products" data-anim="show-up">EXPLORE PRODUCTS</div>
