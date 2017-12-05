@@ -2,16 +2,16 @@
     <div class="section section-1">
         <div class="section-title">
             <div class="section-title-line"></div>
-            <div class="section-title-text"><?php echo $product_name; ?></div>
+            <div class="section-title-text"><?php echo $product_category; ?></div>
             <div class="section-title-line"></div>
         </div>
         <div class="section-1-inner">
             <div class="section-1-left">
                 <div class="product-image" style="background-image: url(<?php echo base_url("assets/images/products/INFT0001_1.jpg"); ?>);"></div>
                 <div class="product-image-thumbnail-container">
-                    <div class="product-image-thumbnail" style="background-image: url(<?php echo base_url("assets/images/products/INFT0001_1.jpg"); ?>);"></div>
-                    <div class="product-image-thumbnail" style="background-image: url(<?php echo base_url("assets/images/products/INFT0002_1.jpg"); ?>);"></div>
-                    <div class="product-image-thumbnail" style="background-image: url(<?php echo base_url("assets/images/products/INFT0003_1.jpg"); ?>);"></div>
+                    <div class="product-image-thumbnail" style="background-image: url(<?php echo base_url("assets/images/products/INFT0001_1.jpg"); ?>);" data-image-index="1"></div>
+                    <div class="product-image-thumbnail" style="background-image: url(<?php echo base_url("assets/images/products/INFT0002_1.jpg"); ?>);" data-image-index="2"></div>
+                    <div class="product-image-thumbnail" style="background-image: url(<?php echo base_url("assets/images/products/INFT0003_1.jpg"); ?>);" data-image-index="3"></div>
                 </div>
             </div>
             <div class="section-1-right">

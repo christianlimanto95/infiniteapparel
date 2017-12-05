@@ -13,13 +13,13 @@ class Product extends General_controller {
 	public function index()
 	{
 		$id = $this->uri->segment(2);
-		$product_name = "180 Degree";
+		$product_category = "T-Shirt";
 		$id_found = true;
 		if ($id_found) {
 			$data = array(
 				"title" => "Infinite Apparel | Product",
 				"header_additional_class" => " invers",
-				"product_name" => $product_name
+				"product_category" => $product_category
 			);
 			
 			parent::view("product", $data);

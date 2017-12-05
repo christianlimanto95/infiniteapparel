@@ -6,7 +6,7 @@
 .section-1-left, .section-1-right {
     width: 40vw;
     float: left;
-    padding: 0 20px;
+    padding: 0 1.5vw;
 }
 
 .product-image-thumbnail-container {
@@ -14,19 +14,20 @@
 }
 
 .product-image-thumbnail {
-    width: 80px;
-    height: 80px;
+    width: 6vw;
+    height: 6vw;
     background-size: 100%;
     background-repeat: no-repeat;
     background-position: center;
     margin-bottom: 10px;
+    cursor: pointer;
 }
 
 .product-image {
     float: right;
-    margin-left: 20px;
-    width: 400px;
-    height: 400px;
+    margin-left: 1.5vw;
+    width: 28vw;
+    height: 28vw;
     background-size: 100%;
     background-repeat: no-repeat;
     background-position: center;
