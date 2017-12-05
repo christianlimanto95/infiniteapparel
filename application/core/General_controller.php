@@ -43,4 +43,8 @@ class General_controller extends CI_Controller
             redirect(base_url());
         }
     }
+
+    public function currency_format($nominal) {
+        return number_format($number, 0, ".", ",");
+    }
 }

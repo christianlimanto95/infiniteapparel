@@ -2,21 +2,25 @@
     <div class="section section-1">
         <div class="section-title">
             <div class="section-title-line"></div>
-            <div class="section-title-text"><?php echo $product_category; ?></div>
+            <div class="section-title-text"><?php echo $product->category_name; ?></div>
             <div class="section-title-line"></div>
         </div>
         <div class="section-1-inner">
             <div class="section-1-left">
-                <div class="product-image" style="background-image: url(<?php echo base_url("assets/images/products/INFT0001_1.jpg"); ?>);"></div>
+                <div class="product-image" style="background-image: url(<?php echo base_url("assets/images/catalog/" . $product->item_id . "_1.png"); ?>);"></div>
                 <div class="product-image-thumbnail-container">
-                    <div class="product-image-thumbnail" style="background-image: url(<?php echo base_url("assets/images/products/INFT0001_1.jpg"); ?>);" data-image-index="1"></div>
-                    <div class="product-image-thumbnail" style="background-image: url(<?php echo base_url("assets/images/products/INFT0002_1.jpg"); ?>);" data-image-index="2"></div>
-                    <div class="product-image-thumbnail" style="background-image: url(<?php echo base_url("assets/images/products/INFT0003_1.jpg"); ?>);" data-image-index="3"></div>
+                    <div class="product-image-thumbnail" style="background-image: url(<?php echo base_url("assets/images/catalog/" . $product->item_id . "_1.png"); ?>);" data-image-index="1"></div>
+                    <?php
+                        $image_count = intval($product->item_image_count);
+                        for ($i = 1; $i < $image_count; $i++) { ?>
+                            <div class="product-image-thumbnail" style="background-image: url(<?php echo base_url("assets/images/catalog/" . $product->item_id . "_" . ($i + 1) . ".jpg"); ?>);" data-image-index="<?php echo ($i + 1); ?>"></div>
+                    <?php
+                        } ?>
                 </div>
             </div>
             <div class="section-1-right">
-                <div class="product-name">Hoody Jumper Immanuel</div>
-                <div class="product-price">IDR 240.000</div>
+                <div class="product-name"><?php echo $product->item_name; ?></div>
+                <div class="product-price">IDR <?php echo number_format($product->item_price, 0, ",", "."); ?></div>
                 <div class="size-quantity-container">
                     <div class="size-container">
                         <div class="label">Size</div>

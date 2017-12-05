@@ -12,9 +12,11 @@ class Catalog extends General_controller {
 	
 	public function index()
 	{
+		$catalog = $this->Catalog_model->get_catalog();
 		$data = array(
 			"title" => "Infinite Apparel | Catalog",
-			"header_additional_class" => " invers"
+			"header_additional_class" => " invers",
+			"catalog" => $catalog
 		);
 		
 		parent::view("catalog", $data);

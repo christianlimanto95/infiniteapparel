@@ -12,9 +12,11 @@ class Home extends General_controller {
 	
 	public function index()
 	{
+		$available_now = $this->Home_model->get_available_now();
 		$data = array(
 			"title" => "Infinite Apparel",
-			"header_additional_class" => ""
+			"header_additional_class" => "",
+			"available_now" => $available_now
 		);
 		
 		parent::view("home", $data);

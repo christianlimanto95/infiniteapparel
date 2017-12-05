@@ -6,10 +6,10 @@
             <div class="section-title-line"></div>
         </div>
         <div class="product-container">
-        <?php for ($i = 0; $i < 10; $i++) { ?>
-            <a href="<?php echo base_url("product/1/180-degree"); ?>" class="product">
+        <?php for ($i = 0; $i < sizeof($catalog); $i++) { ?>
+            <a href="<?php echo base_url("product/" . $catalog[$i]->item_id . "/" . str_replace(" ", "-", $catalog[$i]->item_name)); ?>" class="product">
                 <div class="product-image-container">
-                    <div class="product-image" style="background-image: url(assets/images/available-now/1.jpg);"></div>
+                    <div class="product-image" style="background-image: url(<?php echo base_url("assets/images/catalog/" . $catalog[$i]->item_id . "_1.png"); ?>);"></div>
                     <div class="product-image-wrapper">
                         <div class="btn-wrapper">
                             <div class="btn btn-buy-now">BUY NOW</div>
@@ -17,8 +17,8 @@
                         </div>
                     </div>
                 </div>
-                <div class="product-name">180 Degree</div>
-                <div class="product-price">IDR 100,000</div>
+                <div class="product-name"><?php echo $catalog[$i]->item_name; ?></div>
+                <div class="product-price">IDR <?php echo number_format($catalog[$i]->item_price, 0, ",", "."); ?></div>
             </a>
         <?php } ?>
         </div>
