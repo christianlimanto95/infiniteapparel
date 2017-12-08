@@ -21,4 +21,8 @@ class Home extends General_controller {
 		
 		parent::view("home", $data);
 	}
+
+	function get_cart_from_cookies() {
+		$data = $this->input->post("cookies_data", true);
+	}
 }

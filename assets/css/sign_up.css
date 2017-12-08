@@ -6,10 +6,19 @@
     text-align: left;
     display: inline-block;
     margin-top: 30px;
+    width: 305px;
+    overflow-x: visible;
 }
 
 .form-item-email input, .form-item-password input, .form-item-confirm-password input {
     width: 305px;
+}
+
+.error {
+    color: red;
+    font-size: 9pt;
+    font-family: helvetica;
+    padding-left: 10px;
 }
 
 .btn-sign-up {

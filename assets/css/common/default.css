@@ -704,6 +704,17 @@ table tbody tr:nth-child(odd) {
 	margin: 10px 0;
 }
 
+.flash-message {
+  background-color: #C8E6C9;
+  color: #1B5E20;
+  width: 80vw;
+  margin: 0 auto;
+  text-align: left;
+  padding: 25px 20px;
+  font-size: 11pt;
+  font-family: helvetica;
+}
+
 .footer {
   width: 80vw;
   margin: 0 auto;
