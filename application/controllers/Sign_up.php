@@ -64,4 +64,13 @@ class Sign_up extends General_controller {
 			redirect(base_url("sign-up"));
 		}
 	}
+
+	public function verify_email($verification_token) {
+		$success = $this->Sign_up_model->check_verification_token($verification_token);
+		if ($success) {
+
+		} else {
+			
+		}
+	}
 }

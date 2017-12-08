@@ -53,4 +53,5 @@ $route['default_controller'] = 'Home';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
 $route["sign-up"] = "sign_up";
+$route["verify-email/(:any)"] = "sign_up/verify_email/(:any)";
 $route["product/(:any)/(:any)"] = "product";
