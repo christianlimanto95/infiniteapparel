@@ -546,6 +546,11 @@ body {
   margin-bottom: 20px;
 }
 
+.form-item-inline {
+  display: inline-block;
+  vertical-align: top;
+}
+
 .form-label {
   font-family: champagne;
   font-weight: bold;
@@ -659,6 +664,25 @@ table tbody tr:nth-child(odd) {
   font-family: helvetica;
   font-size: 10pt;
   padding: 5px;
+}
+
+.modal-size-qty .modal-box {
+  width: 300px;
+  height: 230px;
+}
+
+.modal-size-qty .form-item-inline:nth-child(1) {
+  margin-right: 20px;
+}
+
+.modal-size-qty .form-label {
+  margin-bottom: 5px;
+}
+
+.modal-size-qty .form-input-size, .modal-size-qty .form-input-qty {
+  width: 60px;
+  font-size: 10pt;
+  text-align: center;
 }
 
 .bags-td-name-image {

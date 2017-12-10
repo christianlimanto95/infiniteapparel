@@ -65,7 +65,8 @@ class Sign_up extends General_controller {
 		}
 	}
 
-	public function verify_email($verification_token) {
+	public function verify_email() {
+		$verification_token = $this->uri->segment(2);
 		$result = $this->Sign_up_model->check_verification_token($verification_token);
 
 		$data = array(

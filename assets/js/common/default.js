@@ -25,6 +25,14 @@ $(function() {
 		});
     });
 
+    $(document).on("click", ".btn-add-to-bag", function() {
+        var modal = $(".modal-size-qty");
+        modal.addClass("show");
+        modal.find(".modal-box").one('webkitAnimationEnd oanimationend oAnimationEnd msAnimationEnd animationend', function(e) {
+            modal.addClass("shown").removeClass("show");
+		});
+    });
+
     $(".modal-close-button").on("click", function() {
         closeModal();
     });

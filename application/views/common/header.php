@@ -136,6 +136,34 @@
 		</div>
 	</div>
 </div>
+<div class="modal modal-size-qty">
+	<div class="modal-box">
+		<div class="modal-header">
+			<div class="modal-close-button" style="background-image: url(<?php echo base_url("assets/icons/close.png"); ?>);"></div>
+			<div class="modal-header-text">Size and Quantity</div>
+		</div>
+		<div class="modal-body">
+			<div class="form-item-inline">
+				<div class="form-label">Size</div>
+				<select class="form-input form-input-size">
+					<option value="xxl">XXL</option>
+					<option value="xl">XL</option>
+					<option value="l">L</option>
+					<option value="m">M</option>
+					<option value="s">S</option>
+					<option value="xs">XS</option>
+				</select>
+			</div>
+			<div class="form-item-inline">
+				<div class="form-label">Qty</div>
+				<input type="number" class="form-input form-input-qty" min="1" max="999" value="1" />
+			</div>
+		</div>
+		<div class="modal-footer">
+			<div class="modal-btn modal-btn-confirm-size-qty">Confirm</div>
+		</div>
+	</div>
+</div>
 <script>
 var isMobile = false, isTablet = false;
 var vw = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);

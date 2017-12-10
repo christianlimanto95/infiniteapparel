@@ -30,7 +30,7 @@
                     <div class="product-image-wrapper">
                         <div class="btn-wrapper">
                             <div class="btn btn-buy-now">BUY NOW</div>
-                            <div class="btn btn-add-to-bag">ADD TO BAG</div>
+                            <div class="btn btn-add-to-bag">ADD TO CART</div>
                         </div>
                     </div>
                 </a>

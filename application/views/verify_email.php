@@ -9,7 +9,7 @@
             if ($result->status == "error") {
                 echo "<div class='error'>This link has expired.</div>";
             } else {
-                echo "<div class='success'>Thank you, " . $result->user_first_name . ". Your email has been verified. You can login now.</div>";
+                echo "<div class='success'>Thank you, " . $result->user_first_name . ". Your email " . $result->user_email . " has been verified. You can login now.</div>";
             }
         ?>
     </div>
