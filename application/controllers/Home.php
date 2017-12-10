@@ -22,11 +22,57 @@ class Home extends General_controller {
 		parent::view("home", $data);
 	}
 
-	function get_cart_from_cookies() {
-		$data = $this->input->post("cookies_data", true);
+	function get_cart() {
+		$cart = $this->input->cookie("infinite_apparel_cart", true);
+		if ($cart) {
+			$cart_item = explode("|", $cart);
+			for ($i = 0; $i < sizeof($cart_item); $i++) {
+				$cart_item_col = explode("~", $cart_item[$i]);
+				$item_id = $cart_item_col[0];
+				$item_size = $cart_item_col[1];
+				$item_qty = intval($cart_item_col[2]);
+
+				$item_data = $this->Home_model->get_product_by_id($item_id);
+				if (sizeof($item_data) > 0) {
+					$item_data = $item_data[0];
+
+					$cart_item[$i] = new stdClass();
+					$cart_item[$i]->item_id = $item_id;
+					$cart_item[$i]->item_name = $item_data->item_name;
+					$cart_item[$i]->item_price = number_format($item_data->item_price, 0, ",", ".");
+					$cart_item[$i]->item_size = $item_size;
+					$cart_item[$i]->item_qty = $item_qty;
+					$cart_item[$i]->item_subtotal = number_format(intval($item_data->item_price) * $item_qty, 0, ",", ".");
+				} else {
+					array_splice($cart_item, $i);
+				}
+			}
+			echo json_encode($cart_item);
+		} else {
+			echo json_encode(array());
+		}
 	}
 
 	function add_to_cart_cookie() {
-		parent::add_to_cart_cookie();
+		$item_id = $this->input->post("item_id", true);
+		$item_size = $this->input->post("item_size", true);
+		$item_qty = $this->input->post("item_qty", true);
+
+		$current_cookie = $this->input->cookie("infinite_apparel_cart", true);
+		if (!$current_cookie) {
+			$current_cookie = "";
+		} else {
+			if ($current_cookie != "") {
+				$current_cookie .= "|";
+			}
+		}
+		$this->input->set_cookie(array(
+			"name" => "infinite_apparel_cart",
+			"value" => $current_cookie . $item_id . "~" . $item_size . "~" . $item_qty,
+			"expire" => "31556926"
+		));
+		echo json_encode(array(
+			"status" => "success"
+		));
 	}
 }

@@ -16,4 +16,14 @@ class Home_model extends CI_Model
         ");
         return $query->result();
     }
+
+    function get_product_by_id($item_id) {
+        $query = $this->db->query("
+            SELECT c.category_name, i.item_name, i.item_price, i.modified_date
+            FROM item i, category c
+            WHERE c.category_id = i.category_id AND i.item_id = '" . $item_id . "' AND item_status = 1
+            LIMIT 1
+        ");
+        return $query->result();
+    }
 }

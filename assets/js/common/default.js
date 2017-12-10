@@ -55,6 +55,8 @@ $(function() {
             closeModal();
         }
     });
+
+    get_cart();
 });
 
 function clearModalInputs(modal) {
@@ -88,6 +90,31 @@ function ajaxCall(url, data, callback) {
 	});
 }
 
-function get_cart_from_cookie() {
-    
+function get_cart() {
+    ajaxCall(get_cart_url, null, function(json) {
+        var result = jQuery.parseJSON(json);
+        var iLength = result.length;
+        if (iLength > 0) {
+            var element = "";
+            for (var i = 0; i < iLength; i++) {
+                element += "<tr>";
+                element += "<td data-col='name'>";
+                element += "<div class='bags-td-name-image' style='background-image: url(" + product_url + "/" + result[i].item_id + "_1.png);'></div>";
+                element += "<div class='bags-td-name-text'>" + result[i].item_name + "</div>";
+                element += "</td>";
+                element += "<td data-col='size'>";
+                element += "<select><option value='xxl'>XXL</option><option value='xl'>XL</option><option value='l'>L</option><option value='m'>M</option><option value='s'>S</option><option value='xs'>XS</option></select>";
+                element += "</td>";
+                element += "<td data-col='price'>";
+                element += "IDR " + result[i].item_price;
+                element += "</td>";
+                element += "<td data-col='qty'><input type='number' min='1' max='999' value='" + result[i].item_qty + "' /></td>";
+                element += "<td data-col='subtotal'>IDR " + result[i].item_subtotal + "</td>";
+                element += "<td data-col='action'></td>";
+                element += "</tr>";
+            }
+
+            $(".modal-bags-table tbody").html(element);
+        }
+    });
 }

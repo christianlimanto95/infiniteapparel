@@ -53,7 +53,7 @@
 		<div class="bags-container-inner">
 			<div class="bags-image bags-image-white" style="background-image: url(<?php echo base_url("assets/icons/bag.png?v=1"); ?>);"></div>
 			<div class="bags-image bags-image-black" style="background-image: url(<?php echo base_url("assets/icons/bag_invers.png?v=1"); ?>);"></div>
-			<div class="bags-ctr">1</div>
+			<div class="bags-ctr"><?php echo $infinite_apparel_cart_qty; ?></div>
 		</div>
 	</div>
 	<div class="header-login-or-signup">
@@ -177,5 +177,7 @@ if (vw < 1025) {
 
 var lastScrollTop = 0;
 var add_to_cart_cookie_url = "<?php echo base_url("add-to-cart-cookie"); ?>";
+var get_cart_url = "<?php echo base_url("get-cart"); ?>";
+var product_url = "<?php echo base_url("assets/images/catalog"); ?>";
 </script>
 <div class="container" tabindex="1">

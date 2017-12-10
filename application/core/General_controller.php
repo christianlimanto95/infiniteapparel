@@ -39,7 +39,6 @@ class General_controller extends CI_Controller
 			$infinite_apparel_cart = explode("|", $infinite_apparel_cart);
 			$infinite_apparel_cart_qty = sizeof($infinite_apparel_cart);
 		}
-		$data["infinite_apparel_cart"] = $infinite_apparel_cart;
 		$data["infinite_apparel_cart_qty"] = $infinite_apparel_cart_qty;
 		
         $this->load->view('common/header', $data);
@@ -64,28 +63,5 @@ class General_controller extends CI_Controller
 			$str .= $keyspace[mt_rand(0, $max)];
 		}
 		return $str;
-	}
-
-	function add_to_cart_cookie() {
-		$item_id = $this->input->post("item_id", true);
-		$item_size = $this->input->post("item_size", true);
-		$item_qty = $this->input->post("item_qty", true);
-
-		$current_cookie = $this->input->cookie("infinite_apparel_cart", true);
-		if (!$current_cookie) {
-			$current_cookie = "";
-		} else {
-			if ($current_cookie != "") {
-				$current_cookie .= "|";
-			}
-		}
-		$this->input->set_cookie(array(
-			"name" => "infinite_apparel_cart",
-			"value" => $current_cookie . $item_id . "~" . $item_size . "~" . $item_qty,
-			"expire" => "31556926"
-		));
-		echo json_encode(array(
-			"status" => "success"
-		));
 	}
 }
