@@ -145,7 +145,7 @@
 		<div class="modal-body">
 			<div class="form-item-inline">
 				<div class="form-label">Size</div>
-				<select class="form-input form-input-size">
+				<select class="form-input form-input-size" data-auto-clear="false">
 					<option value="xxl">XXL</option>
 					<option value="xl">XL</option>
 					<option value="l">L</option>
@@ -156,7 +156,7 @@
 			</div>
 			<div class="form-item-inline">
 				<div class="form-label">Qty</div>
-				<input type="number" class="form-input form-input-qty" min="1" max="999" value="1" />
+				<input type="number" class="form-input form-input-qty" data-auto-clear="false" min="1" max="999" value="1" />
 			</div>
 		</div>
 		<div class="modal-footer">
@@ -176,5 +176,6 @@ if (vw < 1025) {
 }
 
 var lastScrollTop = 0;
+var add_to_cart_cookie_url = "<?php echo base_url("add-to-cart-cookie"); ?>";
 </script>
 <div class="container" tabindex="1">
