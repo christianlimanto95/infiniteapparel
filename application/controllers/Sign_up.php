@@ -66,11 +66,14 @@ class Sign_up extends General_controller {
 	}
 
 	public function verify_email($verification_token) {
-		$success = $this->Sign_up_model->check_verification_token($verification_token);
-		if ($success) {
+		$result = $this->Sign_up_model->check_verification_token($verification_token);
 
-		} else {
-			
-		}
+		$data = array(
+			"title" => "Infinite Apparel | Verify Email",
+			"header_additional_class" => " invers",
+			"result" => $result
+		);
+		
+		parent::view("verify_email", $data);
 	}
 }

@@ -1,0 +1,17 @@
+.error, .success {
+    width: 80vw;
+    margin: 50px auto 0;
+    padding: 20px 30px;
+    font-size: 12pt;
+    font-family: helvetica;
+}
+
+.error {
+    background-color: #FFCDD2;
+    color: #B71C1C;
+}
+
+.success {
+    background-color: #C8E6C9;
+    color: #1B5E20;
+}

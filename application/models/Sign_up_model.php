@@ -35,6 +35,7 @@ class Sign_up_model extends CI_Model
 
         $insertVerification = array(
             "user_id" => $user_id,
+            "user_email" => $data["user_email"],
             "verification_token" => $verification_token,
             "verification_status" => 1
         );
@@ -53,37 +54,7 @@ class Sign_up_model extends CI_Model
     }
     
     function check_verification_token($token) {
-        $query = $this->db->query("
-            SELECT verification_token
-            FROM verification
-            WHERE verification_token = '" . $token . "' AND verification_status = 1
-            LIMIT 1
-        ");
-        $result = $query->result();
-        if (sizeof($result) > 0) {
-            $this->db->trans_start();
-
-            $this->db->select("user_id");
-            $this->db->where("verification_token", $token);
-            $this->db->where("verification_status", 1);
-            $user_id = $this->db->get("verification")->result()[0]->user_id;
-
-            $this->db->where("verification_token", $token);
-            $this->db->where("verification_status", 1);
-            $this->db->set("verification_status", 0, false);
-            $this->db->set("modified_date", "NOW()", false);
-            $this->db->update("verification");
-
-            $this->db->where("user_id", $user_id);
-            $this->db->set("user_status", 1);
-            $this->db->set("modified_date", "NOW()", false);
-            $this->db->update("user");
-            
-            $this->db->trans_complete();
-
-            return true;
-        } else {
-            return false;
-        }
+        $query = $this->db->query("CALL verify_email('" . $token . "');");
+        return $query->result()[0];
     }
 }
