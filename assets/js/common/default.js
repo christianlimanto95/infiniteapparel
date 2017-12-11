@@ -17,6 +17,12 @@ $(function() {
 		});
     });
 
+    $(".header-btn-logout").on("click", function() {
+        ajaxCall(logout_url, null, function() {
+            location.reload(true);
+        });
+    });
+
     $(".modal-btn-login").on("click", function() {
         var valid = true;
         var email = $(".modal-input-email").val().trim();

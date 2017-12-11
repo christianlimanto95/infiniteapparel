@@ -330,6 +330,34 @@ body {
   opacity: 0;
 }
 
+.header-profile-menu {
+  color: rgb(37, 37, 37);
+  font-family: helvetica;
+  font-size: 9pt;
+  position: absolute;
+  top: -15px;
+  right: 60px;
+  width: 120px;
+  text-align: right;
+  text-decoration: none;
+}
+
+.header-profile-menu-1 {
+  font-size: 11pt;
+}
+
+.header-profile-menu-2 {
+  top: 5px;
+}
+
+.header-profile-menu-3 {
+  top: 20px;
+}
+
+.header-profile-menu-4 {
+  top: 35px;
+}
+
 .header.invers {
   background-color: rgba(255, 255, 255, 0.95);
 }
@@ -341,12 +369,12 @@ body {
   height: 60px;
 }
 
-.header.invers .logo-image-black, .header.invers .bags-image-black, .header-invers .header-profile-image-black {
+.header.invers .logo-image-black, .header.invers .bags-image-black, .header.invers .header-profile-image-black {
   opacity: 1;
 }
 
-.header.invers .logo-image-white, .header.invers .bags-image-white, .header-invers .header-profile-image-white {
-  opacity: 1;
+.header.invers .logo-image-white, .header.invers .bags-image-white, .header.invers .header-profile-image-white {
+  opacity: 0;
 }
 
 .header.invers .header-menu, .header.invers .header-login-or-signup, .header.invers .header-login-or-signup span, .header.invers .header-login-or-signup a {

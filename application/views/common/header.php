@@ -68,6 +68,10 @@
 			<div class="header-profile-inner">
 				<div class="header-profile-image header-profile-image-white" style="background-image: url(<?php echo base_url("assets/icons/account.png"); ?>);"></div>
 				<div class="header-profile-image header-profile-image-black" style="background-image: url(<?php echo base_url("assets/icons/account_invert.png"); ?>);"></div>
+				<div class="header-profile-menu header-profile-menu-1"><?php echo $user_first_name; ?></div>
+				<a href="<?php echo base_url("order-list"); ?>" class="header-profile-menu header-profile-menu-2">Order list</a>
+				<a href="<?php echo base_url("account-settings"); ?>" class="header-profile-menu header-profile-menu-3">Account Settings</a>
+				<a href="<?php echo base_url("logout"); ?>" class="header-profile-menu header-profile-menu-4">Logout</a>
 			</div>
 		</div>
 	<?php } ?>
@@ -164,6 +168,7 @@ if (vw < 1025) {
 
 var lastScrollTop = 0;
 var login_url = "<?php echo base_url("do-login"); ?>";
+var logout_url = "<?php echo base_url("logout"); ?>";
 var add_to_cart_cookie_url = "<?php echo base_url("add-to-cart-cookie"); ?>";
 var get_cart_url = "<?php echo base_url("get-cart"); ?>";
 var remove_from_cart_url = "<?php echo base_url("remove-from-cart"); ?>";

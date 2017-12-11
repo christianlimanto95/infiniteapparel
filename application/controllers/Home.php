@@ -49,6 +49,13 @@ class Home extends General_controller {
 		}
 	}
 
+	function logout() {
+		delete_cookie("infinite_apparel_user");
+		echo json_encode(array(
+			"status" => "success"
+		));
+	}
+
 	function get_cart() {
 		$cart = $this->input->cookie("infinite_apparel_cart", true);
 		if ($cart) {
