@@ -58,7 +58,11 @@ class Home extends General_controller {
 				"data" => $cart_item
 			));
 		} else {
-			echo json_encode(array());
+			echo json_encode(array(
+				"total_qty" => 0,
+				"total_subtotal" => 0,
+				"data" => array()
+			));
 		}
 	}
 
@@ -152,6 +156,36 @@ class Home extends General_controller {
 			$current_cookie_item = explode("|", $current_cookie);
 			$cookie_item_col = explode("~", $current_cookie_item[$index]);
 			$cookie_item_col[2] = $item_qty;
+			$current_cookie_item[$index] = $cookie_item_col[0] . "~" . $cookie_item_col[1] . "~" . $cookie_item_col[2];
+
+			$current_cookie = "";
+			for ($i = 0; $i < sizeof($current_cookie_item); $i++) {
+				if ($current_cookie != "") {
+					$current_cookie .= "|";
+				}
+				$current_cookie .= $current_cookie_item[$i];
+			}
+
+			$this->input->set_cookie(array(
+				"name" => "infinite_apparel_cart",
+				"value" => $current_cookie,
+				"expire" => "31556926"
+			));
+		}
+
+		echo json_encode(array(
+			"status" => "success"
+		));
+	}
+
+	function cart_change_size() {
+		$item_size = $this->input->post("item_size");
+		$index = intval($this->input->post("index"));
+		$current_cookie = $this->input->cookie("infinite_apparel_cart", true);
+		if ($current_cookie) {
+			$current_cookie_item = explode("|", $current_cookie);
+			$cookie_item_col = explode("~", $current_cookie_item[$index]);
+			$cookie_item_col[1] = $item_size;
 			$current_cookie_item[$index] = $cookie_item_col[0] . "~" . $cookie_item_col[1] . "~" . $cookie_item_col[2];
 
 			$current_cookie = "";

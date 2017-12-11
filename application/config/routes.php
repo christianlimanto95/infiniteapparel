@@ -57,6 +57,7 @@ $route["add-to-cart-cookie"] = "home/add_to_cart_cookie";
 $route["get-cart"] = "home/get_cart";
 $route["remove-from-cart"] = "home/remove_from_cart_cookie";
 $route["cart-change-qty"] = "home/cart_change_qty";
+$route["cart-change-size"] = "home/cart_change_size";
 $route["sign-up"] = "sign_up";
 $route["verify-email/(:any)"] = "sign_up/verify_email/(:any)";
 $route["product/(:any)/(:any)"] = "product";

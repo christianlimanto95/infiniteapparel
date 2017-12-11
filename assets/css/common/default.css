@@ -333,6 +333,74 @@ body {
   background-color: rgb(37, 37, 37);
 }
 
+.loader-container {
+  display: none;
+  z-index: 5000;
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+}
+
+.loader-container.show {
+  display: block;
+}
+
+.loader {
+  position: absolute;
+  bottom: 40px;
+  right: 60px;
+  width: 40px;
+  height: 40px;
+  border-radius: 100%;
+}
+
+.loader:before, .loader:after {
+  content: "";
+  position: absolute;
+  top: -10px;
+  left: -10px;
+  width: 100%;
+  height: 100%;
+  border-radius: 100%;
+  border: 4px solid transparent;
+  border-top-color: #3498db;
+}
+
+.loader:before {
+  z-index: 100;
+  animation: loader-spin 1s infinite;
+}
+
+.loader:after {
+  border: 4px solid #DDD;
+}
+
+@-webkit-keyframes loader-spin{
+  0% {
+    -webkit-transform: rotate(0deg);
+  }
+
+  100% {
+    -webkit-transform: rotate(360deg);
+  }
+}
+
+@keyframes loader-spin{
+  0% {
+    -moz-transform: rotate(0deg);
+    -ms-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+
+  100% {
+    -moz-transform: rotate(360deg);
+    -ms-transform: rotate(360deg);
+    -o-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+
 .modal {
   width: 100vw;
   height: 100vh;
@@ -536,9 +604,16 @@ body {
   transition: all 0.3s;
 }
 
-.modal-btn:hover {
+.modal-btn:not(.disabled):hover {
   background-color: white;
   color: rgb(37, 37, 37);
+}
+
+.modal-btn.disabled {
+  background-color: #DDD;
+  border: 1px solid #DDD;
+  color: #555;
+  cursor: default;
 }
 
 .form-item {
@@ -627,7 +702,7 @@ table tbody tr:nth-child(odd) {
 }
 
 .modal-bags-table thead td[data-col="name"] {
-  padding-left: 50px;
+  padding-left: 10px;
 }
 
 .modal-bags-table td[data-col="size"] {

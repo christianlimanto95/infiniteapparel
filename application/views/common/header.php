@@ -34,6 +34,9 @@
 	<?php echo $additional_files; ?>
 </head>
 <body>
+<div class="loader-container">
+	<div class="loader"></div>
+</div>
 <div class="header<?php echo $header_additional_class; ?>">
 	<div class="header-inner">
 		<a href="<?php echo base_url(); ?>" class="logo" >
@@ -94,7 +97,7 @@
 			<table class="modal-bags-table">
 				<thead>
 					<tr>
-						<td data-col="name">Name</td>
+						<td data-col="name">Item</td>
 						<td data-col="size">Size</td>
 						<td data-col="price">Price</td>
 						<td data-col="qty">Qty</td>
@@ -107,7 +110,7 @@
 			</table>
 		</div>
 		<div class="modal-footer">
-			<div class="modal-btn modal-btn-checkout">Checkout</div>
+			<div class="modal-btn modal-btn-checkout disabled">Checkout</div>
 		</div>
 	</div>
 </div>
@@ -155,6 +158,7 @@ var add_to_cart_cookie_url = "<?php echo base_url("add-to-cart-cookie"); ?>";
 var get_cart_url = "<?php echo base_url("get-cart"); ?>";
 var remove_from_cart_url = "<?php echo base_url("remove-from-cart"); ?>";
 var cart_change_qty_url = "<?php echo base_url("cart-change-qty"); ?>";
+var cart_change_size_url = "<?php echo base_url("cart-change-size"); ?>";
 var product_url = "<?php echo base_url("assets/images/catalog"); ?>";
 var bags_add_item_url = "<?php echo base_url("assets/icons/add_cart.svg"); ?>";
 var bags_remove_item_url = "<?php echo base_url("assets/icons/remove_cart.svg"); ?>";
