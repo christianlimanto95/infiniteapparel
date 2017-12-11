@@ -37,9 +37,13 @@ class Home_model extends CI_Model
         return $query->result();
     }
 
+    function clear_hcart_dcart($user_id) {
+        $query = $this->db->query("CALL clear_hcart_dcart('" . $user_id . "');");
+        return $query->result();
+    }
+
     function insert_bags_from_cookie($data) {
-        $query = $this->db->query("
-            
-        ");
+        $query = $this->db->query("CALL insert_dcart('" . $data["item_id"] . "', '" . $data["item_size"] . "', '" . $data["item_qty"] . "', '" . $data["user_id"] . "');");
+        return $query->result();
     }
 }

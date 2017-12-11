@@ -35,7 +35,29 @@ class Home extends General_controller {
 					"expire" => "2592000"
 				));
 
-				
+				$cart = $this->input->cookie("infinite_apparel_cart", true);
+				if ($cart) {
+					$cart_item = explode("|", $cart);
+					if (sizeof($cart_item) > 0) {
+						$this->Home_model->clear_hcart_dcart($data[0]->user_id);
+					}
+
+					for ($i = 0; $i < sizeof($cart_item); $i++) {
+						$cart_item_col = explode("~", $cart_item[$i]);
+						$item_id = $cart_item_col[0];
+						$item_size = $cart_item_col[1];
+						$item_qty = intval($cart_item_col[2]);
+
+						$bagsData = array(
+							"item_id" => $item_id,
+							"item_size" => $item_size,
+							"item_qty" => $item_qty,
+							"user_id" => $data[0]->user_id
+						);
+						$this->Home_model->insert_bags_from_cookie($bagsData);
+					}
+					delete_cookie("infinite_apparel_cart");
+				}
 
 				echo json_encode(array(
 					"status" => "success"
