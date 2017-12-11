@@ -32,7 +32,3 @@ $(function() {
 		}
 	});
 });
-
-function clearAllErrors() {
-	$(".error").html("");
-}

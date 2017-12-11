@@ -22,6 +22,33 @@ class Home extends General_controller {
 		parent::view("home", $data);
 	}
 
+	function do_login() {
+		$user_email = $this->input->post("user_email", true);
+		$user_password = $this->input->post("user_password", true);
+		$data = $this->Home_model->get_email_password($user_email);
+		if (sizeof($data) > 0) {
+			$stored_password = $data[0]->user_password;
+			if (password_verify($user_password, $stored_password)) {
+				$this->input->set_cookie(array(
+					"name" => "infinite_apparel_user",
+					"value" => $data[0]->user_id,
+					"expire" => "2592000"
+				));
+				echo json_encode(array(
+					"status" => "success"
+				));
+			} else {
+				echo json_encode(array(
+					"status" => "error"
+				));
+			}
+		} else {
+			echo json_encode(array(
+				"status" => "error"
+			));
+		}
+	}
+
 	function get_cart() {
 		$cart = $this->input->cookie("infinite_apparel_cart", true);
 		if ($cart) {

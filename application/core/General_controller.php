@@ -33,6 +33,16 @@ class General_controller extends CI_Controller
     public function view($file, $data){
 		$data["additional_files"] = $this->additional_files;
 		$data["page_name"] = $file;
+		$data["is_logged_in"] = false;
+
+		$user = $this->input->cookie("infinite_apparel_user", true);
+		if ($user) {
+			$user_data = $this->General_model->get_user_logged_in($user);
+			if (sizeof($user_data) > 0) {
+				$data["is_logged_in"] = true;
+				$data["user_first_name"] = $user_data[0]->user_first_name;
+			}
+		}
 		
         $this->load->view('common/header', $data);
         $this->load->view($file, $data);

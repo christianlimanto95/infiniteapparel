@@ -59,9 +59,18 @@
 			<div class="bags-ctr">0</div>
 		</div>
 	</div>
-	<div class="header-login-or-signup">
-		<span class="header-btn-login">Login</span> or <a href="<?php echo base_url("sign-up"); ?>">Sign Up Yours</a>
-	</div>
+	<?php if (!$is_logged_in) { ?>
+		<div class="header-login-or-signup">
+			<span class="header-btn-login">Login</span> or <a href="<?php echo base_url("sign-up"); ?>">Sign Up Yours</a>
+		</div>
+	<?php } else { ?>
+		<div class="header-profile">
+			<div class="header-profile-inner">
+				<div class="header-profile-image header-profile-image-white" style="background-image: url(<?php echo base_url("assets/icons/account.png"); ?>);"></div>
+				<div class="header-profile-image header-profile-image-black" style="background-image: url(<?php echo base_url("assets/icons/account_invert.png"); ?>);"></div>
+			</div>
+		</div>
+	<?php } ?>
 </div>
 <div class="modal modal-login">
 	<div class="modal-box">
@@ -71,12 +80,12 @@
 		</div>
 		<div class="modal-body">
 			<div class="form-item form-item-email">
-				<div class="form-label">Email</div>
-				<input type="email" class="form-input form-input-email" />
+				<div class="form-label">Email <span class="error error-modal-input-email"></span></div>
+				<input type="email" class="form-input modal-input-email" />
 			</div>
 			<div class="form-item">
-				<div class="form-label">Password</div>
-				<input type="password" class="form-input" />
+				<div class="form-label">Password <span class="error error-modal-input-password"></span></div>
+				<input type="password" class="form-input modal-input-password" />
 			</div>
 		</div>
 		<div class="modal-footer">
@@ -154,6 +163,7 @@ if (vw < 1025) {
 }
 
 var lastScrollTop = 0;
+var login_url = "<?php echo base_url("do-login"); ?>";
 var add_to_cart_cookie_url = "<?php echo base_url("add-to-cart-cookie"); ?>";
 var get_cart_url = "<?php echo base_url("get-cart"); ?>";
 var remove_from_cart_url = "<?php echo base_url("remove-from-cart"); ?>";

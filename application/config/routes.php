@@ -53,6 +53,7 @@ $route['default_controller'] = 'Home';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
 
+$route["do-login"] = "home/do_login";
 $route["add-to-cart-cookie"] = "home/add_to_cart_cookie";
 $route["get-cart"] = "home/get_cart";
 $route["remove-from-cart"] = "home/remove_from_cart_cookie";

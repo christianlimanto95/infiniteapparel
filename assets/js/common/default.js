@@ -13,8 +13,36 @@ $(function() {
         modal.addClass("show");
         modal.find(".modal-box").one('webkitAnimationEnd oanimationend oAnimationEnd msAnimationEnd animationend', function(e) {
             modal.addClass("shown").removeClass("show");
-            modal.find(".form-input-email").select();
+            modal.find(".modal-input-email").select();
 		});
+    });
+
+    $(".modal-btn-login").on("click", function() {
+        var valid = true;
+        var email = $(".modal-input-email").val().trim();
+        var password = $(".modal-input-password").val().trim();
+        clearAllErrors();
+        if (email == "") {
+            valid = false;
+            $(".error-modal-input-email").html("Email is required");
+        }
+        if (password == "") {
+            valid = false;
+            $(".error-modal-input-password").html("Password is required");
+        }
+
+        if (valid) {
+            showLoader();
+            ajaxCall(login_url, {user_email: email, user_password: password}, function(json) {
+                hideLoader();
+                var result = jQuery.parseJSON(json);
+                if (result.status == "success") {
+                    location.reload(true);
+                } else {
+                    $(".error-modal-input-email").html("Wrong email / password");
+                }
+            });
+        }
     });
     
     $(".bags-container").on("click", function() {
@@ -78,6 +106,10 @@ $(function() {
 
 function clearModalInputs(modal) {
     modal.find(".form-input:not([data-auto-clear='false'])").val("");
+}
+
+function clearAllErrors() {
+	$(".error").html("");
 }
 
 function closeModal(element) {

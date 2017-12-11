@@ -323,7 +323,7 @@
 	}
 }
 
-.header.animating .logo-image-white, .header.animating .bags-image-white {
+.header.animating .logo-image-white, .header.animating .bags-image-white, .header.animating .header-profile-image-white {
 	-webkit-animation-name: logo-image-anim;
 	-webkit-animation-duration: 0.5s;
 	-webkit-animation-fill-mode: forwards;
@@ -341,7 +341,7 @@
 	animation-fill-mode: forwards;
 }
 
-.header.animating .logo-image-black, .header.animating .bags-image-black {
+.header.animating .logo-image-black, .header.animating .bags-image-black, .header.animating .header-profile-image-black {
 	-webkit-animation-name: logo-image-anim-reversed;
 	-webkit-animation-duration: 0.5s;
 	-webkit-animation-fill-mode: forwards;
@@ -359,15 +359,15 @@
 	animation-fill-mode: forwards;
 }
 
-.header.animated .logo-image-white, .header.animated .bags-image-white {
+.header.animated .logo-image-white, .header.animated .bags-image-white, .header.animated .header-profile-image-white {
 	opacity: 0;
 }
 
-.header.animated .logo-image-black, .header.animated .bags-image-black {
+.header.animated .logo-image-black, .header.animated .bags-image-black, .header.animated .header-profile-image-black {
 	opacity: 1;
 }
 
-.header.animating-close .logo-image-black, .header.animating-close .bags-image-black {
+.header.animating-close .logo-image-black, .header.animating-close .bags-image-black, .header.animating-close .header-profile-image-black {
 	-webkit-animation-name: logo-image-anim;
 	-webkit-animation-duration: 0.5s;
 	-webkit-animation-fill-mode: forwards;
@@ -385,7 +385,7 @@
 	animation-fill-mode: forwards;
 }
 
-.header.animating-close .logo-image-white, .header.animating-close .bags-image-white {
+.header.animating-close .logo-image-white, .header.animating-close .bags-image-white, .header.animating-close .header-profile-image-white {
 	-webkit-animation-name: logo-image-anim-reversed;
 	-webkit-animation-duration: 0.5s;
 	-webkit-animation-fill-mode: forwards;
