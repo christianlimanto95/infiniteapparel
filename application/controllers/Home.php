@@ -39,24 +39,34 @@ class Home extends General_controller {
 				if ($cart) {
 					$cart_item = explode("|", $cart);
 					if (sizeof($cart_item) > 0) {
-						$this->Home_model->clear_hcart_dcart($data[0]->user_id);
-					}
-
-					for ($i = 0; $i < sizeof($cart_item); $i++) {
-						$cart_item_col = explode("~", $cart_item[$i]);
-						$item_id = $cart_item_col[0];
-						$item_size = $cart_item_col[1];
-						$item_qty = intval($cart_item_col[2]);
-
-						$bagsData = array(
-							"item_id" => $item_id,
-							"item_size" => $item_size,
-							"item_qty" => $item_qty,
-							"user_id" => $data[0]->user_id
+						$dcart = array(
+							"user_id" => $data[0]->user_id,
+							"data" => array()
 						);
-						$this->Home_model->insert_bags_from_cookie($bagsData);
+						
+						for ($i = 0; $i < sizeof($cart_item); $i++) {
+							$cart_item_col = explode("~", $cart_item[$i]);
+							$item_id = $cart_item_col[0];
+							$item_size = $cart_item_col[1];
+							$item_qty = intval($cart_item_col[2]);
+							$item_name_price = $this->Home_model->get_item_name_and_price_by_id($item_id);
+							$item_name = $item_name_price[0]->item_name;
+							$item_price = intval($item_name_price[0]->item_price);
+							$item_subtotal = intval($item_qty * $item_price);
+
+							$itemData = array(
+								"item_id" => $item_id,
+								"item_size" => $item_size,
+								"item_qty" => $item_qty,
+								"item_name" => $item_name,
+								"item_price" => $item_price,
+								"item_subtotal" => $item_subtotal
+							);
+							array_push($dcart["data"], $itemData);
+						}
+						$this->Home_model->insert_bags_from_cookie($dcart);
 					}
-					delete_cookie("infinite_apparel_cart");
+					//delete_cookie("infinite_apparel_cart");
 				}
 
 				echo json_encode(array(

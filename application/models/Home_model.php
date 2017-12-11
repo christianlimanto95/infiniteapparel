@@ -42,8 +42,47 @@ class Home_model extends CI_Model
         return $query->result();
     }
 
-    function insert_bags_from_cookie($data) {
-        $query = $this->db->query("CALL insert_dcart('" . $data["item_id"] . "', '" . $data["item_size"] . "', '" . $data["item_qty"] . "', '" . $data["user_id"] . "');");
+    function get_item_name_and_price_by_id($item_id) {
+        $query = $this->db->query("
+            SELECT item_name, item_price
+            FROM item
+            WHERE item_id = '" . $item_id . "'
+            LIMIT 1
+        ");
         return $query->result();
+    }
+
+    function insert_bags_from_cookie($data) {
+        $this->db->trans_start();
+
+        /*$this->db->query("
+            UPDATE `hcart`
+            SET hcart_total_price = 0, hcart_total_qty = 0, modified_date = CURRENT_TIMESTAMP()
+            WHERE user_id = " . $data["user_id"] . ";
+        ");*/
+        
+        $query = $this->db->query("
+            SELECT hcart_id
+            FROM hcart
+            WHERE user_id = " . $data["user_id"] . "
+            LIMIT 1
+        ");
+        $hcart_id = $query->result()[0]->hcart_id;
+        
+        /*$this->db->query("
+            DELETE FROM `dcart`
+            WHERE hcart_id = " . $hcart_id . ";
+        ");*/
+
+        $iLength = sizeof($data["data"]);
+        for ($i = 0; $i < $iLength; $i++) {
+            $dcart = $data["data"];
+            $this->db->query("
+                INSERT INTO dcart (hcart_id, item_id, item_name, item_size, item_price, item_qty, dcart_subtotal)
+                VALUES ('" . $hcart_id . "', '" . $dcart[$i]["item_id"] . "', '" . $dcart[$i]["item_name"] . "', '" . $dcart[$i]["item_size"] . "', '" . $dcart[$i]["item_price"] . "', '" . $dcart[$i]["item_qty"] . "', '" . $dcart[$i]["item_subtotal"] . "')
+            ");
+        }
+
+        $this->db->trans_complete();
     }
 }
