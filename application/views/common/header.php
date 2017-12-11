@@ -86,8 +86,8 @@
 		<div class="modal-header">
 			<div class="modal-close-button" style="background-image: url(<?php echo base_url("assets/icons/close.png"); ?>);"></div>
 			<div class="modal-bags-header">
-				<div class="modal-bags-header-left">Bag <span>(0 items)</span></div>
-				<div class="modal-bags-header-right"><span>Total : </span>IDR 0</div>
+				<div class="modal-bags-header-left">Cart <span class="modal-bags-header-normal">(0 items)</span></div>
+				<div class="modal-bags-header-right"><span class="modal-bags-header-normal">Total : </span><span class="modal-bags-total">IDR 0</span></div>
 			</div>
 		</div>
 		<div class="modal-body">
@@ -103,31 +103,6 @@
 					</tr>
 				</thead>
 				<tbody>
-				<?php for ($i = 0; $i < 10; $i++) { ?>
-					<tr>
-						<td data-col="name">
-							<div class="bags-td-name-image" style="background-image: url(<?php echo base_url("assets/images/products/INFT0001_1.jpg"); ?>);"></div>
-							<div class="bags-td-name-text">God With Us White</div>
-						</td>
-						<td data-col="size">
-							<select>
-								<option value="xxl">XXL</option>
-								<option value="xl">XL</option>
-								<option value="l">L</option>
-								<option value="m">M</option>
-								<option value="s">S</option>
-								<option value="xs">XS</option>
-							</select>
-						</td>
-						<td data-col="price">IDR 100.000</td>
-						<td data-col="qty">
-							<input type="number" min="1" max="999" value="2" />
-						</td>
-						<td data-col="subtotal">IDR 2.000.000</td>
-						<td data-col="action"></td>
-					</tr>
-				<?php } ?>
-					
 				</tbody>
 			</table>
 		</div>
@@ -179,5 +154,7 @@ var lastScrollTop = 0;
 var add_to_cart_cookie_url = "<?php echo base_url("add-to-cart-cookie"); ?>";
 var get_cart_url = "<?php echo base_url("get-cart"); ?>";
 var product_url = "<?php echo base_url("assets/images/catalog"); ?>";
+var bags_add_item_url = "<?php echo base_url("assets/icons/add_cart.svg"); ?>";
+var bags_remove_item_url = "<?php echo base_url("assets/icons/remove_cart.svg"); ?>";
 </script>
 <div class="container" tabindex="1">

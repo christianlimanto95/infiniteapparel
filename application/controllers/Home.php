@@ -26,6 +26,7 @@ class Home extends General_controller {
 		$cart = $this->input->cookie("infinite_apparel_cart", true);
 		if ($cart) {
 			$total_qty = 0;
+			$total_subtotal = 0;
 			$cart_item = explode("|", $cart);
 			for ($i = 0; $i < sizeof($cart_item); $i++) {
 				$cart_item_col = explode("~", $cart_item[$i]);
@@ -44,13 +45,16 @@ class Home extends General_controller {
 					$cart_item[$i]->item_price = number_format($item_data->item_price, 0, ",", ".");
 					$cart_item[$i]->item_size = $item_size;
 					$cart_item[$i]->item_qty = $item_qty;
-					$cart_item[$i]->item_subtotal = number_format(intval($item_data->item_price) * $item_qty, 0, ",", ".");
+					$subtotal = intval($item_data->item_price) * $item_qty;
+					$cart_item[$i]->item_subtotal = number_format($subtotal, 0, ",", ".");
+					$total_subtotal += $subtotal;
 				} else {
 					array_splice($cart_item, $i);
 				}
 			}
 			echo json_encode(array(
 				"total_qty" => $total_qty,
+				"total_subtotal" => number_format($total_subtotal, 0, ",", "."),
 				"data" => $cart_item
 			));
 		} else {

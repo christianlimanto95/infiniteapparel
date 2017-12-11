@@ -87,6 +87,7 @@ function get_cart() {
     ajaxCall(get_cart_url, null, function(json) {
         var result = jQuery.parseJSON(json);
         var total_qty = result.total_qty;
+        var total_subtotal = result.total_subtotal;
         result = result.data;
         var iLength = result.length;
         if (iLength > 0) {
@@ -114,11 +115,13 @@ function get_cart() {
                 element += "</td>";
                 element += "<td data-col='qty'><input type='number' min='1' max='999' value='" + result[i].item_qty + "' /></td>";
                 element += "<td data-col='subtotal'>IDR " + result[i].item_subtotal + "</td>";
-                element += "<td data-col='action'></td>";
+                element += "<td data-col='action'><div class='bags-add-item' title='add' style='background-image: url(" + bags_add_item_url + ");'></div><div class='bags-remove-item' title='remove' style='background-image: url(" + bags_remove_item_url + ");'></div></td>";
                 element += "</tr>";
             }
             $(".modal-bags-table tbody").html(element);
             $(".bags-ctr").html(total_qty);
+            $(".modal-bags-header-left span").html("(" + total_qty + " items)");
+            $(".modal-bags-total").html("IDR " + total_subtotal);
         }
     });
 }

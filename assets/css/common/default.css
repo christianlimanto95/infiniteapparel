@@ -581,7 +581,7 @@ body {
   font-weight: bold;  
 }
 
-.modal-bags .modal-bags-header span {
+.modal-bags .modal-bags-header .modal-bags-header-normal {
   font-weight: normal;
 }
 
@@ -612,9 +612,9 @@ table tbody tr:nth-child(odd) {
   display: block;
 }
 
-.modal-bags-table tbody {
+.modal-bags-table {
   display: block;
-  height: 220px;
+  height: 250px;
   overflow-y: auto;
 }
 
@@ -707,6 +707,19 @@ table tbody tr:nth-child(odd) {
 
 .modal-bags tbody td[data-col="qty"] input {
   text-align: center;
+}
+
+.modal-bags .bags-add-item, .modal-bags .bags-remove-item {
+  display: inline-block;
+  width: 25px;
+  height: 25px;
+  background-size: 100%;
+  background-repeat: no-repeat;
+  cursor: pointer;
+}
+
+.modal-bags .bags-add-item {
+  margin-right: 10px;
 }
 
 .section-title {
