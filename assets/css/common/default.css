@@ -331,7 +331,8 @@ body {
 }
 
 .header-profile-menu {
-  color: rgb(37, 37, 37);
+  display: block;
+  color: white;
   font-family: helvetica;
   font-size: 9pt;
   position: absolute;
@@ -347,15 +348,15 @@ body {
 }
 
 .header-profile-menu-2 {
-  top: 5px;
+  top: 10px;
 }
 
 .header-profile-menu-3 {
-  top: 20px;
+  top: 25px;
 }
 
 .header-profile-menu-4 {
-  top: 35px;
+  top: 40px;
 }
 
 .header.invers {
@@ -377,7 +378,7 @@ body {
   opacity: 0;
 }
 
-.header.invers .header-menu, .header.invers .header-login-or-signup, .header.invers .header-login-or-signup span, .header.invers .header-login-or-signup a {
+.header.invers .header-menu, .header.invers .header-login-or-signup, .header.invers .header-login-or-signup span, .header.invers .header-login-or-signup a, .header.invers .header-profile-menu {
   color: rgb(37, 37, 37);
 }
 

@@ -71,7 +71,7 @@
 				<div class="header-profile-menu header-profile-menu-1"><?php echo $user_first_name; ?></div>
 				<a href="<?php echo base_url("order-list"); ?>" class="header-profile-menu header-profile-menu-2">Order list</a>
 				<a href="<?php echo base_url("account-settings"); ?>" class="header-profile-menu header-profile-menu-3">Account Settings</a>
-				<a href="<?php echo base_url("logout"); ?>" class="header-profile-menu header-profile-menu-4">Logout</a>
+				<div class="header-profile-menu header-profile-menu-4 header-btn-logout">Logout</div>
 			</div>
 		</div>
 	<?php } ?>

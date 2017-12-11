@@ -18,7 +18,9 @@ $(function() {
     });
 
     $(".header-btn-logout").on("click", function() {
+        showLoader();
         ajaxCall(logout_url, null, function() {
+            hideLoader();
             location.reload(true);
         });
     });
@@ -48,6 +50,12 @@ $(function() {
                     $(".error-modal-input-email").html("Wrong email / password");
                 }
             });
+        }
+    });
+
+    $(".modal-input-email, .modal-input-password").on("keypress", function(e) {
+        if (e.keyCode == 13) {
+            $(".modal-btn-login").click();
         }
     });
     
