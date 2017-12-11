@@ -36,14 +36,7 @@ $(function() {
     });
 
     $(document).on("click", ".modal-btn-confirm-size-qty", function() {
-        var modal = $(this).closest(".modal");
-        var id = modal.attr("data-id");
-        var size = modal.find(".form-input-size").val();
-        var qty = modal.find(".form-input-qty").val();
-        
-        ajaxCall(add_to_cart_cookie_url, {item_id: id, item_size: size, item_qty: qty}, function(json) {
-            var result = jQuery.parseJSON(json);
-        });
+        add_to_cart(this);
     });
 
     $(".modal-close-button").on("click", function() {
@@ -93,17 +86,28 @@ function ajaxCall(url, data, callback) {
 function get_cart() {
     ajaxCall(get_cart_url, null, function(json) {
         var result = jQuery.parseJSON(json);
+        var total_qty = result.total_qty;
+        result = result.data;
         var iLength = result.length;
         if (iLength > 0) {
             var element = "";
             for (var i = 0; i < iLength; i++) {
+                var select = [];
+                select["xxl"] = "";
+                select["xl"] = "";
+                select["l"] = "";
+                select["m"] = "";
+                select["s"] = "";
+                select["xs"] = "";
+                select[result[i].item_size] = " selected";
+
                 element += "<tr>";
                 element += "<td data-col='name'>";
                 element += "<div class='bags-td-name-image' style='background-image: url(" + product_url + "/" + result[i].item_id + "_1.png);'></div>";
                 element += "<div class='bags-td-name-text'>" + result[i].item_name + "</div>";
                 element += "</td>";
                 element += "<td data-col='size'>";
-                element += "<select><option value='xxl'>XXL</option><option value='xl'>XL</option><option value='l'>L</option><option value='m'>M</option><option value='s'>S</option><option value='xs'>XS</option></select>";
+                element += "<select><option value='xxl'" + select["xxl"] + ">XXL</option><option value='xl'" + select["xl"] + ">XL</option><option value='l'" + select["l"] + ">L</option><option value='m'" + select["m"] + ">M</option><option value='s'" + select["s"] + ">S</option><option value='xs'" + select["xs"] + ">XS</option></select>";
                 element += "</td>";
                 element += "<td data-col='price'>";
                 element += "IDR " + result[i].item_price;
@@ -113,8 +117,20 @@ function get_cart() {
                 element += "<td data-col='action'></td>";
                 element += "</tr>";
             }
-
             $(".modal-bags-table tbody").html(element);
+            $(".bags-ctr").html(total_qty);
         }
+    });
+}
+
+function add_to_cart(element) {
+    var modal = $(element).closest(".modal");
+    var id = modal.attr("data-id");
+    var size = modal.find(".form-input-size").val();
+    var qty = modal.find(".form-input-qty").val();
+    
+    ajaxCall(add_to_cart_cookie_url, {item_id: id, item_size: size, item_qty: qty}, function(json) {
+        get_cart();        
+        closeModal();
     });
 }

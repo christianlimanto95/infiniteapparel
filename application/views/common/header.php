@@ -53,7 +53,7 @@
 		<div class="bags-container-inner">
 			<div class="bags-image bags-image-white" style="background-image: url(<?php echo base_url("assets/icons/bag.png?v=1"); ?>);"></div>
 			<div class="bags-image bags-image-black" style="background-image: url(<?php echo base_url("assets/icons/bag_invers.png?v=1"); ?>);"></div>
-			<div class="bags-ctr"><?php echo $infinite_apparel_cart_qty; ?></div>
+			<div class="bags-ctr">0</div>
 		</div>
 	</div>
 	<div class="header-login-or-signup">

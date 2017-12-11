@@ -33,13 +33,6 @@ class General_controller extends CI_Controller
     public function view($file, $data){
 		$data["additional_files"] = $this->additional_files;
 		$data["page_name"] = $file;
-		$infinite_apparel_cart = $this->input->cookie("infinite_apparel_cart", true);
-		$infinite_apparel_cart_qty = 0;
-		if ($infinite_apparel_cart) {
-			$infinite_apparel_cart = explode("|", $infinite_apparel_cart);
-			$infinite_apparel_cart_qty = sizeof($infinite_apparel_cart);
-		}
-		$data["infinite_apparel_cart_qty"] = $infinite_apparel_cart_qty;
 		
         $this->load->view('common/header', $data);
         $this->load->view($file, $data);
