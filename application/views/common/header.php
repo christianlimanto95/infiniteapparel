@@ -153,6 +153,8 @@ if (vw < 1025) {
 var lastScrollTop = 0;
 var add_to_cart_cookie_url = "<?php echo base_url("add-to-cart-cookie"); ?>";
 var get_cart_url = "<?php echo base_url("get-cart"); ?>";
+var remove_from_cart_url = "<?php echo base_url("remove-from-cart"); ?>";
+var cart_change_qty_url = "<?php echo base_url("cart-change-qty"); ?>";
 var product_url = "<?php echo base_url("assets/images/catalog"); ?>";
 var bags_add_item_url = "<?php echo base_url("assets/icons/add_cart.svg"); ?>";
 var bags_remove_item_url = "<?php echo base_url("assets/icons/remove_cart.svg"); ?>";

@@ -20,7 +20,9 @@
                 <div class="product-name"><?php echo $catalog[$i]->item_name; ?></div>
                 <div class="product-price">IDR <?php echo number_format($catalog[$i]->item_price, 0, ",", "."); ?></div>
             </a>
-        <?php } ?>
+        <?php } 
+        echo $this->input->cookie("infinite_apparel_cart", true);
+        ?>
         </div>
         <div class="paging-container">
             <div class="paging">

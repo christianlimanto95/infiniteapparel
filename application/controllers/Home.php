@@ -49,7 +49,7 @@ class Home extends General_controller {
 					$cart_item[$i]->item_subtotal = number_format($subtotal, 0, ",", ".");
 					$total_subtotal += $subtotal;
 				} else {
-					array_splice($cart_item, $i);
+					array_splice($cart_item, $i, 1);
 				}
 			}
 			echo json_encode(array(
@@ -115,6 +115,62 @@ class Home extends General_controller {
 		echo json_encode(array(
 			"status" => "success",
 			"cookie" => $current_cookie
+		));
+	}
+
+	function remove_from_cart_cookie() {
+		$index = intval($this->input->post("index"));
+		$current_cookie = $this->input->cookie("infinite_apparel_cart", true);
+		if ($current_cookie) {
+			$current_cookie_item = explode("|", $current_cookie);
+			array_splice($current_cookie_item, $index, 1);
+
+			$current_cookie = "";
+			for ($i = 0; $i < sizeof($current_cookie_item); $i++) {
+				if ($current_cookie != "") {
+					$current_cookie .= "|";
+				}
+				$current_cookie .= $current_cookie_item[$i];
+			}
+			$this->input->set_cookie(array(
+				"name" => "infinite_apparel_cart",
+				"value" => $current_cookie,
+				"expire" => "31556926"
+			));
+		}
+
+		echo json_encode(array(
+			"status" => "success"
+		));
+	}
+
+	function cart_change_qty() {
+		$item_qty = intval($this->input->post("item_qty"));
+		$index = intval($this->input->post("index"));
+		$current_cookie = $this->input->cookie("infinite_apparel_cart", true);
+		if ($current_cookie) {
+			$current_cookie_item = explode("|", $current_cookie);
+			$cookie_item_col = explode("~", $current_cookie_item[$index]);
+			$cookie_item_col[2] = $item_qty;
+			$current_cookie_item[$index] = $cookie_item_col[0] . "~" . $cookie_item_col[1] . "~" . $cookie_item_col[2];
+
+			$current_cookie = "";
+			for ($i = 0; $i < sizeof($current_cookie_item); $i++) {
+				if ($current_cookie != "") {
+					$current_cookie .= "|";
+				}
+				$current_cookie .= $current_cookie_item[$i];
+			}
+
+			$this->input->set_cookie(array(
+				"name" => "infinite_apparel_cart",
+				"value" => $current_cookie,
+				"expire" => "31556926"
+			));
+		}
+
+		echo json_encode(array(
+			"status" => "success"
 		));
 	}
 }

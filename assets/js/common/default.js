@@ -39,6 +39,15 @@ $(function() {
         add_to_cart(this);
     });
 
+    $(document).on("click", ".bags-remove-item", function() {
+        var index = $(this).closest("tr").attr("data-index");
+        remove_from_cart(index);
+    });
+
+    $(document).on("change", ".bags-input-qty", function() {
+        cart_change_qty(this);
+    });
+
     $(".modal-close-button").on("click", function() {
         closeModal();
     });
@@ -102,7 +111,7 @@ function get_cart() {
                 select["xs"] = "";
                 select[result[i].item_size] = " selected";
 
-                element += "<tr>";
+                element += "<tr data-index='" + i + "'>";
                 element += "<td data-col='name'>";
                 element += "<div class='bags-td-name-image' style='background-image: url(" + product_url + "/" + result[i].item_id + "_1.png);'></div>";
                 element += "<div class='bags-td-name-text'>" + result[i].item_name + "</div>";
@@ -113,9 +122,9 @@ function get_cart() {
                 element += "<td data-col='price'>";
                 element += "IDR " + result[i].item_price;
                 element += "</td>";
-                element += "<td data-col='qty'><input type='number' min='1' max='999' value='" + result[i].item_qty + "' /></td>";
+                element += "<td data-col='qty'><input type='number' class='bags-input-qty' min='1' max='999' value='" + result[i].item_qty + "' /></td>";
                 element += "<td data-col='subtotal'>IDR " + result[i].item_subtotal + "</td>";
-                element += "<td data-col='action'><div class='bags-add-item' title='add' style='background-image: url(" + bags_add_item_url + ");'></div><div class='bags-remove-item' title='remove' style='background-image: url(" + bags_remove_item_url + ");'></div></td>";
+                element += "<td data-col='action'><div class='bags-add-item' title='add another size' style='background-image: url(" + bags_add_item_url + ");'></div><div class='bags-remove-item' title='remove' style='background-image: url(" + bags_remove_item_url + ");'></div></td>";
                 element += "</tr>";
             }
             $(".modal-bags-table tbody").html(element);
@@ -135,5 +144,21 @@ function add_to_cart(element) {
     ajaxCall(add_to_cart_cookie_url, {item_id: id, item_size: size, item_qty: qty}, function(json) {
         get_cart();        
         closeModal();
+    });
+}
+
+function remove_from_cart(index) {
+    ajaxCall(remove_from_cart_url, {index: index}, function() {
+        get_cart();
+    });
+}
+
+function cart_change_qty(element) {
+    var tr = $(element).closest("tr");
+    var index = tr.attr("data-index");
+    var item_qty = tr.find(".bags-input-qty").val();
+    
+    ajaxCall(cart_change_qty_url, {index: index, item_qty: item_qty}, function() {
+        get_cart();
     });
 }
