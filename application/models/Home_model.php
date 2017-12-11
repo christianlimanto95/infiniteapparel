@@ -36,4 +36,10 @@ class Home_model extends CI_Model
         ");
         return $query->result();
     }
+
+    function insert_bags_from_cookie($data) {
+        $query = $this->db->query("
+            
+        ");
+    }
 }

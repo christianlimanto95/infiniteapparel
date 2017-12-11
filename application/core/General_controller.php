@@ -50,10 +50,14 @@ class General_controller extends CI_Controller
     }
 
 	public function cek_login() {
-        if ($this->session->userdata('isLoggedIn') != 1) {
+        if (!$this->input->cookie('infinite_apparel_user')) {
             redirect(base_url());
         }
-    }
+	}
+	
+	public function is_logged_in() {
+		return $this->input->cookie('infinite_apparel_user');
+	}
 
     public function currency_format($nominal) {
         return number_format($number, 0, ".", ",");

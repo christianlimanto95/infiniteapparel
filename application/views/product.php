@@ -1,5 +1,5 @@
 <div class="content">
-    <div class="section section-1">
+    <div class="section section-1" data-id="<?php echo $product->item_id; ?>">
         <div class="section-title">
             <div class="section-title-line"></div>
             <div class="section-title-text"><?php echo $product->category_name; ?></div>
@@ -24,7 +24,7 @@
                 <div class="size-quantity-container">
                     <div class="size-container">
                         <div class="label">Size</div>
-                        <select>
+                        <select class="select-size">
                             <option value="xxl">XXL</option>
                             <option value="xl">XL</option>
                             <option value="l">L</option>
@@ -35,7 +35,7 @@
                     </div>
                     <div class="quantity-container">
                         <div class="label">Quantity</div>
-                        <input type="number" min="1" max="999" value="1" />
+                        <input class="input-qty" type="number" min="1" max="999" value="1" />
                     </div>
                 </div>
                 <div class="section-1-right-btn-container">

@@ -34,6 +34,9 @@ class Home extends General_controller {
 					"value" => $data[0]->user_id,
 					"expire" => "2592000"
 				));
+
+				
+
 				echo json_encode(array(
 					"status" => "success"
 				));
