@@ -105,4 +105,27 @@ class Home_model extends CI_Model
         $query = $this->db->query("CALL get_cart(" . $user_id . ");");
         return $query->result();
     }
+
+    function insert_dcart($data) {
+        $query = $this->db->query("CALL insert_dcart('" . $data["item_id"] . "', '" . $data["item_size"] . "', '" . $data["item_qty"] . "', '" . $data["item_type"] . "', '" . $data["user_id"] . "');");
+        return $query->result();
+    }
+
+    function update_dcart_qty($data) {
+        $query = $this->db->query("CALL update_dcart_qty('" . $data["dcart_id"] . "', '" . $data["item_qty"] . "', '" . $data["user_id"] . "');");
+        return $query->result();
+    }
+
+    function update_dcart_size($data) {
+        $query = $this->db->query("
+            UPDATE dcart
+            SET item_size = '" . $data["item_size"] . "', modified_date = CURRENT_TIMESTAMP()
+            WHERE dcart_id = " . $data["dcart_id"] . "
+        ");
+    }
+
+    function remove_from_cart($dcart_id) {
+        $query = $this->db->query("CALL remove_from_cart(" . $dcart_id . ");");
+        return $query->result();
+    }
 }
