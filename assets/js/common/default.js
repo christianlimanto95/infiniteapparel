@@ -221,7 +221,7 @@ function add_to_cart(element) {
     var size = modal.find(".form-input-size").val();
     var qty = modal.find(".form-input-qty").val();
     
-    ajaxCall(add_to_cart_cookie_url, {item_id: id, item_size: size, item_qty: qty}, function(json) {
+    ajaxCall(add_to_cart_url, {item_id: id, item_size: size, item_qty: qty, item_type: 1}, function(json) {
         hideLoader();
         get_cart();        
         closeModal(element);

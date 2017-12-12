@@ -169,7 +169,7 @@ if (vw < 1025) {
 var lastScrollTop = 0;
 var login_url = "<?php echo base_url("do-login"); ?>";
 var logout_url = "<?php echo base_url("logout"); ?>";
-var add_to_cart_cookie_url = "<?php echo base_url("add-to-cart-cookie"); ?>";
+var add_to_cart_url = "<?php echo base_url("add-to-cart"); ?>";
 var get_cart_url = "<?php echo base_url("get-cart"); ?>";
 var remove_from_cart_url = "<?php echo base_url("remove-from-cart"); ?>";
 var cart_change_qty_url = "<?php echo base_url("cart-change-qty"); ?>";

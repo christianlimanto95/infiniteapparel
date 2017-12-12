@@ -55,7 +55,7 @@ $route['translate_uri_dashes'] = FALSE;
 
 $route["do-login"] = "home/do_login";
 $route["logout"] = "home/logout";
-$route["add-to-cart-cookie"] = "home/add_to_cart_cookie";
+$route["add-to-cart"] = "home/add_to_cart";
 $route["get-cart"] = "home/get_cart";
 $route["remove-from-cart"] = "home/remove_from_cart_cookie";
 $route["cart-change-qty"] = "home/cart_change_qty";
