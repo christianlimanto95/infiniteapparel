@@ -44,6 +44,10 @@
     
 }
 
+.form-item {
+    margin-bottom: 40px;
+}
+
 .form-label {
     font-size: 18pt;
     margin-bottom: 10px;
@@ -55,9 +59,22 @@
     height: 40px;
     cursor: pointer;
     margin-right: 5px;
+    border: 1px solid #000;
+    border-radius: 100%;
+}
+
+.color.selected {
+    border: 4px solid #4CAF50;
+    width: 43px;
+    height: 43px;
 }
 
 .select-type, .select-type option {
     font-family: helvetica;
     font-size: 14pt;
+    padding: 5px;
+}
+
+.select-type {
+    margin-left: 5px;
 }
