@@ -50,13 +50,13 @@ class General_controller extends CI_Controller
     }
 
 	public function cek_login() {
-        if (!$this->input->cookie('infinite_apparel_user')) {
+        if (!$this->input->cookie('infinite_apparel_user', true)) {
             redirect(base_url());
         }
 	}
 	
 	public function is_logged_in() {
-		return $this->input->cookie('infinite_apparel_user');
+		return $this->input->cookie('infinite_apparel_user', true);
 	}
 
     public function currency_format($nominal) {

@@ -66,7 +66,7 @@ class Home extends General_controller {
 						}
 						$this->Home_model->insert_bags_from_cookie($dcart);
 					}
-					//delete_cookie("infinite_apparel_cart");
+					delete_cookie("infinite_apparel_cart");
 				}
 
 				echo json_encode(array(
@@ -92,46 +92,64 @@ class Home extends General_controller {
 	}
 
 	function get_cart() {
-		$cart = $this->input->cookie("infinite_apparel_cart", true);
-		if ($cart) {
-			$total_qty = 0;
-			$total_subtotal = 0;
-			$cart_item = explode("|", $cart);
-			for ($i = 0; $i < sizeof($cart_item); $i++) {
-				$cart_item_col = explode("~", $cart_item[$i]);
-				$item_id = $cart_item_col[0];
-				$item_size = $cart_item_col[1];
-				$item_qty = intval($cart_item_col[2]);
-
-				$item_data = $this->Home_model->get_product_by_id($item_id);
-				if (sizeof($item_data) > 0) {
-					$item_data = $item_data[0];
-
-					$total_qty += $item_qty;
-					$cart_item[$i] = new stdClass();
-					$cart_item[$i]->item_id = $item_id;
-					$cart_item[$i]->item_name = $item_data->item_name;
-					$cart_item[$i]->item_price = number_format($item_data->item_price, 0, ",", ".");
-					$cart_item[$i]->item_size = $item_size;
-					$cart_item[$i]->item_qty = $item_qty;
-					$subtotal = intval($item_data->item_price) * $item_qty;
-					$cart_item[$i]->item_subtotal = number_format($subtotal, 0, ",", ".");
-					$total_subtotal += $subtotal;
-				} else {
-					array_splice($cart_item, $i, 1);
-				}
+		$user_id = parent::is_logged_in();
+		if ($user_id) {
+			$cart = $this->Home_model->get_cart($user_id);
+			if ($cart[0]->status == "success") {
+				echo json_encode(array(
+					"total_qty" => $cart[0]->hcart_total_qty,
+					"total_subtotal" => $cart[0]->hcart_total_price,
+					"data" => $cart
+				));
+			} else {
+				echo json_encode(array(
+					"total_qty" => 0,
+					"total_subtotal" => 0,
+					"data" => array()
+				));
 			}
-			echo json_encode(array(
-				"total_qty" => $total_qty,
-				"total_subtotal" => number_format($total_subtotal, 0, ",", "."),
-				"data" => $cart_item
-			));
 		} else {
-			echo json_encode(array(
-				"total_qty" => 0,
-				"total_subtotal" => 0,
-				"data" => array()
-			));
+			$cart = $this->input->cookie("infinite_apparel_cart", true);
+			if ($cart) {
+				$total_qty = 0;
+				$total_subtotal = 0;
+				$cart_item = explode("|", $cart);
+				for ($i = 0; $i < sizeof($cart_item); $i++) {
+					$cart_item_col = explode("~", $cart_item[$i]);
+					$item_id = $cart_item_col[0];
+					$item_size = $cart_item_col[1];
+					$item_qty = intval($cart_item_col[2]);
+
+					$item_data = $this->Home_model->get_product_by_id($item_id);
+					if (sizeof($item_data) > 0) {
+						$item_data = $item_data[0];
+
+						$total_qty += $item_qty;
+						$cart_item[$i] = new stdClass();
+						$cart_item[$i]->item_id = $item_id;
+						$cart_item[$i]->item_name = $item_data->item_name;
+						$cart_item[$i]->item_price = number_format($item_data->item_price, 0, ",", ".");
+						$cart_item[$i]->item_size = $item_size;
+						$cart_item[$i]->item_qty = $item_qty;
+						$subtotal = intval($item_data->item_price) * $item_qty;
+						$cart_item[$i]->item_subtotal = number_format($subtotal, 0, ",", ".");
+						$total_subtotal += $subtotal;
+					} else {
+						array_splice($cart_item, $i, 1);
+					}
+				}
+				echo json_encode(array(
+					"total_qty" => $total_qty,
+					"total_subtotal" => number_format($total_subtotal, 0, ",", "."),
+					"data" => $cart_item
+				));
+			} else {
+				echo json_encode(array(
+					"total_qty" => 0,
+					"total_subtotal" => 0,
+					"data" => array()
+				));
+			}
 		}
 	}
 
