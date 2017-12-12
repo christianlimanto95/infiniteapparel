@@ -10,4 +10,9 @@ class Custom_model extends CI_Model
     function get_custom() {
         return $this->db->get("custom")->result();
     }
+
+    function get_custom_types() {
+        $this->db->where("custom_type_id != 1");
+        return $this->db->get("custom_type")->result();
+    }
 }
