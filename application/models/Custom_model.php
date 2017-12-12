@@ -6,4 +6,8 @@ class Custom_model extends CI_Model
     {
         parent::__construct();
     }
+
+    function get_custom() {
+        return $this->db->get("custom")->result();
+    }
 }

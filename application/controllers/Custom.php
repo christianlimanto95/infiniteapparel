@@ -12,6 +12,17 @@ class Custom extends General_controller {
 	
 	public function index()
 	{
+		/*$customData = $this->Custom_model->get_custom();
+		$shirts = array();
+		$iLength = sizeof($customData);
+		print_r($customData);
+		for ($i = 0; $i < $iLength; $i++) {
+			if ($customData[$i]->custom_category == 1) {
+				array_push($shirts, $customData[$i]);
+				array_splice($customData, $i, 1);
+			}
+		}*/
+
 		$data = array(
 			"title" => "Infinite Apparel | Custom",
 			"header_additional_class" => " invers"

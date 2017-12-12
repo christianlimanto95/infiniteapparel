@@ -15,8 +15,20 @@
             <div class="section-1-right">
                 <div class="form-item">
                     <div class="form-label">T-Shirt Color</div>
-                    <div class="">
-                        <div></div>
+                    <div class="color-container">
+                        <?php
+                            /*for ($i = 0; $i < sizeof($shirts); $i++) {
+                                echo "<div class='color' style='background-color: #" . $shirts[$i]->custom_color_hex . ";'></div>";
+                            }*/
+                        ?>
+                    </div>
+                </div>
+                <div class="form-item">
+                <div class="form-label">Design: <select></select></div>
+                    <div class="color-container">
+                        <div class="color" style="background-color: #000000;"></div>
+                        <div class="color" style="background-color: #000000;"></div>
+                        <div class="color" style="background-color: #000000;"></div>
                     </div>
                 </div>
             </div>
