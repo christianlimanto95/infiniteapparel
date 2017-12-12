@@ -1,0 +1,44 @@
+.section-1-inner {
+    width: 80vw;
+    margin: 0 auto;
+}
+
+.section-1-left, .section-1-right {
+    width: 40vw;
+    height: 400px;
+    float: left;
+}
+
+.section-1-left {
+    
+}
+
+.image-container {
+    float: right;
+    width: 350px;
+    height: 350px;
+    position: relative;
+}
+
+.shirt-image {
+    width: 100%;
+    height: 100%;
+    background-size: 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.design-image {
+    position: absolute;
+    top: 70px;
+    left: 75px;
+    width: 200px;
+    height: 200px;
+    background-size: auto 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.section-1-right {
+    
+}
