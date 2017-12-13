@@ -138,7 +138,7 @@
 				<div class="form-label">Size</div>
 				<select class="form-input form-input-size" data-auto-clear="false">
 					<option value="xxl">XXL</option>
-					<option value="xl">XL</option>
+					<option value="xl" selected>XL</option>
 					<option value="l">L</option>
 					<option value="m">M</option>
 					<option value="s">S</option>

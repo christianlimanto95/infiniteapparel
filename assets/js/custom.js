@@ -1,4 +1,11 @@
 $(function() {
+	for (var i = 0; i < designs.length; i++) {
+		designs[i].image.src = designs[i].imageSrc;
+	}
+	for (var i = 0; i < shirts.length; i++) {
+		shirts[i].image.src = shirts[i].imageSrc;
+	}
+
 	$(document).off("click", ".btn-add-to-bag");
 	$(document).on("click", ".btn-add-to-bag", function() {
 		
@@ -48,7 +55,7 @@ function setColor(custom_id, container) {
 				break;
 			}
 		}
-		$(".design-image").css("background-image", "url(" + color.image + ")");
+		$(".design-image").css("background-image", "url(" + color.image.src + ")");
 	} else {
 		var iLength = shirts.length;
 		for (var i = 0; i < iLength; i++) {
@@ -57,7 +64,7 @@ function setColor(custom_id, container) {
 				break;
 			}
 		}
-		$(".shirt-image").css("background-image", "url(" + color.image + ")");
+		$(".shirt-image").css("background-image", "url(" + color.image.src + ")");
 	}
 	container.find(".selected").removeClass("selected");
 	$(".color[data-id='" + custom_id + "']").addClass("selected");

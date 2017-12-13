@@ -50,7 +50,7 @@
                     <div class="form-label custom-form-label">Size</div>
                     <select class="custom-select-size">
                         <option value="xxl">XXL</option>
-                        <option value="xl">XL</option>
+                        <option value="xl" selected>XL</option>
                         <option value="l">L</option>
                         <option value="m">M</option>
                         <option value="s">S</option>
@@ -89,7 +89,7 @@ for ($i = 0; $i < sizeof($shirts); $i++) {
     if ($i > 0) {
         echo ", ";
     }
-    echo "{custom_id: " . $shirts[$i]->custom_id . ", custom_type_id: " . $shirts[$i]->custom_type_id . ", custom_color_hex: '" . $shirts[$i]->custom_color_hex . "', image: '" . base_url("assets/images/custom/" . $shirts[$i]->custom_id . ".png") . "'}";
+    echo "{custom_id: " . $shirts[$i]->custom_id . ", custom_type_id: " . $shirts[$i]->custom_type_id . ", custom_color_hex: '" . $shirts[$i]->custom_color_hex . "', image: new Image(), imageSrc: '" . base_url("assets/images/custom/" . $shirts[$i]->custom_id . ".png") . "'}";
 }    
 ?>];
 var designs = [<?php
@@ -97,7 +97,7 @@ for ($i = 0; $i < sizeof($designs); $i++) {
     if ($i > 0) {
         echo ", ";
     }
-    echo "{custom_id: " . $designs[$i]->custom_id . ", custom_type_id: " . $designs[$i]->custom_type_id . ", custom_color_hex: '" . $designs[$i]->custom_color_hex . "', image: '" . base_url("assets/images/custom/" . $designs[$i]->custom_id . ".png") . "'}";
+    echo "{custom_id: " . $designs[$i]->custom_id . ", custom_type_id: " . $designs[$i]->custom_type_id . ", custom_color_hex: '" . $designs[$i]->custom_color_hex . "', image: new Image(), imageSrc: '" . base_url("assets/images/custom/" . $designs[$i]->custom_id . ".png") . "'}";
 }    
 ?>];
 </script>
