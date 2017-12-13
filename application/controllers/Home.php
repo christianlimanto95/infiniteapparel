@@ -177,6 +177,12 @@ class Home extends General_controller {
 		$item_qty = intval($this->input->post("item_qty", true));
 		$item_type = $this->input->post("item_type", true);
 
+		if ($item_type == 2) {
+			$shirt_custom_id = $this->input->post("shirt_custom_id", true);
+			$design_custom_id = $this->input->post("design_custom_id", true);
+			$notes = $this->input->post("notes", true);
+		}
+
 		$user_id = parent::is_logged_in();
 		if ($user_id) {
 			$data = array(

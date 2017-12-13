@@ -8,7 +8,23 @@ $(function() {
 
 	$(document).off("click", ".btn-add-to-bag");
 	$(document).on("click", ".btn-add-to-bag", function() {
-		
+		var shirt_custom_id = $(".shirts-color-container .color.selected").attr("data-id");
+		var design_custom_id = $(".designs-color-container .color.selected").attr("data-id");
+		var item_size = $(".custom-select-size").val();
+		var item_qty = $(".custom-input-qty").val();
+		var notes = $(".custom-input-notes").val();
+
+		var data = {
+			item_type: 2,
+			item_size: item_size,
+			item_qty: item_qty,
+			shirt_custom_id: shirt_custom_id,
+			design_custom_id: design_custom_id,
+			notes: notes
+		};
+		ajaxCall(add_to_cart_url, data, function(json) {
+			
+		});
 	});
 
 	$(".select-type").on("change", function() {
