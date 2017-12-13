@@ -186,7 +186,12 @@ function get_cart() {
 
                 element += "<tr data-index='" + i + "' data-id='" + result[i].item_id + "' data-dcart-id='" + result[i].dcart_id + "'>";
                 element += "<td data-col='name'>";
-                element += "<div class='bags-td-name-image' style='background-image: url(" + product_url + "/" + result[i].item_id + "_1.png);'></div>";
+                if (result[i].item_type == 1) {
+                    element += "<div class='bags-td-name-image' style='background-image: url(" + product_url + "/" + result[i].item_id + "_1.png);'></div>";
+                } else {
+                    element += "<div class='bags-td-name-image-shirt' style='background-image: url(" + product_custom_url + "/" + result[i].shirt_custom_id + ".png);'></div>";
+                    element += "<div class='bags-td-name-image-design' style='background-image: url(" + product_custom_url + "/" + result[i].design_custom_id + ".png);'></div>";
+                }
                 element += "<div class='bags-td-name-text'>" + result[i].item_name + "</div>";
                 element += "</td>";
                 element += "<td data-col='size'>";

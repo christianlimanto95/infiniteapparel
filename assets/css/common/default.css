@@ -821,12 +821,23 @@ table tbody tr:nth-child(odd) {
   text-align: center;
 }
 
-.bags-td-name-image {
+.bags-td-name-image, .bags-td-name-image-shirt {
   width: 50px;
   height: 50px;
   background-size: 100%;
   background-repeat: no-repeat;
   float: left;
+}
+
+.bags-td-name-image-design {
+  width: 27px;
+  height: 27px;
+  background-size: auto 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+  float: left;
+  margin-left: -38px;
+  margin-top: 12px;
 }
 
 .bags-td-name-text {
