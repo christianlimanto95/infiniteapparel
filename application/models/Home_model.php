@@ -37,6 +37,16 @@ class Home_model extends CI_Model
         return $query->result();
     }
 
+    function get_custom_name_price_by_custom_id($custom_id) {
+        $query = $this->db->query("
+            SELECT ct.custom_type_price AS item_price, 'Custom' AS item_name
+            FROM `custom` c, `custom_type` ct
+            WHERE c.custom_id = " . $custom_id . " AND c.custom_type_id = ct.custom_type_id
+            LIMIT 1
+        ");
+        return $query->result();
+    }
+
     function clear_hcart_dcart($user_id) {
         $query = $this->db->query("CALL clear_hcart_dcart('" . $user_id . "');");
         return $query->result();

@@ -167,6 +167,7 @@ function ajaxCall(url, data, callback) {
 
 function get_cart() {
     ajaxCall(get_cart_url, null, function(json) {
+        hideLoader();
         var result = jQuery.parseJSON(json);
         var total_qty = result.total_qty;
         var total_subtotal = result.total_subtotal;
@@ -229,7 +230,6 @@ function add_to_cart(element) {
     var qty = modal.find(".form-input-qty").val();
     
     ajaxCall(add_to_cart_url, {item_id: id, item_size: size, item_qty: qty, item_type: 1}, function(json) {
-        hideLoader();
         get_cart();        
         closeModal(element);
     });
@@ -238,7 +238,6 @@ function add_to_cart(element) {
 function remove_from_cart(index, dcart_id) {
     showLoader();
     ajaxCall(remove_from_cart_url, {index: index, dcart_id: dcart_id}, function() {
-        hideLoader();
         get_cart();
     });
 }
@@ -251,7 +250,6 @@ function cart_change_qty(element) {
     var item_qty = tr.find(".bags-input-qty").val();
     
     ajaxCall(cart_change_qty_url, {index: index, item_qty: item_qty, dcart_id: dcart_id}, function() {
-        hideLoader();
         get_cart();
     });
 }
@@ -264,7 +262,6 @@ function cart_change_size(element) {
     var item_size = tr.find(".bags-input-size").val();
     
     ajaxCall(cart_change_size_url, {index: index, item_size: item_size, dcart_id: dcart_id}, function() {
-        hideLoader();
         get_cart();
     });
 }

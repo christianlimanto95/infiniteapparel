@@ -49,7 +49,10 @@ class Home extends General_controller {
 							$item_id = $cart_item_col[0];
 							$item_size = $cart_item_col[1];
 							$item_qty = intval($cart_item_col[2]);
-							$item_name_price = $this->Home_model->get_item_name_and_price_by_id($item_id);
+							$item_type = $cart_item_col[3];
+							$shirt_custom_id = $cart_item_col[4];
+							$design_custom_id = $cart_item_col[5];
+							$item_name_price = ($item_type == 1) ? $this->Home_model->get_item_name_and_price_by_id($item_id) : $this->Home_model->get_custom_name_price_by_custom_id($design_custom_id);
 							$item_name = $item_name_price[0]->item_name;
 							$item_price = intval($item_name_price[0]->item_price);
 							$item_subtotal = intval($item_qty * $item_price);
@@ -58,6 +61,9 @@ class Home extends General_controller {
 								"item_id" => $item_id,
 								"item_size" => $item_size,
 								"item_qty" => $item_qty,
+								"item_type" => $item_type,
+								"shirt_custom_id" => $shirt_custom_id,
+								"design_custom_id" => $design_custom_id,
 								"item_name" => $item_name,
 								"item_price" => $item_price,
 								"item_subtotal" => $item_subtotal
@@ -135,8 +141,10 @@ class Home extends General_controller {
 					$item_size = $cart_item_col[1];
 					$item_qty = intval($cart_item_col[2]);
 					$item_type = $cart_item_col[3];
+					$shirt_custom_id = $cart_item_col[4];
+					$design_custom_id = $cart_item_col[5];
 
-					$item_data = $this->Home_model->get_product_by_id($item_id);
+					$item_data = ($item_type == 1) ? $this->Home_model->get_product_by_id($item_id) : $this->Home_model->get_custom_name_price_by_custom_id($design_custom_id);
 					if (sizeof($item_data) > 0) {
 						$item_data = $item_data[0];
 
@@ -149,6 +157,8 @@ class Home extends General_controller {
 						$cart_item[$i]->item_price = number_format($item_data->item_price, 0, ",", ".");
 						$cart_item[$i]->item_size = $item_size;
 						$cart_item[$i]->item_qty = $item_qty;
+						$cart_item[$i]->shirt_custom_id = $shirt_custom_id;
+						$cart_item[$i]->design_custom_id = $design_custom_id;
 						$subtotal = intval($item_data->item_price) * $item_qty;
 						$cart_item[$i]->item_subtotal = number_format($subtotal, 0, ",", ".");
 						$total_subtotal += $subtotal;
@@ -176,14 +186,18 @@ class Home extends General_controller {
 		$item_size = $this->input->post("item_size", true);
 		$item_qty = intval($this->input->post("item_qty", true));
 		$item_type = $this->input->post("item_type", true);
+		$shirt_custom_id = $this->input->post("shirt_custom_id", true);
+		$design_custom_id = $this->input->post("design_custom_id", true);
+
+		if ($item_type == 1) {
+			$shirt_custom_id = -1;
+			$design_custom_id = -1;
+		}
 
 		$user_id = parent::is_logged_in();
 		if ($user_id) {
 			if ($item_type == 2) {
-				$shirt_custom_id = $this->input->post("shirt_custom_id", true);
-				$design_custom_id = $this->input->post("design_custom_id", true);
 				$notes = $this->input->post("notes", true);
-
 				$data = array(
 					"shirt_custom_id" => $shirt_custom_id,
 					"design_custom_id" => $design_custom_id,
@@ -213,13 +227,26 @@ class Home extends General_controller {
 			} else {
 				if ($current_cookie != "") {
 					$current_cookie_item = explode("|", $current_cookie);
-					for ($i = 0; $i < sizeof($current_cookie_item); $i++) {
-						$current_cookie_item_col = explode("~", $current_cookie_item[$i]);
-						if ($current_cookie_item_col[0] == $item_id && $current_cookie_item_col[1] == $item_size) {
-							$current_cookie_item_col[2] += $item_qty;
-							$current_cookie_item[$i] = $current_cookie_item_col[0] . "~" . $current_cookie_item_col[1] . "~" . $current_cookie_item_col[2] . "~" . $current_cookie_item_col[3];
-							$newItem = false;
-							break;
+
+					if ($item_type == 1) {
+						for ($i = 0; $i < sizeof($current_cookie_item); $i++) {
+							$current_cookie_item_col = explode("~", $current_cookie_item[$i]);
+							if ($current_cookie_item_col[0] == $item_id && $current_cookie_item_col[1] == $item_size && $current_cookie_item_col[3] == 1) {
+								$current_cookie_item_col[2] += $item_qty;
+								$current_cookie_item[$i] = $current_cookie_item_col[0] . "~" . $current_cookie_item_col[1] . "~" . $current_cookie_item_col[2] . "~" . $current_cookie_item_col[3] . "~" . $current_cookie_item_col[4] . "~" . $current_cookie_item_col[5];
+								$newItem = false;
+								break;
+							}
+						}
+					} else {
+						for ($i = 0; $i < sizeof($current_cookie_item); $i++) {
+							$current_cookie_item_col = explode("~", $current_cookie_item[$i]);
+							if ($current_cookie_item_col[1] == $item_size && $current_cookie_item_col[4] == $shirt_custom_id && $current_cookie_item_col[5] == $design_custom_id && $current_cookie_item_col[3] == 2) {
+								$current_cookie_item_col[2] += $item_qty;
+								$current_cookie_item[$i] = $current_cookie_item_col[0] . "~" . $current_cookie_item_col[1] . "~" . $current_cookie_item_col[2] . "~" . $current_cookie_item_col[3] . "~" . $current_cookie_item_col[4] . "~" . $current_cookie_item_col[5];
+								$newItem = false;
+								break;
+							}
 						}
 					}
 
@@ -240,7 +267,7 @@ class Home extends General_controller {
 			if ($newItem) {
 				$this->input->set_cookie(array(
 					"name" => "infinite_apparel_cart",
-					"value" => $current_cookie . $item_id . "~" . $item_size . "~" . $item_qty . "~" . $item_type,
+					"value" => $current_cookie . $item_id . "~" . $item_size . "~" . $item_qty . "~" . $item_type . "~" . $shirt_custom_id . "~" . $design_custom_id,
 					"expire" => "31556926"
 				));
 			} else {
@@ -311,7 +338,7 @@ class Home extends General_controller {
 				$current_cookie_item = explode("|", $current_cookie);
 				$cookie_item_col = explode("~", $current_cookie_item[$index]);
 				$cookie_item_col[2] = $item_qty;
-				$current_cookie_item[$index] = $cookie_item_col[0] . "~" . $cookie_item_col[1] . "~" . $cookie_item_col[2] . "~" . $cookie_item_col[3];
+				$current_cookie_item[$index] = $cookie_item_col[0] . "~" . $cookie_item_col[1] . "~" . $cookie_item_col[2] . "~" . $cookie_item_col[3] . "~" . $cookie_item_col[4] . "~" . $cookie_item_col[5];
 
 				$current_cookie = "";
 				for ($i = 0; $i < sizeof($current_cookie_item); $i++) {
@@ -355,7 +382,7 @@ class Home extends General_controller {
 				$current_cookie_item = explode("|", $current_cookie);
 				$cookie_item_col = explode("~", $current_cookie_item[$index]);
 				$cookie_item_col[1] = $item_size;
-				$current_cookie_item[$index] = $cookie_item_col[0] . "~" . $cookie_item_col[1] . "~" . $cookie_item_col[2] . "~" . $cookie_item_col[3];
+				$current_cookie_item[$index] = $cookie_item_col[0] . "~" . $cookie_item_col[1] . "~" . $cookie_item_col[2] . "~" . $cookie_item_col[3] . "~" . $cookie_item_col[4] . "~" . $cookie_item_col[5];
 
 				$current_cookie = "";
 				for ($i = 0; $i < sizeof($current_cookie_item); $i++) {
