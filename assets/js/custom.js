@@ -1,6 +1,20 @@
 $(function() {
+	$(document).off("click", ".btn-add-to-bag");
+	$(document).on("click", ".btn-add-to-bag", function() {
+		
+	});
+
 	$(".select-type").on("change", function() {
 		var custom_type_id = this.value;
+
+		for (var i = 0; i < types.length; i++) {
+			if (types[i].custom_type_id == custom_type_id) {
+				var price = types[i].custom_type_price;
+				$(".custom-price").html("IDR " + addThousandSeparator(price));
+				break;
+			}
+		}
+
 		var element = "";
 		var first_custom_id = -1;
 		for (var i = 0; i < designs.length; i++) {

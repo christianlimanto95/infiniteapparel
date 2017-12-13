@@ -1,3 +1,8 @@
+.section-1 {
+    height: 900px;
+    padding-bottom: 50px;
+}
+
 .section-1-inner {
     width: 80vw;
     margin: 0 auto;
@@ -16,8 +21,8 @@
 
 .image-container {
     float: right;
-    width: 350px;
-    height: 350px;
+    width: 400px;
+    height: 400px;
     position: relative;
 }
 
@@ -31,10 +36,10 @@
 
 .design-image {
     position: absolute;
-    top: 70px;
-    left: 75px;
-    width: 200px;
-    height: 200px;
+    top: 80px;
+    left: 89px;
+    width: 225px;
+    height: 225px;
     background-size: auto 100%;
     background-repeat: no-repeat;
     background-position: center;
@@ -44,13 +49,13 @@
     
 }
 
-.form-item {
+.custom-form-item {
     margin-bottom: 40px;
 }
 
-.form-label {
-    font-size: 18pt;
+.custom-form-label {
     margin-bottom: 10px;
+    font-family: helvetica;
 }
 
 .color {
@@ -69,12 +74,52 @@
     height: 43px;
 }
 
-.select-type, .select-type option {
+.select-type, .select-type option, .custom-select-size, .custom-select-size option, .custom-input-qty, .custom-input-notes {
     font-family: helvetica;
-    font-size: 14pt;
+    font-size: 12pt;
     padding: 5px;
 }
 
 .select-type {
     margin-left: 5px;
+}
+
+.custom-form-item-size {
+    margin-right: 30px;
+}
+
+.custom-input-qty {
+    text-align: center;
+    width: 70px;
+}
+
+.custom-input-notes {
+    width: 300px;
+    resize: none;
+}
+
+.custom-price {
+    font-family: helvetica;
+    font-size: 18pt;
+}
+
+.custom-btn-container {
+    margin-top: 50px;
+}
+
+.custom-btn {
+    width: 150px;
+    padding: 10px 0;
+    font-size: 12pt;
+    border: 1px solid rgb(37, 37, 37);
+    color: rgb(37, 37, 37);
+    text-align: center;
+    cursor: pointer;
+    margin-bottom: 10px;
+    transition: all 0.3s;
+}
+
+.custom-btn:hover {
+    background-color: rgb(37, 37, 37);
+    color: white;
 }
