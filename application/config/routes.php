@@ -62,4 +62,5 @@ $route["cart-change-qty"] = "home/cart_change_qty";
 $route["cart-change-size"] = "home/cart_change_size";
 $route["sign-up"] = "sign_up";
 $route["verify-email/(:any)"] = "sign_up/verify_email/(:any)";
+$route["product"] = "catalog";
 $route["product/(:any)/(:any)"] = "product";

@@ -9,7 +9,7 @@
             <div class="section-1-left">
                 <div class="image-container">
                     <div class="shirt-image" style="background-image: url(<?php echo base_url("assets/images/custom/1.png"); ?>);"></div>
-                    <div class="design-image" style="background-image: url(<?php echo base_url("assets/images/custom/9.png"); ?>);"></div>
+                    <div class="design-image" style="background-image: url(<?php echo base_url("assets/images/custom/8.png"); ?>);"></div>
                 </div>
             </div>
             <div class="section-1-right">
@@ -32,9 +32,15 @@
                 ?></select></div>
                     <div class="color-container designs-color-container">
                     <?php
+                        $firstFound = false;
                         for ($i = 0; $i < sizeof($designs); $i++) {
                             if ($designs[$i]->custom_type_id == $types[0]->custom_type_id) {
-                                echo "<div class='color' style='background-color: #" . $designs[$i]->custom_color_hex . ";' data-id='" . $designs[$i]->custom_id . "' ></div>";
+                                $selected = "";
+                                if (!$firstFound) {
+                                    $firstFound = true;
+                                    $selected = " selected";
+                                }
+                                echo "<div class='color" . $selected . "' style='background-color: #" . $designs[$i]->custom_color_hex . ";' data-id='" . $designs[$i]->custom_id . "' ></div>";
                             }
                         }
                     ?>
@@ -50,7 +56,7 @@ for ($i = 0; $i < sizeof($shirts); $i++) {
     if ($i > 0) {
         echo ", ";
     }
-    echo "{custom_id: " . $shirts[$i]->custom_id . ", custom_type_id: " . $shirts[$i]->custom_type_id . ", custom_color_hex: '" . $shirts[$i]->custom_color_hex . "'}";
+    echo "{custom_id: " . $shirts[$i]->custom_id . ", custom_type_id: " . $shirts[$i]->custom_type_id . ", custom_color_hex: '" . $shirts[$i]->custom_color_hex . "', image: '" . base_url("assets/images/custom/" . $shirts[$i]->custom_id . ".png") . "'}";
 }    
 ?>
 ];
@@ -59,7 +65,7 @@ for ($i = 0; $i < sizeof($designs); $i++) {
     if ($i > 0) {
         echo ", ";
     }
-    echo "{custom_id: " . $designs[$i]->custom_id . ", custom_type_id: " . $designs[$i]->custom_type_id . ", custom_color_hex: '" . $designs[$i]->custom_color_hex . "'}";
+    echo "{custom_id: " . $designs[$i]->custom_id . ", custom_type_id: " . $designs[$i]->custom_type_id . ", custom_color_hex: '" . $designs[$i]->custom_color_hex . "', image: '" . base_url("assets/images/custom/" . $designs[$i]->custom_id . ".png") . "'}";
 }    
 ?>
 ];
