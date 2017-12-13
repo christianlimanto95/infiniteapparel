@@ -192,6 +192,8 @@ class Home extends General_controller {
 		if ($item_type == 1) {
 			$shirt_custom_id = -1;
 			$design_custom_id = -1;
+		} else {
+			$item_id = -1;
 		}
 
 		$user_id = parent::is_logged_in();
