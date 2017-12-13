@@ -50,12 +50,13 @@
 }
 
 .custom-form-item {
-    margin-bottom: 40px;
+    margin-bottom: 30px;
 }
 
 .custom-form-label {
-    margin-bottom: 10px;
+    margin-bottom: 5px;
     font-family: helvetica;
+    font-size: 12pt;
 }
 
 .color {
@@ -76,7 +77,7 @@
 
 .select-type, .select-type option, .custom-select-size, .custom-select-size option, .custom-input-qty, .custom-input-notes {
     font-family: helvetica;
-    font-size: 12pt;
+    font-size: 10pt;
     padding: 5px;
 }
 
@@ -100,11 +101,11 @@
 
 .custom-price {
     font-family: helvetica;
-    font-size: 18pt;
+    font-size: 14pt;
 }
 
 .custom-btn-container {
-    margin-top: 50px;
+    margin-top: 30px;
 }
 
 .custom-btn {

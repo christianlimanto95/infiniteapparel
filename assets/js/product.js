@@ -10,7 +10,7 @@ $(function() {
 		ajaxCall(add_to_cart_url, {item_id: id, item_size: size, item_qty: qty, item_type: 1}, function(json) {
 			hideLoader();
 			get_cart();        
-			closeModal(element);
+			closeModal();
 		});
 	});
 

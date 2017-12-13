@@ -177,23 +177,34 @@ class Home extends General_controller {
 		$item_qty = intval($this->input->post("item_qty", true));
 		$item_type = $this->input->post("item_type", true);
 
-		if ($item_type == 2) {
-			$shirt_custom_id = $this->input->post("shirt_custom_id", true);
-			$design_custom_id = $this->input->post("design_custom_id", true);
-			$notes = $this->input->post("notes", true);
-		}
-
 		$user_id = parent::is_logged_in();
 		if ($user_id) {
-			$data = array(
-				"item_id" => $item_id,
-				"item_size" => $item_size,
-				"item_qty" => $item_qty,
-				"item_type" => $item_type,
-				"user_id" => $user_id
-			);
-			$result = $this->Home_model->insert_dcart($data)[0];
-			echo json_encode($result);
+			if ($item_type == 2) {
+				$shirt_custom_id = $this->input->post("shirt_custom_id", true);
+				$design_custom_id = $this->input->post("design_custom_id", true);
+				$notes = $this->input->post("notes", true);
+
+				$data = array(
+					"shirt_custom_id" => $shirt_custom_id,
+					"design_custom_id" => $design_custom_id,
+					"item_size" => $item_size,
+					"item_qty" => $item_qty,
+					"notes" => $notes,
+					"user_id" => $user_id
+				);
+				$result = $this->Home_model->insert_dcart_custom($data)[0];
+				echo json_encode($result);
+			} else {
+				$data = array(
+					"item_id" => $item_id,
+					"item_size" => $item_size,
+					"item_qty" => $item_qty,
+					"item_type" => $item_type,
+					"user_id" => $user_id
+				);
+				$result = $this->Home_model->insert_dcart($data)[0];
+				echo json_encode($result);
+			}
 		} else {
 			$newItem = true;
 			$current_cookie = $this->input->cookie("infinite_apparel_cart", true);

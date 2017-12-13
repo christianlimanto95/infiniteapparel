@@ -8,6 +8,8 @@ $(function() {
 
 	$(document).off("click", ".btn-add-to-bag");
 	$(document).on("click", ".btn-add-to-bag", function() {
+		showLoader();
+
 		var shirt_custom_id = $(".shirts-color-container .color.selected").attr("data-id");
 		var design_custom_id = $(".designs-color-container .color.selected").attr("data-id");
 		var item_size = $(".custom-select-size").val();
@@ -23,7 +25,8 @@ $(function() {
 			notes: notes
 		};
 		ajaxCall(add_to_cart_url, data, function(json) {
-			
+			hideLoader();
+			get_cart();
 		});
 	});
 

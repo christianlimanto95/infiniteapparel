@@ -111,6 +111,11 @@ class Home_model extends CI_Model
         return $query->result();
     }
 
+    function insert_dcart_custom($data) {
+        $query = $this->db->query("CALL insert_dcart_custom('" . $data["shirt_custom_id"] . "', '" . $data["design_custom_id"] . "', '" . $data["item_size"] . "', '" . $data["item_qty"] . "', '" . $data["notes"] . "', '" . $data["user_id"] . "');");
+        return $query->result();
+    }
+
     function update_dcart_qty($data) {
         $query = $this->db->query("CALL update_dcart_qty('" . $data["dcart_id"] . "', '" . $data["item_qty"] . "', '" . $data["user_id"] . "');");
         return $query->result();
