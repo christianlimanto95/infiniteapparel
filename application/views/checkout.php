@@ -40,7 +40,38 @@
                     </div>
                 </div>
             </div>
-            <div class="section-1-right"></div>
+            <div class="section-1-right">
+                <div class="recipient-title">RECIPIENT INFORMATION</div>
+                <div class="form-item-inline custom-form-item-inline">
+                    <div class="form-label">First Name</div>
+                    <input type="text" class="form-input" maxlength="50" />
+                </div>
+                <div class="form-item-inline custom-form-item-inline">
+                    <div class="form-label">Last Name</div>
+                    <input type="text" class="form-input" maxlength="50" />
+                </div>
+                <div class="form-item">
+                    <div class="form-label">City</div>
+                    <select class="form-input"></select>
+                </div>
+                <div class="form-item">
+                    <div class="form-label">Address</div>
+                    <input type="text" class="form-input" />
+                </div>
+                <div class="form-item">
+                    <div class="form-label">Phone Number</div>
+                    <input type="text" class="form-input" maxlength="15" />
+                </div>
+                <div class="form-item-inline custom-form-item-inline form-item-shipping">
+                    <div class="form-label">Shipping</div>
+                    <select class="form-input"></select>
+                </div>
+                <div class="form-item-inline custom-form-item-inline">
+                    <div class="form-label">Service</div>
+                    <select class="form-input"></select>
+                </div>
+                <div class="btn btn-submit-checkout">Submit</div>
+            </div>
         </div>
     </div>
 </div>

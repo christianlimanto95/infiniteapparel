@@ -52,13 +52,15 @@
 			<a href="<?php echo base_url("contact"); ?>" class="header-menu">CONTACT</a>
 		</div>
 	</div>
-	<div class="bags-container">
-		<div class="bags-container-inner">
-			<div class="bags-image bags-image-white" style="background-image: url(<?php echo base_url("assets/icons/bag.png?v=1"); ?>);"></div>
-			<div class="bags-image bags-image-black" style="background-image: url(<?php echo base_url("assets/icons/bag_invers.png?v=1"); ?>);"></div>
-			<div class="bags-ctr">0</div>
+	<?php if ($do_get_cart == "true") { ?>
+		<div class="bags-container">
+			<div class="bags-container-inner">
+				<div class="bags-image bags-image-white" style="background-image: url(<?php echo base_url("assets/icons/bag.png?v=1"); ?>);"></div>
+				<div class="bags-image bags-image-black" style="background-image: url(<?php echo base_url("assets/icons/bag_invers.png?v=1"); ?>);"></div>
+				<div class="bags-ctr">0</div>
+			</div>
 		</div>
-	</div>
+	<?php } ?>
 	<?php if (!$is_logged_in) { ?>
 		<div class="header-login-or-signup">
 			<span class="header-btn-login">Login</span> or <a href="<?php echo base_url("sign-up"); ?>">Sign Up Yours</a>
@@ -85,27 +87,29 @@
 		</div>
 	</div>
 </div>
-<div class="modal modal-login">
-	<div class="modal-box">
-		<div class="modal-header">
-			<div class="modal-close-button" style="background-image: url(<?php echo base_url("assets/icons/close.png"); ?>);"></div>
-			<div class="modal-header-text">Login</div>
-		</div>
-		<div class="modal-body">
-			<div class="form-item form-item-email">
-				<div class="form-label">Email <span class="error error-modal-input-email"></span></div>
-				<input type="email" class="form-input modal-input-email" />
+<?php if ($do_get_cart == "true") { ?>
+	<div class="modal modal-login">
+		<div class="modal-box">
+			<div class="modal-header">
+				<div class="modal-close-button" style="background-image: url(<?php echo base_url("assets/icons/close.png"); ?>);"></div>
+				<div class="modal-header-text">Login</div>
 			</div>
-			<div class="form-item">
-				<div class="form-label">Password <span class="error error-modal-input-password"></span></div>
-				<input type="password" class="form-input modal-input-password" />
+			<div class="modal-body">
+				<div class="form-item form-item-email">
+					<div class="form-label">Email <span class="error error-modal-input-email"></span></div>
+					<input type="email" class="form-input modal-input-email" />
+				</div>
+				<div class="form-item">
+					<div class="form-label">Password <span class="error error-modal-input-password"></span></div>
+					<input type="password" class="form-input modal-input-password" />
+				</div>
 			</div>
-		</div>
-		<div class="modal-footer">
-			<div class="modal-btn modal-btn-login">Login</div>
+			<div class="modal-footer">
+				<div class="modal-btn modal-btn-login">Login</div>
+			</div>
 		</div>
 	</div>
-</div>
+<?php } ?>
 <div class="modal modal-bags">
 	<div class="modal-box">
 		<div class="modal-header">
@@ -188,5 +192,6 @@ var product_custom_url = "<?php echo base_url("assets/images/custom"); ?>";
 var bags_add_item_url = "<?php echo base_url("assets/icons/add_cart.svg"); ?>";
 var bags_remove_item_url = "<?php echo base_url("assets/icons/remove_cart.svg"); ?>";
 var checkout_url = "<?php echo base_url("checkout"); ?>";
+var do_get_cart = <?php echo $do_get_cart; ?>;
 </script>
 <div class="container" tabindex="1">

@@ -9,6 +9,7 @@ Just put general function which frequently used in this class
 class General_controller extends CI_Controller
 {
 	protected $additional_files = "";
+	protected $do_get_cart = "true";
    
     public function __construct()
     {
@@ -30,10 +31,15 @@ class General_controller extends CI_Controller
 		$this->additional_files .= "<script src='" . base_url("assets/js/template/" . $file_name . ".js") . "' defer></script>";
 	}
 
+	public function disable_get_cart() {
+		$this->do_get_cart = false;
+	}
+
     public function view($file, $data){
 		$data["additional_files"] = $this->additional_files;
 		$data["page_name"] = $file;
 		$data["is_logged_in"] = false;
+		$data["do_get_cart"] = $this->do_get_cart;
 
 		$user = $this->input->cookie("infinite_apparel_user", true);
 		if ($user) {

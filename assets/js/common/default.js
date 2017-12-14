@@ -142,7 +142,9 @@ $(function() {
         $(".bags-preview-image, .bags-preview-image-design").removeAttr("style");
     });
 
-    get_cart();
+    if (do_get_cart) {
+        get_cart();
+    }
 });
 
 function clearModalInputs(modal) {
