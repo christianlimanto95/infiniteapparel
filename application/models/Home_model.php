@@ -89,12 +89,12 @@ class Home_model extends CI_Model
         $total_qty = 0;
         $total_price = 0;
         $insertDcartQuery = "
-            INSERT INTO dcart (hcart_id, item_id, item_name, item_size, item_price, item_qty, dcart_subtotal) VALUES ";
+            INSERT INTO dcart (hcart_id, item_id, shirt_custom_id, design_custom_id, item_type, item_name, item_size, item_price, item_qty, dcart_subtotal) VALUES ";
         for ($i = 0; $i < $iLength; $i++) {
             if ($i > 0) {
                 $insertDcartQuery .= ", ";
             }
-            $insertDcartQuery .= "('" . $hcart_id . "', '" . $dcart[$i]["item_id"] . "', '" . $dcart[$i]["item_name"] . "', '" . $dcart[$i]["item_size"] . "', '" . $dcart[$i]["item_price"] . "', '" . $dcart[$i]["item_qty"] . "', '" . $dcart[$i]["item_subtotal"] . "')";
+            $insertDcartQuery .= "('" . $hcart_id . "', '" . $dcart[$i]["item_id"] . "', '" . $dcart[$i]["shirt_custom_id"] . "', '" . $dcart[$i]["design_custom_id"] . "', '" . $dcart[$i]["item_type"] . "', '" . $dcart[$i]["item_name"] . "', '" . $dcart[$i]["item_size"] . "', '" . $dcart[$i]["item_price"] . "', '" . $dcart[$i]["item_qty"] . "', '" . $dcart[$i]["item_subtotal"] . "')";
 
             $total_qty += intval($dcart[$i]["item_qty"]);
             $total_price += intval($dcart[$i]["item_subtotal"]);
