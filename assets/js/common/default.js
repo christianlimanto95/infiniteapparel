@@ -117,6 +117,25 @@ $(function() {
         }
     });
 
+    $(document).on("click", ".bags-td-name-image, .bags-td-name-image-shirt, .bags-td-name-image-design", function() {
+        if ($(this).hasClass("bags-td-name-image")) {
+            var image = $(this).css("background-image").slice(4, -1).replace(/["|']/g, "");
+            $(".bags-preview-image").css("background-image", "url(" + image + ")");
+        } else {
+            var td = $(this).closest("td");
+            var shirtImage = td.find(".bags-td-name-image-shirt").css("background-image").slice(4, -1).replace(/["|']/g, "");
+            var designImage = td.find(".bags-td-name-image-design").css("background-image").slice(4, -1).replace(/["|']/g, "");
+            $(".bags-preview-image").css("background-image", "url(" + shirtImage + ")");
+            $(".bags-preview-image-design").css("background-image", "url(" + designImage + ")");
+        }
+        $(".bags-preview").addClass("show");
+    });
+
+    $(document).on("click", ".bags-preview", function() {
+        $(".bags-preview").removeClass("show");
+        $(".bags-preview-image, .bags-preview-image-design").removeAttr("style");
+    });
+
     get_cart();
 });
 

@@ -827,6 +827,7 @@ table tbody tr:nth-child(odd) {
   background-size: 100%;
   background-repeat: no-repeat;
   float: left;
+  cursor: pointer;
 }
 
 .bags-td-name-image-design {
@@ -838,6 +839,7 @@ table tbody tr:nth-child(odd) {
   float: left;
   margin-left: -38px;
   margin-top: 12px;
+  cursor: pointer;
 }
 
 .bags-td-name-text {
@@ -867,6 +869,70 @@ table tbody tr:nth-child(odd) {
 
 .modal-bags .bags-add-item {
   margin-right: 10px;
+}
+
+.bags-preview {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 3000;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.bags-preview.show {
+  display: block;
+}
+
+.bags-preview-center {
+  position: absolute;
+  width: 500px;
+  height: 500px;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  -moz-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  -o-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}
+
+.bags-preview-image-container {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+.bags-preview-image {
+  width: 100%;
+  height: 100%;
+  background-size: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.bags-preview-image-design {
+  background-size: auto 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  position: absolute;
+  width: 276px;
+  height: 276px;
+  top: 105px;
+  left: 112px;
+}
+
+.bags-preview-image-wrapper {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
 }
 
 .section-title {

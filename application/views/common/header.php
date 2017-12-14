@@ -76,6 +76,15 @@
 		</div>
 	<?php } ?>
 </div>
+<div class="bags-preview">
+	<div class="bags-preview-center">
+		<div class="bags-preview-image-container">
+			<div class="bags-preview-image"></div>
+			<div class="bags-preview-image-design"></div>
+			<div class="bags-preview-image-wrapper"></div>
+		</div>
+	</div>
+</div>
 <div class="modal modal-login">
 	<div class="modal-box">
 		<div class="modal-header">
