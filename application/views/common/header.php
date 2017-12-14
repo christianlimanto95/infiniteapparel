@@ -187,5 +187,6 @@ var product_url = "<?php echo base_url("assets/images/catalog"); ?>";
 var product_custom_url = "<?php echo base_url("assets/images/custom"); ?>";
 var bags_add_item_url = "<?php echo base_url("assets/icons/add_cart.svg"); ?>";
 var bags_remove_item_url = "<?php echo base_url("assets/icons/remove_cart.svg"); ?>";
+var checkout_url = "<?php echo base_url("checkout"); ?>";
 </script>
 <div class="container" tabindex="1">

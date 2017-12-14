@@ -681,9 +681,9 @@ body {
 }
 
 .form-label {
-  font-family: champagne;
+  font-family: helvetica;
   font-weight: bold;
-  font-size: 14pt;
+  font-size: 12pt;
 }
 
 .error {
@@ -694,8 +694,8 @@ body {
 }
 
 .form-input {
-  font-family: champagne;
-  font-size: 14pt;
+  font-family: helvetica;
+  font-size: 12pt;
   padding: 5px;
 }
 

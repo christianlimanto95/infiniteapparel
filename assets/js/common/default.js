@@ -107,6 +107,12 @@ $(function() {
         cart_change_qty(this);
     });
 
+    $(".modal-btn-checkout").on("click", function() {
+        if (!$(this).hasClass("disabled")) {
+            window.location = checkout_url;
+        }
+    });
+
     $(".modal-close-button").on("click", function() {
         closeModal(this);
     });
