@@ -8,8 +8,8 @@
         <div class="section-1-inner">
             <div class="section-1-left">
                 <div class="image-container">
-                    <div class="shirt-image" style="background-image: url(<?php echo base_url("assets/images/custom/1.png"); ?>);"></div>
-                    <div class="design-image" style="background-image: url(<?php echo base_url("assets/images/custom/8.png"); ?>);"></div>
+                    <div class="shirt-image" style="background-image: url(<?php echo base_url("assets/images/custom/" . $shirts[0]->custom_id . ".png?d=" . strtotime($shirts[0]->modified_date)); ?>);"></div>
+                    <div class="design-image" style="background-image: url(<?php echo base_url("assets/images/custom/" . $designs[0]->custom_id . ".png?d=" . strtotime($designs[0]->modified_date)); ?>);"></div>
                 </div>
             </div>
             <div class="section-1-right">
@@ -89,7 +89,7 @@ for ($i = 0; $i < sizeof($shirts); $i++) {
     if ($i > 0) {
         echo ", ";
     }
-    echo "{custom_id: " . $shirts[$i]->custom_id . ", custom_type_id: " . $shirts[$i]->custom_type_id . ", custom_color_hex: '" . $shirts[$i]->custom_color_hex . "', image: new Image(), imageSrc: '" . base_url("assets/images/custom/" . $shirts[$i]->custom_id . ".png") . "'}";
+    echo "{custom_id: " . $shirts[$i]->custom_id . ", custom_type_id: " . $shirts[$i]->custom_type_id . ", custom_color_hex: '" . $shirts[$i]->custom_color_hex . "', image: new Image(), imageSrc: '" . base_url("assets/images/custom/" . $shirts[$i]->custom_id . ".png?d=" . strtotime($shirts[$i]->modified_date)) . "'}";
 }    
 ?>];
 var designs = [<?php
@@ -97,7 +97,7 @@ for ($i = 0; $i < sizeof($designs); $i++) {
     if ($i > 0) {
         echo ", ";
     }
-    echo "{custom_id: " . $designs[$i]->custom_id . ", custom_type_id: " . $designs[$i]->custom_type_id . ", custom_color_hex: '" . $designs[$i]->custom_color_hex . "', image: new Image(), imageSrc: '" . base_url("assets/images/custom/" . $designs[$i]->custom_id . ".png") . "'}";
+    echo "{custom_id: " . $designs[$i]->custom_id . ", custom_type_id: " . $designs[$i]->custom_type_id . ", custom_color_hex: '" . $designs[$i]->custom_color_hex . "', image: new Image(), imageSrc: '" . base_url("assets/images/custom/" . $designs[$i]->custom_id . ".png?d=" . strtotime($designs[$i]->modified_date)) . "'}";
 }    
 ?>];
 </script>

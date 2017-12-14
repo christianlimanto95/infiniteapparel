@@ -7,13 +7,13 @@
         </div>
         <div class="section-1-inner">
             <div class="section-1-left">
-                <div class="product-image" style="background-image: url(<?php echo base_url("assets/images/catalog/" . $product->item_id . "_1.png"); ?>);"></div>
+                <div class="product-image" style="background-image: url(<?php echo base_url("assets/images/catalog/" . $product->item_id . "_1.png?d=" . strtotime($product->modified_date)); ?>);"></div>
                 <div class="product-image-thumbnail-container">
-                    <div class="product-image-thumbnail" style="background-image: url(<?php echo base_url("assets/images/catalog/" . $product->item_id . "_1.png"); ?>);" data-image-index="1"></div>
+                    <div class="product-image-thumbnail" style="background-image: url(<?php echo base_url("assets/images/catalog/" . $product->item_id . "_1.png?d=" . strtotime($product->modified_date)); ?>);" data-image-index="1"></div>
                     <?php
                         $image_count = intval($product->item_image_count);
                         for ($i = 1; $i < $image_count; $i++) { ?>
-                            <div class="product-image-thumbnail" style="background-image: url(<?php echo base_url("assets/images/catalog/" . $product->item_id . "_" . ($i + 1) . ".jpg"); ?>);" data-image-index="<?php echo ($i + 1); ?>"></div>
+                            <div class="product-image-thumbnail" style="background-image: url(<?php echo base_url("assets/images/catalog/" . $product->item_id . "_" . ($i + 1) . ".jpg?d=" . strtotime($product->modified_date)); ?>);" data-image-index="<?php echo ($i + 1); ?>"></div>
                     <?php
                         } ?>
                 </div>
