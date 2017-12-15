@@ -23,6 +23,16 @@ class Checkout extends General_controller {
 		parent::view("checkout", $data);
 	}
 
+	function do_checkout() {
+		$first_name = $this->input->post("first_name", true);
+		$last_name = $this->input->post("last_name", true);
+		$city_id = $this->input->post("city_id", true);
+		$address = $this->input->post("address", true);
+		$handphone = $this->input->post("handphone", true);
+		$shipping_name = $this->input->post("shipping_name", true);
+		$shipping_service = $this->input->post("shipping_service", true);
+	}
+
 	function get_city() {
 		parent::show_404_if_not_ajax();
 		$city = $this->Checkout_model->get_city();
