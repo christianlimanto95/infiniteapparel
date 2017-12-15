@@ -7,8 +7,7 @@ class Checkout_model extends CI_Model
         parent::__construct();
     }
 
-    function get_cart($user_id) {
-        $query = $this->db->query("CALL get_cart(" . $user_id . ");");
-        return $query->result();
+    function get_city() {
+        return $this->db->get("city")->result();
     }
 }

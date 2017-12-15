@@ -105,15 +105,30 @@
 	font-family: helvetica;
 	font-weight: bold;
 	font-size: 16pt;
-	margin-bottom: 30px;
+	margin-bottom: 20px;
 }
 
-.custom-form-item-inline {
-	margin-bottom: 20px;
+.custom-form-item-inline, .custom-form-item {
+	margin-bottom: 15px;
+}
+
+.custom-form-label, .custom-form-input, .custom-form-input option {
+	font-family: helvetica;
+	font-size: 10pt;
+}
+
+.custom-form-label {
+	margin-bottom: 2px;
 }
 
 .form-item-shipping {
 	margin-right: 30px;
+}
+
+.form-input-address {
+	width: 370px;
+	height: 60px;
+	resize: none;
 }
 
 .btn-submit-checkout {

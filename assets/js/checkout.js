@@ -1,5 +1,10 @@
 $(function() {
-	get_checkout_cart();
+    get_checkout_cart();
+    get_city();
+
+    $(".form-input-city").on("change", function() {
+        
+    });
 });
 
 function get_checkout_cart() {
@@ -30,5 +35,18 @@ function get_checkout_cart() {
             $(".checkout-item-container").html(element);
         }
         $(".total-item-value-subtotal").html(result.total_subtotal);
+    });
+}
+
+function get_city() {
+    ajaxCall(get_city_url, null, function(json) {
+        var result = jQuery.parseJSON(json);
+        var iLength = result.length;
+        var element = "";
+        for (var i = 0; i < iLength; i++) {
+            element += "<option value='" + result[i].city_id + "'>" + result[i].city_name + "</option>";
+        }
+        $(".form-input-city").html(element);
+        $(".form-input-city").val("444");
     });
 }

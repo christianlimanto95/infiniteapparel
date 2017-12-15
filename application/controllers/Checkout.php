@@ -25,4 +25,9 @@ class Checkout extends General_controller {
 			redirect(base_url());
 		}
 	}
+
+	function get_city() {
+		$city = $this->Checkout_model->get_city();
+		echo json_encode($city);
+	}
 }
