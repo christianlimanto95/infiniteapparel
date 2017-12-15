@@ -55,7 +55,7 @@ class General_controller extends CI_Controller
         $this->load->view('common/footer');
     }
 
-	public function cek_login() {
+	public function redirect_if_not_logged_in() {
         if (!$this->input->cookie('infinite_apparel_user', true)) {
             redirect(base_url());
         }
@@ -64,6 +64,14 @@ class General_controller extends CI_Controller
 	public function is_logged_in() {
 		return $this->input->cookie('infinite_apparel_user', true);
 	}
+
+	function show_404_if_not_ajax() {
+        if (isset($_SERVER['HTTP_X_REQUESTED_WITH']) && ($_SERVER['HTTP_X_REQUESTED_WITH'] == 'XMLHttpRequest' )) {
+            return true;
+        } else {
+            show_404();
+        }
+    }
 
     public function currency_format($nominal) {
         return number_format($number, 0, ".", ",");

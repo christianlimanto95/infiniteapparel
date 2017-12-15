@@ -1,9 +1,22 @@
+var shipping = [];
+
 $(function() {
     get_checkout_cart();
     get_city();
 
     $(".form-input-city").on("change", function() {
-        
+        var city_id = $(this).val();
+        get_shipping_service(city_id);
+    });
+
+    $(".form-input-shipping").on("change", function() {
+        var shipping_name = $(this).val();
+        setShippingServiceCombobox(shipping_name);
+    });
+
+    $(".form-input-service").on("change", function() {
+        var value = $(this).find("option:selected").attr("data-value");
+        setShippingCost(value);
     });
 });
 
@@ -48,5 +61,67 @@ function get_city() {
         }
         $(".form-input-city").html(element);
         $(".form-input-city").val("444");
+        get_shipping_service(444);
     });
+}
+
+function get_shipping_service(city_id) {
+    showLoader();
+    ajaxCall(get_shipping_cost_url, {city_id: city_id}, function(json) {
+        hideLoader();
+        var result = jQuery.parseJSON(json);
+        var shipping_element = "";
+        var service_element = "";
+        var shipping_name;
+        shipping = [];
+        for (shipping_name in result) {
+            if (result.hasOwnProperty(shipping_name)) {
+                var shipping_service = [];
+                for (var service in result[shipping_name]) {
+                    if (result[shipping_name].hasOwnProperty(service)) {
+                        shipping_service.push({
+                            name: service,
+                            value: result[shipping_name][service]
+                        });
+                    }
+                }
+                shipping.push({
+                    name: shipping_name,
+                    service: shipping_service
+                });
+                shipping_element += "<option value='" + shipping_name + "'>" + shipping_name.toUpperCase() + "</option>";
+            }
+        }
+        if (shipping.length > 0) {
+            for (var i = 0; i < shipping[0].service.length; i++) {
+                var service = shipping[0].service;
+                service_element += "<option value='" + service[i].name + "' data-value='" + service[i].value + "'>" + service[i].name + " : IDR " + addThousandSeparator(service[i].value) + "</option>";
+            }
+            setShippingCost(shipping[0].service[0].value);
+        }
+        $(".form-input-shipping").html(shipping_element);
+        $(".form-input-service").html(service_element);
+    });
+}
+
+function setShippingServiceCombobox(shipping_name) {
+    for (var i = 0; i < shipping.length; i++) {
+        if (shipping[i].name == shipping_name) {
+            var service_element = "";
+            for (var j = 0; j < shipping[i].service.length; j++) {
+                var service = shipping[i].service;
+                service_element += "<option value='" + service[j].name + "' data-value='" + service[j].value + "'>" + service[j].name + " : IDR " + addThousandSeparator(service[j].value) + "</option>";
+            }
+            $(".form-input-service").html(service_element);
+            setShippingCost(shipping[i].service[0].value);
+            break;
+        }
+    }
+}
+
+function setShippingCost(cost) {
+    var subtotal = parseInt($(".total-item-value-subtotal").html().replace(/\./g,''));
+    var total = addThousandSeparator(subtotal + parseInt(cost));
+    $(".total-item-value-disc").html(addThousandSeparator(cost));
+    $(".total-item-value-total").html(total);
 }
