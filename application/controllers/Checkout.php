@@ -14,7 +14,6 @@ class Checkout extends General_controller {
 	{
 		$user_id = parent::is_logged_in();
 		if ($user_id) {
-			//$cart = $this->Checkout_model->get_cart($user_id);
 			$data = array(
 				"title" => "Infinite Apparel | Checkout",
 				"header_additional_class" => " invers"

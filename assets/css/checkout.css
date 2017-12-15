@@ -25,10 +25,8 @@
 }
 
 .checkout-item-col {
-	display: inline-block;
-	vertical-align: top;
+	float: left;
 	margin-right: 10px;
-	
 }
 
 .checkout-item-number, .checkout-item-name, .checkout-item-size, .checkout-item-qty, .checkout-item-subtotal {
@@ -46,6 +44,16 @@
 	height: 70px;
 	background-size: 100%;
 	background-repeat: no-repeat;
+}
+
+.checkout-item-image-design {
+	width: 39px;
+	height: 39px;
+	margin-left: -64px;
+	margin-top: 19px;
+	background-size: auto 100%;
+	background-repeat: no-repeat;
+	background-position: center;
 }
 
 .checkout-item-name {

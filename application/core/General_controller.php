@@ -32,7 +32,7 @@ class General_controller extends CI_Controller
 	}
 
 	public function disable_get_cart() {
-		$this->do_get_cart = false;
+		$this->do_get_cart = "false";
 	}
 
     public function view($file, $data){

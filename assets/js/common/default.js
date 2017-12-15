@@ -293,12 +293,20 @@ function cart_change_size(element) {
     });
 }
 
-function showLoader() {
-    $(".loader-container").addClass("show");
+function showLoader(element) {
+    if (element == null) {
+        $(".loader-container").addClass("show");
+    } else {
+        $(element).addClass("show");
+    }
 }
 
-function hideLoader() {
-    $(".loader-container").removeClass("show");
+function hideLoader(element) {
+    if (element == null) {
+        $(".loader-container").removeClass("show");
+    } else {
+        $(element).removeClass("show");
+    }
 }
 
 function addThousandSeparator(nStr) {
