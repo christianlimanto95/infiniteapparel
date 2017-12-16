@@ -58,7 +58,7 @@
                     <select class="form-input custom-form-input form-input-shipping"></select>
                 </div>
                 <div class="form-item-inline custom-form-item-inline">
-                    <div class="form-label custom-form-label">Service</div>
+                    <div class="form-label custom-form-label">Service <span class="error error-service"></span></div>
                     <select class="form-input custom-form-input form-input-service"></select>
                 </div>
                 <div class="btn btn-submit-checkout">Submit</div>
@@ -69,5 +69,6 @@
 <script>
 var get_city_url = "<?php echo base_url("checkout/get_city"); ?>";
 var get_shipping_cost_url = "<?php echo base_url("checkout/get_cost"); ?>";
-var do_checkout_url = "<?php echo base_url("checkout/do_checkout") ?>";
+var do_checkout_url = "<?php echo base_url("checkout/do_checkout"); ?>";
+var order_list_url = "<?php echo base_url("order-list"); ?>";
 </script>

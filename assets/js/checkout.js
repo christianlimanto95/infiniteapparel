@@ -41,9 +41,48 @@ $(function() {
             $(".error-phone").html("Required");
         }
 
-        if (valid) {
-            alert(first_name + ", " + last_name + ", " + city_id) + ", " + address + ", " + handphone;
+        var shipping_name = $(".form-input-shipping").val();
+        var shipping_service = $(".form-input-service").val();
+        if (shipping_service == "") {
+            valid = false;
+            $(".error-service").html("Required");
         }
+
+        if (valid) {
+            showLoader();
+            var data = {
+                first_name: first_name,
+                last_name: last_name,
+                city_id: city_id,
+                address: address,
+                handphone: handphone,
+                shipping_name: shipping_name,
+                shipping_service: shipping_service
+            };
+            ajaxCall(do_checkout_url, data, function(json) {
+                hideLoader();
+                var result = jQuery.parseJSON(json);
+                if (result.status == "success") {
+                    window.location = order_list_url;
+                } else {
+
+                }
+            });
+        }
+    });
+
+    $(document).on("click", ".checkout-item-image, .checkout-item-image-design", function() {
+        if ($(this).attr("data-item-type") == "1") {
+            var image = $(this).css("background-image").slice(4, -1).replace(/["|']/g, "");
+            $(".bags-preview-image").css("background-image", "url(" + image + ")");
+        } else {
+            var checkoutItem = $(this).closest(".checkout-item");
+            var shirtImage = checkoutItem.find(".checkout-item-image").css("background-image").slice(4, -1).replace(/["|']/g, "");
+            var designImage = checkoutItem.find(".checkout-item-image-design").css("background-image").slice(4, -1).replace(/["|']/g, "");
+            $(".bags-preview-image").css("background-image", "url(" + shirtImage + ")");
+            $(".bags-preview-image-design").css("background-image", "url(" + designImage + ")");
+        }
+        $(".bags-preview").addClass("show");
     });
 });
 
@@ -59,10 +98,10 @@ function get_checkout_cart() {
                 element += "<div class='checkout-item'>";
                 element += "<div class='checkout-item-number checkout-item-col'>" + (i + 1) + ".</div>";
                 if (data[i].item_type == 1) {
-                    element += "<div class='checkout-item-image checkout-item-col' style='background-image: url(" + product_url + "/" + data[i].item_id + "_1.png);'></div>";
+                    element += "<div class='checkout-item-image checkout-item-col' data-item-type='1' style='background-image: url(" + product_url + "/" + data[i].item_id + "_1.png);'></div>";
                 } else {
-                    element += "<div class='checkout-item-image checkout-item-col' style='background-image: url(" + product_custom_url + "/" + data[i].shirt_custom_id + ".png);'></div>";
-                    element += "<div class='checkout-item-image-design checkout-item-col' style='background-image: url(" + product_custom_url + "/" + data[i].design_custom_id + ".png);'></div>";
+                    element += "<div class='checkout-item-image checkout-item-col' data-item-type='2' style='background-image: url(" + product_custom_url + "/" + data[i].shirt_custom_id + ".png);'></div>";
+                    element += "<div class='checkout-item-image-design checkout-item-col' data-item-type='2' style='background-image: url(" + product_custom_url + "/" + data[i].design_custom_id + ".png);'></div>";
                 }
                 element += "<div class='checkout-item-text checkout-item-col'>";
                 element += "<div class='checkout-item-name'>" + data[i].item_name + "</div>";

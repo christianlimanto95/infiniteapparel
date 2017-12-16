@@ -44,6 +44,7 @@
 	height: 70px;
 	background-size: 100%;
 	background-repeat: no-repeat;
+	cursor: pointer;
 }
 
 .checkout-item-image-design {
@@ -54,6 +55,7 @@
 	background-size: auto 100%;
 	background-repeat: no-repeat;
 	background-position: center;
+	cursor: pointer;
 }
 
 .checkout-item-name {

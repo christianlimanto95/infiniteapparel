@@ -98,6 +98,8 @@ class Home extends General_controller {
 	}
 
 	function get_cart() {
+		parent::show_404_if_not_ajax();
+		
 		$user_id = parent::is_logged_in();
 		if ($user_id) {
 			$cart = $this->Home_model->get_cart($user_id);

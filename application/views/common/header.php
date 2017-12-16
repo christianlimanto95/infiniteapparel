@@ -71,7 +71,7 @@
 				<div class="header-profile-image header-profile-image-white" style="background-image: url(<?php echo base_url("assets/icons/account.png"); ?>);"></div>
 				<div class="header-profile-image header-profile-image-black" style="background-image: url(<?php echo base_url("assets/icons/account_invert.png"); ?>);"></div>
 				<div class="header-profile-menu header-profile-menu-1"><?php echo $user_first_name; ?></div>
-				<a href="<?php echo base_url("order-list"); ?>" class="header-profile-menu header-profile-menu-2">Order list</a>
+				<a href="<?php echo base_url("order-list"); ?>" class="header-profile-menu header-profile-menu-2">Order List</a>
 				<a href="<?php echo base_url("account-settings"); ?>" class="header-profile-menu header-profile-menu-3">Account Settings</a>
 				<div class="header-profile-menu header-profile-menu-4 header-btn-logout">Logout</div>
 			</div>

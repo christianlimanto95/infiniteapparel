@@ -35,17 +35,30 @@ class Checkout extends General_controller {
 		$shipping_service = $this->input->post("shipping_service", true);
 
 		if ($shipping_name != "" && $shipping_service != "") {
+			$user_id = parent::is_logged_in();
+			$cart = $this->Checkout_model->get_cart($user_id);
+			$total_qty = $cart[0]->hcart_total_qty;
+			$total_price = $cart[0]->hcart_total_price;
+
 			$shipping = $this->getCost("444", $city_id, 1000, $shipping_name);
 			$shipping_cost = intval($shipping[$shipping_service]);
+
+			$hjual_grand_total_price = intval($total_price) + 0 + $shipping_cost;
+
 			$data = array(
+				"user_id" => $user_id,
+				"hjual_total_price" => $total_price,
+				"hjual_discount" => 0,
+				"hjual_grand_total_price" => $hjual_grand_total_price,
 				"first_name" => $first_name,
 				"last_name" => $last_name,
 				"city_id" => $city_id,
 				"address" => $address,
 				"handphone" => $handphone,
-				"shipping_name" => $shipping_name,
-				"shipping_service" => $shipping_service,
-				"shipping_cost" => $shipping_cost
+				"hjual_shipping_name" => $shipping_name,
+				"hjual_shipping_service" => $shipping_service,
+				"hjual_shipping_cost" => $shipping_cost,
+				"cart" => $cart
 			);
 			$this->Checkout_model->do_checkout($data);
 			echo json_encode(array(

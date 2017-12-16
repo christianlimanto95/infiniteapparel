@@ -64,3 +64,4 @@ $route["sign-up"] = "sign_up";
 $route["verify-email/(:any)"] = "sign_up/verify_email/(:any)";
 $route["product"] = "catalog";
 $route["product/(:any)/(:any)"] = "product";
+$route["order-list"] = "order_list";
