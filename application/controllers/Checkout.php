@@ -24,6 +24,8 @@ class Checkout extends General_controller {
 	}
 
 	function do_checkout() {
+		parent::show_404_if_not_ajax();
+
 		$first_name = $this->input->post("first_name", true);
 		$last_name = $this->input->post("last_name", true);
 		$city_id = $this->input->post("city_id", true);
@@ -31,6 +33,29 @@ class Checkout extends General_controller {
 		$handphone = $this->input->post("handphone", true);
 		$shipping_name = $this->input->post("shipping_name", true);
 		$shipping_service = $this->input->post("shipping_service", true);
+
+		if ($shipping_name != "" && $shipping_service != "") {
+			$shipping = $this->getCost("444", $city_id, 1000, $shipping_name);
+			$shipping_cost = intval($shipping[$shipping_service]);
+			$data = array(
+				"first_name" => $first_name,
+				"last_name" => $last_name,
+				"city_id" => $city_id,
+				"address" => $address,
+				"handphone" => $handphone,
+				"shipping_name" => $shipping_name,
+				"shipping_service" => $shipping_service,
+				"shipping_cost" => $shipping_cost
+			);
+			$this->Checkout_model->do_checkout($data);
+			echo json_encode(array(
+				"status" => "success"
+			));
+		} else {
+			echo json_encode(array(
+				"status" => "error"
+			));
+		}
 	}
 
 	function get_city() {

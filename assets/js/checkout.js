@@ -18,6 +18,33 @@ $(function() {
         var value = $(this).find("option:selected").attr("data-value");
         setShippingCost(value);
     });
+
+    $(".btn-submit-checkout").on("click", function() {
+        clearAllErrors();
+
+        var valid = true;
+        var first_name = $(".form-input-first-name").val().trim();
+        if (first_name == "") {
+            valid = false;
+            $(".error-first-name").html("Required");
+        }
+        var last_name = $(".form-input-last-name").val().trim();
+        var city_id = $(".form-input-city").val();
+        var address = $(".form-input-address").val().trim();
+        if (address == "") {
+            valid = false;
+            $(".error-address").html("Required");
+        }
+        var handphone = $(".form-input-phone").val().trim();
+        if (handphone == "") {
+            valid = false;
+            $(".error-phone").html("Required");
+        }
+
+        if (valid) {
+            alert(first_name + ", " + last_name + ", " + city_id) + ", " + address + ", " + handphone;
+        }
+    });
 });
 
 function get_checkout_cart() {

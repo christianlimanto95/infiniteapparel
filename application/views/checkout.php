@@ -34,24 +34,24 @@
             <div class="section-1-right">
                 <div class="recipient-title">RECIPIENT INFORMATION</div>
                 <div class="form-item-inline custom-form-item-inline">
-                    <div class="form-label custom-form-label">First Name</div>
-                    <input type="text" class="form-input custom-form-input" maxlength="50" />
+                    <div class="form-label custom-form-label">First Name <span class="error error-first-name"></span></div>
+                    <input type="text" class="form-input custom-form-input form-input-first-name" maxlength="50" />
                 </div>
                 <div class="form-item-inline custom-form-item-inline">
                     <div class="form-label custom-form-label">Last Name</div>
-                    <input type="text" class="form-input custom-form-input" maxlength="50" />
+                    <input type="text" class="form-input custom-form-input form-input-last-name" maxlength="50" />
                 </div>
                 <div class="form-item custom-form-item">
                     <div class="form-label custom-form-label">City</div>
                     <select class="form-input custom-form-input form-input-city"></select>
                 </div>
                 <div class="form-item custom-form-item">
-                    <div class="form-label custom-form-label">Address</div>
-                    <textarea class="form-input custom-form-input form-input-address"></textarea>
+                    <div class="form-label custom-form-label">Address <span class="error error-address"></span></div>
+                    <textarea class="form-input custom-form-input form-input-address" maxlength="100"></textarea>
                 </div>
                 <div class="form-item custom-form-item">
-                    <div class="form-label custom-form-label">Phone Number</div>
-                    <input type="text" class="form-input custom-form-input" maxlength="15" />
+                    <div class="form-label custom-form-label">Phone Number <span class="error error-phone"></span></div>
+                    <input type="phone" class="form-input custom-form-input form-input-phone" data-input-type="number" maxlength="15" />
                 </div>
                 <div class="form-item-inline custom-form-item-inline form-item-shipping">
                     <div class="form-label custom-form-label">Shipping</div>
@@ -69,4 +69,5 @@
 <script>
 var get_city_url = "<?php echo base_url("checkout/get_city"); ?>";
 var get_shipping_cost_url = "<?php echo base_url("checkout/get_cost"); ?>";
+var do_checkout_url = "<?php echo base_url("checkout/do_checkout") ?>";
 </script>

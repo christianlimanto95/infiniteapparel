@@ -142,6 +142,10 @@ $(function() {
         $(".bags-preview-image, .bags-preview-image-design").removeAttr("style");
     });
 
+    $(document).on("keydown", "[data-input-type='number']", function(e) {
+        isNumber(e);
+    });
+
     if (do_get_cart) {
         get_cart();
     }
@@ -323,10 +327,18 @@ function addThousandSeparator(nStr) {
 
 function pad(pad, str, padLeft) {
     if (typeof str === 'undefined') 
-      return pad;
+        return pad;
     if (padLeft) {
-      return (pad + str).slice(-pad.length);
+        return (pad + str).slice(-pad.length);
     } else {
-      return (str + pad).substring(0, pad.length);
+        return (str + pad).substring(0, pad.length);
     }
-  }
+}
+
+function isNumber(e) {
+	if (e.key.length == 1) {
+		if ("0123456789".indexOf(e.key) < 0) {
+			e.preventDefault();
+		}
+	}
+}
