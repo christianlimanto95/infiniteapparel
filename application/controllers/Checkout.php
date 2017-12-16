@@ -37,8 +37,8 @@ class Checkout extends General_controller {
 		if ($shipping_name != "" && $shipping_service != "") {
 			$user_id = parent::is_logged_in();
 			$cart = $this->Checkout_model->get_cart($user_id);
-			$total_qty = $cart[0]->hcart_total_qty;
-			$total_price = $cart[0]->hcart_total_price;
+			$total_qty = $cart[0]["hcart_total_qty"];
+			$total_price = $cart[0]["hcart_total_price"];
 
 			$shipping = $this->getCost("444", $city_id, 1000, $shipping_name);
 			$shipping_cost = intval($shipping[$shipping_service]);

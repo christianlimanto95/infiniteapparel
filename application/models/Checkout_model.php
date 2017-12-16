@@ -12,8 +12,12 @@ class Checkout_model extends CI_Model
     }
 
     function get_cart($user_id) {
-        $query = $this->db->query("CALL get_cart(" . $user_id . ");");
-        return $query->result();
+        $query = $this->db->query("
+            SELECT h.hcart_total_qty, h.hcart_total_price, d.dcart_id, d.item_id, d.shirt_custom_id, d.design_custom_id, d.item_type, d.item_name, d.item_size, d.item_price, d.item_qty, d.dcart_subtotal, d.dcart_notes, d.modified_date
+            FROM `dcart` d, `hcart` h
+            WHERe h.user_id = " . $user_id . " AND d.hcart_id = h.hcart_id
+        ");
+        return $query->result_array();
     }
 
     function do_checkout($data) {
