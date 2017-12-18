@@ -1,0 +1,48 @@
+.section-1-inner {
+	width: 80vw;
+	margin: 0 auto;
+}
+
+.section-1-left, .section-1-right {
+    width: 40vw;
+    height: 400px;
+    float: left;
+    padding: 0 30px;
+}
+
+.form-item-upper, .form-item-downer {
+    margin-bottom: 10px;
+}
+
+.form-item-downer .custom-form-label {
+    width: 60px;
+}
+
+.form-item-total-payment {
+    margin-bottom: 40px;
+}
+
+.form-item-downer span {
+    font-family: helvetica;
+}
+
+.custom-form-label, .custom-form-input {
+    display: inline-block;
+}
+
+.custom-form-label {
+    font-weight: normal;
+}
+
+.custom-form-input {
+    font-family: helvetica;
+    font-weight: bold;
+}
+
+.bank-image {
+    display: inline-block;
+    width: 100px;
+    height: 50px;
+    background-size: 100%;
+    background-repeat: no-repeat;
+}

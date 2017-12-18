@@ -61,4 +61,5 @@
 <script>
 var get_order_url = "<?php echo base_url("order_list/get_order"); ?>";
 var get_order_detail_url = "<?php echo base_url("order_list/get_order_detail"); ?>";
+var confirm_payment_url = "<?php echo base_url("confirm_payment"); ?>";
 </script>
