@@ -13,11 +13,29 @@ class Confirm_payment extends General_controller {
 	
 	public function index()
 	{
-		$data = array(
-			"title" => "Infinite Apparel | Confirm Payment",
-			"header_additional_class" => " invers"
-		);
-		
-		parent::view("confirm_payment", $data);
+		$hjual_id = $this->uri->segment(2);
+		if ($hjual_id != null) {
+			$user_id = parent::is_logged_in();
+			$data = array(
+				"hjual_id" => $hjual_id,
+				"user_id" => $user_id
+			);
+
+			$info = $this->Confirm_payment_model->get_info($data);
+			if (sizeof($info) > 0) {
+				$info = $info[0];
+				$data = array(
+					"title" => "Infinite Apparel | Confirm Payment",
+					"header_additional_class" => " invers",
+					"data" => $info
+				);
+				
+				parent::view("confirm_payment", $data);
+			} else {
+				redirect(base_url("order-list"));
+			}
+		} else {
+			redirect(base_url("order-list"));
+		}
 	}
 }

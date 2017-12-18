@@ -60,7 +60,7 @@ function get_order() {
                                 }
                                 element += "<span class='status-badge' data-status='" + result[i].hjual_status + "'>" + status_name + "</span>";
                                 if (result[i].hjual_status == "1") {
-                                    element += "<a href='" + confirm_payment_url + "' class='btn-confirm-payment'>Confirm Payment</a>";
+                                    element += "<a href='" + confirm_payment_url + "/" + result[i].hjual_id + "' class='btn-confirm-payment'>Confirm Payment</a>";
                                 }
                             element += "</div>";
                         element += "</div>";
