@@ -1,3 +1,120 @@
+.modal-order-detail .modal-box {
+    width: 690px;
+    height: 480px;
+}
+
+.modal-order-detail-table {
+    display: block;
+    height: 250px;
+    overflow-y: auto;
+}
+
+.modal-order-detail-table {
+    display: block;
+}
+
+.modal-order-detail-table thead {
+    background-color: rgb(37, 37, 37);
+    color: white;
+    display: block;
+}
+
+.modal-order-detail-table td {
+    padding: 5px;
+}
+
+.modal-order-detail-table td[data-col="name"] {
+    width: 250px;
+}
+
+.modal-order-detail-table thead td[data-col="name"] {
+    padding-left: 10px;
+}
+
+.modal-order-detail-table td[data-col="size"] {
+    width: 80px;
+    text-align: center;
+}
+
+.modal-order-detail-table td[data-col="price"], .modal-order-detail-table td[data-col="subtotal"] {
+    width: 120px;
+}
+
+.modal-order-detail-table td[data-col="qty"] {
+    width: 80px;
+    text-align: center;
+}
+
+.modal-order-detail-table td[data-col="qty"] input {
+    width: 60px;
+}
+
+.modal-order-detail-table tbody td {
+    padding: 0;
+}
+
+.modal-order-detail-table tbody td, .modal-order-detail-table tbody td div {
+    font-family: helvetica;
+    font-weight: bold;
+    font-size: 12pt;
+}
+
+.modal-order-detail-footer {
+    float: right;
+    text-align: right;
+}
+
+.modal-order-detail-footer-item {
+    margin-bottom: 5px;
+}
+
+.modal-order-detail-footer-label, .modal-order-detail-footer-value {
+    display: inline-block;
+    font-family: helvetica;
+    font-size: 12pt;
+}
+
+.modal-order-detail-footer-label {
+    width: 150px;
+}
+
+.modal-order-detail-footer-value {
+    width: 90px;
+}
+
+.order-detail-td-name-image, .order-detail-td-name-image-shirt {
+    width: 50px;
+    height: 50px;
+    background-size: 100%;
+    background-repeat: no-repeat;
+    float: left;
+    cursor: pointer;
+  }
+  
+  .order-detail-td-name-image-design {
+    width: 27px;
+    height: 27px;
+    background-size: auto 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+    float: left;
+    margin-left: -38px;
+    margin-top: 12px;
+    cursor: pointer;
+  }
+  
+  .order-detail-td-name-text {
+    float: left;
+    padding-top: 15px;
+    padding-left: 10px;
+    font-family: helvetica;
+    font-weight: bold;
+    width: 180px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+  }
+
 .section-1-inner {
     width: 80vw;
     margin: 0 auto;
@@ -13,6 +130,11 @@
     width: 5px;
     height: 180px;
     background-color: rgb(37, 37, 37);
+}
+
+.order-item {
+    overflow: auto;
+    margin-bottom: 30px;
 }
 
 .order-item-inner {

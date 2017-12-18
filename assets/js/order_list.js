@@ -1,12 +1,23 @@
 $(function() {
     get_order();
 
-    $(document).on("click", ".btn-view-details-view", function() {
-        
+    $(document).on("click", ".btn-view-details", function() {
+        var modal = $(".modal-order-detail");
+        modal.addClass("show");
+        var order_item = $(this).closest(".order-item");
+        get_order_detail(order_item);
+        modal.find(".modal-box").one('webkitAnimationEnd oanimationend oAnimationEnd msAnimationEnd animationend', function(e) {
+            modal.addClass("shown").removeClass("show");
+		});
     });
 
-    $(document).on("click", ".btn-view-details-hide", function() {
-        
+    $(".modal-order-detail").on("modal-close", function() {
+        $(".modal-order-detail-header-normal").html("0");
+        $(".order-detail-subtotal").html("0");
+        $(".order-detail-shipping-cost").html("0");
+        $(".order-detail-discount").html("0");
+        $(".order-detail-total").html("0");
+        $(".modal-order-detail-table tbody").html("");
     });
 });
 
@@ -17,7 +28,7 @@ function get_order() {
         var iLength = result.length;
         var element = "";
         for (var i = 0; i < iLength; i++) {
-            element += "<div class='order-item'>";
+            element += "<div class='order-item' data-order-id='" + result[i].hjual_id + "' data-total-price='" + result[i].hjual_total_price + "' data-discount='" + result[i].hjual_discount + "' data-shipping-cost='" + result[i].hjual_shipping_cost + "' data-grand-total-price='" + result[i].hjual_grand_total_price + "'>";
                 element += "<div class='left-border'></div>";
                 element += "<div class='order-item-inner'>";
                     element += "<div class='order-item-inner-left'>";
@@ -82,5 +93,47 @@ function get_order() {
         }
 
         $(".section-1-inner").html(element);
+    });
+}
+
+function get_order_detail(order_item) {
+    var order_id = order_item.attr("data-order-id");
+    var total = order_item.attr("data-total-price");
+    var shipping_cost = order_item.attr("data-shipping-cost");
+    var discount = order_item.attr("data-discount");
+    var grand_total = order_item.attr("data-grand-total-price");
+
+    $(".modal-order-detail-header-normal").html(order_id);
+    $(".order-detail-subtotal").html(total);
+    $(".order-detail-shipping-cost").html(shipping_cost);
+    $(".order-detail-discount").html(discount);
+    $(".order-detail-total").html(grand_total);
+
+    ajaxCall(get_order_detail_url, {order_id: order_id}, function(json) {
+        var result = jQuery.parseJSON(json);
+        var iLength = result.length;
+        var element = "";
+        for (var i = 0; i < iLength; i++) {
+            element += "<tr data-index='" + i + "' data-id='" + result[i].item_id + "'>";
+            element += "<td data-col='name'>";
+            if (result[i].item_type == 1) {
+                element += "<div class='order-detail-td-name-image' style='background-image: url(" + product_url + "/" + result[i].item_id + "_1.png);'></div>";
+            } else {
+                element += "<div class='order-detail-td-name-image-shirt' style='background-image: url(" + product_custom_url + "/" + result[i].shirt_custom_id + ".png);'></div>";
+                element += "<div class='order-detail-td-name-image-design' style='background-image: url(" + product_custom_url + "/" + result[i].design_custom_id + ".png);'></div>";
+            }
+            element += "<div class='order-detail-td-name-text'>" + result[i].item_name + "</div>";
+            element += "</td>";
+            element += "<td data-col='size'>";
+            element += result[i].item_size;
+            element += "</td>";
+            element += "<td data-col='price'>";
+            element += "IDR " + result[i].item_price;
+            element += "</td>";
+            element += "<td data-col='qty'>" + result[i].item_qty + "</td>";
+            element += "<td data-col='subtotal'>IDR " + result[i].djual_subtotal + "</td>";
+            element += "</tr>";
+        }
+        $(".modal-order-detail-table tbody").html(element);
     });
 }

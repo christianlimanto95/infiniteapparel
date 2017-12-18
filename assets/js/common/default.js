@@ -175,6 +175,7 @@ function closeModal(element) {
         modal.addClass("hide");
         modal.one('webkitAnimationEnd oanimationend oAnimationEnd msAnimationEnd animationend', function(e) {
             modal.removeClass("show").removeClass("shown").removeClass("hide");
+            modal.trigger("modal-close");
             clearModalInputs(modal);
         });
     }

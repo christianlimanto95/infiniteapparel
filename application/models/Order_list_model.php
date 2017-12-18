@@ -15,4 +15,13 @@ class Order_list_model extends CI_Model
         ");
         return $query->result();
     }
+
+    function get_order_detail($data) {
+        $query = $this->db->query("
+            SELECT d.*
+            FROM djual d, hjual h
+            WHERE h.hjual_id = " . $data["hjual_id"] . " AND h.user_id = " . $data["user_id"] . " AND d.hjual_id = h.hjual_id
+        ");
+        return $query->result();
+    }
 }
