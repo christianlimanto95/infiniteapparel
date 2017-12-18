@@ -20,4 +20,18 @@ class Order_list extends General_controller {
 		
 		parent::view("order_list", $data);
 	}
+
+	function get_order() {
+		parent::show_404_if_not_ajax();
+		$user_id = parent::is_logged_in();
+		$data = $this->Order_list_model->get_order($user_id);
+		$iLength = sizeof($data);
+		for ($i = 0; $i < $iLength; $i++) {
+			$data[$i]->hjual_total_price = number_format($data[$i]->hjual_total_price, 0, ",", ".");
+			$data[$i]->hjual_shipping_cost = number_format($data[$i]->hjual_shipping_cost, 0, ",", ".");
+			$data[$i]->hjual_discount = number_format($data[$i]->hjual_discount, 0, ",", ".");
+			$data[$i]->hjual_grand_total_price = number_format($data[$i]->hjual_grand_total_price, 0, ",", ".");
+		}
+		echo json_encode($data);
+	}
 }

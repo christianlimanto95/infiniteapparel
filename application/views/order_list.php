@@ -6,7 +6,10 @@
             <div class="section-title-line"></div>
         </div>
         <div class="section-1-inner">
-            <div class="order-item">
+            <div class="custom-loader-container show">
+                <div class="custom-loader"></div>
+            </div>
+        <!--<div class="order-item">
                 <div class="left-border"></div>
                 <div class="order-item-inner">
                     <div class="order-item-inner-left">
@@ -43,13 +46,15 @@
                             <div class="order-item-label">Phone : </div>
                             <div class="order-item-value">0878125212</div>
                         </div>
-                        <div class="btn-view-details btn-view-details-view show">View Details <span class="btn-icon" style="background-image: url(<?php echo base_url("assets/icons/ic_keyboard_arrow_down_black_24px.svg"); ?>)"></span></div>
-                        <div class="btn-view-details btn-view-details-hide">Hide Details <span class="btn-icon" style="background-image: url(<?php echo base_url("assets/icons/ic_keyboard_arrow_up_black_24px.svg"); ?>)"></span></div>
+                        <div class="btn-view-details btn-view-details-view show">View Details <span class="btn-icon" style="background-image: url(<?php //echo base_url("assets/icons/ic_keyboard_arrow_down_black_24px.svg"); ?>)"></span></div>
+                        <div class="btn-view-details btn-view-details-hide">Hide Details <span class="btn-icon" style="background-image: url(<?php //echo base_url("assets/icons/ic_keyboard_arrow_up_black_24px.svg"); ?>)"></span></div>
                     </div>
                 </div>
-                <div class="order-item-detail">
-                </div>
-            </div>
+            </div>-->
         </div>
     </div>
 </div>
+<script>
+var get_order_url = "<?php echo base_url("order_list/get_order"); ?>";
+var arrow_down_url = "<?php echo base_url("assets/icons/ic_keyboard_arrow_down_black_24px.svg"); ?>";
+</script>

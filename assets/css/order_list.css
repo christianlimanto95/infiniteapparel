@@ -4,6 +4,10 @@
     position: relative;
 }
 
+.custom-loader-container {
+    height: 300px;
+}
+
 .left-border {
     float: left;
     width: 5px;
@@ -45,6 +49,7 @@
 
 .order-item-value {
     font-weight: bold;
+    margin-left: 5px;
 }
 
 .btn-confirm-payment {
@@ -66,7 +71,6 @@
 }
 
 .btn-view-details {
-    display: none;
     position: absolute;
     bottom: 0;
     padding: 10px 15px;
@@ -76,35 +80,6 @@
     cursor: pointer;
 }
 
-.btn-view-details.show {
-    display: inline-block;
-}
-
 .btn-view-details:hover {
     background-color: #DDD;
-}
-
-.btn-icon {
-    width: 20px;
-    height: 20px;
-    display: inline-block;
-    background-size: 100%;
-    background-repeat: no-repeat;
-    vertical-align: middle;
-    margin-top: -2px;
-}
-
-.order-item-detail {
-    display: none;
-    width: 80%;
-    height: 150px;
-    clear: both;
-    margin: 0 auto;
-    border-left: 1px solid rgb(37, 37, 37);
-    border-right: 1px solid rgb(37, 37, 37);
-    border-bottom: 1px solid rgb(37, 37, 37);
-}
-
-.order-item-detail.show {
-    display: block;
 }
