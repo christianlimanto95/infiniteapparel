@@ -32,17 +32,19 @@
                 </div>
             </div>
             <div class="section-1-right">
-                <div>Bank</div>
-                <label for="bank-bca">
+                <div class="section-1-right-title">Bank</div>
+                <label class="label" for="bank-bca">
                     <input type="radio" name="bank" id="bank-bca" class="input-bank bank-bca" />
                     <div class="bank-image" style="background-image: url(<?php echo base_url("assets/images/bca.jpg") ?>);"></div>
                 </label>
-                <label for="bank-mandiri">
+                <label class="label" for="bank-mandiri">
                     <input type="radio" name="bank" id="bank-mandiri" class="input-bank bank-mandiri" />
                     <div class="bank-image" style="background-image: url(<?php echo base_url("assets/images/mandiri.png") ?>);"></div>
                 </label>
+                <div class="section-1-blank-space"></div>
                 <label for="bank-other">
-                    <input type="radio" name="bank" id="bank-other" />
+                    <input type="radio" name="bank" id="bank-other" class="input-bank bank-other" />
+                    <div class=""></div>
                 </label>
             </div>
         </div>

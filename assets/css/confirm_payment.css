@@ -39,10 +39,24 @@
     font-weight: bold;
 }
 
+.section-1-right-title {
+    margin-bottom: 20px;
+}
+
+.label {
+    margin-right: 30px;
+    cursor: pointer;
+}
+
 .bank-image {
     display: inline-block;
     width: 100px;
     height: 50px;
     background-size: 100%;
     background-repeat: no-repeat;
+    margin-bottom: -25px;
+}
+
+.section-1-blank-space {
+    height: 30px;
 }
