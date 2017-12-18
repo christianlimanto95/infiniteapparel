@@ -8,6 +8,14 @@ $(function() {
     header = $(".header");
     container = $(".container");
 
+    $(".menu-icon").on("click", function() {
+        if (header.hasClass("shown")) {
+            header.removeClass("shown");
+        } else {
+            header.addClass("shown");
+        }
+    });
+
     $(".header-btn-login").on("click", function() {
         var modal = $(".modal-login");
         modal.addClass("show");

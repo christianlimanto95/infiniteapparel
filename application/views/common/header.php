@@ -1,5 +1,6 @@
 <html>
 <head>
+	<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
 	<title><?php echo $title; ?></title>
 	<style>
 		@font-face {
@@ -37,6 +38,11 @@
 <div class="loader-container">
 	<div class="loader"></div>
 </div>
+<div class="menu-icon" id="menu-icon">
+	<div class="menu-icon-line menu-icon-line-1"></div>
+	<div class="menu-icon-line menu-icon-line-2"></div>
+	<div class="menu-icon-line menu-icon-line-3"></div>
+</div>
 <div class="header<?php echo $header_additional_class; ?>">
 	<div class="header-inner">
 		<a href="<?php echo base_url(); ?>" class="logo" >
@@ -45,12 +51,14 @@
 				<div class="logo-image logo-image-black" style="background-image: url(<?php echo base_url("assets/icons/logo_invers.png"); ?>);"></div>
 			</div>
 		</a>
+		<div class="header-menu-title" data-is-mobile="true">DIRECTORY</div>
 		<div class="header-menu-container">
 			<a href="<?php echo base_url(); ?>" class="header-menu">HOME</a>
 			<a href="<?php echo base_url("product"); ?>" class="header-menu">PRODUCT</a>
 			<a href="<?php echo base_url("custom"); ?>" class="header-menu">CUSTOM</a>
 			<a href="<?php echo base_url("contact"); ?>" class="header-menu">CONTACT</a>
 		</div>
+		<div class="header-menu-title" data-is-mobile="true">PROFILE</div>
 	</div>
 	<?php if ($do_get_cart == "true") { ?>
 		<div class="bags-container">
@@ -78,6 +86,15 @@
 		</div>
 	<?php } ?>
 </div>
+<?php if ($do_get_cart == "true") { ?>
+	<div class="bags-container" data-is-mobile="true">
+		<div class="bags-container-inner">
+			<div class="bags-image bags-image-white" style="background-image: url(<?php echo base_url("assets/icons/bag.png?v=1"); ?>);"></div>
+			<div class="bags-image bags-image-black" style="background-image: url(<?php echo base_url("assets/icons/bag_invers.png?v=1"); ?>);"></div>
+			<div class="bags-ctr">0</div>
+		</div>
+	</div>
+<?php } ?>
 <div class="bags-preview">
 	<div class="bags-preview-center">
 		<div class="bags-preview-image-container">

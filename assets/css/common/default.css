@@ -125,24 +125,13 @@ body {
   top: 0;
   left: 0;
   width: 100vw;
-  height: 100px;
   z-index: 1000;
-}
-
-.header-inner {
-  width: 100%;
-  height: 100%;
-  position: relative;
 }
 
 .logo {
   display: block;
   position: absolute;
-  top: 30px;
-  left: 60px;
   text-decoration: none;
-  width: 140px;
-  height: 75px;
 }
 
 .logo-inner-container {
@@ -167,19 +156,11 @@ body {
 
 .header-menu-container {
   display: inline-block;
-  margin-left: 50px;
-  position: absolute;
-  top: 30px;
-  left: 200px;
 }
 
 .header-menu {
-  display: inline-block;
   text-decoration: none;
-  color: white;
   font-weight: bold;
-  font-size: 20pt;
-  margin-right: 30px;
 }
 
 .header-menu.dark {
@@ -233,11 +214,6 @@ body {
 }
 
 .bags-container {
-  position: absolute;
-  top: 10px;
-  right: 50px;
-  width: 68px;
-  height: 68px;
   cursor: pointer;
 }
 
@@ -248,17 +224,11 @@ body {
 }
 
 .bags-image {
-  width: 55px;
-  height: 55px;
   background-size: 100%;
   background-repeat: no-repeat;
   position: absolute;
   bottom: 0;
   left: 0;
-}
-
-.bags-image-black {
-  opacity: 0;
 }
 
 .bags-ctr {
@@ -268,11 +238,7 @@ body {
   border-radius: 100%;
   background-color: white;
   color: rgb(37, 37, 37);
-  width: 25px;
-  height: 25px;
   text-align: center;
-  padding-top: 5px;
-  font-size: 10pt;
   font-family: helvetica;
   font-weight: bold;
 }
@@ -282,23 +248,15 @@ body {
 }
 
 .header-login-or-signup, .header-profile {
-  position: absolute;
-  top: 40px;
-  right: 130px;
-  color: white;
   font-family: helvetica;
   font-weight: bold;
-  font-size: 10pt;
 }
 
 .header-login-or-signup span, .header-login-or-signup a {
-  display: inline;
   text-decoration: underline;
   font-family: helvetica;
-  font-size: 10pt;
   cursor: pointer;
   font-weight: bold;
-  color: white;
 }
 
 .header-login-or-signup.hidden {
@@ -306,13 +264,10 @@ body {
 }
 
 .header-profile {
-  top: 25px;
   cursor: pointer;
 }
 
 .header-profile-inner {
-  width: 50px;
-  height: 50px;
   position: relative;
 }
 
@@ -334,40 +289,13 @@ body {
   display: block;
   color: white;
   font-family: helvetica;
-  font-size: 9pt;
   position: absolute;
-  top: -15px;
-  right: 60px;
-  width: 120px;
   text-align: right;
   text-decoration: none;
 }
 
-.header-profile-menu-1 {
-  font-size: 11pt;
-}
-
-.header-profile-menu-2 {
-  top: 10px;
-}
-
-.header-profile-menu-3 {
-  top: 25px;
-}
-
-.header-profile-menu-4 {
-  top: 40px;
-}
-
 .header.invers {
   background-color: rgba(255, 255, 255, 0.95);
-}
-
-.header.invers .logo {  
-  top: 18px;
-  left: 47px;
-  width: 112px;
-  height: 60px;
 }
 
 .header.invers .logo-image-black, .header.invers .bags-image-black, .header.invers .header-profile-image-black {
@@ -1062,8 +990,96 @@ table tbody tr:nth-child(odd) {
 }
 
 @media all and (max-width: 1024px) {
-  .div-mobile {
+  .menu-icon {
     display: block;
+    position: fixed;
+    cursor: pointer;
+    z-index: 4000;
+    top: 6vw;
+    right: 6vw;
+    width: 30px;
+  }
+
+  .menu-icon-line {
+    width: 100%;
+    height: 2px;
+    margin-bottom: 7px;
+    background-color: #252525;
+  }
+
+  .header {
+    display: none;
+    opacity: 0;
+    height: 100vh;
+    background-color: rgba(255, 255, 255, 0.9);
+    text-align: center;
+  }
+
+  .header.shown {
+    display: block;
+    opacity: 1;
+  }
+
+  .header-inner .logo {
+    display: none;
+  }
+
+  .header-menu-title {
+    font-size: 5vw;
+    letter-spacing: 5px;
+    font-family: moon-regular;
+    margin-top: 15vw;
+    margin-left: 5vw;
+    margin-bottom: 10vw;
+    text-align: left;
+  }
+
+  .header-menu {
+    color: rgb(37, 37, 37);
+    display: block;
+    font-size: 7vw;
+    margin-bottom: 8vw;
+  }
+
+  .header-menu:nth-last-child(1) {
+    margin-bottom: 4vw;
+  }
+
+  .header-login-or-signup, .header-profile {
+    color: rgb(37, 37, 37);
+  }
+
+  .header-login-or-signup span, .header-login-or-signup a {
+    color: rgb(37, 37, 37);
+    font-size: 6vw;
+  }
+
+  .bags-container {
+    display: none;
+  }
+
+  .bags-container[data-is-mobile="true"] {
+    display: block;
+    position: fixed;
+    top: 2vw;
+    left: 4vw;
+    width: 13vw;
+    height: 13vw;
+    z-index: 1000;
+  }
+
+  .bags-container[data-is-mobile="true"] .bags-image {
+    width: 11vw;
+    height: 11vw;
+  }
+
+  .bags-container[data-is-mobile="true"] .bags-image-white {
+    opacity: 0;
+  }
+
+  .bags-container[data-is-mobile="true"] .bags-ctr {
+    font-size: 4vw;
+    background-color: transparent;
   }
 
   .section {
@@ -1076,8 +1092,120 @@ table tbody tr:nth-child(odd) {
 }
 
 @media all and (min-width: 1025px) {
-  .div-mobile {
+  [data-is-mobile="true"] {
     display: none;
+  }
+
+  .menu-icon {
+    display: none;
+  }
+
+  .header {
+    height: 100px;
+  }
+
+  .header-inner {
+    width: 100%;
+    height: 100%;
+    position: relative;
+  }
+
+  .logo {
+    top: 30px;
+    left: 60px;
+    width: 140px;
+    height: 75px;
+  }
+
+  .header-menu-container {
+    position: absolute;
+    margin-left: 50px;
+    top: 30px;
+    left: 200px;
+  }
+
+  .header-menu {
+    display: inline-block;
+    color: white;
+    font-size: 20pt;
+    margin-right: 30px;
+  }
+
+  .bags-container {
+    position: absolute;
+    top: 10px;
+    right: 50px;
+    width: 68px;
+    height: 68px;
+  }
+
+  .bags-image {
+    width: 55px;
+    height: 55px;
+  }
+
+  .bags-image-black {
+    opacity: 0;
+  }
+
+  .bags-ctr {
+    width: 25px;
+    height: 25px;
+    padding-top: 5px;
+    font-size: 10pt;
+  }
+
+  .header-login-or-signup, .header-profile {
+    position: absolute;
+    color: white;
+    top: 40px;
+    right: 130px;
+    font-size: 10pt;
+  }
+
+  .header-login-or-signup span, .header-login-or-signup a {
+    display: inline;
+    color: white;
+    font-size: 10pt;
+  }
+
+  .header-profile {
+    top: 25px;
+  }
+
+  .header-profile-inner {
+    width: 50px;
+    height: 50px;
+  }
+
+  .header-profile-menu {
+    font-size: 9pt;
+    top: -15px;
+    right: 60px;
+    width: 120px;
+  }
+
+  .header-profile-menu-1 {
+    font-size: 11pt;
+  }
+  
+  .header-profile-menu-2 {
+    top: 10px;
+  }
+  
+  .header-profile-menu-3 {
+    top: 25px;
+  }
+  
+  .header-profile-menu-4 {
+    top: 40px;
+  }
+
+  .header.invers .logo {  
+    top: 18px;
+    left: 47px;
+    width: 112px;
+    height: 60px;
   }
 
   .section {
