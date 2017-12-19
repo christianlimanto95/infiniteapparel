@@ -131,6 +131,19 @@ $(function() {
         }
     });
 
+    $(window).on("resize", function() {
+        if (vw < 1025) {
+			isMobile = true;
+			if (vw >= 768) {
+				isTablet = true;
+			} else {
+				isTablet = false;
+			}
+		} else {
+			isMobile = false;
+		}
+    });
+
     $(document).on("click", ".bags-td-name-image, .bags-td-name-image-shirt, .bags-td-name-image-design", function() {
         if ($(this).hasClass("bags-td-name-image")) {
             var image = $(this).css("background-image").slice(4, -1).replace(/["|']/g, "");

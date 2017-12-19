@@ -22,10 +22,13 @@ $(function() {
 
 	setVH();
 	setSectionThreshold();
-	
-	container.on("scroll", checkHeaderScrollDown);
+
+	if (!isMobile) {
+		container.on("scroll", checkHeaderScrollDown);
+	}
 	container.on("scroll", checkSection2Threshold);
 	container.on("scroll", checkSection3Threshold);
+	
 	var section1Image = $(".section-1-image");
 	var btnExplore = $(".explore-products-container");
 	container.on("scroll", function() {
@@ -36,6 +39,17 @@ $(function() {
 
 	$(".btn-buy-now, .btn-add-to-bag").on("click", function(e) {
 		e.preventDefault();
+	});
+
+	$(window).on("resize", function() {
+		setVH();
+		setSectionThreshold();
+		
+		if (!isMobile) {
+			container.on("scroll", checkHeaderScrollDown);
+		}
+		container.on("scroll", checkSection2Threshold);
+		container.on("scroll", checkSection3Threshold);
 	});
 });
 

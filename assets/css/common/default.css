@@ -946,45 +946,27 @@ table tbody tr:nth-child(odd) {
 }
 
 .footer-follow-us {
-  margin-top: 40px;
   font-weight: bold;
-  font-size: 18pt;
   letter-spacing: 2px;
-}
-
-.footer-social-media-container {
-  margin: 20px 0 30px;
 }
 
 .footer-social-media-icon {
   display: inline-block;
-  width: 30px;
-  height: 30px;
   background-size: 100%;
   background-repeat: no-repeat;
-  margin-right: 5px;
-  margin-top: -2px;
   vertical-align: middle;
 }
 
 .footer-social-media-text {
   display: inline-block;
   font-family: helvetica;
-  margin-right: 50px;
-}
-
-.footer-social-media-text:nth-last-child(1) {
-  margin-right: 0;
 }
 
 .footer-copyright {
   font-family: helvetica;
-  font-size: 11pt;
-  margin-bottom: 50px;
 }
 
 .dnp-project {
-  font-size: 11pt;
   font-family: helvetica;
   color: black;
 }
@@ -1065,7 +1047,7 @@ table tbody tr:nth-child(odd) {
     left: 4vw;
     width: 13vw;
     height: 13vw;
-    z-index: 1000;
+    z-index: 900;
   }
 
   .bags-container[data-is-mobile="true"] .bags-image {
@@ -1084,6 +1066,43 @@ table tbody tr:nth-child(odd) {
 
   .section {
     height: 160vw;
+  }
+
+  .footer-follow-us {
+    margin-top: 10vw;
+    font-size: 4vw;
+    text-align: left;
+  }
+
+  .footer-social-media-container {
+    margin: 10vw 0;
+  }
+
+  .footer-social-media-icon {
+    width: 6vw;
+    height: 6vw;
+    margin-right: 2vw;
+    margin-top: -1vw;
+  }
+
+  .footer-social-media-text {
+    width: 70vw;
+    text-align: left;
+    margin-bottom: 4vw;
+  }
+
+  .footer-social-media-text:nth-last-child(1) {
+    margin-bottom: 0;
+  }
+
+  .footer-copyright {
+    font-size: 4vw;
+    margin-bottom: 10vw;
+    text-align: left;
+  }
+
+  .dnp-project {
+    font-size: 4vw;
   }
 }
 
@@ -1210,5 +1229,38 @@ table tbody tr:nth-child(odd) {
 
   .section {
     height: 56vw;
+  }
+
+  .footer-follow-us {
+    margin-top: 40px;
+    font-size: 18pt;
+  }
+
+  .footer-social-media-container {
+    margin: 20px 0 30px;
+  }
+
+  .footer-social-media-icon {
+    width: 30px;
+    height: 30px;
+    margin-right: 5px;
+    margin-top: -2px;
+  }
+
+  .footer-social-media-text {
+    margin-right: 50px;
+  }
+
+  .footer-social-media-text:nth-last-child(1) {
+    margin-right: 0;
+  }
+
+  .footer-copyright {
+    font-size: 11pt;
+    margin-bottom: 50px;
+  }
+
+  .dnp-project {
+    font-size: 11pt;
   }
 }
