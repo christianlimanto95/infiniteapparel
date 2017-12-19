@@ -618,8 +618,6 @@ body {
 .error {
   color: red;
   font-family: helvetica;
-  font-size: 9pt;
-  padding-left: 10px;
 }
 
 .form-input {
@@ -630,14 +628,8 @@ body {
   width: 100%;
 }
 
-.modal-bags .modal-box {
-  width: 770px;
-  height: 430px;
-}
-
 .modal-bags .modal-bags-header div, .modal-bags .modal-bags-header span {
   font-family: helvetica;
-  font-size: 14pt;
 }
 
 .modal-bags .modal-bags-header div {
@@ -654,7 +646,6 @@ body {
 
 .modal-bags-header-right {
   float: right;
-  margin-right: 30px;
 }
 
 table {
@@ -677,40 +668,11 @@ table tbody tr:nth-child(odd) {
 
 .modal-bags-table {
   display: block;
-  height: 250px;
   overflow-y: auto;
 }
 
 .modal-bags-table td {
   padding: 5px;
-}
-
-.modal-bags-table td[data-col="name"] {
-  width: 250px;
-}
-
-.modal-bags-table thead td[data-col="name"] {
-  padding-left: 10px;
-}
-
-.modal-bags-table td[data-col="size"] {
-  width: 80px;
-}
-
-.modal-bags-table td[data-col="price"], .modal-bags-table td[data-col="subtotal"] {
-  width: 120px;
-}
-
-.modal-bags-table td[data-col="qty"] {
-  width: 80px;
-}
-
-.modal-bags-table td[data-col="qty"] input {
-  width: 60px;
-}
-
-.modal-bags-table td[data-col="action"] {
-  width: 80px;
 }
 
 .modal-bags-table tbody td {
@@ -720,37 +682,14 @@ table tbody tr:nth-child(odd) {
 .modal-bags-table tbody td, .modal-bags-table tbody td div {
   font-family: helvetica;
   font-weight: bold;
-  font-size: 12pt;
 }
 
 .modal-bags-table input, .modal-bags-table select {
   font-family: helvetica;
-  font-size: 10pt;
   padding: 5px;
 }
 
-.modal-size-qty .modal-box {
-  width: 300px;
-  height: 230px;
-}
-
-.modal-size-qty .form-item-inline:nth-child(1) {
-  margin-right: 20px;
-}
-
-.modal-size-qty .form-label {
-  margin-bottom: 5px;
-}
-
-.modal-size-qty .form-input-size, .modal-size-qty .form-input-qty {
-  width: 60px;
-  font-size: 10pt;
-  text-align: center;
-}
-
 .bags-td-name-image, .bags-td-name-image-shirt {
-  width: 50px;
-  height: 50px;
   background-size: 100%;
   background-repeat: no-repeat;
   float: left;
@@ -758,27 +697,11 @@ table tbody tr:nth-child(odd) {
 }
 
 .bags-td-name-image-design {
-  width: 27px;
-  height: 27px;
   background-size: auto 100%;
   background-repeat: no-repeat;
   background-position: center;
   float: left;
-  margin-left: -38px;
-  margin-top: 12px;
   cursor: pointer;
-}
-
-.bags-td-name-text {
-  float: left;
-  padding-top: 15px;
-  padding-left: 10px;
-  font-family: helvetica;
-  font-weight: bold;
-  width: 180px;
-  text-overflow: ellipsis;
-  overflow: hidden;
-  white-space: nowrap;
 }
 
 .modal-bags tbody td[data-col="qty"] input {
@@ -787,15 +710,13 @@ table tbody tr:nth-child(odd) {
 
 .modal-bags .bags-add-item, .modal-bags .bags-remove-item {
   display: inline-block;
-  width: 25px;
-  height: 25px;
   background-size: 100%;
   background-repeat: no-repeat;
   cursor: pointer;
 }
 
-.modal-bags .bags-add-item {
-  margin-right: 10px;
+.modal-size-qty .form-input-size, .modal-size-qty .form-input-qty {
+  text-align: center;
 }
 
 .bags-preview {
@@ -1062,6 +983,10 @@ table tbody tr:nth-child(odd) {
     background-color: transparent;
   }
 
+  .modal-bags-table tbody td, .modal-bags-table tbody td div {
+    font-size: 4vw;
+  }
+
   .loader, .custom-loader {
     bottom: 10vw;
     right: 10vw;
@@ -1104,6 +1029,103 @@ table tbody tr:nth-child(odd) {
 
   .form-label {
     margin-bottom: 1vw;
+  }
+
+  .error {
+    font-size: 3vw;
+    padding-left: 1vw;
+  }
+
+  .modal-bags .modal-box {
+    height: 120vw;
+  }
+
+  .modal-bags .modal-bags-header div, .modal-bags .modal-bags-header span {
+    font-size: 4vw;
+  }
+
+  .modal-bags-header-right {
+    margin-right: 3vw;
+  }
+
+  .modal-bags-table {
+    width: 90vw;
+    height: 69vw;
+    margin-left: -5vw;
+  }
+
+  .modal-bags-table td[data-col="name"] {
+    width: 15vw;
+  }
+  
+  .modal-bags-table td[data-col="size"] {
+    width: 13vw;
+  }
+  
+  .modal-bags-table td[data-col="price"], .modal-bags-table td[data-col="subtotal"] {
+    width: 20vw;
+  }
+  
+  .modal-bags-table td[data-col="qty"] {
+    width: 13vw;
+  }
+  
+  .modal-bags-table td[data-col="qty"] input {
+    width: 13vw;
+  }
+  
+  .modal-bags-table td[data-col="action"] {
+    width: 10vw;
+  }
+
+  .modal-bags-table thead td {
+    font-size: 3vw;
+  }
+
+  .modal-bags-table tbody td, .modal-bags-table tbody td div {
+    font-size: 2.5vw;
+  }
+
+  .modal-bags-table input, .modal-bags-table select {
+    font-size: 2.5vw;
+  }
+
+  .bags-td-name-image, .bags-td-name-image-shirt {
+    width: 13vw;
+    height: 13vw;
+  }
+
+  .bags-td-name-image-design {
+    width: 10vw;
+    height: 10vw;
+    margin-left: -9vw;
+    margin-top: 2vw;
+  }
+
+  .bags-td-name-text {
+    display: none;
+  }
+
+  .modal-bags .bags-add-item, .modal-bags .bags-remove-item {
+    width: 25px;
+    height: 25px;
+  }
+
+  .modal-bags .bags-add-item {
+    margin-right: 10px;
+  }
+
+  .modal-size-qty .modal-box {
+    height: 65vw;
+  }
+  
+  .modal-size-qty .form-item-inline:nth-child(1) {
+    margin-right: 15vw;
+  }
+
+  .modal-size-qty .form-input-size, .modal-size-qty .form-input-qty {
+    width: 60px;
+    font-size: 10pt;
   }
 
   .section {
@@ -1313,6 +1335,115 @@ table tbody tr:nth-child(odd) {
 
   .form-label, .form-input {
     font-size: 12pt;
+  }
+
+  .error {
+    font-size: 9pt;
+    padding-left: 10px;
+  }
+
+  .modal-bags .modal-box {
+    width: 770px;
+    height: 430px;
+  }
+
+  .modal-bags .modal-bags-header div, .modal-bags .modal-bags-header span {
+    font-size: 14pt;
+  }
+
+  .modal-bags-header-right {
+    margin-right: 30px;
+  }
+
+  .modal-bags-table {
+    height: 250px;
+  }
+
+  .modal-bags-table td[data-col="name"] {
+    width: 250px;
+  }
+  
+  .modal-bags-table thead td[data-col="name"] {
+    padding-left: 10px;
+  }
+  
+  .modal-bags-table td[data-col="size"] {
+    width: 80px;
+  }
+  
+  .modal-bags-table td[data-col="price"], .modal-bags-table td[data-col="subtotal"] {
+    width: 120px;
+  }
+  
+  .modal-bags-table td[data-col="qty"] {
+    width: 80px;
+  }
+  
+  .modal-bags-table td[data-col="qty"] input {
+    width: 60px;
+  }
+  
+  .modal-bags-table td[data-col="action"] {
+    width: 80px;
+  }
+
+  .modal-bags-table tbody td, .modal-bags-table tbody td div {
+    font-size: 12pt;
+  }
+
+  .modal-bags-table input, .modal-bags-table select {
+    font-size: 10pt;
+  }
+
+  .bags-td-name-image, .bags-td-name-image-shirt {
+    width: 50px;
+    height: 50px;
+  }
+
+  .bags-td-name-image-design {
+    width: 27px;
+    height: 27px;
+    margin-left: -38px;
+    margin-top: 12px;
+  }
+
+  .bags-td-name-text {
+    float: left;
+    padding-top: 15px;
+    padding-left: 10px;
+    font-family: helvetica;
+    font-weight: bold;
+    width: 180px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+  }
+
+  .modal-bags .bags-add-item, .modal-bags .bags-remove-item {
+    width: 25px;
+    height: 25px;
+  }
+
+  .modal-bags .bags-add-item {
+    margin-right: 10px;
+  }
+
+  .modal-size-qty .modal-box {
+    width: 300px;
+    height: 230px;
+  }
+  
+  .modal-size-qty .form-item-inline:nth-child(1) {
+    margin-right: 20px;
+  }
+  
+  .modal-size-qty .form-label {
+    margin-bottom: 5px;
+  }
+
+  .modal-size-qty .form-input-size, .modal-size-qty .form-input-qty {
+    width: 60px;
+    font-size: 10pt;
   }
 
   .section {

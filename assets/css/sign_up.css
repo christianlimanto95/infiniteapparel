@@ -28,6 +28,10 @@
 }
 
 @media all and (max-width: 1024px) {
+    .section-1 {
+        height: 180vw;
+    }
+
     .center {
         width: 80vw;
     }
@@ -38,11 +42,6 @@
 
     .form-item-email input, .form-item-password input, .form-item-confirm-password input {
         width: 100%;
-    }
-
-    .error {
-        font-size: 4vw;
-        padding-left: 1vw;
     }
 
     .btn-sign-up {
@@ -69,11 +68,6 @@
 
     .form-item-email input, .form-item-password input, .form-item-confirm-password input {
         width: 305px;
-    }
-
-    .error {
-        font-size: 9pt;
-        padding-left: 10px;
     }
 
     .btn-sign-up {
