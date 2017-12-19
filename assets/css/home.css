@@ -743,11 +743,12 @@
 	}
 
 	.product-name {
-		font-size: 5.5vw;
+		padding-top: 1vw;
+		font-size: 5vw;
 	}
 
 	.product-price {
-		font-size: 5vw;
+		font-size: 4.5vw;
 		margin-top: 2vw;
 	}
 
