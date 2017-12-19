@@ -277,10 +277,6 @@ body {
   background-repeat: no-repeat;
 }
 
-.header-profile-image-black {
-  opacity: 0;
-}
-
 .header-profile-menu {
   display: block;
   color: white;
@@ -860,7 +856,7 @@ table tbody tr:nth-child(odd) {
     display: block;
     position: fixed;
     cursor: pointer;
-    z-index: 4000;
+    z-index: 1000;
     top: 6vw;
     right: 6vw;
     width: 30px;
@@ -917,14 +913,14 @@ table tbody tr:nth-child(odd) {
     font-family: moon-regular;
     margin-top: 15vw;
     margin-left: 5vw;
-    margin-bottom: 10vw;
+    margin-bottom: 5vw;
     text-align: left;
   }
 
   .header-menu {
     color: rgb(37, 37, 37);
     display: block;
-    font-size: 7vw;
+    font-size: 6vw;
     margin-bottom: 8vw;
   }
 
@@ -941,41 +937,40 @@ table tbody tr:nth-child(odd) {
     font-size: 6vw;
   }
 
-  .header-profile {
-    top: 25px;
-  }
-
-  .header-profile-inner {
-    
-  }
-
   .header-profile-image {
     position: fixed;
-    top: 101vw;
-    left: 40vw;
+    top: 93vw;
+    left: 42vw;
     width: 15vw;
     height: 15vw;
   }
 
-  .header-profile-menu {
-    font-size: 4vw;
-    position: fixed;
+  .header-profile-image-white {
+    opacity: 0;
   }
 
   .header-profile-menu-1 {
+    position: fixed;
     font-size: 5vw;
+    top: 97vw;
+    right: 5vw;
   }
-  
+
+  .header-profile-menu-2, .header-profile-menu-3, .header-profile-menu-4 {
+    position: relative;
+    margin: 0 auto 8vw;
+    width: 80vw;
+    text-align: center;
+    font-family: moon-regular;
+    font-size: 6vw;
+  }
+
   .header-profile-menu-2 {
-    top: 10px;
+    margin-top: 13vw;
   }
-  
-  .header-profile-menu-3 {
-    top: 25px;
-  }
-  
+
   .header-profile-menu-4 {
-    top: 40px;
+    margin-bottom: 0;
   }
 
   .bags-container {
@@ -1316,6 +1311,10 @@ table tbody tr:nth-child(odd) {
     left: 0;
     width: 100%;
     height: 100%;
+  }
+
+  .header-profile-image-black {
+    opacity: 0;
   }
 
   .header-profile-menu {
