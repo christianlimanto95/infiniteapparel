@@ -25,11 +25,12 @@ $(function() {
 
 	if (!isMobile) {
 		container.on("scroll", checkHeaderScrollDown);
-		container.on("scroll", function() {
-			section1Image.css("transform", "translateY(" + (container.scrollTop() / 1.5) + "px)");
-			btnExplore.css("transform", "translateY(" + (container.scrollTop() / 3) + "px)");
-		});
+		container.on("scroll", setParalax);
+	} else {
+		container.off("scroll", checkHeaderScrollDown);
+		container.off("scroll", setParalax);
 	}
+	
 	container.on("scroll", checkSection2Threshold);
 	container.on("scroll", checkSection3Threshold);
 	
@@ -47,11 +48,12 @@ $(function() {
 		
 		if (!isMobile) {
 			container.on("scroll", checkHeaderScrollDown);
-			container.on("scroll", function() {
-				section1Image.css("transform", "translateY(" + (container.scrollTop() / 1.5) + "px)");
-				btnExplore.css("transform", "translateY(" + (container.scrollTop() / 3) + "px)");
-			});
+			container.on("scroll", setParalax);
+		} else {
+			container.off("scroll", checkHeaderScrollDown);
+			container.off("scroll", setParalax);
 		}
+
 		container.on("scroll", checkSection2Threshold);
 		container.on("scroll", checkSection3Threshold);
 	});
@@ -92,6 +94,11 @@ function checkHeaderScrollUp() {
 		container.on("scroll", checkHeaderScrollDown);
 		container.off("scroll", checkHeaderScrollUp);
 	}
+}
+
+function setParalax() {
+	section1Image.css("transform", "translateY(" + (container.scrollTop() / 1.5) + "px)");
+	btnExplore.css("transform", "translateY(" + (container.scrollTop() / 3) + "px)");
 }
 
 function checkSection2Threshold() {

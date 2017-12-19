@@ -64,8 +64,7 @@
 
 @media all and (max-width: 1024px) {
     .section-1 {
-        height: 350vw;
-        padding-bottom: 10vw;
+        height: 310vw;
     }
 
     .section-1-left, .section-1-right {

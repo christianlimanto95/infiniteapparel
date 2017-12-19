@@ -5,36 +5,81 @@
 .center {
     text-align: left;
     display: inline-block;
-    margin-top: 30px;
-    width: 305px;
     overflow-x: visible;
-}
-
-.form-item-email input, .form-item-password input, .form-item-confirm-password input {
-    width: 305px;
 }
 
 .error {
     color: red;
-    font-size: 9pt;
     font-family: helvetica;
-    padding-left: 10px;
 }
 
 .btn-sign-up {
     background-color: transparent;
     border: 1px solid rgb(37, 37, 37);
-    padding: 10px 0;
-    width: 150px;
+    float: right;
     font-family: moon-bold;
-    font-size: 14pt;
     cursor: pointer;
     transition: all 0.3s;
-    margin-top: 30px;
-    float: right;
 }
 
 .btn-sign-up:hover {
     background-color: rgb(37, 37, 37);
     color: white;
+}
+
+@media all and (max-width: 1024px) {
+    .center {
+        width: 80vw;
+    }
+
+    input[name="user_first_name"], input[name="user_last_name"] {
+        width: 39vw;
+    }
+
+    .form-item-email input, .form-item-password input, .form-item-confirm-password input {
+        width: 100%;
+    }
+
+    .error {
+        font-size: 4vw;
+        padding-left: 1vw;
+    }
+
+    .btn-sign-up {
+        padding: 3vw 0;
+        width: 100%;
+        font-size: 4vw;
+        margin-top: 10vw;
+    }
+}
+
+@media all and (min-width: 768px) and (max-width: 1024px) {
+
+}
+
+@media all and (min-width: 1025px) {
+    .center {
+        margin-top: 30px;
+        width: 305px;
+    }
+
+    input[name="user_first_name"], input[name="user_last_name"] {
+        width: 150px;
+    }
+
+    .form-item-email input, .form-item-password input, .form-item-confirm-password input {
+        width: 305px;
+    }
+
+    .error {
+        font-size: 9pt;
+        padding-left: 10px;
+    }
+
+    .btn-sign-up {
+        padding: 10px 0;
+        width: 150px;
+        font-size: 14pt;
+        margin-top: 30px;
+    }
 }

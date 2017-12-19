@@ -38,11 +38,6 @@
 <div class="loader-container">
 	<div class="loader"></div>
 </div>
-<div class="menu-icon" id="menu-icon">
-	<div class="menu-icon-line menu-icon-line-1"></div>
-	<div class="menu-icon-line menu-icon-line-2"></div>
-	<div class="menu-icon-line menu-icon-line-3"></div>
-</div>
 <div class="header<?php echo $header_additional_class; ?>">
 	<div class="header-inner">
 		<a href="<?php echo base_url(); ?>" class="logo" >
@@ -85,6 +80,11 @@
 			</div>
 		</div>
 	<?php } ?>
+</div>
+<div class="menu-icon" id="menu-icon">
+	<div class="menu-icon-line menu-icon-line-1"></div>
+	<div class="menu-icon-line menu-icon-line-2"></div>
+	<div class="menu-icon-line menu-icon-line-3"></div>
 </div>
 <?php if ($do_get_cart == "true") { ?>
 	<div class="bags-container" data-is-mobile="true">
