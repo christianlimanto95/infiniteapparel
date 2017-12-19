@@ -14,11 +14,14 @@ $("body").on("allLoaded", function() {
 });
 
 var section1, section2, section2Threshold, section3, section3Threshold;
+var section1Image, btnExplore;
 
 $(function() {
 	section1 = $(".section-1");
 	section2 = $(".section-2");
 	section3 = $(".section-3");
+	section1Image = $(".section-1-image");
+	btnExplore = $(".explore-products-container");
 
 	setVH();
 	setSectionThreshold();
@@ -33,9 +36,6 @@ $(function() {
 	
 	container.on("scroll", checkSection2Threshold);
 	container.on("scroll", checkSection3Threshold);
-	
-	var section1Image = $(".section-1-image");
-	var btnExplore = $(".explore-products-container");
 	container.scroll();
 
 	$(".btn-buy-now, .btn-add-to-bag").on("click", function(e) {
