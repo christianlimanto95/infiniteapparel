@@ -12,7 +12,7 @@
     </div>
 </div>
 <script src="<?php echo base_url("assets/js/common/jquery_velocity.js"); ?>" defer></script>
-<script src="<?php echo base_url("assets/js/common/default.js?v=4"); ?>" defer></script>
-<script src="<?php echo base_url("assets/js/" . $page_name . ".js?v=5"); ?>" defer></script>
+<script src="<?php echo base_url("assets/js/common/default.js?v=5"); ?>" defer></script>
+<script src="<?php echo base_url("assets/js/" . $page_name . ".js?v=6"); ?>" defer></script>
 </body>
 </html>

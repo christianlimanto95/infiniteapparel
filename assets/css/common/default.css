@@ -886,7 +886,6 @@ table tbody tr:nth-child(odd) {
 
 .section-title {
 	width: 80vw;
-	margin: 120px auto 20px;
 }
 
 .section-title-line {
@@ -1068,6 +1067,10 @@ table tbody tr:nth-child(odd) {
     height: 160vw;
   }
 
+  .section-title {
+    margin: 20vw auto 10vw;
+  }
+
   .footer-follow-us {
     margin-top: 10vw;
     font-size: 4vw;
@@ -1229,6 +1232,10 @@ table tbody tr:nth-child(odd) {
 
   .section {
     height: 56vw;
+  }
+
+  .section-title {
+    margin: 120px auto 20px;
   }
 
   .footer-follow-us {

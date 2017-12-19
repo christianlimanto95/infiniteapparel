@@ -1,8 +1,4 @@
-<div class="preloader<?php if (!$this->session->userdata("browser_session")) {
-        $this->session->set_userdata("browser_session", true);
-    } else {
-        echo " hidden";
-    } ?>">
+<div class="preloader">
     <div class="preloader-left"></div>
     <div class="preloader-right"></div>
     <div class="preloader-image" style="background-image: url(assets/icons/loading.gif);"></div>
