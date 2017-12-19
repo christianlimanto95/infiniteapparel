@@ -57,11 +57,6 @@
     transition: all 0.3s;
 }
 
-.custom-btn:hover {
-    background-color: rgb(37, 37, 37);
-    color: white;
-}
-
 @media all and (max-width: 1024px) {
     .section-1 {
         height: 310vw;
@@ -145,6 +140,11 @@
         padding: 4vw 0;
         font-size: 4vw;
         margin-bottom: 5vw;
+    }
+
+    .custom-btn:active {
+        background-color: rgb(37, 37, 37);
+        color: white;
     }
 }
 
@@ -233,5 +233,10 @@
         padding: 10px 0;
         font-size: 12pt;
         margin-bottom: 10px;
+    }
+
+    .custom-btn:hover {
+        background-color: rgb(37, 37, 37);
+        color: white;
     }
 }
