@@ -1,3 +1,7 @@
+.section-1 {
+    height: 1000px;
+}
+
 .section-1-inner {
 	width: 80vw;
 	margin: 0 auto;
@@ -90,6 +94,12 @@
 
 .form-input-account-name {
     width: 250px;
+}
+
+.proof-image {
+    max-width: 300px;
+    max-height: 300px;
+    display: block;
 }
 
 .btn-confirm-payment {

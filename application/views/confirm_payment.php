@@ -34,23 +34,23 @@
             <div class="section-1-right">
                 <div class="section-1-right-title">Bank <span class="error bank-error"></span></div>
                 <label class="label" for="bank-bca">
-                    <input type="radio" name="bank" id="bank-bca" class="input-bank bank-bca" />
+                    <input type="radio" name="bank" value="bca" id="bank-bca" class="input-bank bank-bca" />
                     <div class="bank-image" style="background-image: url(<?php echo base_url("assets/images/bca.jpg") ?>);"></div>
                 </label>
                 <label class="label" for="bank-mandiri">
-                    <input type="radio" name="bank" id="bank-mandiri" class="input-bank bank-mandiri" />
+                    <input type="radio" name="bank" value="mandiri" id="bank-mandiri" class="input-bank bank-mandiri" />
                     <div class="bank-image" style="background-image: url(<?php echo base_url("assets/images/mandiri.png") ?>);"></div>
                 </label>
                 <div class="section-1-blank-space"></div>
                 <label class="label" for="bank-other">
-                    <input type="radio" name="bank" id="bank-other" class="input-bank bank-other" />
+                    <input type="radio" name="bank" value="other" id="bank-other" class="input-bank bank-other" />
                     <div class="other-label">Other</div>
                 </label>
                 <input type="text" class="input-other-bank form-input" />
                 <div class="bank-information">
                     <div class="form-item">
                         <div class="form-label bank-information-label">Bank Account Number (Nomor Rekening) <span class="error bank-account-number-error"></span></div>
-                        <input type="text" class="form-input bank-information-input" maxlength="16" />
+                        <input type="text" class="form-input bank-information-input form-input-account-number" data-input-type="number" maxlength="16" />
                     </div>
                     <div class="form-item">
                         <div class="form-label bank-information-label">Bank Account Name (Atas Nama) <span class="error bank-account-name-error"></span></div>
@@ -58,8 +58,9 @@
                     </div>
                     <div class="form-item">
                         <div class="form-label bank-information-label">Proof of Payment (Bukti Pembayaran) <span class="error proof-of-payment-error"></span></div>
-                        <input type="file" class="form-input bank-information-input" />
+                        <input type="file" class="form-input bank-information-input form-input-proof" />
                     </div>
+                    <img class="proof-image" />
                     <button type="submit" class="btn-confirm-payment" >Confirm Payment</button>
                 </div>
             </div>
