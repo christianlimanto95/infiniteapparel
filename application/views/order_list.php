@@ -54,6 +54,9 @@
             <div class="section-title-text">ORDER LIST</div>
             <div class="section-title-line"></div>
         </div>
+        <?php if($this->session->flashdata("message") != null) {
+            echo "<div class='flash-message'>" . $this->session->flashdata("message") . "</div>";
+        } ?>
         <div class="section-1-inner">
             <div class="custom-loader-container custom-section-1-loader-container show">
                 <div class="custom-loader"></div>

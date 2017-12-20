@@ -31,7 +31,8 @@
                     <div class="custom-form-input"><?php echo $data->pemesanan_handphone; ?></div>
                 </div>
             </div>
-            <div class="section-1-right">
+            <form class="section-1-right" method="post" action="<?php echo base_url("do_confirm_payment"); ?>" enctype="multipart/form-data">
+                <input type="hidden" name="order_id" value="<?php echo $data->hjual_id; ?>" />
                 <div class="section-1-right-title">Bank <span class="error bank-error"></span></div>
                 <label class="label" for="bank-bca">
                     <input type="radio" name="bank" value="bca" id="bank-bca" class="input-bank bank-bca" />
@@ -50,20 +51,20 @@
                 <div class="bank-information">
                     <div class="form-item">
                         <div class="form-label bank-information-label">Bank Account Number (Nomor Rekening) <span class="error bank-account-number-error"></span></div>
-                        <input type="text" class="form-input bank-information-input form-input-account-number" data-input-type="number" maxlength="16" />
+                        <input type="text" name="bank_account_number" class="form-input bank-information-input form-input-account-number" data-input-type="number" maxlength="16" />
                     </div>
                     <div class="form-item">
                         <div class="form-label bank-information-label">Bank Account Name (Atas Nama) <span class="error bank-account-name-error"></span></div>
-                        <input type="text" class="form-input bank-information-input form-input-account-name" maxlength="50" />
+                        <input type="text" name="bank_account_name" class="form-input bank-information-input form-input-account-name" maxlength="50" />
                     </div>
                     <div class="form-item">
                         <div class="form-label bank-information-label">Proof of Payment (Bukti Pembayaran) <span class="error proof-of-payment-error"></span></div>
-                        <input type="file" class="form-input bank-information-input form-input-proof" />
+                        <input type="file" name="input-image" class="form-input bank-information-input form-input-proof" />
                     </div>
                     <img class="proof-image" />
                     <button type="submit" class="btn-confirm-payment" >Confirm Payment</button>
                 </div>
-            </div>
+            </form>
         </div>
     </div>
 </div>

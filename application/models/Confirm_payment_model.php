@@ -16,4 +16,27 @@ class Confirm_payment_model extends CI_Model
         ");
         return $query->result();
     }
+
+    function insert_payment($data) {
+        $this->db->trans_start();
+
+        $this->db->where("hjual_id", $data["hjual_id"]);
+        $this->db->where("user_id", $data["user_id"]);
+        $this->db->set("hjual_status", 2, false);
+        $this->db->set("modified_date", "NOW()", false);
+        $this->db->update("hjual");
+
+        $insertData = array(
+            "hjual_id" => $data["hjual_id"],
+            "payment_bank_name" => $data["payment_bank_name"],
+            "payment_account_number" => $data["payment_account_number"],
+            "payment_account_name" => $data["payment_account_name"],
+            "payment_extension" => $data["payment_extension"]
+        );
+        $this->db->insert("payment", $insertData);
+        $insert_id = $this->db->insert_id();
+
+        $this->db->trans_complete();
+        return $insert_id;
+    }
 }

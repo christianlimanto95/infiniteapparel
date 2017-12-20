@@ -1530,6 +1530,7 @@ table tbody tr:nth-child(odd) {
   .flash-message {
     padding: 25px 20px;
     font-size: 11pt;
+    margin-bottom: 20px;
   }
 
   .footer-follow-us {

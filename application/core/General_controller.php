@@ -85,4 +85,19 @@ class General_controller extends CI_Controller
 		}
 		return $str;
 	}
+
+	public function upload_file_settings($path = '', $max_size = '', $file_name = "") {
+        $config['upload_path'] = $path;
+        $config['allowed_types'] = '*';
+        $config['max_size'] = $max_size;
+        $config['remove_spaces'] = true;
+        $config['overwrite'] = true;
+        $config['encrypt_name'] = false;
+        $config['max_width'] = '';
+        $config['max_height'] = '';
+        if ($file_name != "") {
+            $config["file_name"] = $file_name;
+        }
+        $this->load->library('upload', $config);
+    }
 }

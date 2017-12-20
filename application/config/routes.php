@@ -66,3 +66,4 @@ $route["product"] = "catalog";
 $route["product/(:any)/(:any)"] = "product";
 $route["order-list"] = "order_list";
 $route["confirm_payment/(:any)"] = "confirm_payment";
+$route["do_confirm_payment"] = "confirm_payment/do_confirm";

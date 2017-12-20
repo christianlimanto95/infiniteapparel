@@ -38,4 +38,37 @@ class Confirm_payment extends General_controller {
 			redirect(base_url("order-list"));
 		}
 	}
+
+	function do_confirm() {
+		$order_id = $this->input->post("order_id", true);
+		if (!empty($_FILES["input-image"]["name"]) && $_FILES["input-image"]["size"] < 5242880) {
+			$extension = pathinfo($_FILES["input-image"]["name"], PATHINFO_EXTENSION);
+
+			$user_id = parent::is_logged_in();
+			$bank = $this->input->post("bank", true);
+			$bank_account_number =  $this->input->post("bank_account_number", true);
+			$bank_account_name =  $this->input->post("bank_account_name", true);
+
+			$data = array(
+				"user_id" => $user_id,
+				"hjual_id" => $order_id,
+				"payment_bank_name" => $bank,
+				"payment_account_number" => $bank_account_number,
+				"payment_account_name" => $bank_account_name,
+				"payment_extension" => $extension
+			);
+			$payment_id = $this->Confirm_payment_model->insert_payment($data);
+
+			$file_name = $payment_id . "." . $extension;
+			parent::upload_file_settings('uploads/', '5242880', $file_name);
+			if (!$this->upload->do_upload('input-image')) {
+				$error_upload = true;
+			} else {
+				$this->session->set_flashdata("message", "Waiting confirmation for order no. " . $order_id);
+				redirect(base_url("order-list"));
+			}
+		} else {
+			redirect(base_url("confirm_payment/" . $order_id));
+		}
+	}
 }

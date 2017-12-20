@@ -10,15 +10,24 @@ $(function() {
     });
 
     $(".form-input-proof").on("change", function() {
+        var validProof = true;
 		var previewElement = $(".proof-image");
 		var reader = new FileReader();
 		reader.onload = function(e) {
 			previewElement.attr("src", e.target.result);
-		};
-		reader.readAsDataURL($(this)[0].files[0]);
+        };
+        var size = this.files[0].size;
+        if (size > 5242880) {
+            validProof = false;
+            $(".proof-of-payment-error").html("File Size must below 5 Mb");
+            $(this).val("");
+        } else {
+            $(".proof-of-payment-error").html("");
+            reader.readAsDataURL($(this)[0].files[0]);
+        }
 	});
 
-    $(".btn-confirm-payment").on("click", function() {
+    $("form").on("submit", function(e) {
         clearAllErrors();
         var valid = true;
         var bank = $(".input-bank:checked").val();
@@ -54,8 +63,8 @@ $(function() {
             $(".proof-of-payment-error").html("Required");
         }
 
-        if (valid) {
-            
+        if (!valid) {
+            e.preventDefault();
         }
     });
 });
