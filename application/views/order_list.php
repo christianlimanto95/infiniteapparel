@@ -18,8 +18,11 @@
 					</tr>
 				</thead>
 				<tbody>
-				</tbody>
-			</table>
+                </tbody>
+            </table>
+            <div class="custom-loader-container custom-order-detail-loader-container show">
+                <div class="custom-loader"></div>
+            </div>
 		</div>
 		<div class="modal-footer">
 			<div class="modal-order-detail-footer">
@@ -52,7 +55,7 @@
             <div class="section-title-line"></div>
         </div>
         <div class="section-1-inner">
-            <div class="custom-loader-container show">
+            <div class="custom-loader-container custom-section-1-loader-container show">
                 <div class="custom-loader"></div>
             </div>
         </div>

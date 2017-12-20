@@ -18,12 +18,13 @@ $(function() {
         $(".order-detail-discount").html("0");
         $(".order-detail-total").html("0");
         $(".modal-order-detail-table tbody").html("");
+        showLoader(".custom-order-detail-loader-container");
     });
 });
 
 function get_order() {
     ajaxCall(get_order_url, null, function(json) {
-        hideLoader(".custom-loader-container");
+        hideLoader(".custom-section-1-loader-container");
         var result = jQuery.parseJSON(json);
         var iLength = result.length;
         var element = "";
@@ -110,6 +111,7 @@ function get_order_detail(order_item) {
     $(".order-detail-total").html(grand_total);
 
     ajaxCall(get_order_detail_url, {order_id: order_id}, function(json) {
+        hideLoader(".custom-order-detail-loader-container");
         var result = jQuery.parseJSON(json);
         var iLength = result.length;
         var element = "";

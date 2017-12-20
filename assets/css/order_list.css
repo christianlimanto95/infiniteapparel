@@ -103,6 +103,11 @@
 }
 
 @media all and (max-width: 1024px) {
+    .custom-order-detail-loader-container {
+        height: 69vw;
+        margin-top: -69vw;
+    }
+
     .modal-order-detail .modal-box {
         height: 133vw;
     }
@@ -167,7 +172,7 @@
         height: auto;
     }
 
-    .custom-loader-container {
+    .custom-section-1-loader-container {
         height: 50vw;
     }
 
@@ -240,6 +245,11 @@
 }
 
 @media all and (min-width: 1025px) {
+    .custom-order-detail-loader-container {
+        height: 250px;
+        margin-top: -250px;
+    }
+    
     .modal-order-detail .modal-box {
         width: 690px;
         height: 480px;
@@ -311,7 +321,7 @@
         white-space: nowrap;
     }
 
-    .custom-loader-container {
+    .custom-section-1-loader-container {
         height: 300px;
     }
 
