@@ -8,4 +8,8 @@ $(function() {
             $(".input-other-bank").removeClass("show");
         }
     });
+
+    $(".btn-confirm-payment").on("click", function() {
+
+    });
 });

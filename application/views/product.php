@@ -1,3 +1,9 @@
+<div class="size-chart">
+    <div class="size-chart-inner">
+        <div class="size-chart-image" style="background-image: url(<?php echo base_url("assets/images/size_chart_1.jpg"); ?>);"></div>
+        <div class="size-chart-image" style="background-image: url(<?php echo base_url("assets/images/size_chart_2.jpg"); ?>);"></div>
+    </div>
+</div>
 <div class="content">
     <div class="section section-1" data-id="<?php echo $product->item_id; ?>">
         <div class="section-title">
@@ -21,6 +27,7 @@
             <div class="section-1-right">
                 <div class="product-name"><?php echo $product->item_name; ?></div>
                 <div class="product-price">IDR <?php echo number_format($product->item_price, 0, ",", "."); ?></div>
+                <div class="btn-view-size-chart">View Size Chart</div>
                 <div class="size-quantity-container">
                     <div class="size-container">
                         <div class="label">Size</div>

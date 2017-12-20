@@ -27,6 +27,14 @@ $(function() {
 		});
 	});
 
+	$(".btn-view-size-chart").on("click", function() {
+		$(".size-chart").addClass("show");
+	});
+
+	$(".size-chart").on("click", function() {
+		$(this).removeClass("show");
+	});
+
 	$(".product-image-thumbnail").on("mouseenter", function() {
 		var index = parseInt($(this).data("image-index"));
 		if (index != imageIndex) {

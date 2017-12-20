@@ -1,3 +1,35 @@
+.size-chart {
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.5);
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    display: none;
+}
+
+.size-chart.show {
+    display: block;
+}
+
+.size-chart-inner {
+    position: relative;
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+    -moz-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    -o-transform: translateY(-50%);
+    transform: translateY(-50%);
+    text-align: center;
+}
+
+.size-chart-image {
+    display: inline-block;
+    background-size: auto 100%;
+    background-repeat: no-repeat;
+}
+
 .section-1-inner {
     width: 80vw;
     margin: 0 auto;
@@ -31,6 +63,13 @@
     font-family: helvetica;
 }
 
+.btn-view-size-chart {
+    display: inline-block;
+    border: 1px solid rgb(37, 37, 37);
+    cursor: pointer;
+    font-family: helvetica;
+}
+
 .size-quantity-container {
     overflow: auto;
 }
@@ -45,6 +84,11 @@
 
 .size-container .label, .quantity-container .label {
     font-weight: bold;
+}
+
+.btn-view-size-chart:hover {
+    background-color: rgb(37, 37, 37);
+    color: white;
 }
 
 .quantity-container input {
@@ -65,6 +109,13 @@
 }
 
 @media all and (max-width: 1024px) {
+    .size-chart-image {
+        display: block;
+        width: 70vw;
+        height: 70vw;
+        margin: 0 auto;
+    }
+
     .section-1 {
         height: 230vw;
     }
@@ -101,8 +152,14 @@
         font-size: 5.5vw;
     }
 
-    .size-quantity-container {
+    .btn-view-size-chart {
+        font-size: 3vw;
+        padding: 2vw 4vw;
         margin-top: 10vw;
+        margin-bottom: 5vw;
+    }
+
+    .size-quantity-container {
         margin-bottom: 15vw;
     }
 
@@ -142,6 +199,11 @@
 }
 
 @media all and (min-width: 1025px) {
+    .size-chart-image {
+        width: 350px;
+        height: 350px;
+    }
+
     .section-1 {
         height: 50vw;
     }
@@ -179,8 +241,11 @@
         font-size: 16pt;
     }
 
-    .size-quantity-container {
+    .btn-view-size-chart {
+        font-size: 9pt;
+        padding: 5px 10px;
         margin-top: 30px;
+        margin-bottom: 15px;
     }
 
     .quantity-container {

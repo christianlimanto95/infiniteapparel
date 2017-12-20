@@ -18,7 +18,6 @@ $(function() {
         $(".order-detail-discount").html("0");
         $(".order-detail-total").html("0");
         $(".modal-order-detail-table tbody").html("");
-        showLoader(".custom-order-detail-loader-container");
     });
 });
 
@@ -98,6 +97,8 @@ function get_order() {
 }
 
 function get_order_detail(order_item) {
+    showLoader(".custom-order-detail-loader-container");
+    
     var order_id = order_item.attr("data-order-id");
     var total = order_item.attr("data-total-price");
     var shipping_cost = order_item.attr("data-shipping-cost");

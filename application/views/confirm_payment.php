@@ -32,7 +32,7 @@
                 </div>
             </div>
             <div class="section-1-right">
-                <div class="section-1-right-title">Bank</div>
+                <div class="section-1-right-title">Bank <span class="error bank-error"></span></div>
                 <label class="label" for="bank-bca">
                     <input type="radio" name="bank" id="bank-bca" class="input-bank bank-bca" />
                     <div class="bank-image" style="background-image: url(<?php echo base_url("assets/images/bca.jpg") ?>);"></div>
@@ -49,15 +49,15 @@
                 <input type="text" class="input-other-bank form-input" />
                 <div class="bank-information">
                     <div class="form-item">
-                        <div class="form-label bank-information-label">Bank Account Number (Nomor Rekening)</div>
+                        <div class="form-label bank-information-label">Bank Account Number (Nomor Rekening) <span class="error bank-account-number-error"></span></div>
                         <input type="text" class="form-input bank-information-input" maxlength="16" />
                     </div>
                     <div class="form-item">
-                        <div class="form-label bank-information-label">Bank Account Name (Atas Nama)</div>
+                        <div class="form-label bank-information-label">Bank Account Name (Atas Nama) <span class="error bank-account-name-error"></span></div>
                         <input type="text" class="form-input bank-information-input form-input-account-name" maxlength="50" />
                     </div>
                     <div class="form-item">
-                        <div class="form-label bank-information-label">Proof of Payment (Bukti Pembayaran)</div>
+                        <div class="form-label bank-information-label">Proof of Payment (Bukti Pembayaran) <span class="error proof-of-payment-error"></span></div>
                         <input type="file" class="form-input bank-information-input" />
                     </div>
                     <button type="submit" class="btn-confirm-payment" >Confirm Payment</button>
