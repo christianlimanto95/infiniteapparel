@@ -8,26 +8,12 @@ $(function() {
 
 	$(document).off("click", ".btn-add-to-bag");
 	$(document).on("click", ".btn-add-to-bag", function() {
-		showLoader();
+		custom_add_to_bag();
+	});
 
-		var shirt_custom_id = $(".shirts-color-container .color.selected").attr("data-id");
-		var design_custom_id = $(".designs-color-container .color.selected").attr("data-id");
-		var item_size = $(".custom-select-size").val();
-		var item_qty = $(".custom-input-qty").val();
-		var notes = $(".custom-input-notes").val();
-
-		var data = {
-			item_type: 2,
-			item_size: item_size,
-			item_qty: item_qty,
-			shirt_custom_id: shirt_custom_id,
-			design_custom_id: design_custom_id,
-			notes: notes
-		};
-		ajaxCall(add_to_cart_url, data, function(json) {
-			hideLoader();
-			get_cart();
-		});
+	$(document).off("click", ".btn-buy-now");
+	$(document).on("click", ".btn-buy-now", function() {
+		custom_add_to_bag(true);
 	});
 
 	$(".select-type").on("change", function() {
@@ -87,4 +73,31 @@ function setColor(custom_id, container) {
 	}
 	container.find(".selected").removeClass("selected");
 	$(".color[data-id='" + custom_id + "']").addClass("selected");
+}
+
+function custom_add_to_bag(is_buy_now) {
+	showLoader();
+
+	var shirt_custom_id = $(".shirts-color-container .color.selected").attr("data-id");
+	var design_custom_id = $(".designs-color-container .color.selected").attr("data-id");
+	var item_size = $(".custom-select-size").val();
+	var item_qty = $(".custom-input-qty").val();
+	var notes = $(".custom-input-notes").val();
+
+	var data = {
+		item_type: 2,
+		item_size: item_size,
+		item_qty: item_qty,
+		shirt_custom_id: shirt_custom_id,
+		design_custom_id: design_custom_id,
+		notes: notes
+	};
+	ajaxCall(add_to_cart_url, data, function(json) {
+		hideLoader();
+		get_cart();
+
+		if (is_buy_now != null) {
+			checkout();
+		}
+	});
 }

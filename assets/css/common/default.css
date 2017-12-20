@@ -565,6 +565,10 @@ body {
   font-weight: bold;
 }
 
+.modal-login {
+  z-index: 1003;
+}
+
 .modal-login .modal-box {
   height: auto;
 }

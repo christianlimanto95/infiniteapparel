@@ -13,6 +13,20 @@ $(function() {
 		});
 	});
 
+	$(document).off("click", ".btn-buy-now");
+	$(document).on("click", ".btn-buy-now", function() {
+		showLoader();
+		var id = $(".section-1").attr("data-id");
+		var size = $(".select-size").val();
+		var qty = $(".input-qty").val();
+		
+		ajaxCall(add_to_cart_url, {item_id: id, item_size: size, item_qty: qty, item_type: 1}, function(json) {
+			get_cart();        
+			closeModal();
+			checkout();
+		});
+	});
+
 	$(".product-image-thumbnail").on("mouseenter", function() {
 		var index = parseInt($(this).data("image-index"));
 		if (index != imageIndex) {
