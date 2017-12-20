@@ -7,9 +7,9 @@
         </div>
         <?php
             if ($result->status == "error") {
-                echo "<div class='error'>This link has expired.</div>";
+                echo "<div class='custom-error'>This link has expired.</div>";
             } else {
-                echo "<div class='success'>Thank you, " . $result->user_first_name . ". Your email " . $result->user_email . " has been verified. You can login now.</div>";
+                echo "<div class='custom-success'>Thank you, " . $result->user_first_name . ". Your email " . $result->user_email . " has been verified. You can login now.</div>";
             }
         ?>
     </div>

@@ -1,17 +1,30 @@
-.error, .success {
+.custom-error, .custom-success {
     width: 80vw;
-    margin: 50px auto 0;
-    padding: 20px 30px;
-    font-size: 12pt;
     font-family: helvetica;
 }
 
-.error {
+.custom-error {
     background-color: #FFCDD2;
     color: #B71C1C;
 }
 
-.success {
+.custom-success {
     background-color: #C8E6C9;
     color: #1B5E20;
+}
+
+@media all and (max-width: 1024px) {
+    .custom-error, .custom-success {
+        margin: 10vw auto 0;
+        padding: 6vw 2vw;
+        font-size: 4vw;
+    }
+}
+
+@media all and (min-width: 1025px) {
+    .custom-error, .custom-success {
+        margin: 50px auto 0;
+        padding: 20px 30px;
+        font-size: 12pt;
+    }
 }
