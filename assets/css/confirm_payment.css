@@ -215,4 +215,9 @@
         font-size: 12pt;
         margin-top: 20px;
     }
+
+    .btn-confirm-payment:hover {
+		background-color: white;
+		color: rgb(37, 37, 37);
+	}
 }

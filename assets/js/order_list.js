@@ -1,3 +1,4 @@
+var ajax_get_order_detail = null;
 $(function() {
     get_order();
 
@@ -97,6 +98,9 @@ function get_order() {
 }
 
 function get_order_detail(order_item) {
+    if (ajax_get_order_detail) {
+        ajax_get_order_detail.abort();
+    }
     showLoader(".custom-order-detail-loader-container");
     
     var order_id = order_item.attr("data-order-id");
@@ -111,7 +115,7 @@ function get_order_detail(order_item) {
     $(".order-detail-discount").html(discount);
     $(".order-detail-total").html(grand_total);
 
-    ajaxCall(get_order_detail_url, {order_id: order_id}, function(json) {
+    ajax_get_order_detail = ajaxCall(get_order_detail_url, {order_id: order_id}, function(json) {
         hideLoader(".custom-order-detail-loader-container");
         var result = jQuery.parseJSON(json);
         var iLength = result.length;
