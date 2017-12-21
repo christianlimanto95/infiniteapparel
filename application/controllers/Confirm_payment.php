@@ -46,7 +46,7 @@ class Confirm_payment extends General_controller {
 
 	function do_confirm() {
 		$order_id = $this->input->post("order_id", true);
-		if (!empty($_FILES["input-image"]["name"]) && $_FILES["input-image"]["size"] < 5242880 && $order_id) {
+		if (!empty($_FILES["input-image"]["name"]) && $_FILES["input-image"]["size"] < 33554432 && $order_id) {
 			$extension = pathinfo($_FILES["input-image"]["name"], PATHINFO_EXTENSION);
 
 			$user_id = parent::is_logged_in();
@@ -65,7 +65,7 @@ class Confirm_payment extends General_controller {
 			$payment_id = $this->Confirm_payment_model->insert_payment($data);
 
 			$file_name = $payment_id . "." . $extension;
-			parent::upload_file_settings('uploads/', '5242880', $file_name);
+			parent::upload_file_settings('uploads/', '33554432', $file_name);
 			if (!$this->upload->do_upload('input-image')) {
 				$error_upload = true;
 			} else {

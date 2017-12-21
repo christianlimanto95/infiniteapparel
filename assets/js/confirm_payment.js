@@ -19,7 +19,7 @@ $(function() {
         var size = this.files[0].size;
         if (size > 5242880) {
             validProof = false;
-            $(".proof-of-payment-error").html("File Size must below 5 Mb");
+            $(".proof-of-payment-error").html("File Size must below 32 Mb");
             $(this).val("");
         } else {
             $(".proof-of-payment-error").html("");

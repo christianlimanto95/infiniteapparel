@@ -1010,7 +1010,7 @@ table tbody tr:nth-child(odd) {
   }
 
   .loader, .custom-loader {
-    bottom: 10vw;
+    bottom: 20vw;
     right: 10vw;
     width: 10vw;
     height: 10vw;
