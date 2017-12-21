@@ -36,7 +36,6 @@ class General_controller extends CI_Controller
 	}
 
     public function view($file, $data){
-		$data["additional_files"] = $this->additional_files;
 		$data["page_name"] = $file;
 		$data["is_logged_in"] = false;
 		$data["do_get_cart"] = $this->do_get_cart;
@@ -53,6 +52,15 @@ class General_controller extends CI_Controller
         $this->load->view('common/header', $data);
         $this->load->view($file, $data);
         $this->load->view('common/footer');
+	}
+	
+	public function adminview($file, $data){
+		$data["additional_files"] = $this->additional_files;
+        $data["page_name"] = $file;
+        
+        $this->load->view('common/backheader', $data);
+        $this->load->view($file, $data);
+        $this->load->view('common/backfooter', $data);
     }
 
 	public function redirect_if_not_logged_in() {

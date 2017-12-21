@@ -30,9 +30,7 @@
 	</style>
 	<link rel="shortcut icon" href="<?php echo base_url("assets/icons/favicon.png"); ?>" />
 	<link rel="stylesheet" href="<?php echo base_url("assets/css/common/default.css?v=7"); ?>" />
-	<link rel="stylesheet" href="<?php echo base_url("assets/css/" . $page_name . ".css?v=7"); ?>" />
-	
-	<?php echo $additional_files; ?>
+	<link rel="stylesheet" href="<?php echo base_url("assets/css/" . $page_name . ".css?v=7"); ?>" />	
 </head>
 <body>
 <div class="loader-container">
