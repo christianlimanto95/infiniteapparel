@@ -245,6 +245,11 @@
 }
 
 @media all and (min-width: 1025px) {
+    .section-1 {
+        height: auto;
+        min-height: 56vw;
+    }
+
     .custom-order-detail-loader-container {
         height: 250px;
         margin-top: -250px;
