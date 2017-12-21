@@ -1,0 +1,48 @@
+#container {
+    width: 500px;
+}
+
+.insert-subtitle {
+    clear: both;
+    font-size: 16pt;
+    margin-top: 30px;
+    font-weight: bold;
+}
+
+input[type="text"] {
+    padding-left: 5px;
+    display: block;
+}
+
+.insert-series-input {
+    display: block;
+    width: 500px;
+}
+
+.insert-button {
+    float: right;
+    margin-top: 10px;
+    margin-bottom: 50px;
+}
+
+.insert-label {
+    margin-top: 15px;
+}
+
+.cbseries {
+    display: block;
+}
+
+label {
+    display: block;
+    font-size: 12pt;
+    
+}
+
+input[type="radio"] {
+    margin-right: 5px;
+}
+
+textarea {
+    width: 100%;
+}

@@ -70,15 +70,15 @@ class Admin_model extends CI_Model
 	function getAllSeries()
 	{
 		$this->db->select('*');
-		$this->db->from('series');
+		$this->db->from('category');
 		$query=$this->db->get()->result();
 		return $query;
 	}
 	
 	function getCountBarang()
 	{
-		$this->db->select('count(id) as getcount');
-		$this->db->from('barang');
+		$this->db->select('COUNT(item_id) AS getcount');
+		$this->db->from('item');
 		$query=$this->db->get()->result();
 		return $query;
 	}
