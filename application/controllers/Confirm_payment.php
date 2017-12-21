@@ -21,18 +21,23 @@ class Confirm_payment extends General_controller {
 				"user_id" => $user_id
 			);
 
-			$info = $this->Confirm_payment_model->get_info($data);
-			if (sizeof($info) > 0) {
-				$info = $info[0];
-				$data = array(
-					"title" => "Infinite Apparel | Confirm Payment",
-					"header_additional_class" => " invers",
-					"data" => $info
-				);
-				
-				parent::view("confirm_payment", $data);
+			$is_page_valid = $this->Confirm_payment_model->is_page_valid($data);
+			if ($is_page_valid) {
+				$info = $this->Confirm_payment_model->get_info($data);
+				if (sizeof($info) > 0) {
+					$info = $info[0];
+					$data = array(
+						"title" => "Infinite Apparel | Confirm Payment",
+						"header_additional_class" => " invers",
+						"data" => $info
+					);
+					
+					parent::view("confirm_payment", $data);
+				} else {
+					redirect(base_url("order-list"));
+				}
 			} else {
-				redirect(base_url("order-list"));
+				redirect(base_url("order-list"));	
 			}
 		} else {
 			redirect(base_url("order-list"));
@@ -41,7 +46,7 @@ class Confirm_payment extends General_controller {
 
 	function do_confirm() {
 		$order_id = $this->input->post("order_id", true);
-		if (!empty($_FILES["input-image"]["name"]) && $_FILES["input-image"]["size"] < 5242880) {
+		if (!empty($_FILES["input-image"]["name"]) && $_FILES["input-image"]["size"] < 5242880 && $order_id) {
 			$extension = pathinfo($_FILES["input-image"]["name"], PATHINFO_EXTENSION);
 
 			$user_id = parent::is_logged_in();

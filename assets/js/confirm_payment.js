@@ -65,6 +65,8 @@ $(function() {
 
         if (!valid) {
             e.preventDefault();
+        } else {
+            showLoader();
         }
     });
 });

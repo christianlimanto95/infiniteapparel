@@ -1,37 +1,10 @@
-.section-1 {
-    height: 1000px;
-}
-
 .section-1-inner {
 	width: 80vw;
 	margin: 0 auto;
 }
 
-.section-1-left, .section-1-right {
-    width: 40vw;
-    height: 400px;
-    float: left;
-    padding: 0 30px;
-}
-
-.form-item-upper, .form-item-downer {
-    margin-bottom: 10px;
-}
-
-.form-item-downer .custom-form-label {
-    width: 60px;
-}
-
-.form-item-total-payment {
-    margin-bottom: 40px;
-}
-
 .form-item-downer span {
     font-family: helvetica;
-}
-
-.custom-form-label, .custom-form-input {
-    display: inline-block;
 }
 
 .custom-form-label {
@@ -43,26 +16,14 @@
     font-weight: bold;
 }
 
-.section-1-right-title {
-    margin-bottom: 20px;
-}
-
 .label {
-    margin-right: 30px;
     cursor: pointer;
 }
 
 .bank-image {
     display: inline-block;
-    width: 100px;
-    height: 50px;
     background-size: 100%;
     background-repeat: no-repeat;
-    margin-bottom: -25px;
-}
-
-.section-1-blank-space {
-    height: 30px;
 }
 
 .other-label {
@@ -72,44 +33,186 @@
 
 .input-other-bank {
     visibility: hidden;
-    margin-left: -10px;
 }
 
 .input-other-bank.show {
     visibility: visible;
 }
 
-.bank-information {
-    margin-top: 30px;
-}
-
-.bank-information-label {
-    font-size: 10pt;
-    margin-bottom: 5px;
-}
-
-.bank-information-input {
-    font-size: 10pt;
-}
-
-.form-input-account-name {
-    width: 250px;
-}
-
 .proof-image {
-    max-width: 300px;
-    max-height: 300px;
     display: block;
 }
 
 .btn-confirm-payment {
-    width: 250px;
-    padding: 10px 0;
-    font-size: 12pt;
 	border: 1px solid rgb(37, 37, 37);
 	background-color: rgb(37, 37, 37);
     color: white;
     text-align: center;
     cursor: pointer;
-    margin-top: 20px;
+}
+
+@media all and (max-width: 1024px) {
+    .section-1 {
+        height: 350vw;
+    }
+
+    .section-1-left, .section-1-right {
+        width: 80vw;
+        margin: 0 auto;
+    }
+
+    .section-1-right {
+        margin-top: 15vw;
+    }
+
+    .form-item-upper, .form-item-downer {
+        margin-bottom: 4vw;
+    }
+
+    .custom-form-label {
+        display: inline-block;
+    }
+
+    .custom-form-label, .custom-form-input {
+        font-size: 4vw;
+    }
+
+    .section-1-right-title {
+        margin-bottom: 5vw;
+    }
+
+    .label {
+        margin-right: 5vw;
+    }
+
+    .bank-image {
+        width: 22vw;
+        height: 11vw;
+        margin-bottom: -5vw;
+    }
+
+    .section-1-blank-space {
+        height: 5vw;
+    }
+
+    .input-other-bank {
+        margin-left: -2vw;
+    }
+
+    .bank-information {
+        margin-top: 10vw;
+    }
+    
+    .bank-information-label {
+        font-size: 3vw;
+        margin-bottom: 1vw;
+    }
+
+    .bank-information-input {
+        font-size: 3vw;
+    }
+
+    input[type="file"].bank-information-input {
+        font-size: 5vw;
+    }
+    
+    .form-input-account-name {
+        width: 100%;
+    }
+
+    .proof-image {
+        max-width: 80vw;
+        max-height: 80vw;
+    }
+
+    .btn-confirm-payment {
+        padding: 3vw 0;
+        width: 100%;
+        font-size: 4vw;
+        margin-top: 10vw;
+    }
+}
+
+@media all and (min-width: 768px) and (max-width: 1024px) {
+
+}
+
+@media all and (min-width: 1025px) {
+    .section-1 {
+        height: 1000px;
+    }
+
+    .section-1-left, .section-1-right {
+        width: 40vw;
+        height: 400px;
+        float: left;
+        padding: 0 30px;
+    }
+
+    .form-item-upper, .form-item-downer {
+        margin-bottom: 10px;
+    }
+    
+    .form-item-downer .custom-form-label {
+        width: 60px;
+    }
+
+    .custom-form-label, .custom-form-input {
+        display: inline-block;
+    }
+
+    .form-item-total-payment {
+        margin-bottom: 40px;
+    }
+
+    .section-1-right-title {
+        margin-bottom: 20px;
+    }
+
+    .label {
+        margin-right: 30px;
+    }
+
+    .bank-image {
+        width: 100px;
+        height: 50px;
+        margin-bottom: -25px;
+    }
+
+    .section-1-blank-space {
+        height: 30px;
+    }
+
+    .input-other-bank {
+        margin-left: -10px;
+    }
+
+    .bank-information {
+        margin-top: 30px;
+    }
+    
+    .bank-information-label {
+        font-size: 10pt;
+        margin-bottom: 5px;
+    }
+
+    .bank-information-input {
+        font-size: 10pt;
+    }
+    
+    .form-input-account-name {
+        width: 250px;
+    }
+
+    .proof-image {
+        max-width: 300px;
+        max-height: 300px;
+    }
+
+    .btn-confirm-payment {
+        width: 250px;
+        padding: 10px 0;
+        font-size: 12pt;
+        margin-top: 20px;
+    }
 }

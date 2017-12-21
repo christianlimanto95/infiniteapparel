@@ -57,7 +57,7 @@ class General_controller extends CI_Controller
 
 	public function redirect_if_not_logged_in() {
         if (!$this->input->cookie('infinite_apparel_user', true)) {
-            redirect(base_url());
+            redirect(base_url("product"));
         }
 	}
 	

@@ -7,6 +7,20 @@ class Confirm_payment_model extends CI_Model
         parent::__construct();
     }
 
+    function is_page_valid($data) {
+        $query = $this->db->query("
+            SELECT hjual_id
+            FROM hjual
+            WHERE hjual_id = " . $data["hjual_id"] . " AND user_id = " . $data["user_id"] . " AND hjual_status = 1
+            LIMIT 1
+        ");
+        $result = $query->result();
+        if (sizeof($result) > 0) {
+            return true;
+        }
+        return false;
+    }
+
     function get_info($data) {
         $query = $this->db->query("
             SELECT h.hjual_id, h.hjual_grand_total_price, p.pemesanan_first_name, p.pemesanan_last_name, p.pemesanan_address, p.pemesanan_handphone

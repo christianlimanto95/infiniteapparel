@@ -33,7 +33,7 @@
             </div>
             <form class="section-1-right" method="post" action="<?php echo base_url("do_confirm_payment"); ?>" enctype="multipart/form-data">
                 <input type="hidden" name="order_id" value="<?php echo $data->hjual_id; ?>" />
-                <div class="section-1-right-title">Bank <span class="error bank-error"></span></div>
+                <div class="section-1-right-title form-label">Bank <span class="error bank-error"></span></div>
                 <label class="label" for="bank-bca">
                     <input type="radio" name="bank" value="bca" id="bank-bca" class="input-bank bank-bca" />
                     <div class="bank-image" style="background-image: url(<?php echo base_url("assets/images/bca.jpg") ?>);"></div>
