@@ -107,5 +107,16 @@ class General_controller extends CI_Controller
             $config["file_name"] = $file_name;
         }
         $this->load->library('upload', $config);
+	}
+	
+	public function get_default_email_config() {
+        $config["protocol"] = "smtp";
+		$config["smtp_host"] = "dnp-project.com";
+		$config["smtp_user"] = "admin@dnp-project.com";
+		$config["smtp_pass"] = "sembarang1";
+		$config["smtp_port"] = 465;
+        $config["smtp_crypto"] = "ssl";
+        $config["mailtype"] = "html";
+        return $config;
     }
 }

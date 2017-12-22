@@ -953,6 +953,10 @@ table tbody tr:nth-child(odd) {
     opacity: 0;
   }
 
+  .header-profile-menu {
+    color: rgb(37, 37, 37);
+  }
+
   .header-profile-menu-1 {
     position: fixed;
     font-size: 5vw;

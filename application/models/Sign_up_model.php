@@ -42,6 +42,8 @@ class Sign_up_model extends CI_Model
         $this->db->insert("verification", $insertVerification);
 
         $this->db->trans_complete();
+
+        return $verification_token;
     }
 
     function random_str($length, $keyspace = '0123456789abcdefghijklmnopqrstuvwxyz') {

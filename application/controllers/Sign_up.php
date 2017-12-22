@@ -59,9 +59,21 @@ class Sign_up extends General_controller {
 				"user_first_name" => $user_first_name,
 				"user_last_name" => $user_last_name
 			);
-			$this->Sign_up_model->insert_user($insertData);
-			$this->session->set_flashdata("message", "Sign up Successful. We have sent a confirmation email to " . $user_email);
-			redirect(base_url("sign-up"));
+			$verification_token = $this->Sign_up_model->insert_user($insertData);
+
+			$this->load->library("email", parent::get_default_email_config());
+
+			$this->email->from("admin@dnp-project.com", "Admin DNP Project");
+			$this->email->to($user_email);
+			$this->email->subject("Email Verification");
+			$this->email->message("Dear, " . $user_first_name, ",<br />Please click on the link below to verify your account at infinite-apparel.com<br /><br />" . base_url("verify-email/" . $verification_token));
+			if (!$this->email->send()) {
+				echo $this->email->print_debugger();	
+			} else {
+
+				$this->session->set_flashdata("message", "Sign up Successful. We have sent a confirmation email to " . $user_email);
+				redirect(base_url("sign-up"));
+			}
 		}
 	}
 
