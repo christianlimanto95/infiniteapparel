@@ -16,6 +16,18 @@ $(function() {
 		custom_add_to_bag(true);
 	});
 
+	$(".custom-input-qty").on("change", function() {
+        checkInputNumber(this);
+	});
+	
+	$(".btn-view-size-chart").on("click", function() {
+		$(".size-chart").addClass("show");
+	});
+
+	$(".size-chart").on("click", function() {
+		$(this).removeClass("show");
+	});
+
 	$(".select-type").on("change", function() {
 		var custom_type_id = this.value;
 

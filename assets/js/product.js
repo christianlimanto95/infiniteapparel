@@ -27,6 +27,10 @@ $(function() {
 		});
 	});
 
+	$(".input-qty").on("change", function() {
+        checkInputNumber(this);
+    });
+
 	$(".btn-view-size-chart").on("click", function() {
 		$(".size-chart").addClass("show");
 	});

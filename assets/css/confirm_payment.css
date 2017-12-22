@@ -39,6 +39,15 @@
     visibility: visible;
 }
 
+.form-input-account-number {
+    -moz-appearance: textfield;
+}
+
+.form-input-account-number::-webkit-outer-spin-button,
+.form-input-account-number::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+}
+
 .proof-image {
     display: block;
 }

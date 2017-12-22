@@ -1,3 +1,9 @@
+<div class="size-chart">
+    <div class="size-chart-inner">
+        <div class="size-chart-image" style="background-image: url(<?php echo base_url("assets/images/size_chart_1.jpg"); ?>);"></div>
+        <div class="size-chart-image" style="background-image: url(<?php echo base_url("assets/images/size_chart_2.jpg"); ?>);"></div>
+    </div>
+</div>
 <div class="content">
     <div class="section section-1">
         <div class="section-title">
@@ -46,6 +52,8 @@
                     ?>
                     </div>
                 </div>
+                <div class="btn-view-size-chart">View Size Chart</div>
+                <div></div>
                 <div class="form-item-inline custom-form-item custom-form-item-size">
                     <div class="form-label custom-form-label">Size</div>
                     <select class="custom-select-size">
@@ -59,7 +67,7 @@
                 </div>
                 <div class="form-item-inline custom-form-item">
                     <div class="form-label custom-form-label">Qty</div>
-                    <input type="number" class="custom-input-qty" value="1" min="1" max="999" />
+                    <input type="number" class="custom-input-qty" data-input-type="number" value="1" min="1" max="999" />
                 </div>
                 <div class="form-item custom-form-item">
                     <div class="form-label custom-form-label">Add Extra Notes</div>

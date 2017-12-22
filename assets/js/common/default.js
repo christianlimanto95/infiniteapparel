@@ -140,7 +140,12 @@ $(function() {
     });
 
     $(document).on("change", ".bags-input-qty", function() {
+        checkInputNumber(this);
         cart_change_qty(this);
+    });
+
+    $(".form-input-qty").on("change", function() {
+        checkInputNumber(this);
     });
 
     $(".modal-btn-checkout").on("click", function() {
@@ -246,6 +251,15 @@ function ajaxCall(url, data, callback) {
 	});
 }
 
+function checkInputNumber(element) {
+    var value = parseInt($(element).val());
+    if (value <= 0 || isNaN(value)) {
+        $(element).val(1);
+    } else if (value > 999) {
+        $(element).val(999);
+    }
+}
+
 function checkout() {
     if ($(".header-profile").length > 0) {
         window.location = checkout_url;
@@ -297,7 +311,7 @@ function get_cart() {
                 element += "<td data-col='price'>";
                 element += "IDR " + result[i].item_price;
                 element += "</td>";
-                element += "<td data-col='qty'><input type='number' class='bags-input-qty' min='1' max='999' value='" + result[i].item_qty + "' /></td>";
+                element += "<td data-col='qty'><input type='number' data-input-type='number' class='bags-input-qty' min='1' max='999' value='" + result[i].item_qty + "' /></td>";
                 element += "<td data-col='subtotal'>IDR " + result[i].item_subtotal + "</td>";
                 element += "<td data-col='action'><div class='bags-add-item' title='add another size' style='background-image: url(" + bags_add_item_url + ");'></div><div class='bags-remove-item' title='remove' style='background-image: url(" + bags_remove_item_url + ");'></div></td>";
                 element += "</tr>";

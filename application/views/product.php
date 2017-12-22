@@ -42,7 +42,7 @@
                     </div>
                     <div class="quantity-container">
                         <div class="label">Quantity</div>
-                        <input class="input-qty" type="number" min="1" max="999" value="1" />
+                        <input class="input-qty" type="number" data-input-type="number" min="1" max="999" value="1" />
                     </div>
                 </div>
                 <div class="section-1-right-btn-container">

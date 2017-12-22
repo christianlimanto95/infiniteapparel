@@ -51,7 +51,7 @@
                 <div class="bank-information">
                     <div class="form-item">
                         <div class="form-label bank-information-label">Bank Account Number (Nomor Rekening) <span class="error bank-account-number-error"></span></div>
-                        <input type="text" name="bank_account_number" class="form-input bank-information-input form-input-account-number" data-input-type="number" maxlength="16" />
+                        <input type="number" name="bank_account_number" class="form-input bank-information-input form-input-account-number" data-input-type="number" maxlength="16" />
                     </div>
                     <div class="form-item">
                         <div class="form-label bank-information-label">Bank Account Name (Atas Nama) <span class="error bank-account-name-error"></span></div>

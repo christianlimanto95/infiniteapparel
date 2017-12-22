@@ -1,3 +1,35 @@
+.size-chart {
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.5);
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    display: none;
+}
+
+.size-chart.show {
+    display: block;
+}
+
+.size-chart-inner {
+    position: relative;
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+    -moz-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    -o-transform: translateY(-50%);
+    transform: translateY(-50%);
+    text-align: center;
+}
+
+.size-chart-image {
+    display: inline-block;
+    background-size: auto 100%;
+    background-repeat: no-repeat;
+}
+
 .section-1-inner {
     width: 80vw;
     margin: 0 auto;
@@ -37,6 +69,13 @@
     font-family: helvetica;
 }
 
+.btn-view-size-chart {
+    display: inline-block;
+    border: 1px solid rgb(37, 37, 37);
+    cursor: pointer;
+    font-family: helvetica;
+}
+
 .custom-input-qty {
     text-align: center;
 }
@@ -58,6 +97,13 @@
 }
 
 @media all and (max-width: 1024px) {
+    .size-chart-image {
+        display: block;
+        width: 65vw;
+        height: 65vw;
+        margin: 0 auto;
+    }
+
     .section-1 {
         height: 310vw;
     }
@@ -116,6 +162,12 @@
     .select-type {
         margin-left: 2vw;
     }
+
+    .btn-view-size-chart {
+        font-size: 3vw;
+        padding: 2vw 4vw;
+        margin-bottom: 5vw;
+    }
     
     .custom-form-item-size {
         margin-right: 10vw;
@@ -153,6 +205,11 @@
 }
 
 @media all and (min-width: 1025px) {
+    .size-chart-image {
+        width: 350px;
+        height: 350px;
+    }
+
     .section-1 {
         height: 900px;
         padding-bottom: 50px;
@@ -206,6 +263,12 @@
 
     .select-type {
         margin-left: 5px;
+    }
+
+    .btn-view-size-chart {
+        font-size: 9pt;
+        padding: 5px 10px;
+        margin-bottom: 15px;
     }
     
     .custom-form-item-size {

@@ -188,6 +188,6 @@ function setShippingServiceCombobox(shipping_name) {
 function setShippingCost(cost) {
     var subtotal = parseInt($(".total-item-value-subtotal").html().replace(/\./g,''));
     var total = addThousandSeparator(subtotal + parseInt(cost));
-    $(".total-item-value-disc").html(addThousandSeparator(cost));
+    $(".total-item-value-tax").html(addThousandSeparator(cost));
     $(".total-item-value-total").html(total);
 }

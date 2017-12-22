@@ -51,7 +51,7 @@
                 </div>
                 <div class="form-item custom-form-item">
                     <div class="form-label custom-form-label">Phone Number <span class="error error-phone"></span></div>
-                    <input type="phone" class="form-input custom-form-input form-input-phone" data-input-type="number" maxlength="15" />
+                    <input type="number" class="form-input custom-form-input form-input-phone" data-input-type="number" maxlength="15" />
                 </div>
                 <div class="form-item-inline custom-form-item-inline form-item-shipping">
                     <div class="form-label custom-form-label">Shipping</div>

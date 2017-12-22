@@ -29,8 +29,8 @@
 		}
 	</style>
 	<link rel="shortcut icon" href="<?php echo base_url("assets/icons/favicon.png"); ?>" />
-	<link rel="stylesheet" href="<?php echo base_url("assets/css/common/default.css?v=8"); ?>" />
-	<link rel="stylesheet" href="<?php echo base_url("assets/css/" . $page_name . ".css?v=7"); ?>" />	
+	<link rel="stylesheet" href="<?php echo base_url("assets/css/common/default.css?v=9"); ?>" />
+	<link rel="stylesheet" href="<?php echo base_url("assets/css/" . $page_name . ".css?v=9"); ?>" />	
 </head>
 <body>
 <div class="loader-container">
@@ -175,7 +175,7 @@
 			</div>
 			<div class="form-item-inline">
 				<div class="form-label">Qty</div>
-				<input type="number" class="form-input form-input-qty" data-auto-clear="false" min="1" max="999" value="1" />
+				<input type="number" data-input-type="number" class="form-input form-input-qty" data-auto-clear="false" min="1" max="999" value="1" />
 			</div>
 		</div>
 		<div class="modal-footer">
