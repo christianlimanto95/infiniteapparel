@@ -8,6 +8,7 @@ class General_model extends CI_Model
     }
 
     function get_user_logged_in($id) {
+        $this->db->free_db_resource($this->db->conn_id);
         $query = $this->db->query("
             SELECT user_id, user_email, user_first_name, user_last_name
             FROM user
