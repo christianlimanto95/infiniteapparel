@@ -12,21 +12,49 @@
 }
 
 .custom-form-input {
+	display: none;
 	padding-left: 0;
 }
 
-.btn-edit {
+.custom-form-input.show {
+	display: block;
+}
+
+.btn-edit, .btn-save, .btn-cancel {
+	display: inline-block;
 	position: absolute;
 	top: 15px;
 	left: 320px;
-	display: inline-block;
 	padding: 5px 10px;
 	border: 1px solid rgb(37, 37, 37);
+	background-color: transparent;
 	font-size: 10pt;
 	cursor: pointer;
 }
 
-.btn-edit:hover {
+.btn-save {
 	background-color: rgb(37, 37, 37);
 	color: white;
+}
+
+.btn-cancel {
+	left: 390px;
+}
+
+.btn-edit:hover, .btn-cancel:hover {
+	background-color: rgb(37, 37, 37);
+	color: white;
+}
+
+.btn-save:hover {
+	background-color: transparent;
+	color: rgb(37, 37, 37);
+}
+
+.form-edit {
+	display: none;
+}
+
+.form-edit.show {
+	display: block;
 }
