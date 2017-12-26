@@ -1,3 +1,9 @@
+.section-1 {
+	height: auto;
+	min-height: 56vw;
+	padding-bottom: 50px;
+}
+
 .section-1-inner {
 	width: 80vw;
 	margin: 0 auto;
@@ -8,23 +14,28 @@
 }
 
 .form-item-address .form-input {
-	width: 300px;
+	width: 340px;
 }
 
 .custom-form-input {
 	display: none;
 	padding-left: 0;
+	min-height: 27px;
 }
 
 .custom-form-input.show {
 	display: block;
 }
 
+textarea[name="user_address"] {
+	resize: none;
+}
+
 .btn-edit, .btn-save, .btn-cancel {
 	display: inline-block;
 	position: absolute;
 	top: 15px;
-	left: 320px;
+	left: 360px;
 	padding: 5px 10px;
 	border: 1px solid rgb(37, 37, 37);
 	background-color: transparent;
@@ -38,17 +49,12 @@
 }
 
 .btn-cancel {
-	left: 390px;
+	left: 430px;
 }
 
-.btn-edit:hover, .btn-cancel:hover {
+.btn-edit:hover {
 	background-color: rgb(37, 37, 37);
 	color: white;
-}
-
-.btn-save:hover {
-	background-color: transparent;
-	color: rgb(37, 37, 37);
 }
 
 .form-edit {
@@ -57,4 +63,17 @@
 
 .form-edit.show {
 	display: block;
+}
+
+.form-input-first-name, .form-input-last-name {
+	width: 150px;
+}
+
+.form-input-phone {
+    -moz-appearance: textfield;
+}
+
+.form-input-phone::-webkit-outer-spin-button,
+.form-input-phone::-webkit-inner-spin-button {
+    -webkit-appearance: none;
 }
