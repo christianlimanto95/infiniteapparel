@@ -2,3 +2,31 @@
 	width: 80vw;
 	margin: 0 auto;
 }
+
+.custom-form-item {
+	position: relative;
+}
+
+.form-item-address .form-input {
+	width: 300px;
+}
+
+.custom-form-input {
+	padding-left: 0;
+}
+
+.btn-edit {
+	position: absolute;
+	top: 15px;
+	left: 320px;
+	display: inline-block;
+	padding: 5px 10px;
+	border: 1px solid rgb(37, 37, 37);
+	font-size: 10pt;
+	cursor: pointer;
+}
+
+.btn-edit:hover {
+	background-color: rgb(37, 37, 37);
+	color: white;
+}
