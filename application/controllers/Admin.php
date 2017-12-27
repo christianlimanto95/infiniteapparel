@@ -79,6 +79,7 @@ class Admin extends General_controller {
 		{
 			$data["allseries"][$row->category_id] = $row->category_name;
 		}
+		$data["title"] = "Infinite Apparel | Admin Insert";
 		
 		parent::adminview('inserting', $data);
 	}
@@ -97,5 +98,15 @@ class Admin extends General_controller {
 		}
 
 		redirect(base_url("admin/inserting"));
+	}
+
+	function insert_item() {
+		$category_id = $this->input->post("cbSeries");
+		$item_name = $this->input->post("txtnama");
+		$item_price = $this->input->post("rharga");
+		$item_description = $this->input->post("txtketerangan");
+		$item_image_count = intval($this->input->post("image_count"));
+
+		
 	}
 }

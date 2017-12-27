@@ -1,5 +1,5 @@
 <?php
-	echo "<script>$(\"#navigation option[value='" . base_url("admin/inserting") . "']\").attr(\"selected\", true);</script>";
+	
 ?>
 <div id="container">
 	<?php
@@ -13,8 +13,7 @@
 		
 		echo "<div class='insert-subtitle'>INSERT BARANG</div>";
 		
-		echo form_open_multipart('project/inserting');
-		echo "<form class='section-1-right' method='post' action='" . base_url("admin/insert_item") . "' enctype='multipart/form-data'>";
+		echo "<form class='form-insert-item' method='post' action='" . base_url("admin/insert_item") . "' enctype='multipart/form-data'>";
 		echo "<div class='insert-label'>Nama</div>" .form_input('txtnama', "");
 		echo "<div class='insert-label'>Kategori</div>" .form_dropdown('cbSeries', $allseries, $cbSeries, 'class="cbseries"');
 		
@@ -35,7 +34,7 @@
 				'name'		=> 'rharga',
 				'id'		=> 'rharga-2',
 				'value'		=> '140000',
-				'checked'	=> TRUE
+				'checked'	=> FALSE
 				);
 			echo form_radio($data) . "IDR " . number_format(140000, 0, ",", ".");
 		echo "</label>";
@@ -45,7 +44,7 @@
 				'name'		=> 'rharga',
 				'id'		=> 'rharga-3',
 				'value'		=> '325000',
-				'checked'	=> TRUE
+				'checked'	=> FALSE
 				);
 			echo form_radio($data) . "IDR " . number_format(325000, 0, ",", ".");
 		echo "</label>";
@@ -55,13 +54,13 @@
 				'name'		=> 'rharga',
 				'id'		=> 'rharga-4',
 				'value'		=> 'other',
-				'checked'	=> TRUE
+				'checked'	=> FALSE
 				);
 			echo form_radio($data);
-			echo "Other " . "<input type='tel' name='txtharga' value='" . $harga . "'>";
+			echo "Other " . "<input type='number' class='txtharga' name='txtharga' />";
 			echo "<div class='insert-label'>Keterangan</div>" . form_textarea("txtketerangan", $keterangan);
 		echo "</label>";
-		
+		echo "<input type='hidden' name='image_count' value='1' />";
 		echo "<div class='input-image-container'>";
 		echo "<input type='file' name='image_1' data-ctr='1' class='input-image' />";
 		echo "<img class='preview' />";

@@ -53,6 +53,7 @@ $(function() {
 		ctrImage++;
 		var element = "<input type='file' name='image_" + ctrImage + "' data-ctr='" + ctrImage + "' class='input-image' /><img class='preview' data-ctr='" + ctrImage + "' />";
 		$(".input-image-container").append(element);
+		$("input[name='image_count']").val(ctrImage);
 	});
 
 	$(".btn-remove-image").on("click", function() {
@@ -60,6 +61,36 @@ $(function() {
 			$(".input-image[data-ctr='" + ctrImage + "']").remove();
 			$(".preview[data-ctr='" + ctrImage + "']").remove();
 			ctrImage--;
+			$("input[name='image_count']").val(ctrImage);
+		}
+	});
+
+	$(".form-insert-item").on("submit", function(e) {
+		var valid = true;
+		var error = "Error : ";
+
+		var item_price = $("input[name='rharga']:checked").val();
+		if (item_price == "other") {
+			item_price = $(".txtharga").val();
+		}
+		item_price = parseInt(item_price);
+		if (isNaN(item_price)) {
+			item_price = 0;
+		}
+
+		if (item_price == 0) {
+			valid = false;
+			error += "\n- Harga belum benar";
+		}
+
+		if ($(".input-image")[0].files.length == 0) {
+			valid = false;
+			error += "\n- Minimal ada gambar utama";
+        }
+
+		if (!valid) {
+			e.preventDefault();
+			alert(error);
 		}
 	});
 });
