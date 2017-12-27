@@ -95,4 +95,26 @@ class Account extends General_controller {
 
 		redirect(base_url("account-settings"));
 	}
+
+	function change_password() {
+		$current_password = $this->input->post("current_password", true);
+		$new_password = $this->input->post("new_password", true);
+		$user_id = parent::is_logged_in();
+
+		if ($current_password && $new_password && $user_id) {
+			$data = array(
+				"current_password" => $current_password,
+				"new_password" => $new_password,
+				"user_id" => $user_id
+			);
+			$result = $this->Account_model->change_password($data);
+			if ($result) {
+				$this->session->set_flashdata("message", "Password Changed");
+			} else {
+				$this->session->set_flashdata("error_message", "Current Password is wrong");
+			}
+		}
+
+		redirect(base_url("account-settings"));
+	}
 }

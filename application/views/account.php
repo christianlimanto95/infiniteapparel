@@ -6,8 +6,10 @@
             <div class="section-title-line"></div>
         </div>
         <div class="section-1-inner">
-            <?php if($this->session->flashdata("message") != null) {
+            <?php if ($this->session->flashdata("message") != null) {
                 echo "<div class='flash-message'>" . $this->session->flashdata("message") . "</div>";
+            } else if ($this->session->flashdata("error_message") != null) {
+                echo "<div class='flash-message custom-error'>" . $this->session->flashdata("error_message") . "</div>";
             } ?>
             <div class="form-item custom-form-item">
                 <div class="form-label">Email</div>
@@ -88,15 +90,15 @@
                 <form class="form-edit" data-form-edit="password" method="post" action="<?php echo base_url("account/change_password"); ?>">
                     <div class="form-item">
                         <div class="form-label">Current Password<span class="error error-current-password"></span></div>
-                        <input type="password" class="form-input" value="" maxlength="40" />
+                        <input type="password" name="current_password" class="form-input form-input-current-password" value="" maxlength="40" />
                     </div>
                     <div class="form-item">
                         <div class="form-label">New Password<span class="error error-new-password"></span></div>
-                        <input type="password" class="form-input" value="" maxlength="40" />
+                        <input type="password" name="new_password" class="form-input form-input-new-password" value="" maxlength="40" />
                     </div>
                     <div class="form-item">
                         <div class="form-label">Confirm New Password<span class="error error-confirm-new-password"></span></div>
-                        <input type="password" class="form-input" value="" maxlength="40" />
+                        <input type="password" class="form-input form-input-confirm-password" value="" maxlength="40" />
                     </div>
                     <button class="btn-save">Save</button>
                     <div class="btn-cancel">Cancel</div>

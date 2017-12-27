@@ -1,7 +1,5 @@
 .section-1 {
 	height: auto;
-	min-height: 56vw;
-	padding-bottom: 50px;
 }
 
 .section-1-inner {
@@ -13,14 +11,9 @@
 	position: relative;
 }
 
-.form-item-address .form-input {
-	width: 340px;
-}
-
 .custom-form-input {
 	display: none;
 	padding-left: 0;
-	min-height: 27px;
 }
 
 .custom-form-input.show {
@@ -32,27 +25,12 @@ textarea[name="user_address"] {
 }
 
 .btn-edit, .btn-save, .btn-cancel {
-	display: inline-block;
-	position: absolute;
-	top: 15px;
-	left: 360px;
-	padding: 5px 10px;
 	border: 1px solid rgb(37, 37, 37);
 	background-color: transparent;
-	font-size: 10pt;
 	cursor: pointer;
 }
 
 .btn-save {
-	background-color: rgb(37, 37, 37);
-	color: white;
-}
-
-.btn-cancel {
-	left: 430px;
-}
-
-.btn-edit:hover {
 	background-color: rgb(37, 37, 37);
 	color: white;
 }
@@ -65,10 +43,6 @@ textarea[name="user_address"] {
 	display: block;
 }
 
-.form-input-first-name, .form-input-last-name {
-	width: 150px;
-}
-
 .form-input-phone {
     -moz-appearance: textfield;
 }
@@ -76,4 +50,91 @@ textarea[name="user_address"] {
 .form-input-phone::-webkit-outer-spin-button,
 .form-input-phone::-webkit-inner-spin-button {
     -webkit-appearance: none;
+}
+
+.custom-error {
+    background-color: #FFCDD2;
+    color: #B71C1C;
+}
+
+@media all and (max-width: 1024px) {
+	.section-1 {
+		min-height: 160vw;
+		padding-bottom: 10vw;
+	}
+
+	.custom-form-input {
+		min-height: 7vw;
+	}
+
+	.btn-edit, .btn-save, .btn-cancel {
+		display: block;
+		width: 100%;
+		padding: 3vw 0;
+		font-size: 3vw;
+		text-align: center;
+		margin-top: 3vw;
+	}
+
+	.btn-edit:active {
+		background-color: rgb(37, 37, 37);
+		color: white;
+	}
+
+	.btn-save {
+		margin-top: 10vw;
+	}
+
+	.form-input-first-name, .form-input-last-name {
+		width: 39vw;
+	}
+
+	.form-edit select, .form-edit textarea {
+		width: 100%;
+	}
+
+	.form-edit textarea {
+		height: 20vw;
+	}
+}
+
+@media all and (min-width: 768px) and (max-width: 1024px) {
+
+}
+
+@media all and (min-width: 1025px) {
+	.section-1 {
+		min-height: 56vw;
+		padding-bottom: 50px;
+	}
+
+	.form-item-address .form-input {
+		width: 340px;
+	}
+
+	.custom-form-input {
+		min-height: 27px;
+	}
+
+	.btn-edit, .btn-save, .btn-cancel {
+		display: inline-block;
+		position: absolute;
+		top: 15px;
+		left: 360px;
+		padding: 5px 10px;
+		font-size: 10pt;
+	}
+
+	.btn-edit:hover {
+		background-color: rgb(37, 37, 37);
+		color: white;
+	}
+
+	.btn-cancel {
+		left: 430px;
+	}
+
+	.form-input-first-name, .form-input-last-name {
+		width: 150px;
+	}
 }

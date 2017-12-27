@@ -54,4 +54,22 @@ class Account_model extends CI_Model
             WHERE user_id = " . $data["user_id"] . "
         ");
     }
+
+    function change_password($data) {
+        $current_password = $this->db->query("SELECT user_password FROM user WHERE user_id = " . $data["user_id"] . " LIMIT 1")->result();
+        if (sizeof($current_password) > 0) {
+            $current_password = $current_password[0]->user_password;
+            if (password_verify($data["current_password"], $current_password)) {
+                $data["new_password"] = password_hash($data["new_password"], PASSWORD_DEFAULT);
+                $query = $this->db->query("
+                    UPDATE user
+                    SET user_password = '" . $data["new_password"] . "', modified_date = CURRENT_TIMESTAMP()
+                    WHERE user_id = " . $data["user_id"] . "
+                ");
+                return true;
+            }
+        }
+
+        return false;
+    }
 }

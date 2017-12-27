@@ -39,6 +39,28 @@ $(function() {
                     $(".error-phone").html("Phone Number cannot be empty");
                 }
                 break;
+            case "password":
+                var currentPassword = $(this).find(".form-input-current-password").val().trim();
+                if (currentPassword == "") {
+                    valid = false;
+                    $(".error-current-password").html("Current Password is required");
+                }
+
+                var newPassword = $(this).find(".form-input-new-password").val().trim();
+                if (newPassword == "") {
+                    valid = false;
+                    $(".error-new-password").html("New Password is required");
+                }
+
+                var confirmPassword = $(this).find(".form-input-confirm-password").val().trim();
+                if (confirmPassword == "") {
+                    valid = false;
+                    $(".error-confirm-new-password").html("Confirm New Password is required");
+                } else if (confirmPassword != newPassword) {
+                    valid = false;
+                    $(".error-confirm-new-password").html("Confirm New Password does not match New Password");
+                }
+                break;
         }
 
         if (valid) {
