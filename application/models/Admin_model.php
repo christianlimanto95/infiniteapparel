@@ -38,6 +38,13 @@ class Admin_model extends CI_Model
 		
 		$this->db->insert("blogpost", $insertData);
 	}
+
+	function insert_category($data) {
+		$insertData = array(
+			"category_name" => $data["category_name"]
+		);
+		$this->db->insert("category", $insertData);
+	}
 	
 	function updateBarang($data)
 	{
@@ -55,16 +62,6 @@ class Admin_model extends CI_Model
 	function deleteBarang($id)
 	{
 		$this->db->delete('barang',array('id' => $id));
-	}
-	
-	function insertSeries($data)
-	{
-		$insertData = array(
-				"id" => $data["id"],
-				"nama" => $data["nama"]
-		);
-		
-		$this->db->insert("series", $insertData);
 	}
 	
 	function getAllSeries()

@@ -4,20 +4,19 @@
 <div id="container">
 	<?php
 	
-		echo "<div class='insert-subtitle'>INSERT SERIES</div>";
+		echo "<div class='insert-subtitle'>INSERT KATEGORI</div>";
 		
-		echo form_open('project/inserting');
-		echo validation_errors(); 
-		echo "Nama Series" .form_input('txtnama', $nama, 'class="insert-series-input"');
+		echo form_open(base_url("admin/insert_category"));
+		echo "Nama Kategori" .form_input('category_name', "", 'class="insert-series-input"');
 		echo form_submit('btninsertseries', 'Insert', 'class="button insert-button"') ;
 		echo form_close();
 		
 		echo "<div class='insert-subtitle'>INSERT BARANG</div>";
 		
 		echo form_open_multipart('project/inserting');
-		echo form_error();
-		echo "<div class='insert-label'>Nama</div>" .form_input('txtnama',$nama);
-		echo "<div class='insert-label'>Series</div>" .form_dropdown('cbSeries', $allseries, $cbSeries, 'class="cbseries"');
+		echo "<form class='section-1-right' method='post' action='" . base_url("admin/insert_item") . "' enctype='multipart/form-data'>";
+		echo "<div class='insert-label'>Nama</div>" .form_input('txtnama', "");
+		echo "<div class='insert-label'>Kategori</div>" .form_dropdown('cbSeries', $allseries, $cbSeries, 'class="cbseries"');
 		
 		echo "<div class='insert-label'>Harga</div>";
 		
@@ -25,26 +24,36 @@
 			$data = array(
 				'name'		=> 'rharga',
 				'id'		=> 'rharga-1',
-				'value'		=> '100000',
+				'value'		=> '125000',
 				'checked'	=> TRUE
 				);
-			echo form_radio($data) . number_format(100000, 0, ",", ".") . " IDR";
+			echo form_radio($data) . "IDR " . number_format(125000, 0, ",", ".");
 		echo "</label>";
 		
 		echo "<label for='rharga-2'>";
 			$data = array(
 				'name'		=> 'rharga',
 				'id'		=> 'rharga-2',
-				'value'		=> '125000',
+				'value'		=> '140000',
 				'checked'	=> TRUE
 				);
-			echo form_radio($data) . number_format(125000, 0, ",", ".") . " IDR";
+			echo form_radio($data) . "IDR " . number_format(140000, 0, ",", ".");
 		echo "</label>";
-		
+
 		echo "<label for='rharga-3'>";
 			$data = array(
 				'name'		=> 'rharga',
 				'id'		=> 'rharga-3',
+				'value'		=> '325000',
+				'checked'	=> TRUE
+				);
+			echo form_radio($data) . "IDR " . number_format(325000, 0, ",", ".");
+		echo "</label>";
+		
+		echo "<label for='rharga-4'>";
+			$data = array(
+				'name'		=> 'rharga',
+				'id'		=> 'rharga-4',
 				'value'		=> 'other',
 				'checked'	=> TRUE
 				);
@@ -53,10 +62,13 @@
 			echo "<div class='insert-label'>Keterangan</div>" . form_textarea("txtketerangan", $keterangan);
 		echo "</label>";
 		
-		echo "Image 1" . form_upload('foto1');
-		echo "Image 2" . form_upload('foto2');
-		echo "Image 3" . form_upload('foto3');
-		echo "Image 4" . form_upload('foto4');
+		echo "<div class='input-image-container'>";
+		echo "<input type='file' name='image_1' data-ctr='1' class='input-image' />";
+		echo "<img class='preview' />";
+		echo "</div>";
+		echo "<button type='button' class='btn-remove-image'>Hapus gambar</button>";
+		echo "<button type='button' class='btn-add-image'>Tambah gambar</button>";
+		
 		echo form_submit('btninsert','Insert', 'class="button insert-button"') ;
 		echo form_close();
 		echo  $msg;

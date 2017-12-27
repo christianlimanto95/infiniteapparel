@@ -20,8 +20,8 @@ input[type="text"] {
 }
 
 .insert-button {
-    float: right;
-    margin-top: 10px;
+    display: block;
+    margin-top: 30px;
     margin-bottom: 50px;
 }
 
@@ -34,10 +34,11 @@ input[type="text"] {
 }
 
 label {
-    display: block;
+    display: block !important;
     font-size: 12pt;
-    
+    clear: both;
 }
+
 
 input[type="radio"] {
     margin-right: 5px;
@@ -45,4 +46,21 @@ input[type="radio"] {
 
 textarea {
     width: 100%;
+}
+
+.input-image {
+    margin-top: 50px;
+}
+
+.preview {
+    max-width: 350px;
+}
+
+.btn-add-image {
+    margin-top: 30px;
+    display: block;
+}
+
+.btn-remove-image {
+    margin-top: 50px;
 }
