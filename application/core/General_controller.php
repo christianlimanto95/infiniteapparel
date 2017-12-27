@@ -111,8 +111,8 @@ class General_controller extends CI_Controller
 	
 	public function get_default_email_config() {
         $config["protocol"] = "smtp";
-		$config["smtp_host"] = "dnp-project.com";
-		$config["smtp_user"] = "admin@dnp-project.com";
+		$config["smtp_host"] = "mail.infiniteapparelid.com";
+		$config["smtp_user"] = "admin@infiniteapparelid.com";
 		$config["smtp_pass"] = "sembarang1";
 		$config["smtp_port"] = 465;
         $config["smtp_crypto"] = "ssl";
