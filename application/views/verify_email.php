@@ -14,3 +14,6 @@
         ?>
     </div>
 </div>
+<script>
+var catalog_url = "<?php echo base_url("product"); ?>";
+</script>

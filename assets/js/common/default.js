@@ -17,12 +17,7 @@ $(function() {
     });
 
     $(".header-btn-login").on("click", function() {
-        var modal = $(".modal-login");
-        modal.addClass("show");
-        modal.find(".modal-box").one('webkitAnimationEnd oanimationend oAnimationEnd msAnimationEnd animationend', function(e) {
-            modal.addClass("shown").removeClass("show");
-            modal.find(".modal-input-email").select();
-		});
+        showLoginModal(null);
     });
 
     $(".modal-login").on("modal-close", function() {
@@ -204,6 +199,18 @@ $(function() {
         get_cart();
     }
 });
+
+function showLoginModal(redirect_url) {
+    var modal = $(".modal-login");
+    if (redirect_url != null) {
+        modal.attr("data-redirect-to", redirect_url);
+    }
+    modal.addClass("show");
+    modal.find(".modal-box").one('webkitAnimationEnd oanimationend oAnimationEnd msAnimationEnd animationend', function(e) {
+        modal.addClass("shown").removeClass("show");
+        modal.find(".modal-input-email").select();
+    });
+}
 
 function clearModalInputs(modal) {
     modal.find(".form-input:not([data-auto-clear='false'])").val("");
