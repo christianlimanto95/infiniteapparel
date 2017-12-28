@@ -101,8 +101,15 @@ table tr td {
     margin-bottom: 10px;
 }
 
-.confirm-button {
+.confirm-button, .decline-button {
     float: right;
     margin-top: 20px;
     margin-bottom: 20px;
+}
+
+.decline-button {
+    background-color: red;
+    color: white;
+    margin-top: 5px;
+    margin-right: 50px;
 }

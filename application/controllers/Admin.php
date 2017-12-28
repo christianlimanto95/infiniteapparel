@@ -206,4 +206,26 @@ class Admin extends General_controller {
 
 		redirect(base_url("admin/confirmpayment"));
 	}
+
+	function do_declinepayment() {
+		$payment_id = $this->input->post("payment_id", true);
+		$hjual_id = $this->input->post("hjual_id", true);
+		$data = array(
+			"hjual_id" => $hjual_id,
+			"payment_id" => $payment_id
+		);
+		$result = $this->Admin_model->do_declinepayment($data);
+
+		if (sizeof($result) > 0) {
+			$result = $result[0];
+			$this->load->library("email", parent::get_default_email_config());
+			$this->email->from("admin@infiniteapparelid.com", "Infinite Apparel Admin");
+			$this->email->to($result->user_email);
+			$this->email->subject("Payment for order no. " . $hjual_id . " declined");
+			$this->email->message("Dear, " . $result->user_first_name . ",<br />We have declined your payment for order no. " . $hjual_id . " because the payment is not valid. You can try to confirm your payment or you can contact us at admin@infiniteapparelid.com.<br /><br />Thank you.");
+			$this->email->send();
+		}
+
+		redirect(base_url("admin/confirmpayment"));
+	}
 }

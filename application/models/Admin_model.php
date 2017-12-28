@@ -538,13 +538,40 @@ class Admin_model extends CI_Model
 
 		$this->db->query("
 			UPDATE payment
-			SET payment_status = 2
+			SET payment_status = 2, modified_date = CURRENT_TIMESTAMP()
 			WHERE payment_id = " . $data["payment_id"] . "
 		");
 
 		$this->db->query("
 			UPDATE hjual
-			SET hjual_status = 3
+			SET hjual_status = 3, modified_date = CURRENT_TIMESTAMP()
+			WHERE hjual_id = " . $data["hjual_id"] . "
+		");
+
+		$query = $this->db->query("
+			SELECT u.user_first_name, u.user_email, h.hjual_grand_total_price
+			FROM user u, hjual h
+			WHERE u.user_id = h.user_id AND h.hjual_id = " . $data["hjual_id"] . "
+			LIMIT 1
+		");
+
+		$this->db->trans_complete();
+
+		return $query->result();
+	}
+
+	function do_declinepayment($data) {
+		$this->db->trans_start();
+
+		$this->db->query("
+			UPDATE payment
+			SET payment_status = 0, modified_date = CURRENT_TIMESTAMP()
+			WHERE payment_id = " . $data["payment_id"] . "
+		");
+
+		$this->db->query("
+			UPDATE hjual
+			SET hjual_status = 1, modified_date = CURRENT_TIMESTAMP()
 			WHERE hjual_id = " . $data["hjual_id"] . "
 		");
 

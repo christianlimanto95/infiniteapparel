@@ -110,10 +110,16 @@
 	
 	if($r->hjual_status == 2)
 	{
-		echo form_open("admin/do_confirmpayment");
+		echo "<form class='form-confirm' method='post' action='" . base_url("admin/do_confirmpayment") . "'>";
 		echo form_hidden('payment_id', $r->payment_id);
 		echo form_hidden("hjual_id", $r->hjual_id);
 		echo form_submit('btnconfirm','Confirm', 'class="button confirm-button"');
+		echo form_close();
+
+		echo "<form class='form-decline' method='post' action='" . base_url("admin/do_declinepayment") . "'>";
+		echo form_hidden('payment_id', $r->payment_id);
+		echo form_hidden("hjual_id", $r->hjual_id);
+		echo form_submit('btndecline','Decline', 'class="button decline-button"');
 		echo form_close();
 	}
 ?>
