@@ -1,5 +1,7 @@
 var ctrImage = 1;
 $(function() {
+	$("#navigation").val(navigation);
+	
 	$("textarea").keydown(function(e) {
 		if (e.which == 9)
 		{

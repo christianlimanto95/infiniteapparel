@@ -1,6 +1,3 @@
-<?php
-	
-?>
 <div id="container">
 	<?php
 	

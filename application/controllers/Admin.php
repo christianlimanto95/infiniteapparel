@@ -19,7 +19,8 @@ class Admin extends General_controller {
 		$this->show_404_if_not_logged_in();
 		
 		$data = array(
-			"title" => "Infinite Apparel | Admin"
+			"title" => "Infinite Apparel | Admin",
+			"navigation" => base_url("admin")
 		);
 		$data["jumlah"] = $this->Admin_model->getCountConfirm();
 		
@@ -79,6 +80,7 @@ class Admin extends General_controller {
 			$data["allseries"][$row->category_id] = $row->category_name;
 		}
 		$data["title"] = "Infinite Apparel | Admin Insert";
+		$data["navigation"] = base_url("admin/inserting");
 		
 		parent::adminview('inserting', $data);
 	}
