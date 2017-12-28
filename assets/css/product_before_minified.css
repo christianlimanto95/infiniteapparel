@@ -147,19 +147,8 @@
         font-size: 5.5vw;
     }
 
-    .btn-view-size-chart {
-        font-size: 3vw;
-        padding: 2vw 4vw;
-        margin-top: 10vw;
-        margin-bottom: 5vw;
-    }
-
-    .btn-view-size-chart:active {
-        background-color: rgb(37, 37, 37);
-        color: white;
-    }
-
     .size-quantity-container {
+        margin-top: 10vw;
         margin-bottom: 15vw;
     }
 
@@ -241,16 +230,8 @@
         font-size: 16pt;
     }
 
-    .btn-view-size-chart {
-        font-size: 9pt;
-        padding: 5px 10px;
+    .size-quantity-container {
         margin-top: 30px;
-        margin-bottom: 15px;
-    }
-
-    .btn-view-size-chart:hover {
-        background-color: rgb(37, 37, 37);
-        color: white;
     }
 
     .quantity-container {

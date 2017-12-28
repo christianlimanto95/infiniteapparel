@@ -66,7 +66,7 @@ class Sign_up extends General_controller {
 			$this->email->from("admin@infiniteapparelid.com", "Infinite Apparel Admin");
 			$this->email->to($user_email);
 			$this->email->subject("Email Verification");
-			$this->email->message("Dear, " . $user_first_name . ",<br />Please click on the link below to verify your account at infinite-apparel.com<br /><br />" . base_url("verify-email/" . $verification_token));
+			$this->email->message("Dear, " . $user_first_name . ",<br />Please click on the link below to verify your account at infiniteapparelid.com<br /><br />" . base_url("verify-email/" . $verification_token));
 			$this->email->send();
 			
 			$this->session->set_flashdata("message", "Sign up Successful. We have sent a confirmation email to " . $user_email);
