@@ -41,7 +41,7 @@ class Checkout extends General_controller {
 			$total_price = $cart[0]["hcart_total_price"];
 
 			$weight = 200 * intval($total_qty);
-			$shipping = $this->getCost("444", $city_id, $weight, $shipping_name);
+			$shipping = $this->getCost("329", $city_id, $weight, $shipping_name);
 			$shipping_cost = intval($shipping[$shipping_service]);
 
 			$hjual_grand_total_price = intval($total_price) + 0 + $shipping_cost;
@@ -84,9 +84,9 @@ class Checkout extends General_controller {
 		$total_qty = intval($this->input->post("total_qty"));
 		$weight = 200 * $total_qty;
 		$results = [];
-		$results["jne"] = $this->getCost("444", $destination, $weight, "jne");
-		$results["pos"] = $this->getCost("444", $destination, $weight, "pos");
-		$results["tiki"] = $this->getCost("444", $destination, $weight, "tiki");
+		$results["jne"] = $this->getCost("329", $destination, $weight, "jne");
+		$results["pos"] = $this->getCost("329", $destination, $weight, "pos");
+		$results["tiki"] = $this->getCost("329", $destination, $weight, "tiki");
 		
 		echo json_encode($results);
 	}
