@@ -69,6 +69,12 @@ $(function() {
 		var valid = true;
 		var error = "Error : ";
 
+		var item_name = $("input[name='txtnama']").val().trim();
+		if (item_name == "") {
+			valid = false;
+			error += "\n- Nama belum diisi";
+		}
+
 		var item_price = $("input[name='rharga']:checked").val();
 		if (item_price == "other") {
 			item_price = $(".txtharga").val();

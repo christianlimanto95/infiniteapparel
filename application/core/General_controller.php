@@ -106,7 +106,8 @@ class General_controller extends CI_Controller
         if ($file_name != "") {
             $config["file_name"] = $file_name;
         }
-        $this->load->library('upload', $config);
+		$this->load->library('upload');
+		$this->upload->initialize($config);
 	}
 	
 	public function get_default_email_config() {
