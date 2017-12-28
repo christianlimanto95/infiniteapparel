@@ -192,7 +192,18 @@ class Admin extends General_controller {
 			"hjual_id" => $hjual_id,
 			"payment_id" => $payment_id
 		);
-		$this->Admin_model->do_confirmpayment($data);
+		$result = $this->Admin_model->do_confirmpayment($data);
+
+		if (sizeof($result) > 0) {
+			$result = $result[0];
+			$this->load->library("email", parent::get_default_email_config());
+			$this->email->from("admin@infiniteapparelid.com", "Infinite Apparel Admin");
+			$this->email->to($result->user_email);
+			$this->email->subject("Payment for order no. " . $hjual_id . " confirmed");
+			$this->email->message("Dear, " . $result->user_first_name . ",<br />We have confirmed your payment for order no. " . $hjual_id . " at infiniteapparelid.com.<br />We are going to deliver to you.<br /><br />Thank you.");
+			$this->email->send();
+		}
+
 		redirect(base_url("admin/confirmpayment"));
 	}
 }

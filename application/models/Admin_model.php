@@ -548,6 +548,15 @@ class Admin_model extends CI_Model
 			WHERE hjual_id = " . $data["hjual_id"] . "
 		");
 
+		$query = $this->db->query("
+			SELECT u.user_first_name, u.user_email, h.hjual_grand_total_price
+			FROM user u, hjual h
+			WHERE u.user_id = h.user_id AND h.hjual_id = " . $data["hjual_id"] . "
+			LIMIT 1
+		");
+
 		$this->db->trans_complete();
+
+		return $query->result();
 	}
 }
