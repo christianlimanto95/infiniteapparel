@@ -10,7 +10,7 @@
 			$resultCtr++;
 			
 			echo "<div class='result-ctr'>" . $resultCtr . ". </div>";
-			echo "<a href='" . site_url("admin/detail_payment/" . $row->hjual_id) . "' class='result-each'>";
+			echo "<a href='" . site_url("admin/detailpayment/" . $row->hjual_id) . "' class='result-each'>";
 				echo "<table class='confirm-table'>";
 					echo "<tr>";
 						echo "<td>ID</td>";

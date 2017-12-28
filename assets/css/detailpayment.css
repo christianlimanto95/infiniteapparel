@@ -1,0 +1,108 @@
+#container {
+    padding-bottom: 50px;
+    margin-bottom: 100px;
+}
+
+.subtitle-section {
+    font-size: 14pt;
+    font-weight: bold;
+    margin-top: 20px;
+    margin-bottom: 5px;
+}
+
+table {
+    display: block;
+}
+
+table tr td {
+    padding-left: 5px;
+    vertical-align: top;
+}
+
+.table-label {
+    font-weight: bold;
+}
+
+.table-detail {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.table-payment {
+    padding: 10px;
+}
+
+.table-payment {
+    border: 2px solid #252525;
+}
+
+.order-detail-container {
+    overflow: auto;
+    margin-top: 10px;
+}
+
+.order-detail-panel {
+    float: right;
+    border: 1px solid #252525;
+    padding: 10px;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.order-detail-panel span {
+    margin-left: 20px;
+}
+
+.order-detail-panel:hover {
+    background-color: #DDDDDD;
+}
+
+.order-detail-collapse {
+    clear: both;
+    
+    border: 1px solid #252525;
+}
+
+.table-order-detail {
+    display: table;
+    margin: 10px auto;
+}
+
+.table-order-detail thead tr {
+    background-color: #252525;
+    color: white;
+}
+
+.table-order-detail thead tr td {
+    padding: 5px;
+    font-size: 11pt;
+}
+
+.table-order-detail tbody tr td{
+    font-size: 11pt;
+    height: 30px;
+    padding: 5px;
+}
+
+.table-order-detail tbody tr {
+    background-color: #EEEEEE;
+}
+
+.table-order-detail tbody tr.odd {
+    background-color: #DDDDDD;
+}
+
+.order-detail-cost {
+    text-align: right;
+    padding-right: 20px;
+}
+
+.order-detail-cost:nth-child(5) {
+    margin-bottom: 10px;
+}
+
+.confirm-button {
+    float: right;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}

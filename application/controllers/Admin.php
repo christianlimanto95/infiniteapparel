@@ -167,4 +167,32 @@ class Admin extends General_controller {
 		
 		parent::adminview('confirmpayment', $data);
 	}
+
+	function detailpayment() {
+		$id = $this->uri->segment(3);
+		$hjual = $this->Admin_model->get_hjual_by_id($id);
+		if (sizeof($hjual) > 0) {
+			$djual = $this->Admin_model->get_djual_by_hjual_id($id);
+			$data = array(
+				"title" => "Infinite Apparel | Admin Detail Payment",
+				"navigation" => base_url("admin/detailpayment"),
+				"hpemesanan" => $hjual,
+				"dpemesanan" => $djual
+			);
+			parent::adminview('detailpayment', $data);
+		} else {
+			redirect(base_url("admin/confirmpayment"));
+		}
+	}
+
+	function do_confirmpayment() {
+		$payment_id = $this->input->post("payment_id", true);
+		$hjual_id = $this->input->post("hjual_id", true);
+		$data = array(
+			"hjual_id" => $hjual_id,
+			"payment_id" => $payment_id
+		);
+		$this->Admin_model->do_confirmpayment($data);
+		redirect(base_url("admin/confirmpayment"));
+	}
 }

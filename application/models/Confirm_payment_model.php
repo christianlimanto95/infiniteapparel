@@ -45,7 +45,8 @@ class Confirm_payment_model extends CI_Model
             "payment_bank_name" => $data["payment_bank_name"],
             "payment_account_number" => $data["payment_account_number"],
             "payment_account_name" => $data["payment_account_name"],
-            "payment_extension" => $data["payment_extension"]
+            "payment_extension" => $data["payment_extension"],
+            "payment_status" => 1
         );
         $this->db->insert("payment", $insertData);
         $insert_id = $this->db->insert_id();

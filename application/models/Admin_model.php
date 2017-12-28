@@ -440,18 +440,6 @@ class Admin_model extends CI_Model
 		$this->db->update("dcart", $updateData);
 	}
 	
-	function deleteDCartById($data)
-	{
-		$this->db->where("id", $data["id"]);
-		$this->db->delete("dcart");
-	}
-	
-	function deleteDCartByUsername($username)
-	{
-		$this->db->where("username", $username);
-		$this->db->delete("dcart");
-	}
-	
 	function getAllKaos()
 	{
 		return $this->db->get("kaos")->result();
@@ -525,97 +513,41 @@ class Admin_model extends CI_Model
 		$this->db->limit(1);
 		return $this->db->get("kota")->result();
 	}
-	
-	function getHPemesananById($id)
-	{
-		$this->db->where("id_pemesanan", $id);
-		$this->db->limit(1);
-		return $this->db->get("hpemesanan")->result();
+
+	function get_hjual_by_id($hjual_id) {
+		$query = $this->db->query("
+			SELECT h.*, pe.pemesanan_first_name, pe.pemesanan_last_name, pe.pemesanan_address, pe.pemesanan_handphone, pa.*, u.user_email, c.city_name
+			FROM hjual h, pemesanan pe, payment pa, user u, city c
+			WHERE h.hjual_id = " . $hjual_id . " AND pe.hjual_id = " . $hjual_id . " AND pa.hjual_id = " . $hjual_id . " AND pa.payment_status = 1 AND u.user_id = h.user_id AND pe.city_id = c.city_id
+			LIMIT 1
+		");
+		return $query->result();
 	}
-	
-	function getHPemesananByUsername($username)
-	{
-		$this->db->select("h.*, k.nama as nama_kota");
-		$this->db->from("hpemesanan h, kota k");
-		$this->db->where("h.kota_id = k.id");
-		$this->db->where("h.username", $username);
-		return $this->db->get()->result();
+
+	function get_djual_by_hjual_id($hjual_id) {
+		$query = $this->db->query("
+			SELECT *
+			FROM djual
+			WHERE hjual_id = " . $hjual_id . "
+		");
+		return $query->result();
 	}
-	
-	function getHPemesananIdByIdUsername($data)
-	{
-		$this->db->select("h.*, k.nama as nama_kota");
-		$this->db->from("hpemesanan h, kota k");
-		$this->db->where("h.kota_id = k.id");
-		$this->db->where("id_pemesanan", $data["id_pemesanan"]);
-		$this->db->where("username", $data["username"]);
-		$this->db->where("nomor_resi IS NULL");
-		return $this->db->get()->result();
-	}
-	
-	function insertHPemesanan($data)
-	{
-		$insertData = array(
-			"id_pemesanan" => $data["id_pemesanan"],
-			"username" => $data["username"],
-			"first_name" => $data["first_name"],
-			"last_name" => $data["last_name"],
-			"kota_id" => $data["kota_id"],
-			"alamat" => $data["alamat"],
-			"hp" => $data["hp"],
-			"total" => $data["total"]
-		);
-		$this->db->insert("hpemesanan", $insertData);
-	}
-	
-	function updateHPemesananStatusById($data)
-	{
-		$this->db->where("id_pemesanan", $data["id_pemesanan"]);
-		$updateData = array(
-			"status" => $data["status"]
-		);
-		$this->db->set('last_updated', 'NOW()', FALSE);
-		$this->db->update("hpemesanan", $updateData);
-	}
-	
-	function getDPemesananByIdPemesanan($id_pemesanan)
-	{
-		$this->db->where("id_pemesanan", $id_pemesanan);
-		return $this->db->get("dpemesanan")->result();
-	}
-	
-	function insertDPemesanan($data)
-	{
-		$insertData = array(
-			"id" => $data["id"],
-			"id_pemesanan" => $data["id_pemesanan"],
-			"id_barang" => $data["id_barang"],
-			"nama_barang" => $data["nama_barang"],
-			"harga" => $data["harga"],
-			"size" => $data["size"],
-			"jumlah" => $data["jumlah"],
-			"subtotal" => $data["subtotal"]
-		);
-		$this->db->insert("dpemesanan", $insertData);
-	}
-	
-	function getPembayaranById_admin($id)
-	{
-		$this->db->where("id_pemesanan", $id);
-		$this->db->limit(1);
-		return $this->db->get("pembayaran")->result();
-	}
-	
-	function insertPembayaran($data)
-	{
-		$insertData = array(
-			"id_pemesanan" => $data["id_pemesanan"],
-			"username" => $data["username"],
-			"bank" => $data["bank"],
-			"no_rekening" => $data["no_rekening"],
-			"atasnama" => $data["atasnama"]
-		);
-		
-		$this->db->insert("pembayaran", $insertData);
+
+	function do_confirmpayment($data) {
+		$this->db->trans_start();
+
+		$this->db->query("
+			UPDATE payment
+			SET payment_status = 2
+			WHERE payment_id = " . $data["payment_id"] . "
+		");
+
+		$this->db->query("
+			UPDATE hjual
+			SET hjual_status = 3
+			WHERE hjual_id = " . $data["hjual_id"] . "
+		");
+
+		$this->db->trans_complete();
 	}
 }
