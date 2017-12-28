@@ -204,6 +204,7 @@ var cart_change_qty_url = "<?php echo base_url("cart-change-qty"); ?>";
 var cart_change_size_url = "<?php echo base_url("cart-change-size"); ?>";
 var product_url = "<?php echo base_url("assets/images/catalog"); ?>";
 var product_custom_url = "<?php echo base_url("assets/images/custom"); ?>";
+var bags_action_url = "<?php echo base_url("assets/icons/ic_more_vert_black_24px.svg"); ?>";
 var bags_add_item_url = "<?php echo base_url("assets/icons/add_cart.svg"); ?>";
 var bags_remove_item_url = "<?php echo base_url("assets/icons/remove_cart.svg"); ?>";
 var checkout_url = "<?php echo base_url("checkout"); ?>";

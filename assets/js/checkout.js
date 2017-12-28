@@ -1,8 +1,11 @@
 var shipping = [];
-
+var total_qty = 0;
+var checkout_cart_done = false;
+var city_done = false;
 $(function() {
     get_checkout_cart();
     get_city();
+    showLoader();
 
     $(".form-input-city").on("change", function() {
         var city_id = $(this).val();
@@ -90,6 +93,7 @@ function get_checkout_cart() {
     ajaxCall(get_cart_url, null, function(json) {
         hideLoader(".custom-loader-container");
         var result = jQuery.parseJSON(json);
+        total_qty = result.total_qty;
         var data = result.data;
         var iLength = data.length;
         if (iLength > 0) {
@@ -112,8 +116,10 @@ function get_checkout_cart() {
                 element += "</div>";
             }
             $(".checkout-item-container").html(element);
+            
         }
         $(".total-item-value-subtotal").html(result.total_subtotal);
+        get_shipping_service(444);
     });
 }
 
@@ -127,13 +133,12 @@ function get_city() {
         }
         $(".form-input-city").html(element);
         $(".form-input-city").val("444");
-        get_shipping_service(444);
     });
 }
 
 function get_shipping_service(city_id) {
     showLoader();
-    ajaxCall(get_shipping_cost_url, {city_id: city_id}, function(json) {
+    ajaxCall(get_shipping_cost_url, {city_id: city_id, total_qty: total_qty}, function(json) {
         hideLoader();
         var result = jQuery.parseJSON(json);
         var shipping_element = "";

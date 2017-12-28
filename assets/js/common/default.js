@@ -112,7 +112,27 @@ $(function() {
         $(this).removeAttr("data-buy-now data-id");
     });
 
-    $(document).on("click", ".bags-add-item", function() {
+    $(document).on("click", ".bags-action", function(e) {
+        if (isMobile) {
+            $(".bags-action-inner").removeClass("show");
+            var position = $(this).position();
+            var bagsActionInner = $(this).children();
+            bagsActionInner.css({
+                top: position.top + "px",
+                left: position.left + "px"
+            });
+            bagsActionInner.addClass("show");
+        }
+        e.stopPropagation();
+    });
+
+    $(document).on("click", ":not(.bags-action)", function() {
+        if (isMobile) {
+            $(".bags-action-inner").removeClass("show");
+        }
+    });
+
+    $(document).on("click", ".bags-add-item", function(e) {
         var id = $(this).closest("tr").attr("data-id");
         var modal = $(".modal-size-qty");
         modal.attr("data-close-self", "true");
@@ -120,14 +140,23 @@ $(function() {
         modal.addClass("show");
         modal.find(".modal-box").one('webkitAnimationEnd oanimationend oAnimationEnd msAnimationEnd animationend', function(e) {
             modal.addClass("shown").removeClass("show");
-		});
+        });
+        if (isMobile) {
+            $(this).parent().removeClass("show");
+        }
+
+        e.stopPropagation();
     });
 
-    $(document).on("click", ".bags-remove-item", function() {
+    $(document).on("click", ".bags-remove-item", function(e) {
         var tr = $(this).closest("tr");
         var index = tr.attr("data-index");
         var dcart_id = tr.attr("data-dcart-id");
+        if (isMobile) {
+            $(this).parent().removeClass("show");
+        }
         remove_from_cart(index, dcart_id);
+        e.stopPropagation();
     });
 
     $(document).on("change", ".bags-input-size", function() {
@@ -320,7 +349,7 @@ function get_cart() {
                 element += "</td>";
                 element += "<td data-col='qty'><input type='number' data-input-type='number' class='bags-input-qty' min='1' max='999' value='" + result[i].item_qty + "' /></td>";
                 element += "<td data-col='subtotal'>IDR " + result[i].item_subtotal + "</td>";
-                element += "<td data-col='action'><div class='bags-add-item' title='add another size' style='background-image: url(" + bags_add_item_url + ");'></div><div class='bags-remove-item' title='remove' style='background-image: url(" + bags_remove_item_url + ");'></div></td>";
+                element += "<td data-col='action'><div class='bags-action' style='background-image: url(" + bags_action_url + ");'><div class='bags-action-inner'><div class='bags-add-item' title='add another size' style='background-image: url(" + bags_add_item_url + ");'></div><div class='bags-remove-item' title='remove' style='background-image: url(" + bags_remove_item_url + ");'></div></div></div></td>";
                 element += "</tr>";
             }
            

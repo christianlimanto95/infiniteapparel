@@ -25,18 +25,17 @@ class Admin_model extends CI_Model
 		$this->db->insert("blogpost", $insertData);
 	}
 	
-	function insertBarang($data)
+	function insert_item($data)
 	{
 		$insertData = array(
-				"id" => $data["id"],
-				"judul" => $data["judul"],
-				"isi" => $data["isi"],
-				"tanggal" => $data["tanggal"],
-				"keterangan" => $data["keterangan"],
-				"jumlah_gambar" => $data["jumlahgambar"]
+			"category_id" => $data["category_id"],
+			"item_name" => $data["item_name"],
+			"item_price" => $data["item_price"],
+			"item_description" => $data["item_description"],
+			"item_image_count" => $data["item_image_count"]
 		);
-		
-		$this->db->insert("blogpost", $insertData);
+		$this->db->insert("item", $insertData);
+		return $this->db->insert_id();
 	}
 
 	function insert_category($data) {

@@ -107,6 +107,36 @@ class Admin extends General_controller {
 		$item_description = $this->input->post("txtketerangan");
 		$item_image_count = intval($this->input->post("image_count"));
 
-		
+		$data = array(
+			"category_id" => $category_id,
+			"item_name" => $item_name,
+			"item_price" => $item_price,
+			"item_description" => $item_description,
+			"item_image_count" => $item_image_count
+		);
+		$item_id = $this->Admin_model->insert_item($data);
+
+		$file_name = $item_id . "_1.png";
+		parent::upload_file_settings('uploads/', '33554432', $file_name);
+		if (!empty($_FILES["image_1"]["name"])) {
+			if (!$this->upload->do_upload('image_1')) {
+				echo $this->upload->display_errors();
+				
+			}
+		}
+
+		$ctr = 2;
+		for ($i = 1; $i < $item_image_count; $i++) {
+			if (!empty($_FILES["image_" . ($i + 1)]["name"])) {
+				$file_name = $item_id . "_" . $ctr . ".jpg";
+				parent::upload_file_settings('uploads/', '33554432', $file_name);
+				if (!$this->upload->do_upload('image_' . $ctr)) {
+					$this->upload->display_errors();
+				}
+				$ctr++;
+			}
+		}
+
+		//redirect(base_url("admin/inserting"));
 	}
 }

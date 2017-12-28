@@ -302,6 +302,10 @@
 		margin-bottom: 2px;
 	}
 
+	.form-label-service {
+		min-width: 100px;
+	}
+
 	.form-input-address {
 		width: 370px;
 		height: 60px;

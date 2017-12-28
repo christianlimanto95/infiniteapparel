@@ -704,6 +704,11 @@ table tbody tr:nth-child(odd) {
   text-align: center;
 }
 
+.modal-bags .bags-action {
+  display: inline-block;
+  background-size: 0 0;
+}
+
 .modal-bags .bags-add-item, .modal-bags .bags-remove-item {
   display: inline-block;
   background-size: 100%;
@@ -1085,7 +1090,7 @@ table tbody tr:nth-child(odd) {
   }
   
   .modal-bags-table td[data-col="size"] {
-    width: 13vw;
+    width: 16vw;
   }
   
   .modal-bags-table td[data-col="price"], .modal-bags-table td[data-col="subtotal"] {
@@ -1093,7 +1098,11 @@ table tbody tr:nth-child(odd) {
   }
   
   .modal-bags-table td[data-col="qty"] {
-    width: 13vw;
+    width: 15vw;
+  }
+
+  .modal-bags-table thead td[data-col="qty"] {
+    padding-left: 4vw;
   }
   
   .modal-bags-table td[data-col="qty"] input {
@@ -1132,9 +1141,45 @@ table tbody tr:nth-child(odd) {
     display: none;
   }
 
+  .bags-action {
+    width: 9vw;
+    height: 9vw;
+    background-size: 100% !important;
+    background-repeat: no-repeat;
+  }
+
+  .bags-action-inner {
+    position: absolute;
+    margin-left: -35vw;
+    width: 43vw;
+    display: none;
+    background-color: white;
+    box-shadow: 0 0 10px #777;
+    z-index: 1;
+  }
+
+  .bags-action-inner.show {
+    display: inline-block;
+  }
+
   .modal-bags .bags-add-item, .modal-bags .bags-remove-item {
-    width: 25px;
-    height: 25px;
+    padding: 4vw 4vw;
+    background-size: 0 0 !important;
+    font-size: 4vw;
+    display: block;
+    width: 100%;
+  }
+
+  .modal-bags .bags-add-item:active, .modal-bags .bags-remove-item:active {
+    background-color: #EEE;
+  }
+
+  .modal-bags .bags-add-item:before {
+    content: "Add another size";
+  }
+
+  .modal-bags .bags-remove-item:before {
+    content: "Remove item";
   }
 
   .modal-bags .bags-add-item {
@@ -1437,6 +1482,10 @@ table tbody tr:nth-child(odd) {
   
   .modal-bags-table td[data-col="qty"] {
     width: 80px;
+  }
+
+  .modal-bags-table thead td[data-col="qty"] {
+    padding-left: 15px;
   }
   
   .modal-bags-table td[data-col="qty"] input {

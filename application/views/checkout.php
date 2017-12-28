@@ -58,7 +58,7 @@
                     <select class="form-input custom-form-input form-input-shipping"></select>
                 </div>
                 <div class="form-item-inline custom-form-item-inline">
-                    <div class="form-label custom-form-label">Service <span class="error error-service"></span></div>
+                    <div class="form-label custom-form-label form-label-service">Service <span class="error error-service"></span></div>
                     <select class="form-input custom-form-input form-input-service"></select>
                 </div>
                 <div class="btn btn-submit-checkout">Submit</div>
