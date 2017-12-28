@@ -27,7 +27,6 @@
             <div class="section-1-right">
                 <div class="product-name"><?php echo $product->item_name; ?></div>
                 <div class="product-price">IDR <?php echo number_format($product->item_price, 0, ",", "."); ?></div>
-                <div class="btn-view-size-chart">View Size Chart</div>
                 <div class="size-quantity-container">
                     <div class="size-container">
                         <div class="label">Size</div>
