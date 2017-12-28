@@ -1,0 +1,79 @@
+.section-1 {
+    text-align: center;
+}
+
+.center {
+    text-align: left;
+    display: inline-block;
+    overflow-x: visible;
+}
+
+.error {
+    color: red;
+    font-family: helvetica;
+}
+
+.btn-sign-up {
+    background-color: transparent;
+    border: 1px solid rgb(37, 37, 37);
+    float: right;
+    font-family: moon-bold;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.btn-sign-up:hover {
+    background-color: rgb(37, 37, 37);
+    color: white;
+}
+
+@media all and (max-width: 1024px) {
+    .section-1 {
+        height: 190vw;
+    }
+
+    .center {
+        width: 80vw;
+    }
+
+    input[name="user_first_name"], input[name="user_last_name"] {
+        width: 39vw;
+    }
+
+    .form-item-email input, .form-item-password input, .form-item-confirm-password input {
+        width: 100%;
+    }
+
+    .btn-sign-up {
+        padding: 3vw 0;
+        width: 100%;
+        font-size: 4vw;
+        margin-top: 10vw;
+    }
+}
+
+@media all and (min-width: 768px) and (max-width: 1024px) {
+
+}
+
+@media all and (min-width: 1025px) {
+    .center {
+        margin-top: 30px;
+        width: 305px;
+    }
+
+    input[name="user_first_name"], input[name="user_last_name"] {
+        width: 150px;
+    }
+
+    .form-item-email input, .form-item-password input, .form-item-confirm-password input {
+        width: 305px;
+    }
+
+    .btn-sign-up {
+        padding: 10px 0;
+        width: 150px;
+        font-size: 14pt;
+        margin-top: 30px;
+    }
+}
