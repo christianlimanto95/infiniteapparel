@@ -10,7 +10,7 @@
 		echo "<div class='notification-detail'>";
 		if($count>0)
 		{
-			echo anchor(site_url('project/confirmpayment'), $count. " Pembayaran membutuhkan konfirmasi");
+			echo anchor(site_url('admin/confirmpayment'), $count. " Pembayaran membutuhkan konfirmasi");
 			
 		}
 		else
