@@ -123,24 +123,28 @@ class Admin_model extends CI_Model
 		$this->db->update("hpemesanan", $updateData);
 	}
 	
-	function getNeedConfirmCount()
-	{
-		$this->db->select('count(*) as total');
-		$this->db->from('hpemesanan');
-		$this->db->where("status", "waiting confirmation");
-		return $this->db->get()->result();
+	function get_confirm_payment($page, $view_per_page) {
+		if ($page > 0) {
+			$page--;
+		}
+        $offset = $page * $view_per_page;
+        $query = $this->db->query("
+            SELECT h.hjual_id, h.hjual_grand_total_price, u.user_id, u.user_email
+			FROM hjual h, user u
+			WHERE h.hjual_status = 2 AND h.user_id = u.user_id AND u.user_status = 1
+            LIMIT " . $view_per_page . "
+            OFFSET " . $offset . "
+        ");
+        return $query->result();
 	}
-	
-	function getNeedConfirm($data)
-	{
-		$this->db->select('p.*, h.total as total');
-		$this->db->from('hpemesanan h, pembayaran p');
-		$this->db->where("p.id_pemesanan = h.id_pemesanan");
-		$this->db->where("h.status","waiting confirmation");
-		$this->db->order_by("h.tanggal_create", "asc");
-		$this->db->limit($data["limit"], $data["offset"]);
-		$query=$this->db->get()->result();
-		return $query;
+
+	function get_confirm_payment_count() {
+		$query = $this->db->query("
+            SELECT COUNT(h.hjual_id) AS count
+			FROM hjual h, user u
+			WHERE h.hjual_status = 2 AND h.user_id = u.user_id AND u.user_status = 1
+		");
+		return $query->result()[0]->count;
 	}
 	
 	function getOrderListfromUser($username)

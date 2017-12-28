@@ -147,4 +147,24 @@ class Admin extends General_controller {
 
 		redirect(base_url("admin/inserting"));
 	}
+
+	function confirmpayment() {
+		$page = intval($this->input->get("page"));
+		$view_per_page = 10;
+		$result = $this->Admin_model->get_confirm_payment($page, $view_per_page);
+		$count = intval($this->Admin_model->get_confirm_payment_count());
+		if ($page == 0) {
+			$page = 1;
+		}
+
+		$data = array(
+			"title" => "Infinite Apparel | Admin Confirm Payment",
+			"navigation" => base_url("admin/confirmpayment"),
+			"totalResults" => $count,
+			"waitingconfirm" => $result,
+			"page" => $page
+		);
+		
+		parent::adminview('confirmpayment', $data);
+	}
 }
