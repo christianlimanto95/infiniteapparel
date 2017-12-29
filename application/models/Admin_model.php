@@ -566,15 +566,25 @@ class Admin_model extends CI_Model
 		");
 
 		$query = $this->db->query("
-			SELECT u.user_first_name, u.user_email, h.hjual_grand_total_price
+			SELECT u.user_id, u.user_first_name, u.user_email, h.hjual_grand_total_price
 			FROM user u, hjual h
 			WHERE u.user_id = h.user_id AND h.hjual_id = " . $data["hjual_id"] . "
 			LIMIT 1
 		");
 
+		$result = $query->result();
+		$user_id = $result[0]->user_id;
+		$hjual_grand_total_price = $result[0]->hjual_grand_total_price;
+
+		$this->db->query("
+			UPDATE user
+			SET user_total_payment = user_total_payment + " . $hjual_grand_total_price . "
+			WHERE user_id = " . $user_id . "
+		");
+
 		$this->db->trans_complete();
 
-		return $query->result();
+		return $result;
 	}
 
 	function do_declinepayment($data) {
