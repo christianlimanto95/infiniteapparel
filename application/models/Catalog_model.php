@@ -15,6 +15,7 @@ class Catalog_model extends CI_Model
         $query = $this->db->query("
             SELECT *
             FROM item
+            WHERE item_status = 1
             ORDER BY created_date DESC
             LIMIT " . $view_per_page . "
             OFFSET " . $offset . "
@@ -26,6 +27,7 @@ class Catalog_model extends CI_Model
         $query = $this->db->query("
             SELECT COUNT(item_id) AS count
             FROM item
+            WHERE item_status = 1
         ");
         return $query->result()[0]->count;
     }
