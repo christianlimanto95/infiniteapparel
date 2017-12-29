@@ -29,7 +29,7 @@
 		}
 	</style>
 	<link rel="shortcut icon" href="<?php echo base_url("assets/icons/favicon.png"); ?>" />
-	<link rel="stylesheet" href="<?php echo base_url("assets/css/common/default.css"); ?>" />
+	<link rel="stylesheet" href="<?php echo base_url("assets/css/common/default.css?v=1"); ?>" />
 	<link rel="stylesheet" href="<?php echo base_url("assets/css/" . $page_name . ".css"); ?>" />	
 </head>
 <body>
@@ -49,7 +49,7 @@
 			<a href="<?php echo base_url(); ?>" class="header-menu">HOME</a>
 			<a href="<?php echo base_url("product"); ?>" class="header-menu">PRODUCT</a>
 			<a href="<?php echo base_url("custom"); ?>" class="header-menu">CUSTOM</a>
-			<a href="<?php echo base_url("contact"); ?>" class="header-menu">CONTACT</a>
+			<a href="<?php echo base_url("about"); ?>" class="header-menu">ABOUT</a>
 		</div>
 		<div class="header-menu-title" data-is-mobile="true">PROFILE</div>
 	</div>
