@@ -37,6 +37,7 @@ class Confirm_payment_model extends CI_Model
         $this->db->where("hjual_id", $data["hjual_id"]);
         $this->db->where("user_id", $data["user_id"]);
         $this->db->set("hjual_status", 2, false);
+        $this->db->set("hjual_confirm_payment_date", "NOW()", false);
         $this->db->set("modified_date", "NOW()", false);
         $this->db->update("hjual");
 

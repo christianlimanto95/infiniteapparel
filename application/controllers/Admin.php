@@ -405,6 +405,39 @@ class Admin extends General_controller {
 		parent::adminview('admin_order_list', $data);
 	}
 
+	function laporanpenjualan() {
+		$data = array(
+			"title" => "Infinite Apparel | Admin Laporan Penjualan",
+			"navigation" => base_url("admin/laporanpenjualan")
+		);
+
+		$data["dateFrom"] = "";
+		$data["dateFromEndDate"] = "0d";
+		$data["dateTo"] = "";
+		$data["dateToStartDate"] = "01 January 2016";
+		$data["laporanbulan"] = "";
+		$data["totalpenjualan"] = "";
+		
+		if ($this->input->post("dateFrom") == true)
+		{
+			$dateFrom = $this->input->post("dateFrom", true);
+			$selectData["dateFrom"] = date("Y-m-d H:i:s", strtotime($dateFrom));
+			$dateTo = $this->input->post("dateTo", true);
+			$selectData["dateTo"] = date("Y-m-d H:i:s", strtotime($dateTo . " 23:59:59"));
+			
+			$data["laporanbulan"] = $this->model->getLaporanBulanan($selectData);
+			$data["totalpenjualan"] = $this->model->getSumHJualBulanan($selectData);
+			
+			$data["dateFrom"] = date("d F Y", strtotime($selectData["dateFrom"]));
+			$data["dateTo"] = date("d F Y", strtotime($selectData["dateTo"]));
+			
+			$data["dateToStartDate"] = $data["dateFrom"];
+			$data["dateFromEndDate"] = $data["dateTo"];
+		}
+		
+		parent::adminview('admin_laporanpenjualan', $data);
+	}
+
 	function change_password() {
 		$data = array(
 			"title" => "Infinite Apparel | Admin Change Password",

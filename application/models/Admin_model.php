@@ -117,7 +117,7 @@ class Admin_model extends CI_Model
 	{
 		$query = $this->db->query("
 			UPDATE hjual
-			SET hjual_status = 5, modified_date = CURRENT_TIMESTAMP()
+			SET hjual_status = 5, hjual_delivered_date = CURRENT_TIMESTAMP(), modified_date = CURRENT_TIMESTAMP()
 			WHERE hjual_id = " . $hjual_id . "
 		");
 	}
@@ -185,18 +185,24 @@ class Admin_model extends CI_Model
 	{
 		$this->db->select('*');
 		$this->db->from('hjual');
-		$this->db->where("tanggal_create >= '" . $data["dateFrom"] . "'");
-		$this->db->where("tanggal_create <= '" . $data["dateTo"] . "'");
+		$this->db->where("created_date >= '" . $data["dateFrom"] . "'");
+		$this->db->where("created_date <= '" . $data["dateTo"] . "'");
+		$this->db->where("hjual_status >= 3");
+		$query = $this->db->query("
+			SELECT h.*, u.user_email
+			FROM hjual h, user u
+		");
 		$query=$this->db->get()->result();
 		return $query;
 	}
 	
 	function getSumHJualBulanan($data)
 	{
-		$this->db->select('sum(total) as grandtotal');
+		$this->db->select('sum(hjual_grand_total_price) as grandtotal');
 		$this->db->from('hjual');
-		$this->db->where("tanggal_create >= '" . $data["dateFrom"] . "'");
-		$this->db->where("tanggal_create <= '" . $data["dateTo"] . "'");
+		$this->db->where("created_date >= '" . $data["dateFrom"] . "'");
+		$this->db->where("created_date <= '" . $data["dateTo"] . "'");
+		$this->db->where("hjual_status >= 3");
 		$query=$this->db->get()->result();
 		return $query;
 	}
@@ -248,7 +254,7 @@ class Admin_model extends CI_Model
 	{
 		$query = $this->db->query("
 			UPDATE hjual
-			SET hjual_nomor_resi = " . $data["hjual_nomor_resi"] . ", hjual_status = 4, modified_date = CURRENT_TIMESTAMP()
+			SET hjual_nomor_resi = " . $data["hjual_nomor_resi"] . ", hjual_status = 4, hjual_shipping_date = CURRENT_TIMESTAMP(), modified_date = CURRENT_TIMESTAMP()
 			WHERE hjual_id = " . $data["hjual_id"] . "
 		");
 	}
@@ -561,7 +567,7 @@ class Admin_model extends CI_Model
 
 		$this->db->query("
 			UPDATE hjual
-			SET hjual_status = 3, modified_date = CURRENT_TIMESTAMP()
+			SET hjual_status = 3, hjual_on_process_date = CURRENT_TIMESTAMP(), modified_date = CURRENT_TIMESTAMP()
 			WHERE hjual_id = " . $data["hjual_id"] . "
 		");
 
