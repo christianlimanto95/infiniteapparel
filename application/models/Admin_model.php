@@ -261,6 +261,7 @@ class Admin_model extends CI_Model
 		$query = $this->db->query("
 			SELECT *
 			FROM item
+			WHERE item_status = 1
 			ORDER BY created_date DESC
 		");
 		return $query->result();
@@ -282,6 +283,14 @@ class Admin_model extends CI_Model
 			UPDATE item
 			SET item_name = '" . $data["item_name"] . "', item_price = " . $data["item_price"] . ", item_description = '" . $data["item_description"] . "', category_id = " . $data["item_category"] . ", modified_date = CURRENT_TIMESTAMP()
 			WHERE item_id = " . $data["item_id"] . "
+		");
+	}
+
+	function delete_item($item_id) {
+		$query = $this->db->query("
+			UPDATE item
+			SET item_status = 0, modified_date = CURRENT_TIMESTAMP()
+			WHERE item_id = " . $item_id . "
 		");
 	}
 	

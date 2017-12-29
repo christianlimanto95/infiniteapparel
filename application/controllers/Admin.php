@@ -209,6 +209,35 @@ class Admin extends General_controller {
 		redirect(base_url("admin/updating"));
 	}
 
+	function deleting() {
+		$cbId["null"] = "Select Id Barang";
+		$all_items = $this->Admin_model->get_all_item();
+		foreach ($all_items as $row) {
+			$cbId[$row->item_id] = $row->item_id . " - " . $row->item_name;
+		}
+
+		$cbIdSelected = "null";
+		
+		$data = array(
+			"title" => "Infinite Apparel | Admin Delete",
+			"cbId" => $cbId,
+			"cbIdSelected" => $cbIdSelected
+		);
+		$data["msg"] = $this->session->flashdata("admin_message");
+
+		parent::adminview('deleting', $data);
+	}
+
+	function do_delete_item() {
+		$item_id = $this->input->post("item_id", true);
+		if ($item_id) {
+			$this->Admin_model->delete_item($item_id);
+		}
+
+		$this->session->set_flashdata("admin_message", "Berhasil delete item id " . $item_id);
+		redirect(base_url("admin/deleting"));
+	}
+
 	function confirmpayment() {
 		$page = intval($this->input->get("page"));
 		$view_per_page = 10;
