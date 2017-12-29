@@ -1,0 +1,36 @@
+.update-label {
+    margin-top: 15px;
+}
+
+.input-nama {
+    width: 100%;
+}
+
+label {
+    display: block;
+    
+}
+
+input[type="text"] {
+    padding-left: 5px;
+}
+
+input[type="radio"] {
+    margin-right: 5px;
+}
+
+textarea {
+    width: 100%;
+}
+
+img {
+    width: 500px;
+    height: 500px;
+    background-size: 100%;
+    background-repeat: no-repeat;
+}
+
+.update-button {
+    float: right;
+    margin-bottom: 50px;
+}

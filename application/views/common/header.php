@@ -49,7 +49,6 @@
 			<a href="<?php echo base_url(); ?>" class="header-menu">HOME</a>
 			<a href="<?php echo base_url("product"); ?>" class="header-menu">PRODUCT</a>
 			<a href="<?php echo base_url("custom"); ?>" class="header-menu">CUSTOM</a>
-			<a href="<?php echo base_url("about"); ?>" class="header-menu">ABOUT</a>
 		</div>
 		<div class="header-menu-title" data-is-mobile="true">PROFILE</div>
 	</div>

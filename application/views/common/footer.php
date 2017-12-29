@@ -12,8 +12,6 @@
             <a class="footer-menu-item" href="<?php echo base_url("product"); ?>">Product</a>
             <div></div>
             <a class="footer-menu-item" href="<?php echo base_url("custom"); ?>">Custom</a>
-            <div></div>
-            <a class="footer-menu-item" href="<?php echo base_url("about"); ?>">About</a>
         </div>
         <div class="footer-col">
             <div class="footer-col-title">FOLLOW US</div>

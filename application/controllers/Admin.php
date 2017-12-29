@@ -148,6 +148,33 @@ class Admin extends General_controller {
 		redirect(base_url("admin/inserting"));
 	}
 
+	function updating() {
+		$cbId = $this->model->getAllBarang();
+		$data["cbId"]["null"] = "Select Id Barang";
+		foreach ($cbId as $row)
+		{
+			$data["cbId"][$row->id] = $row->id . " - " . $row->nama;
+		}
+		
+		$data["cbIdSelected"] = "null";
+		if ($this->input->post("cbId") == true && $this->input->post("cbId") != "null")
+		{
+			$data["cbIdSelected"] = $this->input->post("cbId", true);
+			$dataBarang = $this->model->getBarangById($data["cbIdSelected"]);
+			
+			$data["namaupdate"] = $dataBarang[0]->nama;
+			$data["hargaupdate"] = $dataBarang[0]->harga;
+			$data["keteranganupdate"] = $dataBarang[0]->keterangan;
+			$data["cbSeries"] = $dataBarang[0]->series_id;
+			$data["jumlah_gambar"] = $dataBarang[0]->jumlah_gambar;
+		}
+		
+		$data = array(
+			"title" => "Infinite Apparel | Admin Update"
+		);
+		parent::adminview('updating', $data);
+	}
+
 	function confirmpayment() {
 		$page = intval($this->input->get("page"));
 		$view_per_page = 10;
