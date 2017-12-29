@@ -115,7 +115,7 @@ function get_order_detail(order_item) {
     $(".modal-order-detail-header-normal").html(order_id);
     $(".order-detail-subtotal").html(total);
     $(".order-detail-shipping-cost").html(shipping_cost);
-    $(".order-detail-discount").html(discount);
+    $(".order-detail-discount").html("-" + discount);
     $(".order-detail-total").html(grand_total);
 
     ajax_get_order_detail = ajaxCall(get_order_detail_url, {order_id: order_id}, function(json) {

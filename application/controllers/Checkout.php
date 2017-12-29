@@ -37,19 +37,25 @@ class Checkout extends General_controller {
 		if ($shipping_name != "" && $shipping_service != "") {
 			$user_id = parent::is_logged_in();
 			$cart = $this->Checkout_model->get_cart($user_id);
+			$user_total_payment = intval($cart[0]["user_total_payment"]);
+			
 			$total_qty = $cart[0]["hcart_total_qty"];
 			$total_price = $cart[0]["hcart_total_price"];
+			$discount = 0;
+			if ($user_total_payment > 1500000) {
+				$discount = intval($total_price) / 10;
+			}
 
 			$weight = 200 * intval($total_qty);
 			$shipping = $this->getCost("329", $city_id, $weight, $shipping_name);
 			$shipping_cost = intval($shipping[$shipping_service]);
 
-			$hjual_grand_total_price = intval($total_price) + 0 + $shipping_cost;
+			$hjual_grand_total_price = intval($total_price) - $discount + $shipping_cost;
 
 			$data = array(
 				"user_id" => $user_id,
 				"hjual_total_price" => $total_price,
-				"hjual_discount" => 0,
+				"hjual_discount" => $discount,
 				"hjual_grand_total_price" => $hjual_grand_total_price,
 				"first_name" => $first_name,
 				"last_name" => $last_name,
@@ -68,6 +74,23 @@ class Checkout extends General_controller {
 		} else {
 			echo json_encode(array(
 				"status" => "error"
+			));
+		}
+	}
+
+	function get_discount() {
+		parent::show_404_if_not_ajax();
+		$user_id = parent::is_logged_in();
+		$user_total_payment = intval($this->Checkout_model->get_user_total_payment($user_id));
+		if ($user_total_payment > 1500000) {
+			echo json_encode(array(
+				"status" => "success",
+				"discount" => "yes"
+			));
+		} else {
+			echo json_encode(array(
+				"status" => "success",
+				"discount" => "no"
 			));
 		}
 	}

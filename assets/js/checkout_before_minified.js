@@ -2,6 +2,11 @@ var shipping = [];
 var total_qty = 0;
 var checkout_cart_done = false;
 var city_done = false;
+var subtotal = 0;
+var discount = 0;
+var shipping_cost = 0;
+var total = 0;
+var get_shipping_service_done = false;
 $(function() {
     get_checkout_cart();
     get_city();
@@ -67,8 +72,6 @@ $(function() {
                 var result = jQuery.parseJSON(json);
                 if (result.status == "success") {
                     window.location = order_list_url;
-                } else {
-
                 }
             });
         }
@@ -119,7 +122,26 @@ function get_checkout_cart() {
             
         }
         $(".total-item-value-subtotal").html(result.total_subtotal);
+        subtotal = parseInt((result.total_subtotal + "").replace(".", ""));
+        get_discount();
         get_shipping_service(444);
+    });
+}
+
+function get_discount() {
+    ajaxCall(get_discount_url, null, function(json) {
+        var result = jQuery.parseJSON(json);
+        if (result.discount == "yes") {
+            discount = subtotal / 10;
+            $(".total-item-value-disc").html("-" + addThousandSeparator(discount));
+
+            if (total != 0) {
+                total = addThousandSeparator(subtotal - discount + shipping_cost);
+                $(".total-item-value-total").html(total);
+            }
+        } else {
+            discount = 0;
+        }
     });
 }
 
@@ -164,11 +186,14 @@ function get_shipping_service(city_id) {
             }
         }
         if (shipping.length > 0) {
+            get_shipping_service_done = true;
             for (var i = 0; i < shipping[0].service.length; i++) {
                 var service = shipping[0].service;
                 service_element += "<option value='" + service[i].name + "' data-value='" + service[i].value + "'>" + service[i].name + " : IDR " + addThousandSeparator(service[i].value) + "</option>";
             }
             setShippingCost(shipping[0].service[0].value);
+        } else {
+            get_shipping_service_done = false;
         }
         $(".form-input-shipping").html(shipping_element);
         $(".form-input-service").html(service_element);
@@ -191,8 +216,9 @@ function setShippingServiceCombobox(shipping_name) {
 }
 
 function setShippingCost(cost) {
-    var subtotal = parseInt($(".total-item-value-subtotal").html().replace(/\./g,''));
-    var total = addThousandSeparator(subtotal + parseInt(cost));
+    shipping_cost = parseInt(cost);
+    total = addThousandSeparator(subtotal - discount + parseInt(cost));
+    
     $(".total-item-value-tax").html(addThousandSeparator(cost));
     $(".total-item-value-total").html(total);
 }

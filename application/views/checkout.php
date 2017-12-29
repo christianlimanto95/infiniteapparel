@@ -71,4 +71,5 @@ var get_city_url = "<?php echo base_url("checkout/get_city"); ?>";
 var get_shipping_cost_url = "<?php echo base_url("checkout/get_cost"); ?>";
 var do_checkout_url = "<?php echo base_url("checkout/do_checkout"); ?>";
 var order_list_url = "<?php echo base_url("order-list"); ?>";
+var get_discount_url = "<?php echo base_url("checkout/get_discount"); ?>";
 </script>
