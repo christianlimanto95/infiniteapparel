@@ -816,14 +816,18 @@ table tbody tr:nth-child(odd) {
 }
 
 .status-badge[data-status="2"] {
-  background-color: #18FFFF;
+  background-color: #E0E0E0;
 }
 
 .status-badge[data-status="3"] {
-  background-color: #FFFF00;
+  background-color: #18FFFF;
 }
 
 .status-badge[data-status="4"] {
+  background-color: #FFFF00;
+}
+
+.status-badge[data-status="5"] {
   background-color: #76FF03;
 }
 

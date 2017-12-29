@@ -337,9 +337,77 @@ class Admin extends General_controller {
 		redirect(base_url("admin/confirmpayment"));
 	}
 
+	function order_list() {
+		$data = array(
+			"title" => "Infinite Apparel | Admin Order List",
+			"navigation" => base_url("admin/order_list")
+		);
+
+		$data['idpemesan']="";
+		$data["cbOrder"]["null"] = "Select One";
+		$data["cbOrder"]['onprocess'] = "On Process"; 
+		$data["cbOrder"]['shipping'] = "Shipping"; 
+		$data["cbOrder"]['delivered'] = "Delivered"; 
+		$data["cbOrderSelected"] = "null";
+		$status = "";
+		
+		if ($this->input->post("cbOrder") == true && $this->input->post("cbOrder") != "null")
+		{
+			$data["cbOrderSelected"] = $this->input->post("cbOrder", true);
+			if($data["cbOrderSelected"] == 'onprocess')
+			{
+				$status = 3;
+			}
+			else if($data["cbOrderSelected"] == 'shipping')
+			{
+				$status = 4;
+			}
+			else if($data["cbOrderSelected"] == 'delivered')
+			{
+				$status = 5;
+			}
+		}
+		
+		if ($this->input->post('btnGO') == true)
+		{
+			$data['idpemesan'] = $this->input->post('idpemesan',true);
+			$data['resi'] = $this->input->post("resi", true);
+			
+			$insertData = array(
+				"hjual_nomor_resi" => $data["resi"],
+				"hjual_id" => $data["idpemesan"]
+			);
+
+			$this->Admin_model->insert_nomor_resi($insertData);
+
+			$this->session->set_flashdata("admin_message", "Sukses insert no resi");
+			
+			$data["cbOrderSelected"] = "onprocess";
+			$status = 3;
+		}
+		else if ($this->input->post("btnSetDelivered") == true)
+		{
+			$data['idpemesan'] = $this->input->post('idpemesan',true);
+			
+			$this->Admin_model->set_hjual_delivered($data['idpemesan']);
+			
+			$this->session->set_flashdata("admin_message", "Sukses Set Delivered");
+
+			$data["cbOrderSelected"] = "shipping";
+			$status = 4;
+		}
+		
+		$data["dataorder"] = "";
+		if ($status != "") {
+			$data["dataorder"] = $this->Admin_model->get_hjual_by_hjual_status($status);
+		}
+				
+		parent::adminview('admin_order_list', $data);
+	}
+
 	function change_password() {
 		$data = array(
-			"title" => "Infinite Apparel | Admin Confirm Payment",
+			"title" => "Infinite Apparel | Admin Change Password",
 			"navigation" => base_url("admin/change_password")
 		);
 		

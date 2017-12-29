@@ -53,10 +53,13 @@ function get_order() {
                                         status_name = "Waiting Admin Confirmation";
                                         break;
                                     case "3":
-                                        status_name = "Delivering";
+                                        status_name = "On Process";
                                         break;
                                     case "4":
-                                        status_name = "Finished";
+                                        status_name = "Shipping";
+                                        break;
+                                    case "5":
+                                        status_name = "Delivered";
                                         break;
                                 }
                                 element += "<span class='status-badge' data-status='" + result[i].hjual_status + "'>" + status_name + "</span>";

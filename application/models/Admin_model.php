@@ -113,14 +113,13 @@ class Admin_model extends CI_Model
 		$this->db->update("hpemesanan", $updateData);
 	}
 	
-	function setHPemesananDelivered($id_pemesanan)
+	function set_hjual_delivered($hjual_id)
 	{
-		$updateData = array(
-			"status" => "delivered"
-		);
-		$this->db->set("tanggal_delivered", "NOW()", FALSE);
-		$this->db->where("id_pemesanan", $id_pemesanan);
-		$this->db->update("hpemesanan", $updateData);
+		$query = $this->db->query("
+			UPDATE hjual
+			SET hjual_status = 5, modified_date = CURRENT_TIMESTAMP()
+			WHERE hjual_id = " . $hjual_id . "
+		");
 	}
 	
 	function get_confirm_payment($page, $view_per_page) {
@@ -223,13 +222,14 @@ class Admin_model extends CI_Model
 		return $query->result();
 	}
 	
-	function getHPemesananByStatus($status)
+	function get_hjual_by_hjual_status($status)
 	{
-		$this->db->select("h.*, k.nama as nama_kota");
-		$this->db->from("hpemesanan h, kota k");
-		$this->db->where("h.kota_id = k.id");
-		$this->db->where("h.status", $status);
-		return $this->db->get()->result();
+		$query = $this->db->query("
+			SELECT h.*, u.user_email, p.pemesanan_first_name, p.pemesanan_last_name, p.pemesanan_address, p.pemesanan_handphone, c.city_name
+			FROM hjual h, user u, pemesanan p, city c
+			WHERE h.hjual_status = " . $status . " AND h.user_id = u.user_id AND p.hjual_id = h.hjual_id AND c.city_id = p.city_id
+		");
+		return $query->result();
 	}
 	
 	function HPemesananToHJual($id, $username, $total, $shipping_cost)
@@ -244,15 +244,13 @@ class Admin_model extends CI_Model
 		$this->db->insert("hjual", $insertData);
 	}
 	
-	function insertNoResi($id_pemesanan, $noresi)
+	function insert_nomor_resi($data)
 	{
-		$updateData = array(
-			"nomor_resi" => $noresi,
-			"status" => "shipping"
-		);
-		$this->db->set("tanggal_shipping", "NOW()", FALSE);
-		$this->db->where("id_pemesanan", $id_pemesanan);
-		$this->db->update("hpemesanan", $updateData);
+		$query = $this->db->query("
+			UPDATE hjual
+			SET hjual_nomor_resi = " . $data["hjual_nomor_resi"] . ", hjual_status = 4, modified_date = CURRENT_TIMESTAMP()
+			WHERE hjual_id = " . $data["hjual_id"] . "
+		");
 	}
 	//--------------------------------------------
 	//--------------------------------------------
@@ -537,7 +535,7 @@ class Admin_model extends CI_Model
 		$query = $this->db->query("
 			SELECT h.*, pe.pemesanan_first_name, pe.pemesanan_last_name, pe.pemesanan_address, pe.pemesanan_handphone, pa.*, u.user_email, c.city_name
 			FROM hjual h, pemesanan pe, payment pa, user u, city c
-			WHERE h.hjual_id = " . $hjual_id . " AND pe.hjual_id = " . $hjual_id . " AND pa.hjual_id = " . $hjual_id . " AND pa.payment_status = 1 AND u.user_id = h.user_id AND pe.city_id = c.city_id
+			WHERE h.hjual_id = " . $hjual_id . " AND pe.hjual_id = " . $hjual_id . " AND pa.hjual_id = " . $hjual_id . " AND pa.payment_status != 0 AND u.user_id = h.user_id AND pe.city_id = c.city_id
 			LIMIT 1
 		");
 		return $query->result();

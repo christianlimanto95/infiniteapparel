@@ -1,0 +1,38 @@
+#container {
+    width: 1000px;
+}
+
+#formOrder {
+    margin: 0 auto 20px;
+    text-align: center;
+}
+
+.result-count {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.order-table {
+    margin: 0 auto;
+}
+
+.order-table tr td {
+    padding: 5px;
+}
+
+.order-table thead tr {
+    background-color: #252525;
+    color: white;
+}
+
+.order-table tbody tr {
+    background-color: #EEEEEE;
+}
+
+.order-table tbody tr.odd {
+    background-color: #DDDDDD;
+}
+
+.td-resi input {
+    width: 150px;
+}
