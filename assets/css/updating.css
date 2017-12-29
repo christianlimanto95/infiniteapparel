@@ -7,8 +7,7 @@
 }
 
 label {
-    display: block;
-    
+    display: block !important;   
 }
 
 input[type="text"] {

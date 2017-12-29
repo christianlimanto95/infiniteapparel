@@ -256,23 +256,33 @@ class Admin_model extends CI_Model
 	}
 	//--------------------------------------------
 	//--------------------------------------------
-	function getAllBarang()
+	function get_all_item()
 	{
-		$this->db->select("b.*, s.nama as series");
-		$this->db->from("barang b, series s");
-		$this->db->where("b.series_id = s.id");
-		$this->db->order_by("id", "desc");
-		return $this->db->get()->result();
+		$query = $this->db->query("
+			SELECT *
+			FROM item
+			ORDER BY created_date DESC
+		");
+		return $query->result();
 	}
 	
-	function getBarangById($id)
+	function get_item_by_id($item_id)
 	{
-		$this->db->select("b.*, s.nama as series");
-		$this->db->from("barang b, series s");
-		$this->db->where("b.id", $id);
-		$this->db->where("b.series_id = s.id");
-		$this->db->limit(1);
-		return $this->db->get()->result();
+		$query = $this->db->query("
+			SELECT i.*, c.category_name
+			FROM item i, category c
+			WHERE i.item_id = " . $item_id . " AND i.category_id = c.category_id
+			LIMIT 1
+		");
+		return $query->result();
+	}
+
+	function update_item($data) {
+		$query = $this->db->query("
+			UPDATE item
+			SET item_name = '" . $data["item_name"] . "', item_price = " . $data["item_price"] . ", item_description = '" . $data["item_description"] . "', category_id = " . $data["item_category"] . ", modified_date = CURRENT_TIMESTAMP()
+			WHERE item_id = " . $data["item_id"] . "
+		");
 	}
 	
 	function getBarangByNama($nama)

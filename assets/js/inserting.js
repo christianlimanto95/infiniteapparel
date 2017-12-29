@@ -99,6 +99,10 @@ $(function() {
 		if (!valid) {
 			e.preventDefault();
 			alert(error);
+		} else {
+			if (!confirm('Yakin mau insert?')) {
+				e.preventDefault();
+			}
 		}
 	});
 });

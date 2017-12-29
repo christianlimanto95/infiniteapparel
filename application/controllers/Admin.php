@@ -149,30 +149,64 @@ class Admin extends General_controller {
 	}
 
 	function updating() {
-		$cbId = $this->model->getAllBarang();
-		$data["cbId"]["null"] = "Select Id Barang";
-		foreach ($cbId as $row)
-		{
-			$data["cbId"][$row->id] = $row->id . " - " . $row->nama;
+		$cbId["null"] = "Select Id Barang";
+		$all_items = $this->Admin_model->get_all_item();
+		foreach ($all_items as $row) {
+			$cbId[$row->item_id] = $row->item_id . " - " . $row->item_name;
 		}
+
+		$cbIdSelected = "null";
 		
-		$data["cbIdSelected"] = "null";
+		$data = array(
+			"title" => "Infinite Apparel | Admin Update",
+			"cbId" => $cbId,
+			"cbIdSelected" => $cbIdSelected
+		);
+
 		if ($this->input->post("cbId") == true && $this->input->post("cbId") != "null")
 		{
 			$data["cbIdSelected"] = $this->input->post("cbId", true);
-			$dataBarang = $this->model->getBarangById($data["cbIdSelected"]);
+			$dataBarang = $this->Admin_model->get_item_by_id($data["cbIdSelected"]);
 			
-			$data["namaupdate"] = $dataBarang[0]->nama;
-			$data["hargaupdate"] = $dataBarang[0]->harga;
-			$data["keteranganupdate"] = $dataBarang[0]->keterangan;
-			$data["cbSeries"] = $dataBarang[0]->series_id;
-			$data["jumlah_gambar"] = $dataBarang[0]->jumlah_gambar;
+			$data["namaupdate"] = $dataBarang[0]->item_name;
+			$data["hargaupdate"] = $dataBarang[0]->item_price;
+			$data["keteranganupdate"] = $dataBarang[0]->item_description;
+			$data["cbSeries"] = $dataBarang[0]->category_id;
+			$data["jumlah_gambar"] = $dataBarang[0]->item_image_count;
+
+			$data["allSeries"] = [];
+			$all_category = $this->Admin_model->getAllSeries();
+			foreach ($all_category as $row) {
+				$data["allseries"][$row->category_id] = $row->category_name;
+			}
 		}
-		
-		$data = array(
-			"title" => "Infinite Apparel | Admin Update"
-		);
+
 		parent::adminview('updating', $data);
+	}
+
+	function do_update_item() {
+		$item_id = $this->input->post("item_id", true);
+		$item_category = $this->input->post("cbSeries", true);
+		$item_description = $this->input->post("keteranganupdate", true);
+		$item_price = $this->input->post("urharga", true);
+		$item_name = $this->input->post("namaupdate", true);
+
+		if ($item_id && $item_category && $item_price && $item_name) {
+			if ($item_price == "other") {
+				$item_price = $this->input->post("hargaupdate", true);
+			}
+
+			$data = array(
+				"item_id" => $item_id,
+				"item_category" => $item_category,
+				"item_description" => $item_description,
+				"item_price" => $item_price,
+				"item_name" => $item_name
+			);
+			$this->Admin_model->update_item($data);
+		}
+
+		redirect(base_url("admin/updating"));
 	}
 
 	function confirmpayment() {
