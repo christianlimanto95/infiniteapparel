@@ -183,28 +183,22 @@ class Admin_model extends CI_Model
 	
 	function getLaporanBulanan($data)
 	{
-		$this->db->select('*');
-		$this->db->from('hjual');
-		$this->db->where("created_date >= '" . $data["dateFrom"] . "'");
-		$this->db->where("created_date <= '" . $data["dateTo"] . "'");
-		$this->db->where("hjual_status >= 3");
 		$query = $this->db->query("
 			SELECT h.*, u.user_email
 			FROM hjual h, user u
+			WHERE h.hjual_status >= 3 AND h.created_date >= '" . $data["dateFrom"] . "' AND h.created_date <= '" . $data["dateTo"] . "' AND h.user_id = u.user_id
 		");
-		$query=$this->db->get()->result();
-		return $query;
+		return $query->result();
 	}
 	
 	function getSumHJualBulanan($data)
 	{
-		$this->db->select('sum(hjual_grand_total_price) as grandtotal');
-		$this->db->from('hjual');
-		$this->db->where("created_date >= '" . $data["dateFrom"] . "'");
-		$this->db->where("created_date <= '" . $data["dateTo"] . "'");
-		$this->db->where("hjual_status >= 3");
-		$query=$this->db->get()->result();
-		return $query;
+		$query = $this->db->query("
+			SELECT SUM(h.hjual_grand_total_price) AS grandtotal
+			FROM hjual h
+			WHERE h.hjual_status >= 3 AND h.created_date >= '" . $data["dateFrom"] . "' AND h.created_date <= '" . $data["dateTo"] . "'
+		");
+		return $query->result();
 	}
 	
 	function getStatistikBestSellerBulan($data)

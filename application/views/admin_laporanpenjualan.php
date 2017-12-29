@@ -17,7 +17,7 @@
 	echo "<div class='total-penjualan'>";
 	if ($totalpenjualan != "")
 	{
-		echo "Total Penjualan : ". number_format($totalpenjualan[0]->grandtotal, 0, ",", ".") . " IDR";
+		echo "Total Penjualan : IDR ". number_format($totalpenjualan[0]->grandtotal, 0, ",", ".");
 	}
 	else
 	{
@@ -51,8 +51,8 @@
 				echo "<tr class='result-each " . $odd . "' data-href='" . base_url("admin/detailpayment/" . $row->hjual_id) . "'>";
 					echo "<td>" . $row->hjual_id . "</td>";
 					echo "<td>".$row->user_email."</td>";
-					echo "<td>" . number_format($row->total, 0, ",", ".") . " IDR</td>";
-					echo "<td>" . date("d/m/Y", strtotime($row->tanggal_create)) . "</td>";
+					echo "<td>IDR " . number_format($row->hjual_grand_total_price, 0, ",", ".") . "</td>";
+					echo "<td>" . date("d/m/Y", strtotime($row->created_date)) . "</td>";
 				echo "</tr>";
 			}
 		}
