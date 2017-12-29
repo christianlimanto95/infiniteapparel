@@ -12,6 +12,7 @@ class Home_model extends CI_Model
             SELECT item_id, item_name, item_price, modified_date
             FROM item
             WHERE item_status = 1
+            ORDER BY created_date DESC
             LIMIT 3
         ");
         return $query->result();

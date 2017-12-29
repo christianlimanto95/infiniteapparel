@@ -15,6 +15,7 @@ class Catalog_model extends CI_Model
         $query = $this->db->query("
             SELECT *
             FROM item
+            ORDER BY created_date DESC
             LIMIT " . $view_per_page . "
             OFFSET " . $offset . "
         ");
