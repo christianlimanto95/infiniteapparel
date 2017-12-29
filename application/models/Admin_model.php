@@ -605,4 +605,21 @@ class Admin_model extends CI_Model
 
 		return $query->result();
 	}
+
+	function change_password($data) {
+        $current_password = $this->db->query("SELECT admin_password FROM admin LIMIT 1")->result();
+        if (sizeof($current_password) > 0) {
+            $current_password = $current_password[0]->admin_password;
+            if (password_verify($data["current_password"], $current_password)) {
+                $data["new_password"] = password_hash($data["new_password"], PASSWORD_DEFAULT);
+                $query = $this->db->query("
+                    UPDATE admin
+                    SET admin_password = '" . $data["new_password"] . "', modified_date = CURRENT_TIMESTAMP()
+                ");
+                return true;
+            }
+        }
+
+        return false;
+    }
 }

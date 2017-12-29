@@ -42,3 +42,17 @@
 	background-color: white;
 	color: #252525;
 }
+
+.admin_message {
+	background-color: #E8F5E9;
+	color: #1B5E20;
+	padding: 20px;
+	margin-bottom: 20px;
+}
+
+.admin_message_error {
+	background-color: #FFEBEE;
+	color: #D50000;
+	padding: 20px;
+	margin-bottom: 20px;
+}

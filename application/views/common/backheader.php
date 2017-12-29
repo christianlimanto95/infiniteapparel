@@ -22,5 +22,16 @@
 		echo "<option value='" . base_url('admin/laporanpenjualan') . "' data-id='7'>Laporan Penjualan</option>";
 		echo "<option value='" . base_url('admin/laporanstatistik') . "' data-id='8'>Laporan Statistik</option>";
 		echo "<option value='" . base_url('admin/user') . "' data-id='10'>View Users</option>";
+		echo "<option value='" . base_url('admin/change_password') . "' data-id='11'>Change Password</option>";
 	echo "</select>";
+?>
+
+<?php
+if ($this->session->flashdata("admin_message")) {
+	echo "<div class='admin_message'>" . $this->session->flashdata("admin_message") . "</div>";
+} 
+
+if ($this->session->flashdata("admin_message_error")) {
+	echo "<div class='admin_message_error'>" . $this->session->flashdata("admin_message_error") . "</div>";
+}
 ?>

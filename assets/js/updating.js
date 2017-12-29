@@ -1,4 +1,6 @@
 $(document).ready(function() {
+	$("#navigation").val(navigation);
+	
 	$("#cbId").change(function() {
 		$("#formIdBarang").submit();
 	});

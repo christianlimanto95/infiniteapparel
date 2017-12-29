@@ -108,41 +108,47 @@ class Admin extends General_controller {
 		$item_description = $this->input->post("txtketerangan");
 		$item_image_count = intval($this->input->post("image_count"));
 
-		$real_image_count = 0;
-		for ($i = 1; $i <= $item_image_count; $i++) {
-			if (!empty($_FILES["image_" . $i]["name"])) {
-				$real_image_count++;
-			}
-		}
-
-		$data = array(
-			"category_id" => $category_id,
-			"item_name" => $item_name,
-			"item_price" => $item_price,
-			"item_description" => $item_description,
-			"item_image_count" => $real_image_count
-		);
-		$item_id = $this->Admin_model->insert_item($data);
-
-		$file_name = $item_id . "_1.png";
-		parent::upload_file_settings('assets/images/catalog/', '33554432', $file_name);
-		if (!empty($_FILES["image_1"]["name"]) && $_FILES["image_1"]["size"] > 0 && $_FILES["image_1"]["size"] < 33554432) {
-			if (!$this->upload->do_upload('image_1')) {
-				echo $this->upload->display_errors();
-				
-			}
-		}
-
-		$ctr = 2;
-		for ($i = 2; $i <= $item_image_count; $i++) {
-			if (!empty($_FILES["image_" . $i]["name"]) && $_FILES["image_" . $i]["size"] > 0 && $_FILES["image_" . $i]["size"] < 33554432) {
-				$file_name = $item_id . "_" . $ctr . ".jpg";
-				parent::upload_file_settings('assets/images/catalog/', '33554432', $file_name);
-				if (!$this->upload->do_upload('image_' . $i)) {
-					echo $this->upload->display_errors();
+		if ($category_id && $item_name && $item_price && $item_image_count) {
+			$real_image_count = 0;
+			for ($i = 1; $i <= $item_image_count; $i++) {
+				if (!empty($_FILES["image_" . $i]["name"])) {
+					$real_image_count++;
 				}
-				$ctr++;
 			}
+
+			$data = array(
+				"category_id" => $category_id,
+				"item_name" => $item_name,
+				"item_price" => $item_price,
+				"item_description" => $item_description,
+				"item_image_count" => $real_image_count
+			);
+			$item_id = $this->Admin_model->insert_item($data);
+
+			$file_name = $item_id . "_1.png";
+			parent::upload_file_settings('assets/images/catalog/', '33554432', $file_name);
+			if (!empty($_FILES["image_1"]["name"]) && $_FILES["image_1"]["size"] > 0 && $_FILES["image_1"]["size"] < 33554432) {
+				if (!$this->upload->do_upload('image_1')) {
+					echo $this->upload->display_errors();
+					
+				}
+			}
+
+			$ctr = 2;
+			for ($i = 2; $i <= $item_image_count; $i++) {
+				if (!empty($_FILES["image_" . $i]["name"]) && $_FILES["image_" . $i]["size"] > 0 && $_FILES["image_" . $i]["size"] < 33554432) {
+					$file_name = $item_id . "_" . $ctr . ".jpg";
+					parent::upload_file_settings('assets/images/catalog/', '33554432', $file_name);
+					if (!$this->upload->do_upload('image_' . $i)) {
+						echo $this->upload->display_errors();
+					}
+					$ctr++;
+				}
+			}
+
+			$this->session->set_flashdata("admin_message", "Sukses insert item");
+		} else {
+			$this->session->set_flashdata("admin_message_error", "Error insert item");
 		}
 
 		redirect(base_url("admin/inserting"));
@@ -159,6 +165,7 @@ class Admin extends General_controller {
 		
 		$data = array(
 			"title" => "Infinite Apparel | Admin Update",
+			"navigation" => base_url("admin/updating"),
 			"cbId" => $cbId,
 			"cbIdSelected" => $cbIdSelected
 		);
@@ -168,16 +175,18 @@ class Admin extends General_controller {
 			$data["cbIdSelected"] = $this->input->post("cbId", true);
 			$dataBarang = $this->Admin_model->get_item_by_id($data["cbIdSelected"]);
 			
-			$data["namaupdate"] = $dataBarang[0]->item_name;
-			$data["hargaupdate"] = $dataBarang[0]->item_price;
-			$data["keteranganupdate"] = $dataBarang[0]->item_description;
-			$data["cbSeries"] = $dataBarang[0]->category_id;
-			$data["jumlah_gambar"] = $dataBarang[0]->item_image_count;
+			if (sizeof($dataBarang) > 0) {
+				$data["namaupdate"] = $dataBarang[0]->item_name;
+				$data["hargaupdate"] = $dataBarang[0]->item_price;
+				$data["keteranganupdate"] = $dataBarang[0]->item_description;
+				$data["cbSeries"] = $dataBarang[0]->category_id;
+				$data["jumlah_gambar"] = $dataBarang[0]->item_image_count;
 
-			$data["allSeries"] = [];
-			$all_category = $this->Admin_model->getAllSeries();
-			foreach ($all_category as $row) {
-				$data["allseries"][$row->category_id] = $row->category_name;
+				$data["allSeries"] = [];
+				$all_category = $this->Admin_model->getAllSeries();
+				foreach ($all_category as $row) {
+					$data["allseries"][$row->category_id] = $row->category_name;
+				}	
 			}
 		}
 
@@ -204,6 +213,10 @@ class Admin extends General_controller {
 				"item_name" => $item_name
 			);
 			$this->Admin_model->update_item($data);
+
+			$this->session->set_flashdata("admin_message", "Sukses update item id " . $item_id);
+		} else {
+			$this->session->set_flashdata("admin_message_error", "Error update item id " . $data["cbIdSelected"]);
 		}
 
 		redirect(base_url("admin/updating"));
@@ -220,6 +233,7 @@ class Admin extends General_controller {
 		
 		$data = array(
 			"title" => "Infinite Apparel | Admin Delete",
+			"navigation" => base_url("admin/deleting"),
 			"cbId" => $cbId,
 			"cbIdSelected" => $cbIdSelected
 		);
@@ -292,6 +306,8 @@ class Admin extends General_controller {
 			$this->email->subject("Payment for order no. " . $hjual_id . " confirmed");
 			$this->email->message("Dear, " . $result->user_first_name . ",<br />We have confirmed your payment for order no. " . $hjual_id . " at infiniteapparelid.com.<br />We are going to deliver to you.<br /><br />Thank you.");
 			$this->email->send();
+
+			$this->session->set_flashdata("admin_message", "Sukses konfirmasi pembayaran untuk " . $result->user_email . " dengan order no. " . $hjual_id);
 		}
 
 		redirect(base_url("admin/confirmpayment"));
@@ -314,8 +330,39 @@ class Admin extends General_controller {
 			$this->email->subject("Payment for order no. " . $hjual_id . " declined");
 			$this->email->message("Dear, " . $result->user_first_name . ",<br />We have declined your payment for order no. " . $hjual_id . " because the payment is not valid. You can try to confirm your payment or you can contact us at admin@infiniteapparelid.com.<br /><br />Thank you.");
 			$this->email->send();
+
+			$this->session->set_flashdata("admin_message", "Sukses menolak pembayaran untuk " . $result->user_email . " dengan order no. " . $hjual_id);
 		}
 
 		redirect(base_url("admin/confirmpayment"));
+	}
+
+	function change_password() {
+		$data = array(
+			"title" => "Infinite Apparel | Admin Confirm Payment",
+			"navigation" => base_url("admin/change_password")
+		);
+		
+		parent::adminview('change_password', $data);
+	}
+
+	function do_change_password() {
+		$current_password = $this->input->post("current_password", true);
+		$new_password = $this->input->post("new_password", true);
+
+		if ($current_password && $new_password) {
+			$data = array(
+				"current_password" => $current_password,
+				"new_password" => $new_password
+			);
+			$result = $this->Admin_model->change_password($data);
+			if ($result) {
+				$this->session->set_flashdata("admin_message", "Sukses ganti password");
+			} else {
+				$this->session->set_flashdata("admin_message_error", "Password lama salah");
+			}
+		}
+
+		redirect(base_url("admin/change_password"));
 	}
 }
