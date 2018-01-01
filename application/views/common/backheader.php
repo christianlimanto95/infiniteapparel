@@ -22,7 +22,7 @@
 		echo "<option value='" . base_url('admin/order_list') . "' data-id='6'>Order List</option>";
 		echo "<option value='" . base_url('admin/laporanpenjualan') . "' data-id='7'>Laporan Penjualan</option>";
 		echo "<option value='" . base_url('admin/laporanstatistik') . "' data-id='8'>Laporan Statistik</option>";
-		echo "<option value='" . base_url('admin/user') . "' data-id='10'>View Users</option>";
+		//echo "<option value='" . base_url('admin/user') . "' data-id='10'>View Users</option>";
 		echo "<option value='" . base_url('admin/change_password') . "' data-id='11'>Change Password</option>";
 	echo "</select>";
 ?>

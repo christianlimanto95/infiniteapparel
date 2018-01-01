@@ -1,6 +1,6 @@
 <div id="container">
 <?php
-	echo form_open("admin/order_list", array("id" => "formOrder"));
+	echo "<form id='formOrder' method='get' action='" . base_url("admin/order_list") . "' >";
 	echo "<div>STATUS ORDER :</div>";
 	echo form_dropdown("cbOrder", $cbOrder, $cbOrderSelected, "id='cbOrder'");
 	echo form_close();

@@ -1,0 +1,59 @@
+#container {
+    padding: 0 0 50px;
+}
+
+.dateFrom-container {
+    float: left;
+    margin-right: 30px;
+    margin-left: 85px;
+}
+
+input[type="text"] {
+    cursor: pointer;
+    padding-left: 5px;
+    width: 150px;
+}
+
+.input-group-addon {
+    display: none;
+}
+
+.error {
+    color: red;
+    text-align: center;
+}
+
+.search-by {
+    margin: 20px auto 30px;
+    text-align: center;
+}
+
+#btnGo {
+    margin-top: 15px;
+}
+
+.result-table {
+    margin: 0 auto;
+}
+
+.result-table tr td {
+    padding: 5px;
+}
+
+.result-table thead tr {
+    background-color: #252525;
+    color: white;
+}
+
+.result-table tbody tr {
+    background-color: #EEEEEE;
+    cursor: pointer;
+}
+
+.result-table tbody tr.odd {
+    background-color: #DDDDDD;
+}
+
+.result-table tbody tr:hover {
+    background-color: #BBBBBB;
+}

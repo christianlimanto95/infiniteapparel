@@ -351,9 +351,9 @@ class Admin extends General_controller {
 		$data["cbOrderSelected"] = "null";
 		$status = "";
 		
-		if ($this->input->post("cbOrder") == true && $this->input->post("cbOrder") != "null")
+		if ($this->input->get("cbOrder") == true && $this->input->get("cbOrder") != "null")
 		{
-			$data["cbOrderSelected"] = $this->input->post("cbOrder", true);
+			$data["cbOrderSelected"] = $this->input->get("cbOrder", true);
 			if($data["cbOrderSelected"] == 'onprocess')
 			{
 				$status = 3;
@@ -418,15 +418,15 @@ class Admin extends General_controller {
 		$data["laporanbulan"] = "";
 		$data["totalpenjualan"] = "";
 		
-		if ($this->input->post("dateFrom") == true)
+		if ($this->input->get("dateFrom") == true)
 		{
-			$dateFrom = $this->input->post("dateFrom", true);
+			$dateFrom = $this->input->get("dateFrom", true);
 			$selectData["dateFrom"] = date("Y-m-d H:i:s", strtotime($dateFrom));
-			$dateTo = $this->input->post("dateTo", true);
+			$dateTo = $this->input->get("dateTo", true);
 			$selectData["dateTo"] = date("Y-m-d H:i:s", strtotime($dateTo . " 23:59:59"));
 			
-			$data["laporanbulan"] = $this->model->getLaporanBulanan($selectData);
-			$data["totalpenjualan"] = $this->model->getSumHJualBulanan($selectData);
+			$data["laporanbulan"] = $this->Admin_model->getLaporanBulanan($selectData);
+			$data["totalpenjualan"] = $this->Admin_model->getSumHJualBulanan($selectData);
 			
 			$data["dateFrom"] = date("d F Y", strtotime($selectData["dateFrom"]));
 			$data["dateTo"] = date("d F Y", strtotime($selectData["dateTo"]));
@@ -436,6 +436,66 @@ class Admin extends General_controller {
 		}
 		
 		parent::adminview('admin_laporanpenjualan', $data);
+	}
+
+	function laporanstatistik()
+	{
+		$data = array(
+			"title" => "Infinite Apparel | Admin Laporan Statistik",
+			"navigation" => base_url("admin/laporanstatistik")
+		);
+
+		$data["dateFrom"] = "";
+		$data["dateFromEndDate"] = "0d";
+		$data["dateTo"] = "";
+		$data["dateToStartDate"] = "01 January 2016";
+		$data["cbsearch"]="";
+		$data["selectedsearch"]="";
+		$data["dateError"] = "";
+		
+		$data["datastatistik"]="";
+				
+		if ($this->input->get("btnGO") == true)
+		{
+			$dateFrom = $this->input->get("dateFrom", true);
+			$selectData["dateFrom"] = date("Y-m-d H:i:s", strtotime($dateFrom));
+			$dateTo = $this->input->get("dateTo", true);
+			$selectData["dateTo"] = date("Y-m-d H:i:s", strtotime($dateTo . " 23:59:59"));
+			
+			$data["dateFrom"] = date("d F Y", strtotime($selectData["dateFrom"]));
+			$data["dateTo"] = date("d F Y", strtotime($selectData["dateTo"]));
+			
+			$data["dateToStartDate"] = $data["dateFrom"];
+			$data["dateFromEndDate"] = $data["dateTo"];
+					
+			$data["selectedsearch"] = $this->input->get("cbsearch", true);
+			
+			if ($data["selectedsearch"] != "null")
+			{
+				if ($dateFrom != "" && $dateTo != "")
+				{
+					if ($data["selectedsearch"] == 'mostsize')
+					{
+						$data["datastatistik"]= $this->Admin_model->getStatistikUkuran($selectData);
+					}	
+					else if ($data["selectedsearch"] == 'bestseller')
+					{
+						$data["datastatistik"]= $this->Admin_model->getStatistikBestSellerBulan($selectData);
+					}
+					else if ($data["selectedsearch"] == 'mostregional')
+					{
+						$data["datastatistik"]= $this->Admin_model->getStatistikDaerah($selectData);
+					}
+					
+				}
+				else
+				{
+					$data["dateError"] = "Please select the date range first";
+				}
+			}
+		}
+		
+		parent::adminview('admin_laporanstatistik', $data);
 	}
 
 	function change_password() {

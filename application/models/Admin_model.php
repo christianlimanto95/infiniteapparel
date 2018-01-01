@@ -203,22 +203,38 @@ class Admin_model extends CI_Model
 	
 	function getStatistikBestSellerBulan($data)
 	{
-		$qry = "SELECT DISTINCT d.nama_barang AS nama, sum(d.jumlah) AS total FROM dpemesanan d, hjual h WHERE h.tanggal_create >= '" . $data["dateFrom"] . "' AND h.tanggal_create <= '" . $data["dateTo"] . "' AND h.id_pemesanan = d.id_pemesanan GROUP BY d.id_barang ORDER BY sum(d.jumlah) DESC";
-		$query = $this->db->query($qry);
+		$query = $this->db->query("
+			SELECT SUM(d.item_qty) AS total, d.item_name AS nama
+			FROM djual d, hjual h
+			WHERE h.created_date >= '" . $data["dateFrom"] . "' AND h.created_date <= '" . $data["dateTo"] . "' AND h.hjual_id = d.hjual_id AND h.hjual_status >= 3
+			GROUP BY d.item_name
+			ORDER BY SUM(d.item_qty) DESC
+		");
 		return $query->result();
 	}
 	
 	function getStatistikUkuran($data)
 	{
-		$qry = "SELECT DISTINCT d.size AS ukuran, sum(d.jumlah) AS total FROM dpemesanan d, hjual h where h.tanggal_create >= '" . $data["dateFrom"] . "' AND h.tanggal_create <= '" . $data["dateTo"] . "' AND h.id_pemesanan = d.id_pemesanan GROUP BY d.size";
-		$query = $this->db->query($qry);
+		$query = $this->db->query("
+			SELECT SUM(d.item_qty) AS total, d.item_size AS ukuran
+			FROM djual d, hjual h
+			WHERE h.created_date >= '" . $data["dateFrom"] . "' AND h.created_date <= '" . $data["dateTo"] . "' AND h.hjual_id = d.hjual_id AND h.hjual_status >= 3
+			GROUP BY d.item_size
+			ORDER BY SUM(d.item_qty) DESC
+		");
 		return $query->result();
 	}
 	
 	function getStatistikDaerah($data)
 	{
-		$qry = "SELECT DISTINCT k.nama as nama_kota, k.province_nama as nama_provinsi, count(h.kota_id) AS total FROM hpemesanan h, kota k where h.tanggal_create >= '" . $data["dateFrom"] . "' AND h.tanggal_create <= '" . $data["dateTo"] . "' AND h.kota_id = k.id AND h.status != 'waiting payment' GROUP BY h.kota_id ORDER BY count(h.kota_id) DESC";
-		$query = $this->db->query($qry);
+		$query = $this->db->query("
+			SELECT COUNT(p.city_id) AS total, c.city_name AS nama_kota, c.province_name AS nama_provinsi
+			FROM pemesanan p, hjual h, city c
+			WHERE h.created_date >= '" . $data["dateFrom"] . "' AND h.created_date <= '" . $data["dateTo"] . "' AND h.hjual_id = p.hjual_id AND h.hjual_status >= 3 AND c.city_id = p.city_id
+			GROUP BY p.city_id
+			ORDER BY COUNT(p.city_id) DESC
+		");
+
 		return $query->result();
 	}
 	

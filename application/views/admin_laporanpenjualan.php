@@ -1,7 +1,7 @@
 <div id="container">
 	<?php
 	
-	echo form_open(base_url("admin/laporanpenjualan"), array("id" => "formLaporanPenjualan"));
+	echo "<form method='get' action='" . base_url("admin/laporanpenjualan") . "' id='formLaporanPenjualan' >";
 		echo "<div class='input-group date dateFrom-container' id='datepickerFrom'>";
 			echo "<div class='date-label'>From</div>";
 			echo "<input type='text' name='dateFrom' class='dateFrom' value='" . $dateFrom . "' readonly data-provide='datepicker' data-date-end-date='" . $dateFromEndDate . "' data-date-disable-touch-keyboard='true' data-date-format='dd MM yyyy' data-date-max-view-mode='2' data-date-start-date='01 January 2016' data-date-autoclose='true'>";
