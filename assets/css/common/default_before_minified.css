@@ -573,6 +573,14 @@ body {
   height: auto;
 }
 
+.login-register-button, .login-register-button a {
+    font-family: helvetica;
+}
+
+.login-register-button a {
+  color: rgb(37, 37, 37);
+}
+
 .modal-btn {
   background-color: rgb(37, 37, 37);
   border: 1px solid rgb(37, 37, 37);
@@ -1094,6 +1102,11 @@ table tbody tr:nth-child(odd) {
     padding-left: 1vw;
   }
 
+  .login-register-button {
+      font-size: 4vw;
+      margin-bottom: 5vw;
+  }
+
   .modal-bags .modal-box {
     height: 120vw;
   }
@@ -1475,6 +1488,11 @@ table tbody tr:nth-child(odd) {
 
   .modal-login .modal-box {
     width: 340px;
+  }
+
+  .login-register-button {
+      font-size: 10pt;
+      margin-bottom: 20px;
   }
 
   .modal-btn {

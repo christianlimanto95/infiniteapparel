@@ -97,6 +97,15 @@
 }
 
 @media all and (max-width: 1024px) {
+    .size-chart-inner {
+        top: 10vw;
+        -webkit-transform: none;
+        -moz-transform: none;
+        -ms-transform: none;
+        -o-transform: none;
+        transform: none;
+    }
+
     .size-chart-image {
         display: block;
         width: 65vw;

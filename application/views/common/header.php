@@ -39,8 +39,8 @@
 		}
 	</style>
 	<link rel="shortcut icon" href="<?php echo base_url("assets/icons/favicon.png"); ?>" />
-	<link rel="stylesheet" href="<?php echo base_url("assets/css/common/default.css?v=3"); ?>" />
-	<link rel="stylesheet" href="<?php echo base_url("assets/css/" . $page_name . ".css?v=1"); ?>" />	
+	<link rel="stylesheet" href="<?php echo base_url("assets/css/common/default.css?v=4"); ?>" />
+	<link rel="stylesheet" href="<?php echo base_url("assets/css/" . $page_name . ".css?v=2"); ?>" />	
 </head>
 <body>
 <div class="loader-container">
@@ -129,6 +129,7 @@
 				</div>
 			</div>
 			<div class="modal-footer">
+				<div class="login-register-button">Don't have an account? <a href="<?php echo base_url("sign-up"); ?>">Sign up here</a></div>
 				<div class="modal-btn modal-btn-login">Login</div>
 			</div>
 		</div>
