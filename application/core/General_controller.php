@@ -46,6 +46,8 @@ class General_controller extends CI_Controller
 			if (sizeof($user_data) > 0) {
 				$data["is_logged_in"] = true;
 				$data["user_first_name"] = $user_data[0]->user_first_name;
+			} else {
+				delete_cookie("infinite_apparel_user");
 			}
 		}
 		
