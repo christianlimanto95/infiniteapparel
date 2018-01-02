@@ -375,7 +375,11 @@ function add_to_cart(element, is_buy_now) {
     var qty = modal.find(".form-input-qty").val();
     
     ajaxCall(add_to_cart_url, {item_id: id, item_size: size, item_qty: qty, item_type: 1}, function(json) {
-        get_cart();        
+        get_cart();
+        $(".bags-message").addClass("show");
+        $(".bags-message").one('webkitAnimationEnd oanimationend oAnimationEnd msAnimationEnd animationend', function(e) {
+            $(".bags-message").removeClass("show");
+		});
         closeModal(element);
         if (is_buy_now != null) {
             checkout();

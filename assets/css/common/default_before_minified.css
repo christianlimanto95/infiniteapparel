@@ -247,6 +247,71 @@ body {
   display: none;
 }
 
+@-webkit-keyframes bags-message-anim {
+    0% {
+        opacity: 0;
+    }
+
+    15% {
+        opacity: 1;
+    }
+
+    85% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0;
+    }
+}
+
+@keyframes bags-message-anim {
+      0% {
+          opacity: 0;
+      }
+
+      15% {
+          opacity: 1;
+      }
+
+      85% {
+          opacity: 1;
+      }
+
+      100% {
+          opacity: 0;
+      }
+  }
+
+.bags-message {
+  position: fixed;
+  background-color: rgb(37, 37, 37);
+  color: white;
+  font-family: helvetica;
+  z-index: 1000;
+  display: none;
+  opacity: 0;
+}
+
+.bags-message.show {
+  display: block;
+  -webkit-animation-name: bags-message-anim;
+  -webkit-animation-duration: 3s;
+  -webkit-animation-fill-mode: forwards;
+  -moz-animation-name: bags-message-anim;
+  -moz-animation-duration: 3s;
+  -moz-animation-fill-mode: forwards;
+  -ms-animation-name: bags-message-anim;
+  -ms-animation-duration: 3s;
+  -ms-animation-fill-mode: forwards;
+  -o-animation-name: bags-message-anim;
+  -o-animation-duration: 3s;
+  -o-animation-fill-mode: forwards;
+  animation-name: bags-message-anim;
+  animation-duration: 3s;
+  animation-fill-mode: forwards;
+}
+
 .header-login-or-signup, .header-profile {
   font-family: helvetica;
   font-weight: bold;
@@ -1049,6 +1114,13 @@ table tbody tr:nth-child(odd) {
     background-color: transparent;
   }
 
+  .bags-message {
+      top: 18vw;
+      left: 5vw;
+      font-size: 3vw;
+      padding: 5vw 10vw;
+  }
+
   .modal-bags-table tbody td, .modal-bags-table tbody td div {
     font-size: 4vw;
   }
@@ -1396,6 +1468,13 @@ table tbody tr:nth-child(odd) {
     height: 25px;
     padding-top: 5px;
     font-size: 10pt;
+  }
+
+  .bags-message {
+      top: 100px;
+      right: 35px;
+      font-size: 10pt;
+      padding: 20px 40px;
   }
 
   .header-login-or-signup, .header-profile {

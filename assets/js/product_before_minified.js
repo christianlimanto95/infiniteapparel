@@ -8,7 +8,11 @@ $(function() {
 		var qty = $(".input-qty").val();
 		
 		ajaxCall(add_to_cart_url, {item_id: id, item_size: size, item_qty: qty, item_type: 1}, function(json) {
-			get_cart();        
+            get_cart();
+            $(".bags-message").addClass("show");
+            $(".bags-message").one('webkitAnimationEnd oanimationend oAnimationEnd msAnimationEnd animationend', function(e) {
+                $(".bags-message").removeClass("show");
+            });
 			closeModal();
 		});
 	});
@@ -21,7 +25,7 @@ $(function() {
 		var qty = $(".input-qty").val();
 		
 		ajaxCall(add_to_cart_url, {item_id: id, item_size: size, item_qty: qty, item_type: 1}, function(json) {
-			get_cart();        
+			get_cart();
 			closeModal();
 			checkout();
 		});

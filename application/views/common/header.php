@@ -39,8 +39,8 @@
 		}
 	</style>
 	<link rel="shortcut icon" href="<?php echo base_url("assets/icons/favicon.png"); ?>" />
-	<link rel="stylesheet" href="<?php echo base_url("assets/css/common/default.css?v=4"); ?>" />
-	<link rel="stylesheet" href="<?php echo base_url("assets/css/" . $page_name . ".css?v=4"); ?>" />	
+	<link rel="stylesheet" href="<?php echo base_url("assets/css/common/default.css?v=5"); ?>" />
+	<link rel="stylesheet" href="<?php echo base_url("assets/css/" . $page_name . ".css?v=5"); ?>" />	
 </head>
 <body>
 <div class="loader-container">
@@ -102,6 +102,7 @@
 		</div>
 	</div>
 <?php } ?>
+<div class="bags-message">Added to cart</div>
 <div class="bags-preview">
 	<div class="bags-preview-center">
 		<div class="bags-preview-image-container">

@@ -107,9 +107,14 @@ function custom_add_to_bag(is_buy_now) {
 	ajaxCall(add_to_cart_url, data, function(json) {
 		hideLoader();
 		get_cart();
-
+        
 		if (is_buy_now != null) {
 			checkout();
-		}
+		} else {
+            $(".bags-message").addClass("show");
+            $(".bags-message").one('webkitAnimationEnd oanimationend oAnimationEnd msAnimationEnd animationend', function(e) {
+                $(".bags-message").removeClass("show");
+            });
+        }
 	});
 }

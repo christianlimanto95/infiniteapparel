@@ -194,6 +194,10 @@
 }
 
 @media all and (min-width: 1025px) {
+    .bags-message {
+        right: 50px;
+    }
+
     .size-chart-image {
         width: 350px;
         height: 350px;
