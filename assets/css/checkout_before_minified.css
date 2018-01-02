@@ -62,7 +62,7 @@
 	font-weight: bold;
 }
 
-.recipient-title {
+.recipient-title, .transfer-to {
 	font-family: helvetica;
 	font-weight: bold;
 }
@@ -82,6 +82,10 @@
 .form-input-phone::-webkit-outer-spin-button,
 .form-input-phone::-webkit-inner-spin-button {
     -webkit-appearance: none;
+}
+
+.form-account-number .custom-form-input, .form-account-name .custom-form-input {
+    padding: 0;
 }
 
 .btn-submit-checkout {
@@ -170,10 +174,14 @@
 		width: 20vw;
 	}
 
-	.recipient-title {
+	.recipient-title, .transfer-to {
 		font-size: 5vw;
 		margin-bottom: 5vw;
-	}
+    }
+    
+    .transfer-to {
+        margin-top: 10vw;
+    }
 
 	.custom-form-item-inline {
 		display: block;
@@ -194,7 +202,11 @@
 	
 	.form-item-shipping {
 		margin-right: 5vw;
-	}
+    }
+    
+    .form-account-number .custom-form-input, .form-account-name .custom-form-input {
+        line-height: 5.5vw;
+    }
 
 	.btn-submit-checkout {
 		padding: 3vw 0;
@@ -214,6 +226,10 @@
 }
 
 @media all and (min-width: 1025px) {
+    .section-1 {
+        height: 65vw;
+    }
+
 	.section-1-left, .section-1-right {
 		width: 40vw;
 		height: 400px;
@@ -285,10 +301,14 @@
 		width: 85px;
 	}
 
-	.recipient-title {
+	.recipient-title, .transfer-to {
 		font-size: 16pt;
 		margin-bottom: 20px;
-	}
+    }
+    
+    .transfer-to {
+        margin-top: 20px;
+    }
 
 	.custom-form-item-inline, .custom-form-item {
 		margin-bottom: 15px;
@@ -313,7 +333,11 @@
 	
 	.form-item-shipping {
 		margin-right: 30px;
-	}
+    }
+
+    .form-account-number .custom-form-input, .form-account-name .custom-form-input {
+        line-height: 18px;
+    }
 
 	.btn-submit-checkout {
 		width: 150px;

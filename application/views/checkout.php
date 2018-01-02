@@ -61,6 +61,15 @@
                     <div class="form-label custom-form-label form-label-service">Service <span class="error error-service"></span></div>
                     <select class="form-input custom-form-input form-input-service"></select>
                 </div>
+                <div class="transfer-to">TRANSFER TO</div>
+                <div class="form-item form-account-number">
+                    <div class="form-label custom-form-label">Account Number : </div>
+                    <div class="form-input custom-form-input">BCA : 0885505576<br />BRI : 167301003238509</div>
+                </div>
+                <div class="form-item form-account-name">
+                    <div class="form-label custom-form-label">Account Name : </div>
+                    <div class="form-input custom-form-input">David Setiawan Gossidhy</div>
+                </div>
                 <div class="btn btn-submit-checkout">Submit</div>
             </div>
         </div>
