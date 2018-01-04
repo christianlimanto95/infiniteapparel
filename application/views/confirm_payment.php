@@ -30,6 +30,15 @@
                     <span> : </span>
                     <div class="custom-form-input"><?php echo $data->pemesanan_handphone; ?></div>
                 </div>
+                <div class="transfer-to">TRANSFER TO</div>
+                <div class="form-item form-account-number">
+                    <div class="form-label">Account Number : </div>
+                    <div class="form-input custom-form-input">BCA : 0885505576<br />BRI : 167301003238509</div>
+                </div>
+                <div class="form-item form-account-name">
+                    <div class="form-label">Account Name : </div>
+                    <div class="form-input custom-form-input">David Setiawan Gossidhy</div>
+                </div>
             </div>
             <form class="section-1-right" method="post" action="<?php echo base_url("do_confirm_payment"); ?>" enctype="multipart/form-data">
                 <input type="hidden" name="order_id" value="<?php echo $data->hjual_id; ?>" />
