@@ -22,7 +22,7 @@ class Product extends General_controller {
 		
 		if ($id_found) {
 			$data = array(
-				"title" => "Infinite Apparel | Product",
+				"title" => "Infinite Apparel | " . $product->item_name . " " . $product->category_name,
 				"header_additional_class" => " invers",
 				"product" => $product
 			);
