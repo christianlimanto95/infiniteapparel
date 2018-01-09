@@ -9,7 +9,7 @@ class Home_model extends CI_Model
 
     function get_available_now() {
         $query = $this->db->query("
-            SELECT item_id, item_name, item_price, modified_date
+            SELECT item_id, category_id, item_name, item_price, modified_date
             FROM item
             WHERE item_status = 1
             ORDER BY created_date DESC
@@ -30,7 +30,7 @@ class Home_model extends CI_Model
 
     function get_product_by_id($item_id) {
         $query = $this->db->query("
-            SELECT c.category_name, i.item_name, i.item_price, i.modified_date
+            SELECT c.category_name, c.category_id, i.item_name, i.item_price, i.modified_date
             FROM item i, category c
             WHERE c.category_id = i.category_id AND i.item_id = '" . $item_id . "' AND item_status = 1
             LIMIT 1
@@ -55,7 +55,7 @@ class Home_model extends CI_Model
 
     function get_item_name_and_price_by_id($item_id) {
         $query = $this->db->query("
-            SELECT item_name, item_price
+            SELECT category_id, item_name, item_price
             FROM item
             WHERE item_id = '" . $item_id . "'
             LIMIT 1

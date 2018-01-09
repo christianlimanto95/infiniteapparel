@@ -793,6 +793,10 @@ table tbody tr:nth-child(odd) {
   text-align: center;
 }
 
+.modal-size-qty .form-item-size.hide {
+    display: none !important;
+}
+
 .bags-preview {
   display: none;
   position: fixed;

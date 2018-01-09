@@ -39,8 +39,8 @@
 		}
 	</style>
 	<link rel="shortcut icon" href="<?php echo base_url("assets/icons/favicon.png"); ?>" />
-	<link rel="stylesheet" href="<?php echo base_url("assets/css/common/default.css?v=6"); ?>" />
-	<link rel="stylesheet" href="<?php echo base_url("assets/css/" . $page_name . ".css?v=7"); ?>" />	
+	<link rel="stylesheet" href="<?php echo base_url("assets/css/common/default.css?v=7"); ?>" />
+	<link rel="stylesheet" href="<?php echo base_url("assets/css/" . $page_name . ".css?v=8"); ?>" />	
 </head>
 <body>
 <div class="loader-container">
@@ -173,7 +173,7 @@
 			<div class="modal-header-text">Size and Quantity</div>
 		</div>
 		<div class="modal-body">
-			<div class="form-item-inline">
+			<div class="form-item-inline form-item-size">
 				<div class="form-label">Size</div>
 				<select class="form-input form-input-size" data-auto-clear="false">
 					<option value="xxl">XXL</option>

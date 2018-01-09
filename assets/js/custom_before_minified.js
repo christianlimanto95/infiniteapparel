@@ -97,6 +97,7 @@ function custom_add_to_bag(is_buy_now) {
 	var notes = $(".custom-input-notes").val();
 
 	var data = {
+        category_id: 1,
 		item_type: 2,
 		item_size: item_size,
 		item_qty: item_qty,

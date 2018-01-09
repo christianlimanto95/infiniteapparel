@@ -81,8 +81,13 @@ $(function() {
 
     $(document).on("click", ".btn-add-to-bag", function() {
         var id = $(this).data("id");
+        var category_id = $(this).data("category-id");
         var modal = $(".modal-size-qty");
+        modal.attr("data-category-id", category_id);
         modal.attr("data-id", id);
+        if (category_id != 1) {
+            modal.find(".form-item-size").addClass("hide");
+        }
         modal.addClass("show");
         modal.find(".modal-box").one('webkitAnimationEnd oanimationend oAnimationEnd msAnimationEnd animationend', function(e) {
             modal.addClass("shown").removeClass("show");
@@ -91,9 +96,14 @@ $(function() {
 
     $(document).on("click", ".btn-buy-now", function() {
         var id = $(this).data("id");
+        var category_id = $(this).data("category-id");
         var modal = $(".modal-size-qty");
+        modal.attr("data-category-id", category_id);
         modal.attr("data-id", id);
         modal.attr("data-buy-now", "true");
+        if (category_id != 1) {
+            modal.find(".form-item-size").addClass("hide");
+        }
         modal.addClass("show");
         modal.find(".modal-box").one('webkitAnimationEnd oanimationend oAnimationEnd msAnimationEnd animationend', function(e) {
             modal.addClass("shown").removeClass("show");
@@ -110,6 +120,7 @@ $(function() {
 
     $(".modal-size-qty").on("modal-close", function() {
         $(this).removeAttr("data-buy-now data-id");
+        $(this).find(".form-item-size").removeClass("hide");
     });
 
     $(document).on("click", ".bags-action", function(e) {
@@ -330,6 +341,11 @@ function get_cart() {
                 select["xs"] = "";
                 select[result[i].item_size] = " selected";
 
+                var show_size = true;
+                if (result[i].category_id != 1) {
+                    show_size = false;
+                }
+
                 element += "<tr data-index='" + i + "' data-id='" + result[i].item_id + "' data-dcart-id='" + result[i].dcart_id + "'>";
                 element += "<td data-col='name'>";
                 if (result[i].item_type == 1) {
@@ -341,7 +357,9 @@ function get_cart() {
                 element += "<div class='bags-td-name-text'>" + result[i].item_name + "</div>";
                 element += "</td>";
                 element += "<td data-col='size'>";
-                element += "<select class='bags-input-size'><option value='xxl'" + select["xxl"] + ">XXL</option><option value='xl'" + select["xl"] + ">XL</option><option value='l'" + select["l"] + ">L</option><option value='m'" + select["m"] + ">M</option><option value='s'" + select["s"] + ">S</option><option value='xs'" + select["xs"] + ">XS</option></select>";
+                if (show_size) {
+                    element += "<select class='bags-input-size'><option value='xxl'" + select["xxl"] + ">XXL</option><option value='xl'" + select["xl"] + ">XL</option><option value='l'" + select["l"] + ">L</option><option value='m'" + select["m"] + ">M</option><option value='s'" + select["s"] + ">S</option><option value='xs'" + select["xs"] + ">XS</option></select>";
+                }
                 element += "</td>";
                 element += "<td data-col='price'>";
                 element += "IDR " + result[i].item_price;
@@ -370,11 +388,12 @@ function get_cart() {
 function add_to_cart(element, is_buy_now) {
     showLoader();
     var modal = $(element).closest(".modal");
+    var category_id = modal.attr("data-category-id");
     var id = modal.attr("data-id");
     var size = modal.find(".form-input-size").val();
     var qty = modal.find(".form-input-qty").val();
     
-    ajaxCall(add_to_cart_url, {item_id: id, item_size: size, item_qty: qty, item_type: 1}, function(json) {
+    ajaxCall(add_to_cart_url, {category_id: category_id, item_id: id, item_size: size, item_qty: qty, item_type: 1}, function(json) {
         get_cart();
         $(".bags-message").addClass("show");
         $(".bags-message").one('webkitAnimationEnd oanimationend oAnimationEnd msAnimationEnd animationend', function(e) {

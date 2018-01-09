@@ -135,7 +135,9 @@ function get_order_detail(order_item) {
             element += "<div class='order-detail-td-name-text'>" + result[i].item_name + "</div>";
             element += "</td>";
             element += "<td data-col='size'>";
-            element += result[i].item_size.toUpperCase();
+            if (result[i].item_size != "null") {
+                element += result[i].item_size.toUpperCase();
+            }
             element += "</td>";
             element += "<td data-col='price'>";
             element += "IDR " + result[i].item_price;

@@ -4,7 +4,7 @@
     </div>
 </div>
 <div class="content">
-    <div class="section section-1" data-id="<?php echo $product->item_id; ?>">
+    <div class="section section-1" data-category-id="<?php echo $product->category_id; ?>" data-id="<?php echo $product->item_id; ?>">
         <div class="section-title">
             <div class="section-title-line"></div>
             <div class="section-title-text"><?php echo $product->category_name; ?></div>
@@ -26,8 +26,12 @@
             <div class="section-1-right">
                 <div class="product-name"><?php echo $product->item_name; ?></div>
                 <div class="product-price">IDR <?php echo number_format($product->item_price, 0, ",", "."); ?></div>
+                <div class="product-description"><?php echo $product->item_description; ?></div>
+                <?php if ($product->category_id == 1) { ?>
                 <div class="btn-view-size-chart">View Size Chart</div>
+                <?php } ?>
                 <div class="size-quantity-container">
+                    <?php if ($product->category_id == 1) { ?>
                     <div class="size-container">
                         <div class="label">Size</div>
                         <select class="select-size">
@@ -39,6 +43,7 @@
                             <option value="xs">XS</option>
                         </select>
                     </div>
+                    <?php } ?>
                     <div class="quantity-container">
                         <div class="label">Quantity</div>
                         <input class="input-qty" type="number" data-input-type="number" min="1" max="999" value="1" />

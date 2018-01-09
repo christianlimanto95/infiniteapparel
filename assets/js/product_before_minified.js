@@ -2,12 +2,13 @@ var imageIndex = 1;
 $(function() {
 	$(document).off("click", ".btn-add-to-bag");
 	$(document).on("click", ".btn-add-to-bag", function() {
-		showLoader();
+        showLoader();
+        var category_id = $(".section-1").attr("data-category-id");
 		var id = $(".section-1").attr("data-id");
 		var size = $(".select-size").val();
-		var qty = $(".input-qty").val();
+        var qty = $(".input-qty").val();
 		
-		ajaxCall(add_to_cart_url, {item_id: id, item_size: size, item_qty: qty, item_type: 1}, function(json) {
+		ajaxCall(add_to_cart_url, {category_id: category_id, item_id: id, item_size: size, item_qty: qty, item_type: 1}, function(json) {
             get_cart();
             $(".bags-message").addClass("show");
             $(".bags-message").one('webkitAnimationEnd oanimationend oAnimationEnd msAnimationEnd animationend', function(e) {
@@ -19,12 +20,12 @@ $(function() {
 
 	$(document).off("click", ".btn-buy-now");
 	$(document).on("click", ".btn-buy-now", function() {
-		showLoader();
+        showLoader();
+        var category_id = $(".section-1").attr("data-category-id");
 		var id = $(".section-1").attr("data-id");
 		var size = $(".select-size").val();
 		var qty = $(".input-qty").val();
-		
-		ajaxCall(add_to_cart_url, {item_id: id, item_size: size, item_qty: qty, item_type: 1}, function(json) {
+		ajaxCall(add_to_cart_url, {category_id: category_id, item_id: id, item_size: size, item_qty: qty, item_type: 1}, function(json) {
 			get_cart();
 			closeModal();
 			checkout();

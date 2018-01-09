@@ -12,8 +12,8 @@
                     <div class="product-image" style="background-image: url(<?php echo base_url("assets/images/catalog/" . $catalog[$i]->item_id . "_1.png?d=" . strtotime($catalog[$i]->modified_date)); ?>);"></div>
                     <div class="product-image-wrapper">
                         <div class="btn-wrapper">
-                            <div class="btn btn-buy-now" data-id="<?php echo $catalog[$i]->item_id ?>">BUY NOW</div>
-                            <div class="btn btn-add-to-bag" data-id="<?php echo $catalog[$i]->item_id ?>">ADD TO CART</div>
+                            <div class="btn btn-buy-now" data-category-id="<?php echo $catalog[$i]->category_id; ?>" data-id="<?php echo $catalog[$i]->item_id ?>">BUY NOW</div>
+                            <div class="btn btn-add-to-bag" data-category-id="<?php echo $catalog[$i]->category_id; ?>" data-id="<?php echo $catalog[$i]->item_id ?>">ADD TO CART</div>
                         </div>
                     </div>
                 </div>

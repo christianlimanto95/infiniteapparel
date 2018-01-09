@@ -53,6 +53,11 @@ class Home extends General_controller {
 							$shirt_custom_id = $cart_item_col[4];
 							$design_custom_id = $cart_item_col[5];
 							$item_name_price = ($item_type == 1) ? $this->Home_model->get_item_name_and_price_by_id($item_id) : $this->Home_model->get_custom_name_price_by_custom_id($design_custom_id);
+							if ($item_type == 1) {
+								if ($item_name_price[0]->category_id != 1) {
+									$item_size = "null";
+								}
+							}
 							$item_name = $item_name_price[0]->item_name;
 							$item_price = intval($item_name_price[0]->item_price);
 							$item_subtotal = intval($item_qty * $item_price);
@@ -153,6 +158,11 @@ class Home extends General_controller {
 						$total_qty += $item_qty;
 						$cart_item[$i] = new stdClass();
 						$cart_item[$i]->dcart_id = -1;
+						if ($item_type == 1) {
+							$cart_item[$i]->category_id = $item_data->category_id;
+						} else {
+							$cart_item[$i]->category_id = 1;
+						}
 						$cart_item[$i]->item_id = $item_id;
 						$cart_item[$i]->item_type = $item_type;
 						$cart_item[$i]->item_name = $item_data->item_name;
@@ -184,6 +194,7 @@ class Home extends General_controller {
 	}
 
 	function add_to_cart() {
+		$category_id = $this->input->post("category_id", true);
 		$item_id = $this->input->post("item_id", true);
 		$item_size = $this->input->post("item_size", true);
 		$item_qty = intval($this->input->post("item_qty", true));
@@ -213,6 +224,9 @@ class Home extends General_controller {
 				$result = $this->Home_model->insert_dcart_custom($data)[0];
 				echo json_encode($result);
 			} else {
+				if ($category_id != 1) {
+					$item_size = "null";
+				}
 				$data = array(
 					"item_id" => $item_id,
 					"item_size" => $item_size,

@@ -112,7 +112,9 @@ function get_checkout_cart() {
                 }
                 element += "<div class='checkout-item-text checkout-item-col'>";
                 element += "<div class='checkout-item-name'>" + data[i].item_name + "</div>";
-                element += "<div class='checkout-item-size'>Size: " + data[i].item_size.toUpperCase() + "</div>";
+                if (data[i].category_id == 1) {
+                    element += "<div class='checkout-item-size'>Size: " + data[i].item_size.toUpperCase() + "</div>";
+                }
                 element += "<div class='checkout-item-qty'>Qty: " + data[i].item_qty + "</div>";
                 element += "</div>";
                 element += "<div class='checkout-item-subtotal'>IDR " + data[i].item_subtotal + "</div>";
