@@ -118,7 +118,7 @@ class Checkout extends General_controller {
 		$curl = curl_init();
 				
 		curl_setopt_array($curl, array(
-		  CURLOPT_URL => "http://api.rajaongkir.com/starter/cost",
+		  CURLOPT_URL => "https://api.rajaongkir.com/starter/cost",
 		  CURLOPT_RETURNTRANSFER => true,
 		  CURLOPT_ENCODING => "",
 		  CURLOPT_MAXREDIRS => 10,
@@ -127,6 +127,7 @@ class Checkout extends General_controller {
 		  CURLOPT_CUSTOMREQUEST => "POST",
 		  CURLOPT_POSTFIELDS => "origin=" . $origin . "&destination=" . $destination . "&weight=" . $weight . "&courier=" . $service,
 		  CURLOPT_HTTPHEADER => array(
+			"content-type: application/x-www-form-urlencoded",
 			"key: 5d1cb4473cdfbd9c57932438b0566cd5"
 		  )
 		));
