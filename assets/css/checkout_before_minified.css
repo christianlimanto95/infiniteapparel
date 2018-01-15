@@ -91,6 +91,10 @@
     cursor: default;
 }
 
+.city-autocomplete-item.active {
+    background-color: #EEE;
+}
+
 .form-input-address {
 	resize: none;
 }

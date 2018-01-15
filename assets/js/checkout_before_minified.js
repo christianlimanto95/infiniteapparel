@@ -40,7 +40,7 @@ $(function() {
                     $(".city-autocomplete-item").last().addClass("active");
                 }
             }
-        } else {
+        } else if (e.key.length == 1) {
             var keyword = $(this).val();
             get_city(keyword);
         }
@@ -166,6 +166,7 @@ function fillInputCity(selectedAutocompleteItem) {
     $("input[name='city-id']").val(city_id);
     $("input[name='city-name']").val(city_name);
     $(".form-input-city").val(city_name);
+    $(".form-input-city").blur();
     city_valid = true;
     hideCityAutocomplete();
 
