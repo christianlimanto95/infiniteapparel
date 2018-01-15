@@ -549,9 +549,9 @@ class Admin_model extends CI_Model
 
 	function get_hjual_by_id($hjual_id) {
 		$query = $this->db->query("
-			SELECT h.*, pe.pemesanan_first_name, pe.pemesanan_last_name, pe.pemesanan_address, pe.pemesanan_handphone, pa.*, u.user_email, c.city_name
-			FROM hjual h, pemesanan pe, payment pa, user u, city c
-			WHERE h.hjual_id = " . $hjual_id . " AND pe.hjual_id = " . $hjual_id . " AND pa.hjual_id = " . $hjual_id . " AND pa.payment_status != 0 AND u.user_id = h.user_id AND pe.city_id = c.city_id
+			SELECT h.*, pe.pemesanan_first_name, pe.pemesanan_last_name, pe.pemesanan_address, pe.pemesanan_handphone, pa.*, u.user_email, pe.city_name
+			FROM hjual h, pemesanan pe, payment pa, user u
+			WHERE h.hjual_id = " . $hjual_id . " AND pe.hjual_id = " . $hjual_id . " AND pa.hjual_id = " . $hjual_id . " AND pa.payment_status != 0 AND u.user_id = h.user_id
 			LIMIT 1
 		");
 		return $query->result();

@@ -29,6 +29,7 @@ class Checkout extends General_controller {
 		$first_name = $this->input->post("first_name", true);
 		$last_name = $this->input->post("last_name", true);
 		$city_id = $this->input->post("city_id", true);
+		$city_name = $this->input->post("city_name", true);
 		$address = $this->input->post("address", true);
 		$handphone = $this->input->post("handphone", true);
 		$shipping_name = $this->input->post("shipping_name", true);
@@ -46,9 +47,12 @@ class Checkout extends General_controller {
 				$discount = intval($total_price) / 10;
 			}
 
-			$weight = 200 * intval($total_qty);
-			$shipping = $this->getCost("329", $city_id, $weight, $shipping_name);
-			$shipping_cost = intval($shipping[$shipping_service]);
+			$weight = 200 * intval($total_qty) / 1000;
+			if ($weight < 1) {
+				$weight = 1;
+			}
+			$shipping = $this->getCost($city_id, $city_name, $weight, $shipping_name);
+			$shipping_cost = intval($shipping[$shipping_service]["cost"]);
 
 			$hjual_grand_total_price = intval($total_price) - $discount + $shipping_cost;
 
@@ -60,6 +64,7 @@ class Checkout extends General_controller {
 				"first_name" => $first_name,
 				"last_name" => $last_name,
 				"city_id" => $city_id,
+				"city_name" => $city_name,
 				"address" => $address,
 				"handphone" => $handphone,
 				"hjual_shipping_name" => $shipping_name,
@@ -97,25 +102,120 @@ class Checkout extends General_controller {
 
 	function get_city() {
 		parent::show_404_if_not_ajax();
-		$city = $this->Checkout_model->get_city();
-		echo json_encode($city);
+
+		$keyword = $this->input->post("keyword", true);
+		$curl = curl_init();
+				
+		curl_setopt_array($curl, array(
+			CURLOPT_URL => "http://www.cektarif.com/exp/jne/jne.getoption.php?term=" . $keyword,
+			CURLOPT_RETURNTRANSFER => true,
+			CURLOPT_ENCODING => "",
+			CURLOPT_MAXREDIRS => 10,
+			CURLOPT_TIMEOUT => 30,
+			CURLOPT_SSL_VERIFYPEER => false,
+			CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1
+		));
+
+		$response = curl_exec($curl);
+		$err = curl_error($curl);
+		curl_close($curl);
+
+		$apiResult = $response;
+		if ($err) {
+			$apiResult = $err;
+		}
+
+		echo json_encode(json_decode($apiResult));
 	}
 
 	function get_cost() {
 		parent::show_404_if_not_ajax();	
-		$destination = $this->input->post("city_id", true);
+		$city_id = $this->input->post("city_id", true);
+		$city_name = $this->input->post("city_name", true);
 		$total_qty = intval($this->input->post("total_qty"));
-		$weight = 200 * $total_qty;
-		$results = [];
-		$results["jne"] = $this->getCost("329", $destination, $weight, "jne");
-		$results["pos"] = $this->getCost("329", $destination, $weight, "pos");
-		$results["tiki"] = $this->getCost("329", $destination, $weight, "tiki");
+		$weight = 200 * $total_qty / 1000;
+		if ($weight < 1) {
+			$weight = 1;
+		}
+		/*$curl = curl_init();
+				
+		curl_setopt_array($curl, array(
+			CURLOPT_URL => "http://www.cektarif.com/exp/jne/jne.tarif.php",
+			CURLOPT_RETURNTRANSFER => true,
+			CURLOPT_ENCODING => "",
+			CURLOPT_MAXREDIRS => 10,
+			CURLOPT_TIMEOUT => 30,
+			CURLOPT_CUSTOMREQUEST => "POST",
+			CURLOPT_POSTFIELDS => "panel_type=info&exp_name=jne&exp_title=JNE&kotaAsaljne=PALU&kotaAsaljne_val=UExXMTAwMDBK&kotaTujuanjne=JAKARTA&kotaTujuanjne_val=Q0dLMTAwMDBK&beratKgjne=1",
+			CURLOPT_SSL_VERIFYPEER => false,
+			CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1
+		));
+
+		$response = curl_exec($curl);
+		$err = curl_error($curl);
+		$info = curl_getinfo($curl);
+		curl_close($curl);
+
+		$apiResult = json_decode($response);
+		if ($err) {
+			$apiResult = json_decode($err);
+		}*/
+
+		$postdata = http_build_query(
+			array(
+				'panel_type' => 'info',
+				'exp_name' => 'jne',
+				"exp_title" => "JNE",
+				"kotaAsaljne" => "PALU",
+				"kotaAsaljne_val" => "UExXMTAwMDBK",
+				"kotaTujuanjne" => $city_name,
+				"kotaTujuanjne_val" => $city_id,
+				"beratKgjne" => $weight . ""
+			)
+		);
 		
-		echo json_encode($results);
+		$opts = array('http' =>
+			array(
+				'method'  => 'POST',
+				'header'  => 'Content-type: application/x-www-form-urlencoded',
+				'content' => $postdata
+			)
+		);
+		
+		$context  = stream_context_create($opts);
+		
+		$apiResult = file_get_contents('http://www.cektarif.com/exp/jne/jne.tarif.php', false, $context);
+
+		$dom = new DOMDocument;
+		libxml_use_internal_errors(true);
+		$dom->loadHTML($apiResult);
+		libxml_clear_errors();
+
+		$xpath = new DomXPath($dom);
+		$items = $xpath->query("//tbody");
+
+		$services = array();
+		foreach ($items as $item) {
+			$nodeValue = $item->nodeValue;
+			if ($item->childNodes->length > 0) {
+				foreach ($item->childNodes as $tr) {
+					$service_name = $tr->childNodes[0]->nodeValue;
+					$service_cost = $tr->childNodes[4]->nodeValue;
+					$service_time = $tr->childNodes[6]->nodeValue;
+					array_push($services, array(
+						"name" => $service_name,
+						"cost" => str_replace(",", "", $service_cost),
+						"time" => $service_time
+					));
+				}
+			}	
+		}
+
+		echo json_encode($services);
 	}
 
-	function getCost($origin, $destination, $weight, $service) {
-		$curl = curl_init();
+	function getCost($city_id, $city_name, $weight, $service) {
+		/*$curl = curl_init();
 				
 		curl_setopt_array($curl, array(
 		  CURLOPT_URL => "https://api.rajaongkir.com/starter/cost",
@@ -149,6 +249,58 @@ class Checkout extends General_controller {
 			}
 		}
 		
-		return $apiResult;
+		return $apiResult;*/
+
+		$postdata = http_build_query(
+			array(
+				'panel_type' => 'info',
+				'exp_name' => 'jne',
+				"exp_title" => "JNE",
+				"kotaAsaljne" => "PALU",
+				"kotaAsaljne_val" => "UExXMTAwMDBK",
+				"kotaTujuanjne" => $city_name,
+				"kotaTujuanjne_val" => $city_id,
+				"beratKgjne" => $weight . ""
+			)
+		);
+		
+		$opts = array('http' =>
+			array(
+				'method'  => 'POST',
+				'header'  => 'Content-type: application/x-www-form-urlencoded',
+				'content' => $postdata
+			)
+		);
+		
+		$context  = stream_context_create($opts);
+		
+		$apiResult = file_get_contents('http://www.cektarif.com/exp/jne/jne.tarif.php', false, $context);
+
+		$dom = new DOMDocument;
+		libxml_use_internal_errors(true);
+		$dom->loadHTML($apiResult);
+		libxml_clear_errors();
+
+		$xpath = new DomXPath($dom);
+		$items = $xpath->query("//tbody");
+
+		$services = array();
+		foreach ($items as $item) {
+			$nodeValue = $item->nodeValue;
+			if ($item->childNodes->length > 0) {
+				foreach ($item->childNodes as $tr) {
+					$service_name = $tr->childNodes[0]->nodeValue;
+					$service_cost = $tr->childNodes[4]->nodeValue;
+					$service_time = $tr->childNodes[6]->nodeValue;
+					
+					$services[$service_name] = array(
+						"cost" => str_replace(",", "", $service_cost),
+						"time" => $service_time
+					);
+				}
+			}	
+		}
+
+		return $services;
 	}
 }

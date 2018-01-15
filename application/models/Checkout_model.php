@@ -56,7 +56,7 @@ class Checkout_model extends CI_Model
         }
         $this->db->query($insertDjualQuery);
 
-        $this->db->query("INSERT INTO pemesanan (hjual_id, pemesanan_first_name, pemesanan_last_name, city_id, pemesanan_address, pemesanan_handphone) VALUES ('" . $hjual_id . "', '" . $data["first_name"] . "', '" . $data["last_name"] . "', '" . $data["city_id"] . "', '" . $data["address"] . "', '" . $data["handphone"] . "')");
+        $this->db->query("INSERT INTO pemesanan (hjual_id, pemesanan_first_name, pemesanan_last_name, city_id, city_name, pemesanan_address, pemesanan_handphone) VALUES ('" . $hjual_id . "', '" . $data["first_name"] . "', '" . $data["last_name"] . "', '" . $data["city_id"] . "', '" . $data["city_name"] . "', '" . $data["address"] . "', '" . $data["handphone"] . "')");
 
         $this->db->query("CALL clear_hcart_dcart('" . $data["user_id"] . "');");
 

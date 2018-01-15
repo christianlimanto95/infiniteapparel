@@ -67,8 +67,28 @@
 	font-weight: bold;
 }
 
-.custom-form-label, .custom-form-input, .custom-form-input option {
+.custom-form-label, .custom-form-input, .custom-form-input option, .city-autocomplete-item {
 	font-family: helvetica;
+}
+
+.form-item-city {
+    position: relative;
+}
+
+.form-input-city-autocomplete {
+    position: absolute;
+    left: 0;
+    background-color: white;
+    box-shadow: 0 0 5px #777;
+    display: none;
+}
+
+.form-input-city-autocomplete.show {
+    display: block;
+}
+
+.city-autocomplete-item {
+    cursor: default;
 }
 
 .form-input-address {
@@ -94,6 +114,12 @@
     color: white;
     text-align: center;
     cursor: pointer;
+}
+
+.btn-submit-checkout.disabled {
+	border: 1px solid #DDD;
+	background-color: #DDD;
+	color: #777;
 }
 
 @media all and (max-width: 1024px) {
@@ -200,7 +226,22 @@
 
 	.custom-form-label {
 		margin-bottom: 1vw;
-	}
+    }
+
+    .form-input-city {
+        width: 100%;
+    }
+    
+    .form-input-city-autocomplete {
+        top: 15vw;
+        min-width: 50vw;
+        padding: 4vw 0;
+    }
+
+    .city-autocomplete-item {
+        padding: 3vw 4vw;
+        font-size: 4vw;
+    }
 
 	.form-input-address {
 		width: 100%;
@@ -225,6 +266,12 @@
 	.btn-submit-checkout:active {
 		background-color: white;
 		color: rgb(37, 37, 37);
+	}
+
+	.btn-submit-checkout.disabled:active {
+		border: 1px solid #DDD;
+		background-color: #DDD;
+		color: #777;
 	}
 }
 
@@ -334,7 +381,26 @@
 
 	.custom-form-label {
 		margin-bottom: 2px;
-	}
+    }
+
+    .form-input-city {
+        width: 370px;
+    }
+    
+    .form-input-city-autocomplete {
+        top: 50px;
+        min-width: 200px;
+        padding: 10px 0;
+    }
+
+    .city-autocomplete-item {
+        padding: 5px 10px;
+        font-size: 10pt;
+    }
+
+    .city-autocomplete-item:hover {
+        background-color: #EEE;
+    }
 
 	.form-label-service {
 		min-width: 100px;
@@ -363,5 +429,12 @@
 	.btn-submit-checkout:hover {
 		background-color: white;
 		color: rgb(37, 37, 37);
+	}
+
+	.btn-submit-checkout.disabled:hover {
+		cursor: default;
+		border: 1px solid #DDD;
+		background-color: #DDD;
+		color: #777;
 	}
 }

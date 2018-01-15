@@ -40,7 +40,7 @@
 	</style>
 	<link rel="shortcut icon" href="<?php echo base_url("assets/icons/favicon.png"); ?>" />
 	<link rel="stylesheet" href="<?php echo base_url("assets/css/common/default.css?v=8"); ?>" />
-	<link rel="stylesheet" href="<?php echo base_url("assets/css/" . $page_name . ".css?v=9"); ?>" />	
+	<link rel="stylesheet" href="<?php echo base_url("assets/css/" . $page_name . ".css?v=10"); ?>" />	
 </head>
 <body>
 <div class="loader-container">

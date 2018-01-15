@@ -41,9 +41,16 @@
                     <div class="form-label custom-form-label">Last Name</div>
                     <input type="text" class="form-input custom-form-input form-input-last-name" maxlength="50" />
                 </div>
-                <div class="form-item custom-form-item">
-                    <div class="form-label custom-form-label">City</div>
-                    <select class="form-input custom-form-input form-input-city"></select>
+                <div class="form-item custom-form-item form-item-city">
+                    <div class="form-label custom-form-label">City <span class="error error-city"></span></div>
+                    <input class="form-input custom-form-input form-input-city" />
+                    <input type="hidden" name="city-name" value="" />
+                    <input type="hidden" name="city-id" value="" />
+                    <div class="form-input-city-autocomplete">
+                        <div class="city-autocomplete-item" data-id="sby" >Surabaya</div>
+                        <div class="city-autocomplete-item" data-id="sid">Sidoarjo</div>
+                        <div class="city-autocomplete-item" data-id="mak">Makassar</div>
+                    </div>
                 </div>
                 <div class="form-item custom-form-item">
                     <div class="form-label custom-form-label">Address <span class="error error-address"></span></div>
@@ -55,7 +62,9 @@
                 </div>
                 <div class="form-item-inline custom-form-item-inline form-item-shipping">
                     <div class="form-label custom-form-label">Shipping</div>
-                    <select class="form-input custom-form-input form-input-shipping"></select>
+                    <select class="form-input custom-form-input form-input-shipping">
+                        <option value="jne">JNE</option>
+                    </select>
                 </div>
                 <div class="form-item-inline custom-form-item-inline">
                     <div class="form-label custom-form-label form-label-service">Service <span class="error error-service"></span></div>
