@@ -46,8 +46,15 @@ $(function() {
         }
     });
 
-    $(document).on("click", ".city-autocomplete-item", function() {
+    $(document).on("click", ".city-autocomplete-item", function(e) {
        fillInputCity($(this));
+       return false;
+    });
+
+    $(document).on("click", function(e) {
+        if (!$(e.target).is(".city-autocomplete-item")) {
+            hideCityAutocomplete();
+        }
     });
 
     $(".form-input-city").on("keypress", function(e) {

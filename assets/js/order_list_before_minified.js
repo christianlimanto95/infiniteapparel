@@ -69,6 +69,10 @@ function get_order() {
                             element += "</div>";
                         element += "</div>";
                         element += "<div class='order-item-row'>";
+                            element += "<div class='order-item-label'>Shipping : </div>";
+                            element += "<div class='order-item-value'>" + result[i].hjual_shipping_name + " - " + result[i].hjual_shipping_service + "</div>";
+                        element += "</div>";
+                        element += "<div class='order-item-row'>";
                             element += "<div class='order-item-label'>Shipping Number : </div>";
                             var shipping_number = "-";
                             if (result[i].hjual_nomor_resi != null) {
