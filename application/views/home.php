@@ -5,7 +5,7 @@
 </div>
 <div class="content">
     <div class="section section-1">
-        <div class="section-1-image" style="background-image: url(assets/images/homes.png?v=1);"></div>
+        <div class="section-1-image" style="background-image: url(assets/images/home.jpg);"></div>
         <div class="section-gradient"></div>
         <a href="<?php echo base_url("product"); ?>" class="explore-products-container">
             <div class="btn-explore-products" data-anim="show-up">EXPLORE PRODUCTS</div>
