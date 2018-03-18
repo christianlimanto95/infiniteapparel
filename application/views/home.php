@@ -5,7 +5,7 @@
 </div>
 <div class="content">
     <div class="section section-1">
-        <div class="section-1-image" style="background-image: url(assets/images/home.png?v=1);"></div>
+        <div class="section-1-image" style="background-image: url(assets/images/homes.png?v=1);"></div>
         <div class="section-gradient"></div>
         <a href="<?php echo base_url("product"); ?>" class="explore-products-container">
             <div class="btn-explore-products" data-anim="show-up">EXPLORE PRODUCTS</div>
@@ -21,7 +21,7 @@
         <?php 
             for ($i = 0; $i < sizeof($available_now); $i++) { ?>
             <div class="product" data-anim="show-up">
-                <a href="<?php echo base_url("product/" . $available_now[$i]->item_id . "/" . str_replace(" ", "-", $available_now[$i]->item_name)); ?>" class="product-image-container">
+                <a href="<?php echo base_url("product/" . $available_now[$i]->item_id . "/" . rawurlencode($available_now[$i]->item_name)); ?>" class="product-image-container">
                     <div class="product-image" style="background-image: url(<?php echo base_url("assets/images/catalog/" . $available_now[$i]->item_id . "_1.png"); ?>);"></div>
                     <div class="product-image-wrapper">
                         <div class="btn-wrapper">
@@ -50,3 +50,6 @@
         </div>
     </div>
 </div>
+<script>
+var preloaderImageSrc = "<?php echo base_url("assets/icons/loading.gif"); ?>";
+</script>

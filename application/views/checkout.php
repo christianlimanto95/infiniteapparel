@@ -54,7 +54,7 @@
                 </div>
                 <div class="form-item custom-form-item">
                     <div class="form-label custom-form-label">Address <span class="error error-address"></span></div>
-                    <textarea class="form-input custom-form-input form-input-address" maxlength="100"></textarea>
+                    <textarea class="form-input custom-form-input form-input-address" maxlength="300"></textarea>
                 </div>
                 <div class="form-item custom-form-item">
                     <div class="form-label custom-form-label">Phone Number <span class="error error-phone"></span></div>

@@ -7,7 +7,7 @@
         </div>
         <div class="product-container">
         <?php for ($i = 0; $i < sizeof($catalog); $i++) { ?>
-            <a href="<?php echo base_url("product/" . $catalog[$i]->item_id . "/" . str_replace(" ", "-", $catalog[$i]->item_name)); ?>" class="product">
+            <a href="<?php echo base_url("product/" . $catalog[$i]->item_id . "/" . rawurlencode($catalog[$i]->item_name)); ?>" class="product">
                 <div class="product-image-container">
                     <div class="product-image" style="background-image: url(<?php echo base_url("assets/images/catalog/" . $catalog[$i]->item_id . "_1.png?d=" . strtotime($catalog[$i]->modified_date)); ?>);"></div>
                     <div class="product-image-wrapper">
